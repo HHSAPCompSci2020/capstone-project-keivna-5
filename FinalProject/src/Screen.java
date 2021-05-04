@@ -1,4 +1,5 @@
 
+
 public abstract class Screen {
 
 	public final int DRAWING_WIDTH, DRAWING_HEIGHT;
