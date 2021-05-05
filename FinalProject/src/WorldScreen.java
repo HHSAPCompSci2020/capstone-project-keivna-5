@@ -31,9 +31,9 @@ public class WorldScreen extends Screen {
 		surface.pushStyle();
 		surface.background(255,255,255);
 
-		surface.box(20);
+//		surface.box(20);
 		
-		//world.display(surface);
+		world.display(surface);
 
 //		
 //		//switch tabs

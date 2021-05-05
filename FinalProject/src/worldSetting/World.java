@@ -17,7 +17,7 @@ public class World { //build water, bridge
 	
 	public World() {
 		
-		element = new Element(5, 5, 5, 10);
+		element = new Element(350, 350, 50, 50);
 //		elements = new Element[size][size];
 //
 //		for (int i = 0; i < size; i++) {
