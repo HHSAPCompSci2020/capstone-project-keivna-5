@@ -1,6 +1,7 @@
 package mazeexample;
 import java.util.ArrayList;
 
+
 import processing.core.*;
 
 /**

@@ -2,22 +2,25 @@ package worldSetting;
 
 import java.util.ArrayList;
 
+
 //import mazeexample.Element;
+
 //import mazeexample.Player;
-import processing.core.PApplet;
+import processing.core.*;
 
 public class World { //build water, bridge
 	
 //	private Element[][] elements;
 //	private Element start;
 //
-//	ArrayList<Element> b = new ArrayList<Element>();
+	ArrayList<Element> b = new ArrayList<Element>();
 	
 	private Element element;
 	
 	public World() {
 		
 		element = new Element(350, 350, 50, 50);
+		b.add(element);
 //		elements = new Element[size][size];
 //
 //		for (int i = 0; i < size; i++) {
@@ -74,13 +77,13 @@ public class World { //build water, bridge
 //		element.display(marker);
 //	}
 	
-//	public void update(Camera p) {
-//		p.act(element);
-//	}
+	public void update(Camera p) {
+		p.act(b);
+	}
 	
-//	public void setPlayerAtStart(Camera player) {
-//		player.moveTo(start.getX(), start.getY()-15, start.getZ());
-//	}
+	public void setPlayerAtStart(Camera player) {
+		player.moveTo(element.getX(), element.getY()-15, element.getZ());
+	}
 	
 	
 

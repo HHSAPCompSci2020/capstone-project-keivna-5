@@ -1,5 +1,6 @@
 
 import processing.core.*;
+
 import processing.opengl.*;
 import worldSetting.Camera;
 import worldSetting.Element;
@@ -11,12 +12,16 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import mazeexample.Maze;
 import mazeexample.Player;
 
 
 public class WorldScreen extends Screen {
 
 	private ArrayList<Integer> keys = new ArrayList<Integer>();
+
+	
+	private Camera player;
 
 	private DrawingSurface surface;
 	private Rectangle button;
@@ -32,8 +37,9 @@ public class WorldScreen extends Screen {
 		
 //		world = new World(surface);
 		world = new World();
-	}
+		player = new Camera();
 
+	}
 
 	//TODO: draw world + menu + tabs here
 	public void draw() {
@@ -43,6 +49,17 @@ public class WorldScreen extends Screen {
 //		surface.box(20);
 		
 		world.display(surface);
+		world.update(player);
+//		player.draw(this);
+		
+//		if (checkKey(KeyEvent.VK_W))
+//			player.moveZ(1);
+//		else if (checkKey(KeyEvent.VK_S))
+//			player.moveZ(-1);
+//		if (checkKey(KeyEvent.VK_A))
+//			player.moveX(1);
+//		else if (checkKey(KeyEvent.VK_D))
+//			player.moveX(-1);
 
 //		
 //		//switch tabs
@@ -72,8 +89,11 @@ public class WorldScreen extends Screen {
 
 	}
 	
+	// Checks if given key code is in the array list
+//	private boolean checkKey(int i) {
+//		return keys.contains(i);
+//	}
 
-	
 
 }
 

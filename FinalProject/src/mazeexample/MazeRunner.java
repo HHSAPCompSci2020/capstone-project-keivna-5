@@ -1,5 +1,6 @@
 package mazeexample;
 import java.awt.event.KeyEvent;
+
 import java.util.ArrayList;
 
 import processing.core.*;

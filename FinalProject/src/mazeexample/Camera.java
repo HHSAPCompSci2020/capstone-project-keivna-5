@@ -29,6 +29,7 @@ package mazeexample;
 
 import java.awt.*;
 
+
 import com.jogamp.newt.opengl.GLWindow;
 
 import processing.core.*;

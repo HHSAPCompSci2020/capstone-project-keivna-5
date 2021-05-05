@@ -52,16 +52,21 @@ public class DrawingSurface extends PApplet{
 		
 		activeScreen.draw();
 		
-		popMatrix();
-		
-		if (checkKey(KeyEvent.VK_W))
+		if (checkKey(KeyEvent.VK_W)) {
+			System.out.println("W before");
 			camera.moveZ(1);
-		else if (checkKey(KeyEvent.VK_S))
+			System.out.println("W after");
+
+		} else if (checkKey(KeyEvent.VK_S)) {
 			camera.moveZ(-1);
+		}
 		if (checkKey(KeyEvent.VK_A))
 			camera.moveX(1);
 		else if (checkKey(KeyEvent.VK_D))
 			camera.moveX(-1);
+		
+		popMatrix();
+	
 	}
 	
 	public void keyPressed() {
