@@ -10,6 +10,7 @@ public class MazeRunner extends PApplet {
 	private Player player;
 	private Maze maze;
 
+	
 	public static void main(String[] args) {
 		PApplet.main("MazeRunner");
 	}

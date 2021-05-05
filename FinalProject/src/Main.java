@@ -12,7 +12,7 @@ public class Main{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		DrawingSurface drawing = new DrawingSurface();
-		//PApplet.main("Main");
+		//PApplet.main("Main"); -> goes to drawing surface
 		PApplet.runSketch(new String[]{""}, drawing);
 		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
