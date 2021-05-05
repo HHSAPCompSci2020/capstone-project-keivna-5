@@ -16,6 +16,7 @@ public class World { //build water, bridge
 	private Element element;
 	
 	public World() {
+		
 		element = new Element(5, 5, 5, 10);
 //		elements = new Element[size][size];
 //

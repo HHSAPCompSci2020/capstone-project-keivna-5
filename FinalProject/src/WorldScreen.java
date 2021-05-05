@@ -1,5 +1,7 @@
 
-import processing.core.PApplet;
+import processing.core.*;
+import processing.opengl.*;
+
 import worldSetting.World;
 
 import java.awt.Point;
@@ -29,7 +31,9 @@ public class WorldScreen extends Screen {
 		surface.pushStyle();
 		surface.background(255,255,255);
 
-		world.display(surface);
+		surface.box(20);
+		
+		//world.display(surface);
 
 //		
 //		//switch tabs

@@ -1,6 +1,6 @@
 package worldSetting;
 
-import processing.core.PApplet;
+import processing.core.*;
 
 public class Element {
 	private float x, y, z, size;
@@ -22,9 +22,11 @@ public class Element {
 		g.translate(x, y, z);
 //		g.fill(fillColor, 200);
 		g.fill(255, 0, 255);
-
-//		g.box(size, size, size);
-		g.box(size);
+		//g.size(100, 100, P3D);
+		g.box(size, size, size);
+//		g.rect(20, 20, 40, 40);
+	//g.box(size);
+		
 
 		g.popMatrix();
 	}

@@ -1,6 +1,7 @@
 import java.awt.Point;
 import java.util.ArrayList;
-import processing.core.PApplet;
+//import processing.core.PApplet;
+import processing.core.*;
 
 public class DrawingSurface extends PApplet{
 	
@@ -26,7 +27,9 @@ public class DrawingSurface extends PApplet{
 	
 	public void settings() {
 		// size(DRAWING_WIDTH, DRAWING_HEIGHT, P2D);
-		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT);
+//		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT);
+		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT, processing.core.PConstants.P3D);
+
 	}
 	
 	public void setup() {

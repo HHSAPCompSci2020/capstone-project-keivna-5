@@ -32,7 +32,7 @@ import java.util.ArrayList;
 
 import com.jogamp.newt.opengl.GLWindow;
 
-import mazeexample.Element;
+//import mazeexample.Element;
 import processing.core.*;
 
 /**

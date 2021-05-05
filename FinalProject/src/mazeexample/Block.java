@@ -6,13 +6,13 @@ import processing.core.*;
  * @author asampath803 This class represents a block in 3D space, whether it is
  *         the ground or the wall
  */
-public class Element {
+public class Block {
 	private float x, y, z, size;
 	private int fillColor;
 	private boolean visited;
 	
 
-	public Element(float x, float y, float z, float size) {
+	public Block(float x, float y, float z, float size) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
