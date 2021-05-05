@@ -23,12 +23,7 @@ public class Main{
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
 
-		window.setVisible(true);
-		
-		
+		window.setVisible(true);	
 		canvas.requestFocus();
 	}
-	
-
-
 }

@@ -1,31 +1,24 @@
 import java.awt.Point;
 import java.util.ArrayList;
 import processing.core.PApplet;
-//import screens.*;
 
 public class DrawingSurface extends PApplet{
 	
 	public float ratioX, ratioY;
-	
 	private ArrayList<Integer> keys;
-	
 	private Screen activeScreen;
 	private ArrayList<Screen> screens;
 
 	
 	public DrawingSurface() {
-		
-		
 		screens = new ArrayList<Screen>();
-		
 		keys = new ArrayList<Integer>();
 		
+		WorldScreen worldScreen = new WorldScreen(this);
+		screens.add(worldScreen);
 		
-		FirstScreen screen1 = new FirstScreen(this);
-		screens.add(screen1);
-		
-		SecondScreen screen2 = new SecondScreen(this);
-		screens.add(screen2);
+		PortfolioScreen portfolioScreen = new PortfolioScreen(this);
+		screens.add(portfolioScreen);
 		
 		activeScreen = screens.get(0);
 		
@@ -95,60 +88,4 @@ public class DrawingSurface extends PApplet{
 	public void switchScreen(int i) {
 		activeScreen = screens.get(i);
 	}
-	
-//	public void settings() {
-//		//fullScreen(P3D);
-//		super.size(800, 500, P3D);
-//		 
-//	}
-
-//	public void setup() {
-//		
-//		strokeWeight(2);
-//		this.frameRate(1000);
-////		player = new Player();
-////		player.setup(this);
-////		maze = new Maze(20);
-////		maze.setPlayerAtStart(player);
-//		
-//	}
-
-//	public void draw() {
-//		
-//		noCursor();
-//		background(51);
-////		maze.display(this);
-////		maze.update(player);
-////		player.draw(this);
-////
-////		if (checkKey(KeyEvent.VK_W))
-////			player.moveZ(1);
-////		else if (checkKey(KeyEvent.VK_S))
-////			player.moveZ(-1);
-////		if (checkKey(KeyEvent.VK_A))
-////			player.moveX(1);
-////		else if (checkKey(KeyEvent.VK_D))
-////			player.moveX(-1);
-//		
-//
-//	}
-
-//	public void keyPressed() {
-////		if (!checkKey(keyCode))
-////			keys.add(keyCode);
-////
-////		if (checkKey(KeyEvent.VK_SPACE))
-////			player.jump();
-//	}
-
-	// Removes key from array list
-//	public void keyReleased() {
-//		while (checkKey(keyCode))
-//			keys.remove(new Integer(keyCode));
-//	}
-//
-//	// Checks if given key code is in the array list
-//	private boolean checkKey(int i) {
-//		return keys.contains(i);
-//	}
 }
