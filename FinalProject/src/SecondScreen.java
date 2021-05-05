@@ -3,6 +3,8 @@
 
 import java.awt.event.*;
 
+import processing.core.PApplet;
+
 
 public class SecondScreen extends Screen {
 	
@@ -40,19 +42,19 @@ public class SecondScreen extends Screen {
 		
 		// Change stuff
 
-		if (surface.isPressed(KeyEvent.VK_LEFT))
-			x -= 5;
-		if (surface.isPressed(KeyEvent.VK_RIGHT))
-			x += 5;
-		if (surface.isPressed(KeyEvent.VK_UP))
-			y -= 5;
-		if (surface.isPressed(KeyEvent.VK_DOWN))
-			y += 5;
+//		if (surface.keyPressed(KeyEvent.VK_LEFT))
+//			x -= 5;
+//		if (surface.keyPressed(KeyEvent.VK_RIGHT))
+//			x += 5;
+//		if (surface.keyPressed(KeyEvent.VK_UP))
+//			y -= 5;
+//		if (surface.keyPressed(KeyEvent.VK_DOWN))
+//			y += 5;
 
 
-		if (surface.isPressed(KeyEvent.VK_SPACE)) {
-			surface.switchScreen(ScreenSwitcher.SCREEN1);
-		}
+//		if (surface.keyPressed(KeyEvent.VK_SPACE)) {
+//			surface.switchScreen(ScreenSwitcher.SCREEN1);
+//		}
 	}
 	
 	

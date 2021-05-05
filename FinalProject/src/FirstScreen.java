@@ -1,8 +1,5 @@
 
 import processing.core.PApplet;
-
-
-
 import java.awt.Point;
 import java.awt.Rectangle;
 
@@ -10,7 +7,8 @@ import java.awt.Rectangle;
 public class FirstScreen extends Screen {
 
 	private DrawingSurface surface;
-	
+	//private PApplet surface;
+
 	private Rectangle button;
 
 	public FirstScreen(DrawingSurface surface) {
