@@ -1,7 +1,9 @@
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 //import processing.core.PApplet;
 import processing.core.*;
+import worldSetting.Camera;
 
 public class DrawingSurface extends PApplet{
 	
@@ -9,6 +11,7 @@ public class DrawingSurface extends PApplet{
 	private ArrayList<Integer> keys;
 	private Screen activeScreen;
 	private ArrayList<Screen> screens;
+	private Camera camera;
 
 	
 	public DrawingSurface() {
@@ -22,7 +25,8 @@ public class DrawingSurface extends PApplet{
 		screens.add(portfolioScreen);
 		
 		activeScreen = screens.get(0);
-		
+		camera = new Camera();
+
 	}
 	
 	public void settings() {
@@ -49,16 +53,44 @@ public class DrawingSurface extends PApplet{
 		activeScreen.draw();
 		
 		popMatrix();
+		
+		if (checkKey(KeyEvent.VK_W))
+			camera.moveZ(1);
+		else if (checkKey(KeyEvent.VK_S))
+			camera.moveZ(-1);
+		if (checkKey(KeyEvent.VK_A))
+			camera.moveX(1);
+		else if (checkKey(KeyEvent.VK_D))
+			camera.moveX(-1);
 	}
 	
 	public void keyPressed() {
-		keys.add(keyCode);
+		if (!checkKey(keyCode))
+			keys.add(keyCode);
+
+		if (checkKey(KeyEvent.VK_SPACE))
+			camera.jump();
 	}
 
+	// Removes key from array list
 	public void keyReleased() {
-		while(keys.contains(keyCode))
+		while (checkKey(keyCode))
 			keys.remove(new Integer(keyCode));
 	}
+
+	// Checks if given key code is in the array list
+	private boolean checkKey(int i) {
+		return keys.contains(i);
+	}
+	
+//	public void keyPressed() {
+//		keys.add(keyCode);
+//	}
+
+//	public void keyReleased() {
+//		while(keys.contains(keyCode))
+//			keys.remove(new Integer(keyCode));
+//	}
 
 	public boolean isPressed(Integer code) {
 		return keys.contains(code);

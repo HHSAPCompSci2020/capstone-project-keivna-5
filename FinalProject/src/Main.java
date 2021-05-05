@@ -4,8 +4,11 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import com.jogamp.newt.opengl.GLWindow;
+
 import processing.awt.PSurfaceAWT;
 import processing.core.*;
+import processing.opengl.PSurfaceJOGL;
 
 public class Main{
 
@@ -13,10 +16,13 @@ public class Main{
 		// TODO Auto-generated method stub
 		DrawingSurface drawing = new DrawingSurface();
 		//PApplet.main("Main"); 
-		//-> goes to drawing surface
 		PApplet.runSketch(new String[]{""}, drawing);
 		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
+		//PSurfaceJOGL surf = (PSurfaceJOGL) drawing.getSurface();
+
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
+//		GLWindow canvas = (GLWindow) surf.getNative();
+		
 		JFrame window = (JFrame)canvas.getFrame();
 
 		window.setSize(800, 600);

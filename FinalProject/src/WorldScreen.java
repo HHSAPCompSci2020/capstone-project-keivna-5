@@ -1,18 +1,27 @@
 
 import processing.core.*;
 import processing.opengl.*;
-
+import worldSetting.Camera;
+import worldSetting.Element;
 import worldSetting.World;
+import java.awt.event.KeyEvent;
+
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.ArrayList;
+
+import mazeexample.Player;
 
 
 public class WorldScreen extends Screen {
 
+	private ArrayList<Integer> keys = new ArrayList<Integer>();
+
 	private DrawingSurface surface;
 	private Rectangle button;
 	private World world;
+	
 
 	public WorldScreen(DrawingSurface surface) {
 		
@@ -46,7 +55,9 @@ public class WorldScreen extends Screen {
 		surface.popStyle();
 	}
 
-
+	public void update(Camera c) {
+		//c.act(new Element());
+	}
 
 	//TODO: turn into tabs here
 	public void mousePressed() {
@@ -55,21 +66,13 @@ public class WorldScreen extends Screen {
 			surface.switchScreen(ScreenSwitcher.SCREEN2);
 	}
 	
-	// Change stuff
+	public void setPlayerAtStart(Camera camera) {
+//		camera.moveTo(start.getX(), start.getY()-15, start.getZ());
+		camera.moveTo(350, 350, 50);
 
-//	if (surface.keyPressed(KeyEvent.VK_LEFT))
-//		x -= 5;
-//	if (surface.keyPressed(KeyEvent.VK_RIGHT))
-//		x += 5;
-//	if (surface.keyPressed(KeyEvent.VK_UP))
-//		y -= 5;
-//	if (surface.keyPressed(KeyEvent.VK_DOWN))
-//		y += 5;
+	}
+	
 
-
-//	if (surface.keyPressed(KeyEvent.VK_SPACE)) {
-//		surface.switchScreen(ScreenSwitcher.SCREEN1);
-//	}
 	
 
 }
