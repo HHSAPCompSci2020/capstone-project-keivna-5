@@ -53,10 +53,10 @@ public class Player extends Camera {
 	 * Checks to see if the player is colliding with any of the Block objects inside
 	 * the specified ArrayList
 	 * 
-	 * @param blocks
+	 * @param elements
 	 *            ArrayList of Block objects to check collision with
 	 */
-	public void act(ArrayList<Block> blocks) {
+	public void act(ArrayList<Element> elements) {
 		
 	}
 

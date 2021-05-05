@@ -4,24 +4,24 @@ import java.util.ArrayList;
 import processing.core.*;
 
 public class Maze {
-	private Block[][] blocks;
-	private Block start;
+	private Element[][] elements;
+	private Element start;
 
-	ArrayList<Block> b = new ArrayList<Block>();
+	ArrayList<Element> b = new ArrayList<Element>();
 	
 	public Maze(int size) {
-		blocks = new Block[size][size];
+		elements = new Element[size][size];
 
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				float x = i * 5;
 				float y = 0;
 				float z = j * 5;
-				blocks[i][j] = new Block(x, y, z, 5);
-				b.add(blocks[i][j]);
+				elements[i][j] = new Element(x, y, z, 5);
+				b.add(elements[i][j]);
 			}
 		}
-		start = blocks[0][0];
+		start = elements[0][0];
 	}
 
 	private double random(double lower, double upper) {
@@ -33,9 +33,9 @@ public class Maze {
 	}
 
 	public void display(PApplet g) {
-		for (int i = 0; i < blocks.length; i++) {
-			for (int j = 0; j < blocks[i].length; j++) {
-				blocks[i][j].display(g);
+		for (int i = 0; i < elements.length; i++) {
+			for (int j = 0; j < elements[i].length; j++) {
+				elements[i][j].display(g);
 			}
 		}
 	}

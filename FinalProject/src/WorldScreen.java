@@ -9,9 +9,7 @@ import java.awt.Rectangle;
 public class WorldScreen extends Screen {
 
 	private DrawingSurface surface;
-
 	private Rectangle button;
-	
 	private World world;
 
 	public WorldScreen(DrawingSurface surface) {
@@ -21,18 +19,18 @@ public class WorldScreen extends Screen {
 
 		button = new Rectangle(800/2-100,600/2-50,200,100);
 		
-		world = new World(surface);
+//		world = new World(surface);
+		world = new World();
 	}
 
 
-	//TODO: draw world here
+	//TODO: draw world + menu + tabs here
 	public void draw() {
+		surface.pushStyle();
+		surface.background(255,255,255);
 
-		world.display();
+		world.display(surface);
 
-//		surface.pushStyle();
-//		
-//		surface.background(255,255,255);
 //		
 //		//switch tabs
 //		surface.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
@@ -41,7 +39,7 @@ public class WorldScreen extends Screen {
 //		float w = surface.textWidth(str);
 //		surface.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
 //		
-//		surface.popStyle();
+		surface.popStyle();
 	}
 
 

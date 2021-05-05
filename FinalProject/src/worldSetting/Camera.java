@@ -28,9 +28,11 @@ package worldSetting;
  */
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import com.jogamp.newt.opengl.GLWindow;
 
+import mazeexample.Element;
 import processing.core.*;
 
 /**
@@ -313,6 +315,17 @@ public class Camera {
 		this.getPosition().x = x;
 		this.getPosition().y = y;
 		this.getPosition().z = z;
+	}
+	
+	/**
+	 * Checks to see if the player is colliding with any of the Block objects inside
+	 * the specified ArrayList
+	 * 
+	 * @param elements
+	 *            ArrayList of Block objects to check collision with
+	 */
+	public void act(ArrayList<Element> elements) {
+		
 	}
 }
 
