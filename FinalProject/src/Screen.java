@@ -13,7 +13,7 @@ public abstract class Screen {
 		
 	}
 	
-	public void draw() {
+	public void draw(DrawingSurface surface) {
 		
 	}
 	

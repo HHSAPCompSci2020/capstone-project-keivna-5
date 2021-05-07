@@ -11,21 +11,21 @@ public class DrawingSurface extends PApplet{
 	private ArrayList<Integer> keys;
 	private Screen activeScreen;
 	private ArrayList<Screen> screens;
-	private Camera camera;
+	//private Camera camera;
 
 	
 	public DrawingSurface() {
 		screens = new ArrayList<Screen>();
 		keys = new ArrayList<Integer>();
 		
-		WorldScreen worldScreen = new WorldScreen(this);
+		WorldScreen worldScreen = new WorldScreen();
 		screens.add(worldScreen);
 		
 		PortfolioScreen portfolioScreen = new PortfolioScreen(this);
 		screens.add(portfolioScreen);
 		
 		activeScreen = screens.get(0);
-		camera = new Camera();
+		//camera = new Camera();
 
 	}
 	
@@ -50,20 +50,20 @@ public class DrawingSurface extends PApplet{
 		
 		scale(ratioX, ratioY);
 		
-		activeScreen.draw();
+		activeScreen.draw(this);
 		
-		if (checkKey(KeyEvent.VK_W)) {
-			System.out.println("W before");
-			camera.moveZ(1);
-			System.out.println("W after");
-
-		} else if (checkKey(KeyEvent.VK_S)) {
-			camera.moveZ(-1);
-		}
-		if (checkKey(KeyEvent.VK_A))
-			camera.moveX(1);
-		else if (checkKey(KeyEvent.VK_D))
-			camera.moveX(-1);
+//		if (checkKey(KeyEvent.VK_W)) {
+//			System.out.println("W before");
+//			camera.moveZ(1);
+//			System.out.println("W after");
+//
+//		} else if (checkKey(KeyEvent.VK_S)) {
+//			camera.moveZ(-1);
+//		}
+//		if (checkKey(KeyEvent.VK_A))
+//			camera.moveX(1);
+//		else if (checkKey(KeyEvent.VK_D))
+//			camera.moveX(-1);
 		
 		popMatrix();
 	
@@ -73,8 +73,8 @@ public class DrawingSurface extends PApplet{
 		if (!checkKey(keyCode))
 			keys.add(keyCode);
 
-		if (checkKey(KeyEvent.VK_SPACE))
-			camera.jump();
+//		if (checkKey(KeyEvent.VK_SPACE))
+//			camera.jump();
 	}
 
 	// Removes key from array list
@@ -84,7 +84,7 @@ public class DrawingSurface extends PApplet{
 	}
 
 	// Checks if given key code is in the array list
-	private boolean checkKey(int i) {
+	public boolean checkKey(int i) {
 		return keys.contains(i);
 	}
 	

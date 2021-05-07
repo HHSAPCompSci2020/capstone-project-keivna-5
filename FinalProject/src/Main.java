@@ -17,6 +17,11 @@ public class Main{
 		DrawingSurface drawing = new DrawingSurface();
 		//PApplet.main("Main"); 
 		PApplet.runSketch(new String[]{""}, drawing);
+		
+		//for messing with window or canvas
+		//ie add swing
+		//dont use this for 3D
+		
 //		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
 //		//PSurfaceJOGL surf = (PSurfaceJOGL) drawing.getSurface();
 //

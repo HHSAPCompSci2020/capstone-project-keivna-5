@@ -21,45 +21,48 @@ public class WorldScreen extends Screen {
 	private ArrayList<Integer> keys = new ArrayList<Integer>();
 
 	
-	//private Camera camera;
+	private Camera camera;
 
-	private DrawingSurface surface;
+	//private DrawingSurface surface;
 	private Rectangle button;
 	private World world;
 	
 
-	public WorldScreen(DrawingSurface surface) {
+	public WorldScreen() {
 		
 		super(800,600);
-		this.surface = surface;
+		//this.surface = surface;
 
 		button = new Rectangle(800/2-100,600/2-50,200,100);
 		
 //		world = new World(surface);
 		world = new World();
-		//camera = new Camera();
+		camera = new Camera();
 
 	}
 
 	//TODO: draw world + menu + tabs here
-	public void draw() {
+	public void draw(DrawingSurface surface) {
 		surface.pushStyle();
 		surface.background(255,255,255);
 
 //		surface.box(20);
 		
 		world.display(surface);
+		camera.draw(surface);
 		//world.update(camera);
 //		player.draw(this);
 		
-//		if (checkKey(KeyEvent.VK_W))
-//			player.moveZ(1);
-//		else if (checkKey(KeyEvent.VK_S))
-//			player.moveZ(-1);
-//		if (checkKey(KeyEvent.VK_A))
-//			player.moveX(1);
-//		else if (checkKey(KeyEvent.VK_D))
-//			player.moveX(-1);
+		if (surface.checkKey(KeyEvent.VK_W))
+			camera.moveZ(1);
+		else if (surface.checkKey(KeyEvent.VK_S))
+			camera.moveZ(-1);
+		if (surface.checkKey(KeyEvent.VK_A))
+			camera.moveX(1);
+		else if (surface.checkKey(KeyEvent.VK_D))
+			camera.moveX(-1);
+		if (surface.checkKey(KeyEvent.VK_SPACE))
+			camera.jump();
 
 //		
 //		//switch tabs
@@ -77,13 +80,13 @@ public class WorldScreen extends Screen {
 	}
 
 	//TODO: turn into tabs here
-	public void mousePressed() {
+	public void mousePressed(DrawingSurface surface) {
 		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
 		if (button.contains(p))
 			surface.switchScreen(ScreenSwitcher.SCREEN2);
 	}
 	
-	public void setPlayerAtStart(Camera camera) {
+	public void setPlayerAtStart() {
 //		camera.moveTo(start.getX(), start.getY()-15, start.getZ());
 		camera.moveTo(350, 350, 50);
 
