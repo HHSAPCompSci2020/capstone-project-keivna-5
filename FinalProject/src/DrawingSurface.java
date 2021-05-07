@@ -60,7 +60,7 @@ public class DrawingSurface extends PApplet{
 //		scale(ratioX, ratioY);
 		
 //		activeScreen.draw();
-		worldScreen.draw();
+		worldScreen.draw(this);
 		//activeScreen.checkCamera(this);
 		
 //		if (checkKey(KeyEvent.VK_W)) {

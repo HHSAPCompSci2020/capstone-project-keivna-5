@@ -73,13 +73,39 @@ public class WorldScreen extends Screen {
 //		
 		//scale(ratioX, ratioY);
 
-//		background(255,255,255);
+		marker.background(255,255,255);
 
 		//		surface.box(20);
 
 		camera.draw(marker);
 		world.display(marker);
 
+		
+		
+		
+		
+		
+		
+		
+		if (checkKey(KeyEvent.VK_W)) {
+			System.out.println("W before");
+			camera.moveZ(1);
+			System.out.println("W after");
+
+		} else if (checkKey(KeyEvent.VK_S)) {
+			camera.moveZ(-1);
+		}
+		if (checkKey(KeyEvent.VK_A))
+			camera.moveX(1);
+		else if (checkKey(KeyEvent.VK_D))
+			camera.moveX(-1);
+		
+		
+		
+		
+		
+		
+		
 		//checkCamera();
 		
 		//world.update(camera);
@@ -151,18 +177,7 @@ public class WorldScreen extends Screen {
 		if (!checkKey(marker.keyCode))
 			keys.add(marker.keyCode);
 		
-		if (checkKey(KeyEvent.VK_W)) {
-			System.out.println("W before");
-			camera.moveZ(1);
-			System.out.println("W after");
-
-		} else if (checkKey(KeyEvent.VK_S)) {
-			camera.moveZ(-1);
-		}
-		if (checkKey(KeyEvent.VK_A))
-			camera.moveX(1);
-		else if (checkKey(KeyEvent.VK_D))
-			camera.moveX(-1);
+		
 
 
 		//		if (checkKey(KeyEvent.VK_SPACE))

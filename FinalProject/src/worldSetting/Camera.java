@@ -53,7 +53,7 @@ public class Camera {
 
 	public Camera() {
 		//this(3, 1, 1, .75f, PConstants.PI / 3f, 1000f);
-		this(1, 3, 1, .08f, .5f, .5f, .75f, PConstants.PI / 3f, 60f);
+		this(1, 3, 1, 1, .5f, .5f, .75f, PConstants.PI / 3f, 60f);
 
 	}
 
