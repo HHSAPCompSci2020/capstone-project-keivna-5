@@ -1,6 +1,6 @@
 import processing.core.PApplet;
 
-public abstract class Screen extends PApplet{
+public abstract class Screen {
 
 	public final int DRAWING_WIDTH, DRAWING_HEIGHT;
 	
@@ -32,11 +32,5 @@ public abstract class Screen extends PApplet{
 	public void mouseReleased() {
 		
 	}
-	
-	public void checkCamera(DrawingSurface surface) {
-		
-	}
-	
-	
 	
 }

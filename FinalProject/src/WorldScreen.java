@@ -1,6 +1,7 @@
 
 import processing.core.*;
 
+
 import processing.opengl.*;
 import worldSetting.Camera;
 import worldSetting.Element;
@@ -25,7 +26,7 @@ public class WorldScreen extends Screen {
 	private Camera camera;
 
 	//private DrawingSurface surface;
-	private Rectangle button;
+//	private Rectangle button;
 	private World world;
 
 
@@ -35,7 +36,7 @@ public class WorldScreen extends Screen {
 		super(800,600);
 		//this.surface = surface;
 
-		button = new Rectangle(800/2-100,600/2-50,200,100);
+//		button = new Rectangle(800/2-100,600/2-50,200,100);
 
 		//		world = new World(surface);
 		world = new World();
@@ -46,12 +47,12 @@ public class WorldScreen extends Screen {
 
 	}
 	
-	public void settings() {
-		// size(DRAWING_WIDTH, DRAWING_HEIGHT, P2D);
-//		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT);
-		size(DRAWING_WIDTH, DRAWING_HEIGHT, processing.core.PConstants.P3D);
-
-	}
+//	public void settings() {
+//		// size(DRAWING_WIDTH, DRAWING_HEIGHT, P2D);
+////		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT);
+//		size(DRAWING_WIDTH, DRAWING_HEIGHT, processing.core.PConstants.P3D);
+//
+//	}
 	
 //	public void setup() {
 ////		surface.setResizable(true);
@@ -65,19 +66,19 @@ public class WorldScreen extends Screen {
 	
 
 	//TODO: draw world + menu + tabs here
-	public void draw() {
+	public void draw(PApplet marker) {
 		
-		ratioX = (float)width/this.DRAWING_WIDTH;
-		ratioY = (float)height/this.DRAWING_HEIGHT;
-		
+//		ratioX = (float)width/this.DRAWING_WIDTH;
+//		ratioY = (float)height/this.DRAWING_HEIGHT;
+//		
 		//scale(ratioX, ratioY);
 
-		background(255,255,255);
+//		background(255,255,255);
 
 		//		surface.box(20);
 
-		world.display(this);
-		camera.draw(this);
+		world.display(marker);
+		camera.draw(marker);
 		//checkCamera();
 		
 		//world.update(camera);
@@ -103,7 +104,7 @@ public class WorldScreen extends Screen {
 		//		float w = surface.textWidth(str);
 		//		surface.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
 		//		
-		popStyle();
+//		popStyle();
 	}
 
 	public void checkCamera() {
@@ -143,11 +144,11 @@ public class WorldScreen extends Screen {
 	//		return keys.contains(i);
 	//	}
 
-	public void keyPressed() {
+	public void keyPressed(PApplet marker) {
 		System.out.println("calling key pressed");
 		
-		if (!checkKey(keyCode))
-			keys.add(keyCode);
+		if (!checkKey(marker.keyCode))
+			keys.add(marker.keyCode);
 		
 		if (checkKey(KeyEvent.VK_W)) {
 			System.out.println("W before");
@@ -168,9 +169,9 @@ public class WorldScreen extends Screen {
 	}
 
 	// Removes key from array list
-	public void keyReleased() {
-		while (checkKey(keyCode))
-			keys.remove(new Integer(keyCode));
+	public void keyReleased(PApplet marker) {
+		while (checkKey(marker.keyCode))
+			keys.remove(new Integer(marker.keyCode));
 	}
 
 	// Checks if given key code is in the array list

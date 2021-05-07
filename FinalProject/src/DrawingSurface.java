@@ -1,6 +1,9 @@
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
+import mazeexample.Maze;
+import mazeexample.Player;
 //import processing.core.PApplet;
 import processing.core.*;
 import worldSetting.Camera;
@@ -11,21 +14,21 @@ public class DrawingSurface extends PApplet{
 //	private ArrayList<Integer> keys;
 	//private Screen activeScreen;
 	private WorldScreen worldScreen;
-	private ArrayList<Screen> screens;
+//	private ArrayList<Screen> screens;
 	//private Camera camera;
 
 	
 	public DrawingSurface() {
-		screens = new ArrayList<Screen>();
+//		screens = new ArrayList<Screen>();
 //		keys = new ArrayList<Integer>();
 		
-//		WorldScreen worldScreen = new WorldScreen();
+		WorldScreen worldScreen = new WorldScreen();
 		worldScreen = new WorldScreen();
 
-		screens.add(worldScreen);
+//		screens.add(worldScreen);
 		
-		PortfolioScreen portfolioScreen = new PortfolioScreen(this);
-		screens.add(portfolioScreen);
+//		PortfolioScreen portfolioScreen = new PortfolioScreen(this);
+//		screens.add(portfolioScreen);
 		
 //		activeScreen = screens.get(0);
 		
@@ -37,15 +40,15 @@ public class DrawingSurface extends PApplet{
 		// size(DRAWING_WIDTH, DRAWING_HEIGHT, P2D);
 //		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT);
 //		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT, processing.core.PConstants.P3D);
-		size(worldScreen.DRAWING_WIDTH, worldScreen.DRAWING_HEIGHT, processing.core.PConstants.P3D);
-
-
+//		size(worldScreen.DRAWING_WIDTH, worldScreen.DRAWING_HEIGHT, processing.core.PConstants.P3D);
 	}
 	
 	public void setup() {
 		surface.setResizable(true);
-		for (Screen s : screens)
-			s.setup();
+//		worldScreen.setup();
+//		for (Screen s : screens)
+//			s.setup();
+		worldScreen.setPlayerAtStart();
 	}
 	
 	public void draw() {
@@ -77,19 +80,21 @@ public class DrawingSurface extends PApplet{
 	
 	}
 	
-//	public void keyPressed() {
+	public void keyPressed() {
+		worldScreen.keyPressed(this);
 //		if (!checkKey(keyCode))
 //			keys.add(keyCode);
 //
 ////		if (checkKey(KeyEvent.VK_SPACE))
 ////			camera.jump();
-//	}
+	}
 
 	// Removes key from array list
-//	public void keyReleased() {
+	public void keyReleased() {
+		worldScreen.keyReleased(this);
 //		while (checkKey(keyCode))
 //			keys.remove(new Integer(keyCode));
-//	}
+	}
 //
 //	// Checks if given key code is in the array list
 //	public boolean checkKey(int i) {
