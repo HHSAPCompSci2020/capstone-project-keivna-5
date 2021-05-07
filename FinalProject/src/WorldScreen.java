@@ -21,7 +21,7 @@ public class WorldScreen extends Screen {
 	private ArrayList<Integer> keys = new ArrayList<Integer>();
 
 	
-	private Camera player;
+	//private Camera camera;
 
 	private DrawingSurface surface;
 	private Rectangle button;
@@ -37,7 +37,7 @@ public class WorldScreen extends Screen {
 		
 //		world = new World(surface);
 		world = new World();
-		player = new Camera();
+		//camera = new Camera();
 
 	}
 
@@ -49,7 +49,7 @@ public class WorldScreen extends Screen {
 //		surface.box(20);
 		
 		world.display(surface);
-		world.update(player);
+		//world.update(camera);
 //		player.draw(this);
 		
 //		if (checkKey(KeyEvent.VK_W))
