@@ -22,7 +22,7 @@ public class DrawingSurface extends PApplet{
 //		screens = new ArrayList<Screen>();
 //		keys = new ArrayList<Integer>();
 		
-		WorldScreen worldScreen = new WorldScreen();
+//		WorldScreen worldScreen = new WorldScreen();
 		worldScreen = new WorldScreen();
 
 //		screens.add(worldScreen);
@@ -40,7 +40,7 @@ public class DrawingSurface extends PApplet{
 		// size(DRAWING_WIDTH, DRAWING_HEIGHT, P2D);
 //		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT);
 //		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT, processing.core.PConstants.P3D);
-//		size(worldScreen.DRAWING_WIDTH, worldScreen.DRAWING_HEIGHT, processing.core.PConstants.P3D);
+		size(worldScreen.DRAWING_WIDTH, worldScreen.DRAWING_HEIGHT, processing.core.PConstants.P3D);
 	}
 	
 	public void setup() {
@@ -48,7 +48,7 @@ public class DrawingSurface extends PApplet{
 //		worldScreen.setup();
 //		for (Screen s : screens)
 //			s.setup();
-		worldScreen.setPlayerAtStart();
+//		worldScreen.setPlayerAtStart();
 	}
 	
 	public void draw() {

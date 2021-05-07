@@ -77,8 +77,9 @@ public class WorldScreen extends Screen {
 
 		//		surface.box(20);
 
-		world.display(marker);
 		camera.draw(marker);
+		world.display(marker);
+
 		//checkCamera();
 		
 		//world.update(camera);
