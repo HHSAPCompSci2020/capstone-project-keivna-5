@@ -2,20 +2,11 @@
 import processing.core.*;
 
 
-import processing.opengl.*;
 import worldSetting.Camera;
-import worldSetting.Element;
 import worldSetting.World;
 import java.awt.event.KeyEvent;
-
-
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.ArrayList;
-
-import mazeexample.Maze;
-import mazeexample.Player;
-
 
 public class WorldScreen extends Screen {
 
@@ -32,6 +23,8 @@ public class WorldScreen extends Screen {
 
 	
 	public WorldScreen() {
+		
+		
 
 		super(800,600);
 		//this.surface = surface;
@@ -43,7 +36,6 @@ public class WorldScreen extends Screen {
 		camera = new Camera();
 
 		keys = new ArrayList<Integer>();
-
 
 	}
 	

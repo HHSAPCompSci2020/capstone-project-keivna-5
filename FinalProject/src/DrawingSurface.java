@@ -1,12 +1,5 @@
-import java.awt.Point;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
-import mazeexample.Maze;
-import mazeexample.Player;
-//import processing.core.PApplet;
 import processing.core.*;
-import worldSetting.Camera;
 
 public class DrawingSurface extends PApplet{
 	
