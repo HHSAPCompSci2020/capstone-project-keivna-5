@@ -12,16 +12,17 @@ import processing.core.PApplet;
 public class PortfolioScreen extends Screen {
 	
 	private int x, y;
-	
-	private DrawingSurface surface;
+	public float ratioX, ratioY;
+
+	//private DrawingSurface surface;
 	private Rectangle button;
 
 	
 	private Portfolio portfolio;
 	
-	public PortfolioScreen(DrawingSurface surface) {
+	public PortfolioScreen() {
 		super(800,600);
-		this.surface = surface;
+		//this.surface = surface;
 		
 		x = 30;
 		y = 30;
@@ -32,11 +33,15 @@ public class PortfolioScreen extends Screen {
 	}
 	
 	//TODO: draw portfolio here
-	public void draw() {
+	public void draw(PApplet marker) {
+		//System.out.println("drawing portfolio screen");
+
+		ratioX = (float)marker.width/this.DRAWING_WIDTH;
+		ratioY = (float)marker.height/this.DRAWING_HEIGHT;
 		
 		// Draw stuff
 		
-		surface.pushStyle();
+		marker.pushStyle();
 		
 //		surface.background(255);   // Clear the screen with a white background
 //		surface.stroke(0);     // Set line drawing color to white
@@ -49,16 +54,16 @@ public class PortfolioScreen extends Screen {
 //		surface.text("Menu: Space",10,50);
 		
 		
-		surface.background(0,0,0);
+		marker.background(0,0,0);
 		
-		surface.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
-		surface.fill(0);
+		marker.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
+		marker.fill(0);
 		String str = "Click me!";
-		float w = surface.textWidth(str);
-		surface.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
+		float w = marker.textWidth(str);
+		marker.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
 		
 
-		surface.popStyle();
+		marker.popStyle();
 
 		
 		
@@ -66,11 +71,24 @@ public class PortfolioScreen extends Screen {
 	}
 	
 	//TODO: turn into tabs here
-//	public void mousePressed() {
-//		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
-//		if (button.contains(p))
-//			surface.switchScreen(ScreenSwitcher.SCREEN1);
-//	}
+	public void mousePressed(DrawingSurface marker) {
+		System.out.println("calling mouse pressed from portfolio");
+		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
+		if (button.contains(p)) {
+//			marker.switchScreen(ScreenSwitcher.SCREEN2);
+			marker.switchScreen(1);
+
+			System.out.println("switch screen");
+		}
+	}
+	
+	public Point assumedCoordinatesToActual(Point assumed) {
+		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
+	}
+
+	public Point actualCoordinatesToAssumed(Point actual) {
+		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
+	}
 	
 	
 }

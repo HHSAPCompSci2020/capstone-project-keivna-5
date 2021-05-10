@@ -1,3 +1,5 @@
+import java.awt.Point;
+
 import processing.core.PApplet;
 
 public abstract class Screen {
@@ -17,7 +19,7 @@ public abstract class Screen {
 		
 	}
 	
-	public void mousePressed() {
+	public void mousePressed(PApplet marker) {
 		
 	}
 	
@@ -32,5 +34,15 @@ public abstract class Screen {
 	public void mouseReleased() {
 		
 	}
+	
+	public void keyPressed(PApplet marker) {
+		
+	}
+	
+	public void keyReleased(PApplet marker) {
+		
+	}
+
+
 	
 }
