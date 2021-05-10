@@ -160,6 +160,8 @@ public class WorldScreen extends Screen {
 
 	//TODO: turn into tabs here
 	public void mousePressed(DrawingSurface marker) {
+		System.out.println("calling mouse pressed from worldscreen");
+
 		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
 		if (button.contains(p)) {
 //			marker.switchScreen(ScreenSwitcher.SCREEN2);
