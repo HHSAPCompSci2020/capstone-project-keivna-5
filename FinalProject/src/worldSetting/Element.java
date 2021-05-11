@@ -4,8 +4,7 @@ import processing.core.*;
 
 public class Element {
 	private float x, y, z, size;
-//	private int fillColor;
-//	private boolean visited;
+	private int fillColor;
 	
 	//for now just draws a block
 	public Element(float x, float y, float z, float size) {
@@ -14,7 +13,6 @@ public class Element {
 		this.z = z;
 		this.size = size;
 //		fillColor = (int) (Math.random() * 50 + 150);
-//		visited = false;
 	}
 
 	public void display(PApplet g) {
@@ -22,12 +20,7 @@ public class Element {
 		g.translate(x, y, z);
 //		g.fill(fillColor, 200);
 		g.fill(255, 0, 255);
-		//g.size(100, 100, P3D);
 		g.box(size, size, size);
-//		g.rect(20, 20, 40, 40);
-	//g.box(size);
-		
-
 		g.popMatrix();
 	}
 
