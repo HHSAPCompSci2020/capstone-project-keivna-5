@@ -7,17 +7,11 @@ import processing.core.*;
 
 public class DrawingSurface extends PApplet{
 
-	//public float ratioX, ratioY;
-	//	private ArrayList<Integer> keys;
+	public float ratioX, ratioY;
 	private Screen activeScreen;
 	private WorldScreen worldScreen;
 	private PortfolioScreen portfolioScreen;
 	private ArrayList<Screen> screens;
-
-	//private Rectangle button;
-
-	//public float ratioX, ratioY;
-
 
 	public DrawingSurface() {
 		screens = new ArrayList<Screen>();
@@ -32,21 +26,14 @@ public class DrawingSurface extends PApplet{
 
 		//set activeScreen to world screen. first thing that shows is world screen
 		activeScreen = screens.get(0);
-
-		//button = new Rectangle(800/2-100,600/2-50,200,100);
-
 	}
 
 	public void settings() {
-		// size(DRAWING_WIDTH, DRAWING_HEIGHT, P2D);
-		//		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT);
 		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT, processing.core.PConstants.P3D);
-		//size(worldScreen.DRAWING_WIDTH, worldScreen.DRAWING_HEIGHT, processing.core.PConstants.P3D);
 	}
 
 	public void setup() {
 		surface.setResizable(true);
-		//worldScreen.setup();
 		for (Screen s : screens)
 			s.setup();
 
@@ -54,11 +41,11 @@ public class DrawingSurface extends PApplet{
 	}
 
 	public void draw() {
-		//		ratioX = (float)width/activeScreen.DRAWING_WIDTH;
-		//		ratioY = (float)height/activeScreen.DRAWING_HEIGHT;
+		ratioX = (float)width/activeScreen.DRAWING_WIDTH;
+		ratioY = (float)height/activeScreen.DRAWING_HEIGHT;
 
 		pushMatrix();
-		//scale(ratioX, ratioY);
+		scale(ratioX, ratioY);
 
 		activeScreen.draw(this);
 
