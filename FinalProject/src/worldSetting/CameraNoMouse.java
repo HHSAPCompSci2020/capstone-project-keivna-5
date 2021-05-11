@@ -47,7 +47,7 @@ public class CameraNoMouse {
 	private PVector up; //IMPLEMENT THIS FOR MOVING IN Y DIRECTION
 
 	private float speed, xSensitivity, ySensitivity, pan, tilt, friction, fov, viewDistance;
-	//private Point mouse, pMouse;
+	private Point mouse, pMouse;
 	
 	private float w, h, d;
 	private boolean grounded;
@@ -105,11 +105,11 @@ public class CameraNoMouse {
 		int windowRight = g.width + left;
 		int bottom = g.height + top;
 
-//		mouse = MouseInfo.getPointerInfo().getLocation();
-//
-//		if (pMouse == null)
-//			pMouse = new Point(mouse.x, mouse.y);
-//
+		mouse = MouseInfo.getPointerInfo().getLocation();
+
+		if (pMouse == null)
+			pMouse = new Point(mouse.x, mouse.y);
+
 //		// means that the mouse went off the screen to the left so move it to the right
 //		if (mouse.x < left + 2 && (mouse.x - pMouse.x) < 0) {
 //			robot.mouseMove(windowRight - 2, mouse.y);
@@ -272,9 +272,9 @@ public class CameraNoMouse {
 		viewDistance = f;
 	}
 
-//	public Point getMouse() {
-//		return mouse;
-//	}
+	public Point getMouse() {
+		return mouse;
+	}
 
 	public void setMouse(Point mouse) {
 		robot.mouseMove(mouse.x, mouse.y);

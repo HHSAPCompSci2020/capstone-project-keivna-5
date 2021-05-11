@@ -58,35 +58,37 @@ public class WorldScreen extends Screen {
 		viewfinder.draw(marker);
 		
 
+		int moveFactor = 3;
+		
 		//control z, move forward/back
 		if (checkKey(KeyEvent.VK_W)) {
 			//System.out.println("moving z");
 //			camera.moveZ(1);
-			cameraNoMouse.moveZ(1);
+			cameraNoMouse.moveZ(moveFactor);
 
 			//System.out.println("W after");
 
 		} else if (checkKey(KeyEvent.VK_S)) {
 //			camera.moveZ(-1);
-			cameraNoMouse.moveZ(-1);
+			cameraNoMouse.moveZ(moveFactor*-1);
 		}
 		
 		//control x, move left/right
 		if (checkKey(KeyEvent.VK_A)) {
 //			camera.moveX(1);
-			cameraNoMouse.moveX(1);
+			cameraNoMouse.moveX(moveFactor);
 
 		} else if (checkKey(KeyEvent.VK_D)) {
 //			camera.moveX(-1);
-			cameraNoMouse.moveX(-1);
+			cameraNoMouse.moveX(moveFactor*-1);
 		}
 		
 		//control y, move up/down with "Q" and "E" keys
 		if (checkKey(KeyEvent.VK_Q)) {
-			cameraNoMouse.moveY(1);
+			cameraNoMouse.moveY(moveFactor);
 
 		} else if (checkKey(KeyEvent.VK_E)) {
-			cameraNoMouse.moveY(-1);
+			cameraNoMouse.moveY(moveFactor*-1);
 		}
 	}
 

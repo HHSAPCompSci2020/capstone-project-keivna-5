@@ -6,7 +6,7 @@ import processing.core.*;
 
 public class Element {
 	private float x, y, z, size;
-	private Color fillColor;
+	private Color fillColor = new Color(200);
 	
 	//for now just draws a block
 	public Element(float x, float y, float z, float size, Color fillColor) {
@@ -58,6 +58,6 @@ public class Element {
 
 	public float getSize() { return size; }
 	
-	public int getFillColor() { return fillColor; }
+	public Color getFillColor() { return fillColor; }
 	
 }

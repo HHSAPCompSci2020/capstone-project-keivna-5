@@ -12,7 +12,7 @@ public class Viewfinder {
 
 	public Viewfinder() {
 //		button = new Rectangle(800/2-100,600/2-50,200,100);
-		button = new Rectangle(50,50,100,100);
+		button = new Rectangle(25,25,120,20);
 
 	}
 	
@@ -39,12 +39,20 @@ public class Viewfinder {
 		
 		
 		//marker.background(0,0,0);
+		//marker.fill(0);
 		
-		marker.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
+		marker.strokeWeight(0);
+		marker.rect(0, 0, marker.width, 60); //top
+		marker.rect(0, 0, 60, marker.height); //left
+		marker.rect(marker.width - 60, 0, 60, marker.height); //right
+		marker.rect(0, marker.height - 60, marker.width, 60); //right
+
+		marker.fill(225, 120, 120);
+		marker.rect(button.x - 5, button.y - 5, button.width, button.height, 10, 10, 10, 10); //tab switch
 		marker.fill(0);
 		String str = "Switch to Portfolio";
 		float w = marker.textWidth(str);
-		marker.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
+		marker.text(str, button.x+button.width/2-w/2 - 5, button.y+button.height/2);
 		
 
 		marker.popMatrix();
