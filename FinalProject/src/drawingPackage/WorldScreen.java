@@ -4,6 +4,7 @@ import processing.core.*;
 
 
 import worldSetting.Camera;
+import worldSetting.CameraNoMouse;
 import worldSetting.Viewfinder;
 import worldSetting.World;
 import java.awt.event.KeyEvent;
@@ -15,9 +16,9 @@ public class WorldScreen extends Screen {
 
 	private ArrayList<Integer> keys;
 
-	private Camera camera;
+	//private Camera camera;
+	private CameraNoMouse cameraNoMouse;
 
-	//private Rectangle button;
 	private World world;
 	private Viewfinder viewfinder;
 
@@ -27,10 +28,9 @@ public class WorldScreen extends Screen {
 	public WorldScreen() {
 		super(800,600);
 
-		//button = new Rectangle(800/2-100,600/2-50,200,100);
-
 		world = new World();
-		camera = new Camera();
+		//camera = new Camera();
+		cameraNoMouse = new CameraNoMouse();
 		viewfinder = new Viewfinder();
 
 		keys = new ArrayList<Integer>();
@@ -40,70 +40,70 @@ public class WorldScreen extends Screen {
 	//TODO: draw world + menu + tabs here
 	public void draw(PApplet marker) {
 
-		//System.out.println("drawing world screen");
 		ratioX = (float)marker.width/this.DRAWING_WIDTH;
 		ratioY = (float)marker.height/this.DRAWING_HEIGHT;
 
 		marker.scale(ratioX, ratioY);
 		marker.background(255,255,255);
 
+		//3D aspects
 		marker.pushMatrix();
-		camera.draw(marker);
+//		camera.draw(marker);
+		cameraNoMouse.draw(marker);
+		
 		world.display(marker);
 		marker.popMatrix();
-		//marker.hint(DISABLE_DEPTH_TEST);
+		
+		//2D viewfinder
 		viewfinder.draw(marker);
 		
 
-
+		//control z, move forward/back
 		if (checkKey(KeyEvent.VK_W)) {
-			System.out.println("W before");
-			camera.moveZ(1);
-			System.out.println("W after");
+			//System.out.println("moving z");
+//			camera.moveZ(1);
+			cameraNoMouse.moveZ(1);
+
+			//System.out.println("W after");
 
 		} else if (checkKey(KeyEvent.VK_S)) {
-			camera.moveZ(-1);
+//			camera.moveZ(-1);
+			cameraNoMouse.moveZ(-1);
 		}
-		if (checkKey(KeyEvent.VK_A))
-			camera.moveX(1);
-		else if (checkKey(KeyEvent.VK_D))
-			camera.moveX(-1);
+		
+		//control x, move left/right
+		if (checkKey(KeyEvent.VK_A)) {
+//			camera.moveX(1);
+			cameraNoMouse.moveX(1);
 
+		} else if (checkKey(KeyEvent.VK_D)) {
+//			camera.moveX(-1);
+			cameraNoMouse.moveX(-1);
+		}
+		
+		//control y, move up/down with "Q" and "E" keys
+		if (checkKey(KeyEvent.VK_Q)) {
+			cameraNoMouse.moveY(1);
 
-		//switch tabs
-//		marker.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
-//		marker.fill(0);
-//		String str = "Click me!";
-//		float w = marker.textWidth(str);
-//		marker.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
-
-		//		popStyle();
+		} else if (checkKey(KeyEvent.VK_E)) {
+			cameraNoMouse.moveY(-1);
+		}
 	}
 
 	public void checkCamera() {
-		//		if (checkKey(KeyEvent.VK_W)) {
-		//			System.out.println("W before");
-		//			camera.moveZ(1);
-		//			System.out.println("W after");
-		//
-		//		} else if (checkKey(KeyEvent.VK_S)) {
-		//			camera.moveZ(-1);
-		//		}
-		//		if (checkKey(KeyEvent.VK_A))
-		//			camera.moveX(1);
-		//		else if (checkKey(KeyEvent.VK_D))
-		//			camera.moveX(-1);
 	}
 
 
 	public void setPlayerAtStart() {
 		//camera.moveTo(start.getX(), start.getY()-15, start.getZ());
-		camera.moveTo(350, 350, 50);
+//		camera.moveTo(350, 350, 50);
+		cameraNoMouse.moveTo(350, 350, 50);
+
 
 	}
 	
 	public void keyPressed(PApplet marker) {
-		System.out.println("calling key pressed");
+		//System.out.println("calling key pressed");
 
 		if (!checkKey(marker.keyCode))
 			keys.add(marker.keyCode);
@@ -127,27 +127,9 @@ public class WorldScreen extends Screen {
 		return keys.contains(code);
 	}
 
-	//TODO: turn into tabs here -> DO IT IN VIEWFINDER!
-	
+	//calls viewfinder for tab switching
 	public void mousePressed(DrawingSurface marker) {
-		//System.out.println("calling mouse pressed from worldscreen");
-
-//		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
-//		if (button.contains(p)) {
-////			marker.switchScreen(ScreenSwitcher.SCREEN2);
-//			marker.switchScreen(1);
-//
-//			//System.out.println("switch screen");
-//		}
+		viewfinder.mousePressed(marker);
 	}
-
-//	public Point assumedCoordinatesToActual(Point assumed) {
-//		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
-//	}
-//
-//	public Point actualCoordinatesToAssumed(Point actual) {
-//		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
-//	}
-
 }
 

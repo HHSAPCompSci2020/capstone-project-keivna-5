@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import drawingPackage.DrawingSurface;
-//import onlyonescreen.DrawingSurface;
 import processing.core.PApplet;
 
 public class Viewfinder {
@@ -25,7 +24,6 @@ public class Viewfinder {
 		
 		// Draw stuff
 		
-		//marker.pushStyle();
 		marker.pushMatrix();
 
 		
@@ -44,24 +42,25 @@ public class Viewfinder {
 		
 		marker.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
 		marker.fill(0);
-		String str = "viewfinder button";
+		String str = "Switch to Portfolio";
 		float w = marker.textWidth(str);
 		marker.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
 		
 
-//		marker.popStyle();
 		marker.popMatrix();
 	}
 	
 	public void mousePressed(DrawingSurface marker) {
-		//System.out.println("calling mouse pressed from worldscreen");
+		System.out.println("calling mouse pressed from viewfinder");
 
 		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
+		System.out.println("point p: " + p);
 		if (button.contains(p)) {
+			System.out.println("buttons contains p in viewfinder");
+
 //			marker.switchScreen(ScreenSwitcher.SCREEN2);
 			marker.switchScreen(1);
 
-			//System.out.println("switch screen");
 		}
 	}
 	
