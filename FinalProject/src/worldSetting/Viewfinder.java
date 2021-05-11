@@ -43,8 +43,8 @@ public class Viewfinder {
 		marker.strokeWeight(0);
 		marker.rect(0, 0, marker.width, 60); //top
 		marker.rect(0, 0, 60, marker.height); //left
-		marker.rect(marker.width - 60, 0, 60, marker.height); //right
-		marker.rect(0, marker.height - 60, marker.width, 60); //right
+		marker.rect(marker.width - 60, 0, 60, marker.height); //side
+		marker.rect(0, marker.height - 60, marker.width, 60); //other side
 
 		//toggle
 		marker.fill(225, 120, 120);
@@ -75,11 +75,11 @@ public class Viewfinder {
 	}
 	
 	//TODO: THIS DOESN"T WORK!!
-	public Point assumedCoordinatesToActual(Point assumed) {
-		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
-	}
-
-	public Point actualCoordinatesToAssumed(Point actual) {
-		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
-	}
+//	public Point assumedCoordinatesToActual(Point assumed) {
+//		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
+//	}
+//
+//	public Point actualCoordinatesToAssumed(Point actual) {
+//		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
+//	}
 }

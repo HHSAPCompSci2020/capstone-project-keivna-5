@@ -23,7 +23,7 @@ public class DrawingSurface extends PApplet{
 		screens.add(portfolioScreen);
 
 		//set activeScreen to world screen. first thing that shows is world screen
-		activeScreen = screens.get(1);
+		activeScreen = screens.get(0);
 	}
 
 	public void settings() {
