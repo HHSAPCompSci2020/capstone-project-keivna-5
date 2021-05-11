@@ -37,14 +37,14 @@ public class Viewfinder {
 		
 		
 		//marker.background(0,0,0);
-		//marker.fill(0);
+		marker.fill(0);
 		
 		//viewfinder black border
 		marker.strokeWeight(0);
 		marker.rect(0, 0, marker.width, 60); //top
 		marker.rect(0, 0, 60, marker.height); //left
 		marker.rect(marker.width - 60, 0, 60, marker.height); //right
-		marker.rect(0, marker.height - 60, marker.width, 60); //right
+		marker.rect(0, marker.height - 60, marker.width, 60); //bottom
 
 		//toggle
 		marker.fill(225, 120, 120);
@@ -52,18 +52,29 @@ public class Viewfinder {
 		
 		//toggle text
 		marker.fill(0);
+		marker.textSize(12);
 		String str = "Switch to Portfolio";
 		float w = marker.textWidth(str);
 		marker.text(str, button.x+button.width/2-w/2 - 5, button.y+button.height/2);
+		
+		marker.fill(255);
+		//marker.stroke(10);
+		marker.textSize(15);
+		String keyDefinitions = "Up/Down/Left/Right: WASD, Forward: Q, Back: E";
+		//marker.text(keyDefinitions, button.x+button.width/2-w/2 - 5, button.y+button.height/2);
+		marker.text(keyDefinitions, button.x, marker.height - 30);
+
 		
 		marker.popMatrix();
 	}
 	
 	public void mousePressed(DrawingSurface marker) {
 		System.out.println("calling mouse pressed from viewfinder");
+		
+//		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
+		Point p = new Point(marker.mouseX,marker.mouseY);
 
-		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
-		System.out.println("point p: " + p);
+		System.out.println("point p from viewfinder: " + p);
 		if (button.contains(p)) {
 			System.out.println("buttons contains p in viewfinder");
 
@@ -73,11 +84,11 @@ public class Viewfinder {
 	}
 	
 	//TODO: THIS DOESN"T WORK!!
-	public Point assumedCoordinatesToActual(Point assumed) {
-		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
-	}
-
-	public Point actualCoordinatesToAssumed(Point actual) {
-		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
-	}
+//	public Point assumedCoordinatesToActual(Point assumed) {
+//		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
+//	}
+//
+//	public Point actualCoordinatesToAssumed(Point actual) {
+//		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
+//	}
 }

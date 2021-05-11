@@ -42,7 +42,7 @@ import processing.core.*;
  */
 public class CameraNoMouse {
 
-	private Robot robot;
+	//private Robot robot;
 	private PVector center, right, forward, position, velocity;
 	private PVector up; //IMPLEMENT THIS FOR MOVING IN Y DIRECTION
 
@@ -61,10 +61,10 @@ public class CameraNoMouse {
 
 	public CameraNoMouse(float w, float h, float d, float speed, float xSensitivity, float ySensitivity, float friction,
 			float fov, float viewDistance) {
-		try {
-			robot = new Robot();
-		} catch (AWTException e) {
-		}
+//		try {
+//			robot = new Robot();
+//		} catch (AWTException e) {
+//		}
 
 		this.speed = speed;
 		this.xSensitivity = xSensitivity;
@@ -94,11 +94,14 @@ public class CameraNoMouse {
 	public void setup(PApplet g) {
 		g.perspective(fov, (float) g.width / (float) g.height, 0.01f, viewDistance);
 		// Moves the mouse to the center of the screen at the start of the game
-		robot.mouseMove((int) ((GLWindow) g.getSurface().getNative()).getX() + g.width / 2,
-				(int) ((GLWindow) g.getSurface().getNative()).getY() + g.height / 2);
+//		robot.mouseMove((int) ((GLWindow) g.getSurface().getNative()).getX() + g.width / 2,
+//				(int) ((GLWindow) g.getSurface().getNative()).getY() + g.height / 2);
 	}
 
 	public void draw(PApplet g) {
+		//robot moves mouse back around if at a border
+		
+		
 		// Get the coordinates of the borders of the window
 		int top = ((GLWindow) g.getSurface().getNative()).getY();
 		int left = ((GLWindow) g.getSurface().getNative()).getX();
@@ -111,38 +114,38 @@ public class CameraNoMouse {
 			pMouse = new Point(mouse.x, mouse.y);
 
 		// means that the mouse went off the screen to the left so move it to the right
-		if (mouse.x < left + 2 && (mouse.x - pMouse.x) < 0) {
-			robot.mouseMove(windowRight - 2, mouse.y);
-			mouse.x = windowRight - 2;
-			pMouse.x = windowRight - 2;
-		}
-
-		// means that the mouse went off the screen to the right so move it to the left
-		if (mouse.x > windowRight - 2 && (mouse.x - pMouse.x) > 0) {
-			robot.mouseMove(left + 2, mouse.y);
-			mouse.x = left + 2;
-			pMouse.x = left + 2;
-		}
-
-		// means that the mouse went up off the screen so move it to the bottom
-		if (mouse.y < top + 10 && (mouse.y - pMouse.y) < 0) {
-			robot.mouseMove(mouse.x, bottom - 5);
-			mouse.y = bottom - 5;
-			pMouse.y = bottom - 5;
-		}
-
-		// means that the mouse went down off the screen so move it to the top
-		if (mouse.y > bottom - 5 && (mouse.y - pMouse.y) > 0) {
-			robot.mouseMove(mouse.x, top + 10);
-			mouse.y = top + 10;
-			pMouse.y = top + 10;
-		}
+//		if (mouse.x < left + 2 && (mouse.x - pMouse.x) < 0) {
+////			robot.mouseMove(windowRight - 2, mouse.y);
+//			mouse.x = windowRight - 2;
+//			pMouse.x = windowRight - 2;
+//		}
+//
+//		// means that the mouse went off the screen to the right so move it to the left
+//		if (mouse.x > windowRight - 2 && (mouse.x - pMouse.x) > 0) {
+////			robot.mouseMove(left + 2, mouse.y);
+//			mouse.x = left + 2;
+//			pMouse.x = left + 2;
+//		}
+//
+//		// means that the mouse went up off the screen so move it to the bottom
+//		if (mouse.y < top + 10 && (mouse.y - pMouse.y) < 0) {
+////			robot.mouseMove(mouse.x, bottom - 5);
+//			mouse.y = bottom - 5;
+//			pMouse.y = bottom - 5;
+//		}
+//
+//		// means that the mouse went down off the screen so move it to the top
+//		if (mouse.y > bottom - 5 && (mouse.y - pMouse.y) > 0) {
+////			robot.mouseMove(mouse.x, top + 10);
+//			mouse.y = top + 10;
+//			pMouse.y = top + 10;
+//		}
 
 		// map the mouse value to the corresponding angle between 0 and 2PI for x
 		// rotation(pan) because you have 360º rotation
-		pan += PApplet.map(mouse.x - pMouse.x, 0, g.width, 0, PConstants.TWO_PI) * xSensitivity;
-		tilt += PApplet.map(mouse.y - pMouse.y, 0, g.height, 0, PConstants.PI) * ySensitivity;
-		tilt = clamp(tilt, -PConstants.PI / 2.01f, PConstants.PI / 2.01f);
+//		pan += PApplet.map(mouse.x - pMouse.x, 0, g.width, 0, PConstants.TWO_PI) * xSensitivity;
+//		tilt += PApplet.map(mouse.y - pMouse.y, 0, g.height, 0, PConstants.PI) * ySensitivity;
+//		tilt = clamp(tilt, -PConstants.PI / 2.01f, PConstants.PI / 2.01f);
 
 		// tan of pi/2 or -pi/2 is undefined so if it happens to be exactly that
 		// increase it so the code works
@@ -276,13 +279,13 @@ public class CameraNoMouse {
 		return mouse;
 	}
 
-	public void setMouse(Point mouse) {
-		robot.mouseMove(mouse.x, mouse.y);
-	}
-
-	public void setMouse(int x, int y) {
-		robot.mouseMove(x, y);
-	}
+//	public void setMouse(Point mouse) {
+//		robot.mouseMove(mouse.x, mouse.y);
+//	}
+//
+//	public void setMouse(int x, int y) {
+//		robot.mouseMove(x, y);
+//	}
 
 	public void setPan(double angle) {
 		pan = (float) angle;

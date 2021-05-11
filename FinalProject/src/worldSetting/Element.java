@@ -28,6 +28,7 @@ public class Element {
 	public void display(PApplet g) {
 		g.pushMatrix();
 		g.translate(x, y, z);
+		g.fill(120);
 //		g.fill(fillColor);
 		g.box(size, size, size);
 		g.popMatrix();

@@ -136,9 +136,9 @@ public class Camera {
 
 		// map the mouse value to the corresponding angle between 0 and 2PI for x
 		// rotation(pan) because you have 360º rotation
-		pan += PApplet.map(mouse.x - pMouse.x, 0, g.width, 0, PConstants.TWO_PI) * xSensitivity;
-		tilt += PApplet.map(mouse.y - pMouse.y, 0, g.height, 0, PConstants.PI) * ySensitivity;
-		tilt = clamp(tilt, -PConstants.PI / 2.01f, PConstants.PI / 2.01f);
+//		pan += PApplet.map(mouse.x - pMouse.x, 0, g.width, 0, PConstants.TWO_PI) * xSensitivity;
+//		tilt += PApplet.map(mouse.y - pMouse.y, 0, g.height, 0, PConstants.PI) * ySensitivity;
+//		tilt = clamp(tilt, -PConstants.PI / 2.01f, PConstants.PI / 2.01f);
 
 		// tan of pi/2 or -pi/2 is undefined so if it happens to be exactly that
 		// increase it so the code works

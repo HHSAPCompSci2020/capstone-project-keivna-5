@@ -54,9 +54,11 @@ public class PortfolioScreen extends Screen {
 		
 		
 		marker.background(0,0,0);
-		
+		marker.fill(120);
+
 		marker.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
 		marker.fill(0);
+
 		String str = "Click me!";
 		float w = marker.textWidth(str);
 		marker.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
@@ -73,6 +75,8 @@ public class PortfolioScreen extends Screen {
 	public void mousePressed(DrawingSurface marker) {
 		System.out.println("calling mouse pressed from portfolio");
 		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
+		System.out.println("point p from portfolio: " + p);
+
 		if (button.contains(p)) {
 //			marker.switchScreen(ScreenSwitcher.SCREEN2);
 			marker.switchScreen(0);
