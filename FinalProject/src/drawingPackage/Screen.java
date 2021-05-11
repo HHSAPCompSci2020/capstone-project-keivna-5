@@ -1,5 +1,7 @@
-package onlyonescreen;
+package drawingPackage;
+import java.awt.Point;
 
+import processing.core.PApplet;
 
 public abstract class Screen {
 
@@ -14,12 +16,12 @@ public abstract class Screen {
 		
 	}
 	
-	public void draw() {
+	public void draw(PApplet drawer) {
 		
 	}
 	
-	public void mousePressed() {
-		
+	public void mousePressed(DrawingSurface surface) {
+		System.out.println("mouse pressed from abstract class");
 	}
 	
 	public void mouseMoved() {
@@ -34,6 +36,14 @@ public abstract class Screen {
 		
 	}
 	
+	public void keyPressed(PApplet marker) {
+		
+	}
 	
+	public void keyReleased(PApplet marker) {
+		
+	}
+
+
 	
 }
