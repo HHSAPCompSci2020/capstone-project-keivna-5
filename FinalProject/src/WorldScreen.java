@@ -22,9 +22,6 @@ public class WorldScreen extends Screen {
 
 
 	public WorldScreen() {
-
-
-
 		super(800,600);
 
 		button = new Rectangle(800/2-100,600/2-50,200,100);
@@ -36,36 +33,16 @@ public class WorldScreen extends Screen {
 
 	}
 
-	//	public void settings() {
-	//		// size(DRAWING_WIDTH, DRAWING_HEIGHT, P2D);
-	////		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT);
-	//		size(DRAWING_WIDTH, DRAWING_HEIGHT, processing.core.PConstants.P3D);
-	//
-	//	}
-
-	//	public void setup() {
-	////		surface.setResizable(true);
-	//		setResizable(true);
-	//		setup();
-	//		
-	//		for (Screen s : screens)
-	//			s.setup();
-	//	}
-
-
-
 	//TODO: draw world + menu + tabs here
 	public void draw(PApplet marker) {
 
-		System.out.println("drawing world screen");
+		//System.out.println("drawing world screen");
 		ratioX = (float)marker.width/this.DRAWING_WIDTH;
 		ratioY = (float)marker.height/this.DRAWING_HEIGHT;
 
 		marker.scale(ratioX, ratioY);
-
 		marker.background(255,255,255);
 
-		//		surface.box(20);
 
 		camera.draw(marker);
 		world.display(marker);
@@ -83,9 +60,6 @@ public class WorldScreen extends Screen {
 			camera.moveX(1);
 		else if (checkKey(KeyEvent.VK_D))
 			camera.moveX(-1);
-
-
-
 
 
 		//switch tabs
@@ -113,31 +87,18 @@ public class WorldScreen extends Screen {
 		//			camera.moveX(-1);
 	}
 
-	//	public void update(Camera c) {
-	//		//c.act(new Element());
-	//	}
-
-
 
 	public void setPlayerAtStart() {
-		//		camera.moveTo(start.getX(), start.getY()-15, start.getZ());
+		//camera.moveTo(start.getX(), start.getY()-15, start.getZ());
 		camera.moveTo(350, 350, 50);
 
 	}
-
-	// Checks if given key code is in the array list
-	//	private boolean checkKey(int i) {
-	//		return keys.contains(i);
-	//	}
-
+	
 	public void keyPressed(PApplet marker) {
 		System.out.println("calling key pressed");
 
 		if (!checkKey(marker.keyCode))
 			keys.add(marker.keyCode);
-
-
-
 
 		//		if (checkKey(KeyEvent.VK_SPACE))
 		//			camera.jump();

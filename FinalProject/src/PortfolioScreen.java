@@ -14,7 +14,6 @@ public class PortfolioScreen extends Screen {
 	private int x, y;
 	public float ratioX, ratioY;
 
-	//private DrawingSurface surface;
 	private Rectangle button;
 
 	
@@ -22,7 +21,6 @@ public class PortfolioScreen extends Screen {
 	
 	public PortfolioScreen() {
 		super(800,600);
-		//this.surface = surface;
 		
 		x = 30;
 		y = 30;
