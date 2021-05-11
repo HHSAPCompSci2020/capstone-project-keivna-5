@@ -11,6 +11,8 @@ public class Bridge extends Element{
 	public void display(PApplet g) {	
 		// draws the base
 		// draws 2 towers
+		// draws the suspension cords
+			// which draws the supports
 		
 	}
 	
