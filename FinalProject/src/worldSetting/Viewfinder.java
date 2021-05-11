@@ -16,14 +16,12 @@ public class Viewfinder {
 
 	}
 	
-	//TODO: draw viewfinder here
 	public void draw(PApplet marker) {
-
-		//ratioX = (float)marker.width/this.DRAWING_WIDTH;
+		
+		//ratioX = (float)marker.width/marker.DRAWING_WIDTH;
 		//ratioY = (float)marker.height/this.DRAWING_HEIGHT;
 		
-		// Draw stuff
-		
+		//draw viewfinder
 		marker.pushMatrix();
 
 		
@@ -41,20 +39,23 @@ public class Viewfinder {
 		//marker.background(0,0,0);
 		//marker.fill(0);
 		
+		//viewfinder black border
 		marker.strokeWeight(0);
 		marker.rect(0, 0, marker.width, 60); //top
 		marker.rect(0, 0, 60, marker.height); //left
 		marker.rect(marker.width - 60, 0, 60, marker.height); //right
 		marker.rect(0, marker.height - 60, marker.width, 60); //right
 
+		//toggle
 		marker.fill(225, 120, 120);
-		marker.rect(button.x - 5, button.y - 5, button.width, button.height, 10, 10, 10, 10); //tab switch
+		marker.rect(button.x - 5, button.y - 5, button.width, button.height, 10, 10, 10, 10);
+		
+		//toggle text
 		marker.fill(0);
 		String str = "Switch to Portfolio";
 		float w = marker.textWidth(str);
 		marker.text(str, button.x+button.width/2-w/2 - 5, button.y+button.height/2);
 		
-
 		marker.popMatrix();
 	}
 	
@@ -66,12 +67,12 @@ public class Viewfinder {
 		if (button.contains(p)) {
 			System.out.println("buttons contains p in viewfinder");
 
-//			marker.switchScreen(ScreenSwitcher.SCREEN2);
 			marker.switchScreen(1);
 
 		}
 	}
 	
+	//TODO: THIS DOESN"T WORK!!
 	public Point assumedCoordinatesToActual(Point assumed) {
 		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
 	}
