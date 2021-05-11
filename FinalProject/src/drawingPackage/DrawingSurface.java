@@ -1,8 +1,6 @@
 package drawingPackage;
 
-import java.awt.Rectangle;
 import java.util.ArrayList;
-
 import processing.core.*;
 
 public class DrawingSurface extends PApplet{
@@ -25,7 +23,7 @@ public class DrawingSurface extends PApplet{
 		screens.add(portfolioScreen);
 
 		//set activeScreen to world screen. first thing that shows is world screen
-		activeScreen = screens.get(0);
+		activeScreen = screens.get(1);
 	}
 
 	public void settings() {

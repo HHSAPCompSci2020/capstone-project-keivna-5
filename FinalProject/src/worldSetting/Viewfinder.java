@@ -61,9 +61,11 @@ public class Viewfinder {
 	
 	public void mousePressed(DrawingSurface marker) {
 		System.out.println("calling mouse pressed from viewfinder");
+		
+//		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
+		Point p = new Point(marker.mouseX,marker.mouseY);
 
-		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
-		System.out.println("point p: " + p);
+		System.out.println("point p from viewfinder: " + p);
 		if (button.contains(p)) {
 			System.out.println("buttons contains p in viewfinder");
 

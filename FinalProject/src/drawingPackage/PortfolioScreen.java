@@ -73,6 +73,8 @@ public class PortfolioScreen extends Screen {
 	public void mousePressed(DrawingSurface marker) {
 		System.out.println("calling mouse pressed from portfolio");
 		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
+		System.out.println("point p from portfolio: " + p);
+
 		if (button.contains(p)) {
 //			marker.switchScreen(ScreenSwitcher.SCREEN2);
 			marker.switchScreen(0);
