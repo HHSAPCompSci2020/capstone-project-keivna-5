@@ -110,39 +110,39 @@ public class CameraNoMouse {
 		if (pMouse == null)
 			pMouse = new Point(mouse.x, mouse.y);
 
-//		// means that the mouse went off the screen to the left so move it to the right
-//		if (mouse.x < left + 2 && (mouse.x - pMouse.x) < 0) {
-//			robot.mouseMove(windowRight - 2, mouse.y);
-//			mouse.x = windowRight - 2;
-//			pMouse.x = windowRight - 2;
-//		}
-//
-//		// means that the mouse went off the screen to the right so move it to the left
-//		if (mouse.x > windowRight - 2 && (mouse.x - pMouse.x) > 0) {
-//			robot.mouseMove(left + 2, mouse.y);
-//			mouse.x = left + 2;
-//			pMouse.x = left + 2;
-//		}
-//
-//		// means that the mouse went up off the screen so move it to the bottom
-//		if (mouse.y < top + 10 && (mouse.y - pMouse.y) < 0) {
-//			robot.mouseMove(mouse.x, bottom - 5);
-//			mouse.y = bottom - 5;
-//			pMouse.y = bottom - 5;
-//		}
-//
-//		// means that the mouse went down off the screen so move it to the top
-//		if (mouse.y > bottom - 5 && (mouse.y - pMouse.y) > 0) {
-//			robot.mouseMove(mouse.x, top + 10);
-//			mouse.y = top + 10;
-//			pMouse.y = top + 10;
-//		}
-//
-//		// map the mouse value to the corresponding angle between 0 and 2PI for x
-//		// rotation(pan) because you have 360º rotation
-//		pan += PApplet.map(mouse.x - pMouse.x, 0, g.width, 0, PConstants.TWO_PI) * xSensitivity;
-//		tilt += PApplet.map(mouse.y - pMouse.y, 0, g.height, 0, PConstants.PI) * ySensitivity;
-//		tilt = clamp(tilt, -PConstants.PI / 2.01f, PConstants.PI / 2.01f);
+		// means that the mouse went off the screen to the left so move it to the right
+		if (mouse.x < left + 2 && (mouse.x - pMouse.x) < 0) {
+			robot.mouseMove(windowRight - 2, mouse.y);
+			mouse.x = windowRight - 2;
+			pMouse.x = windowRight - 2;
+		}
+
+		// means that the mouse went off the screen to the right so move it to the left
+		if (mouse.x > windowRight - 2 && (mouse.x - pMouse.x) > 0) {
+			robot.mouseMove(left + 2, mouse.y);
+			mouse.x = left + 2;
+			pMouse.x = left + 2;
+		}
+
+		// means that the mouse went up off the screen so move it to the bottom
+		if (mouse.y < top + 10 && (mouse.y - pMouse.y) < 0) {
+			robot.mouseMove(mouse.x, bottom - 5);
+			mouse.y = bottom - 5;
+			pMouse.y = bottom - 5;
+		}
+
+		// means that the mouse went down off the screen so move it to the top
+		if (mouse.y > bottom - 5 && (mouse.y - pMouse.y) > 0) {
+			robot.mouseMove(mouse.x, top + 10);
+			mouse.y = top + 10;
+			pMouse.y = top + 10;
+		}
+
+		// map the mouse value to the corresponding angle between 0 and 2PI for x
+		// rotation(pan) because you have 360º rotation
+		pan += PApplet.map(mouse.x - pMouse.x, 0, g.width, 0, PConstants.TWO_PI) * xSensitivity;
+		tilt += PApplet.map(mouse.y - pMouse.y, 0, g.height, 0, PConstants.PI) * ySensitivity;
+		tilt = clamp(tilt, -PConstants.PI / 2.01f, PConstants.PI / 2.01f);
 
 		// tan of pi/2 or -pi/2 is undefined so if it happens to be exactly that
 		// increase it so the code works
