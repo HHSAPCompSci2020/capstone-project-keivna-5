@@ -64,32 +64,64 @@ public class WorldScreen extends Screen {
 		if (checkKey(KeyEvent.VK_W)) {
 			//System.out.println("moving z");
 //			camera.moveZ(1);
-			cameraNoMouse.moveZ(moveFactor);
+			cameraNoMouse.moveY(moveFactor);
 
 			//System.out.println("W after");
 
 		} else if (checkKey(KeyEvent.VK_S)) {
 //			camera.moveZ(-1);
-			cameraNoMouse.moveZ(moveFactor*-1);
+			cameraNoMouse.moveY(moveFactor*-1);
 		}
 		
 		//control x, move left/right
 		if (checkKey(KeyEvent.VK_A)) {
 //			camera.moveX(1);
-			cameraNoMouse.moveX(moveFactor);
+			cameraNoMouse.moveX(moveFactor*-1);
 
 		} else if (checkKey(KeyEvent.VK_D)) {
 //			camera.moveX(-1);
-			cameraNoMouse.moveX(moveFactor*-1);
+			cameraNoMouse.moveX(moveFactor);
 		}
 		
 		//control y, move up/down with "Q" and "E" keys
 		if (checkKey(KeyEvent.VK_Q)) {
-			cameraNoMouse.moveY(moveFactor);
+			cameraNoMouse.moveZ(moveFactor);
 
 		} else if (checkKey(KeyEvent.VK_E)) {
-			cameraNoMouse.moveY(moveFactor*-1);
+			cameraNoMouse.moveZ(moveFactor*-1);
 		}
+		
+		
+//		//control z, move forward/back
+//		if (checkKey(KeyEvent.VK_W)) {
+//			//System.out.println("moving z");
+////			camera.moveZ(1);
+//			cameraNoMouse.moveZ(moveFactor);
+//
+//			//System.out.println("W after");
+//
+//		} else if (checkKey(KeyEvent.VK_S)) {
+////			camera.moveZ(-1);
+//			cameraNoMouse.moveZ(moveFactor*-1);
+//		}
+//		
+//		//control x, move left/right
+//		if (checkKey(KeyEvent.VK_A)) {
+////			camera.moveX(1);
+//			cameraNoMouse.moveX(moveFactor);
+//
+//		} else if (checkKey(KeyEvent.VK_D)) {
+////			camera.moveX(-1);
+//			cameraNoMouse.moveX(moveFactor*-1);
+//		}
+//		
+//		//control y, move up/down with "Q" and "E" keys
+//		if (checkKey(KeyEvent.VK_Q)) {
+//			cameraNoMouse.moveY(moveFactor);
+//
+//		} else if (checkKey(KeyEvent.VK_E)) {
+//			cameraNoMouse.moveY(moveFactor*-1);
+//		}
 	}
 
 	public void checkCamera() {

@@ -37,14 +37,14 @@ public class Viewfinder {
 		
 		
 		//marker.background(0,0,0);
-		//marker.fill(0);
+		marker.fill(0);
 		
 		//viewfinder black border
 		marker.strokeWeight(0);
 		marker.rect(0, 0, marker.width, 60); //top
 		marker.rect(0, 0, 60, marker.height); //left
-		marker.rect(marker.width - 60, 0, 60, marker.height); //side
-		marker.rect(0, marker.height - 60, marker.width, 60); //other side
+		marker.rect(marker.width - 60, 0, 60, marker.height); //right
+		marker.rect(0, marker.height - 60, marker.width, 60); //bottom
 
 		//toggle
 		marker.fill(225, 120, 120);
@@ -52,9 +52,18 @@ public class Viewfinder {
 		
 		//toggle text
 		marker.fill(0);
+		marker.textSize(12);
 		String str = "Switch to Portfolio";
 		float w = marker.textWidth(str);
 		marker.text(str, button.x+button.width/2-w/2 - 5, button.y+button.height/2);
+		
+		marker.fill(255);
+		//marker.stroke(10);
+		marker.textSize(15);
+		String keyDefinitions = "Up/Down/Left/Right: WASD, Forward: Q, Back: E";
+		//marker.text(keyDefinitions, button.x+button.width/2-w/2 - 5, button.y+button.height/2);
+		marker.text(keyDefinitions, button.x, marker.height - 30);
+
 		
 		marker.popMatrix();
 	}
