@@ -74,7 +74,7 @@ public class PortfolioScreen extends Screen {
 		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
 		if (button.contains(p)) {
 //			marker.switchScreen(ScreenSwitcher.SCREEN2);
-			marker.switchScreen(1);
+			marker.switchScreen(0);
 
 			System.out.println("switch screen");
 		}

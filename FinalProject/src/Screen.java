@@ -19,8 +19,8 @@ public abstract class Screen {
 		
 	}
 	
-	public void mousePressed(PApplet marker) {
-		
+	public void mousePressed(DrawingSurface surface) {
+		System.out.println("mouse pressed from abstract class");
 	}
 	
 	public void mouseMoved() {
