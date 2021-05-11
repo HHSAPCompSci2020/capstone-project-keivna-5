@@ -1,10 +1,20 @@
 package worldSetting;
 
-public class Water extends Element{
+import processing.core.PApplet;
 
-	public Water(float x, float y, float z, float size, int fillColor) {
-		super(x, y, z, size);
-		// draws a realllllyyyyy large blue rectangular prism
+public class Water extends Element{
+	
+	public Water(float x, float y, float z, float size) {
+		super(x, y, z, size, new int[] {15, 50, 70});
+	}
+	
+	@Override
+	public void display(PApplet g) {
+		g.pushMatrix();
+		g.translate(getX(), getY(), getZ());
+		g.fill(getFillColor()[0], getFillColor()[1], getFillColor()[2]);
+		g.box(getSize(), getSize() / 10, getSize());
+		g.popMatrix();
 	}
 
 }

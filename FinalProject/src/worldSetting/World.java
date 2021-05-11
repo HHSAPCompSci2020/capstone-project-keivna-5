@@ -18,8 +18,10 @@ public class World { //build water, bridge
 	private Element element;
 	
 	public World() {
-		
 		element = new Element(350, 350, 50, 50);
+		bridge = new Bridge(350, 350, 50, 0);
+		water = new Water(350, 350, 50, 5000);
+		b.add(element);
 		b.add(element);
 		
 //		elements = new Element[size][size];
@@ -41,7 +43,9 @@ public class World { //build water, bridge
 //	}
 
 	public void display(PApplet g) {
+		g.background(185, 230, 255);
 		element.display(g);
+		water.display(g);
 		//bridge.display(marker);
 		//water.display(marker);
 	}

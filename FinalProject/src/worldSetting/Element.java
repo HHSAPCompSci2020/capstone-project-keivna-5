@@ -6,10 +6,10 @@ import processing.core.*;
 
 public class Element {
 	private float x, y, z, size;
-	private Color fillColor = new Color(200);
+	private int[] fillColor;
 	
 	//for now just draws a block
-	public Element(float x, float y, float z, float size, Color fillColor) {
+	public Element(float x, float y, float z, float size, int[] fillColor) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -22,14 +22,13 @@ public class Element {
 		this.y = y;
 		this.z = z;
 		this.size = size;
-		fillColor = Color.pink;
+		fillColor = new int[] {0,0,0};
 	}
 
 	public void display(PApplet g) {
 		g.pushMatrix();
 		g.translate(x, y, z);
-		g.fill(120);
-//		g.fill(fillColor);
+		g.fill(fillColor[0], fillColor[1], fillColor[2]);
 		g.box(size, size, size);
 		g.popMatrix();
 	}
@@ -59,6 +58,8 @@ public class Element {
 
 	public float getSize() { return size; }
 	
-	public Color getFillColor() { return fillColor; }
+	public int[] getFillColor() { return fillColor; }
+	
+	public void setFillColor(int[] newColor) { fillColor = newColors;}
 	
 }

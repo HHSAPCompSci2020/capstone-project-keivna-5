@@ -10,16 +10,19 @@ public class Bridge extends Element{
 	
 	public void display(PApplet g) {	
 		// draws the base
+		g.pushMatrix();
+		drawDeck(g);
 		// draws 2 towers
 		// draws the suspension cords
 			// which draws the supports
-		
+		g.popMatrix();
 	}
 	
 	//draw physical components:
 	
 	private void drawDeck(PApplet g) {
 		// one Rectangular red prism
+		g.box(50, 20, 100);
 		// one grey rect prism
 		// one red rect prism
 		//one red rect prism underneath grey prism
