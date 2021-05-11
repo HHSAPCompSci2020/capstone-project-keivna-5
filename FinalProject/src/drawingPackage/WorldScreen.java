@@ -1,8 +1,10 @@
+package drawingPackage;
 
 import processing.core.*;
 
 
 import worldSetting.Camera;
+import worldSetting.Viewfinder;
 import worldSetting.World;
 import java.awt.event.KeyEvent;
 import java.awt.Point;
@@ -15,8 +17,9 @@ public class WorldScreen extends Screen {
 
 	private Camera camera;
 
-	private Rectangle button;
+	//private Rectangle button;
 	private World world;
+	private Viewfinder viewfinder;
 
 	public float ratioX, ratioY;
 
@@ -24,10 +27,11 @@ public class WorldScreen extends Screen {
 	public WorldScreen() {
 		super(800,600);
 
-		button = new Rectangle(800/2-100,600/2-50,200,100);
+		//button = new Rectangle(800/2-100,600/2-50,200,100);
 
 		world = new World();
 		camera = new Camera();
+		viewfinder = new Viewfinder();
 
 		keys = new ArrayList<Integer>();
 
@@ -43,9 +47,13 @@ public class WorldScreen extends Screen {
 		marker.scale(ratioX, ratioY);
 		marker.background(255,255,255);
 
-
+		marker.pushMatrix();
 		camera.draw(marker);
 		world.display(marker);
+		marker.popMatrix();
+		//marker.hint(DISABLE_DEPTH_TEST);
+		viewfinder.draw(marker);
+		
 
 
 		if (checkKey(KeyEvent.VK_W)) {
@@ -63,11 +71,11 @@ public class WorldScreen extends Screen {
 
 
 		//switch tabs
-		marker.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
-		marker.fill(0);
-		String str = "Click me!";
-		float w = marker.textWidth(str);
-		marker.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
+//		marker.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
+//		marker.fill(0);
+//		String str = "Click me!";
+//		float w = marker.textWidth(str);
+//		marker.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
 
 		//		popStyle();
 	}
@@ -119,26 +127,27 @@ public class WorldScreen extends Screen {
 		return keys.contains(code);
 	}
 
-	//TODO: turn into tabs here
+	//TODO: turn into tabs here -> DO IT IN VIEWFINDER!
+	
 	public void mousePressed(DrawingSurface marker) {
-		System.out.println("calling mouse pressed from worldscreen");
+		//System.out.println("calling mouse pressed from worldscreen");
 
-		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
-		if (button.contains(p)) {
-//			marker.switchScreen(ScreenSwitcher.SCREEN2);
-			marker.switchScreen(1);
-
-			System.out.println("switch screen");
-		}
+//		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
+//		if (button.contains(p)) {
+////			marker.switchScreen(ScreenSwitcher.SCREEN2);
+//			marker.switchScreen(1);
+//
+//			//System.out.println("switch screen");
+//		}
 	}
 
-	public Point assumedCoordinatesToActual(Point assumed) {
-		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
-	}
-
-	public Point actualCoordinatesToAssumed(Point actual) {
-		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
-	}
+//	public Point assumedCoordinatesToActual(Point assumed) {
+//		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
+//	}
+//
+//	public Point actualCoordinatesToAssumed(Point actual) {
+//		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
+//	}
 
 }
 

@@ -1,3 +1,4 @@
+package drawingPackage;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class DrawingSurface extends PApplet{
 	private PortfolioScreen portfolioScreen;
 	private ArrayList<Screen> screens;
 
-	private Rectangle button;
+	//private Rectangle button;
 
 	//public float ratioX, ratioY;
 
@@ -29,9 +30,10 @@ public class DrawingSurface extends PApplet{
 		portfolioScreen = new PortfolioScreen();
 		screens.add(portfolioScreen);
 
-		activeScreen = screens.get(1);
+		//set activeScreen to world screen. first thing that shows is world screen
+		activeScreen = screens.get(0);
 
-		button = new Rectangle(800/2-100,600/2-50,200,100);
+		//button = new Rectangle(800/2-100,600/2-50,200,100);
 
 	}
 
@@ -52,8 +54,8 @@ public class DrawingSurface extends PApplet{
 	}
 
 	public void draw() {
-//		ratioX = (float)width/activeScreen.DRAWING_WIDTH;
-//		ratioY = (float)height/activeScreen.DRAWING_HEIGHT;
+		//		ratioX = (float)width/activeScreen.DRAWING_WIDTH;
+		//		ratioY = (float)height/activeScreen.DRAWING_HEIGHT;
 
 		pushMatrix();
 		//scale(ratioX, ratioY);
@@ -96,23 +98,9 @@ public class DrawingSurface extends PApplet{
 	//		return keys.contains(code);
 	//	}
 	//	
-		public void mousePressed() {
-			System.out.println("calling mouse pressed from dsurface");
-			System.out.println("active screen: " + activeScreen);
-			activeScreen.mousePressed(this);
-		}
-		
-	//	public void mouseMoved() {
-	//		activeScreen.mouseMoved();
-	//	}
-	//	
-	//	public void mouseDragged() {
-	//		activeScreen.mouseDragged();
-	//	}
-	//	
-	//	public void mouseReleased() {
-	//		activeScreen.mouseReleased();
-	//	}
+	public void mousePressed() {
+		activeScreen.mousePressed(this);
+	}
 
 	public void switchScreen(int i) {
 		activeScreen = screens.get(i);
