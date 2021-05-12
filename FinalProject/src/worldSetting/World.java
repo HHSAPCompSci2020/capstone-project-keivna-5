@@ -12,17 +12,23 @@ public class World { //build water, bridge
 	
 //	private Element[][] elements;
 	ArrayList<Element> b = new ArrayList<Element>();
-	private Bridge bridge;
-	private Water water;
+//	private Element element;
 	
-	private Element element;
+	private Water water;
+	private Bridge bridge;
+	
+	private int[] backgroundColor;
 	
 	public World() {
-		element = new Element(350, 350, 50, 50);
-		bridge = new Bridge(350, 350, 50, 0);
+//		element = new Element(350, 350, 50, 50);
 		water = new Water(350, 350, 50, 5000);
-		b.add(element);
-		b.add(element);
+		bridge = new Bridge(350, -500, 50, 200);
+
+//		b.add(element);
+		b.add(water);
+		b.add(bridge);
+		
+		backgroundColor = new int[] {185, 230, 255};
 		
 //		elements = new Element[size][size];
 //
@@ -43,11 +49,11 @@ public class World { //build water, bridge
 //	}
 
 	public void display(PApplet g) {
-		g.background(185, 230, 255);
-		element.display(g);
+		g.background(backgroundColor[0], backgroundColor[1], backgroundColor[2]);
+		
+//		element.display(g);
 		water.display(g);
-		//bridge.display(marker);
-		//water.display(marker);
+		bridge.display(g);
 	}
 
 //	public void setPlayerAtStart(Camera player) {
@@ -59,7 +65,11 @@ public class World { //build water, bridge
 	}
 	
 	public void setPlayerAtStart(Camera player) {
-		player.moveTo(element.getX(), element.getY()-15, element.getZ());
+//		player.moveTo(element.getX(), element.getY()-15, element.getZ());
+	}
+	
+	public void setBackground(int[] color) {
+		backgroundColor = color;
 	}
 
 }

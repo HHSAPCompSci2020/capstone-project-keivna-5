@@ -3,9 +3,18 @@ package worldSetting;
 import processing.core.PApplet;
 
 public class Bridge extends Element{
+	
+	private int numCords;
+	private int[] color;
 
+	// the point that gets passed in should be starting point of the base of the bridge
 	public Bridge(float x, float y, float z, float size) {
 		super(x, y, z, size);
+		
+		numCords = 20;
+		color = new int[] {160, 50, 50};
+		
+		setFillColor(color);
 	}
 	
 	public void display(PApplet g) {	
@@ -13,8 +22,14 @@ public class Bridge extends Element{
 		g.pushMatrix();
 		drawDeck(g);
 		// draws 2 towers
+		drawTower(g);
+		drawTower(g);
 		// draws the suspension cords
+		for (int i = 0; i < numCords; i++) {
+			drawSuspensionCord(g);
+		}
 			// which draws the supports
+		
 		g.popMatrix();
 	}
 	
@@ -22,7 +37,10 @@ public class Bridge extends Element{
 	
 	private void drawDeck(PApplet g) {
 		// one Rectangular red prism
-		g.box(50, 20, 100);
+		g.translate(getX(), getY(), getZ());
+		g.fill(getFillColor()[0], getFillColor()[1], getFillColor()[2]);
+		g.box(getSize() * 10, getSize() / 10, getSize());
+//		g.box(50, 20, 100);
 		// one grey rect prism
 		// one red rect prism
 		//one red rect prism underneath grey prism
