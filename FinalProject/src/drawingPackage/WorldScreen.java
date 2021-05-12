@@ -49,7 +49,7 @@ public class WorldScreen extends Screen {
 		viewfinder.draw(marker);
 		
 
-		int moveFactor = 3;
+		int moveFactor = 2;
 		
 		//control z, move forward/back
 		if (checkKey(KeyEvent.VK_W)) {

@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 
 import drawingPackage.DrawingSurface;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Viewfinder {
 	private Rectangle toggle, shutterButton;
@@ -45,6 +46,7 @@ public class Viewfinder {
 		//toggle text
 		marker.fill(0);
 		marker.textSize(12);
+
 		String str = "Switch to Portfolio";
 		float w = marker.textWidth(str);
 		marker.text(str, toggle.x+toggle.width/2-w/2 - 5, toggle.y+toggle.height/2);
@@ -52,7 +54,14 @@ public class Viewfinder {
 		//shutter 
 		marker.fill(120);
 		marker.rect(shutterButton.x, shutterButton.y, shutterButton.width, shutterButton.height);
-
+		
+		//shutter text
+		marker.fill(0);
+		String shutterStr = "Shutter";
+		//float w = marker.textWidth(str);
+		marker.text(shutterStr, shutterButton.x + 5, shutterButton.y + 15);
+		
+		
 		//key instruction text
 		marker.fill(255);
 		marker.textSize(15);
@@ -68,7 +77,10 @@ public class Viewfinder {
 			marker.switchScreen(1);
 		}
 		if (shutterButton.contains(p)) {
-			
+			System.out.println("shutter capture");
+			shutter.draw(marker);
+			//shutter.capture(marker);
+			PImage image = shutter.getScreenshot();
 		}
 		
 	}
