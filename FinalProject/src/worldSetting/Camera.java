@@ -279,16 +279,16 @@ public class Camera {
 		pan = (float) angle;
 	}
 	
-	/**
-	 * Checks to see if the player is colliding with any of the Block objects inside
-	 * the specified ArrayList
-	 * 
-	 * @param elements
-	 *            ArrayList of Block objects to check collision with
-	 */
-	public void act(ArrayList<Element> elements) {
-		
-	}
+//	/**
+//	 * Checks to see if the player is colliding with any of the Block objects inside
+//	 * the specified ArrayList
+//	 * 
+//	 * @param elements
+//	 *            ArrayList of Block objects to check collision with
+//	 */
+//	public void act(ArrayList<Element> elements) {
+//		
+//	}
 	
 	//from player
 	public void jump() {

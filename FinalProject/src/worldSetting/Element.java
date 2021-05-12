@@ -1,7 +1,5 @@
 package worldSetting;
 
-import java.awt.Color;
-
 import processing.core.*;
 
 public class Element {
@@ -22,7 +20,7 @@ public class Element {
 		this.y = y;
 		this.z = z;
 		this.size = size;
-		fillColor = new int[] {0,0,0};
+		fillColor = new int[] {200, 140, 230};
 	}
 
 	public void display(PApplet g) {
@@ -32,23 +30,6 @@ public class Element {
 		g.box(size, size, size);
 		g.popMatrix();
 	}
-
-//	might need, who knows
-//	public boolean isPointInCube(float x, float y, float z) {
-//		// the x y z coords of the block are in the center so +/- by size/2 in all
-//		// directions to get the edges
-//		float left = this.x - size / 2;
-//		float right = this.x + size / 2;
-//		float top = this.y - size / 2;
-//		float bottom = this.y + size / 2;
-//		float front = this.z - size / 2;
-//		float back = this.z + size / 2;
-//		if (x > left && x < right && y > top && y < bottom && z > front && z < back) {
-//			return true;
-//		}
-//
-//		return false;
-//	}
 
 	public float getX() { return x; }
 
