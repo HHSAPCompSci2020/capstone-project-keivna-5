@@ -20,7 +20,7 @@ public class Water extends Element{
 		
 		g.translate(getX(), getY(), getZ());
 		g.fill(getFillColor()[0], getFillColor()[1], getFillColor()[2]);
-		g.box(getSize(), getSize() / 10, getSize());
+		g.box(getSize(), getSize() / 100, getSize());
 		
 		g.popMatrix();
 	}

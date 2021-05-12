@@ -5,16 +5,15 @@ import processing.core.PApplet;
 public class Bridge extends Element{
 	
 	private int numCords;
-	private int[] color;
+	
+	private final int[] METAL_COLOR = new int[] {160, 50, 50};
+	private final int[] ROAD_COLOR = new int[] {110, 120, 120};
 
 	// the point that gets passed in should be starting point of the base of the bridge
 	public Bridge(float x, float y, float z, float size) {
 		super(x, y, z, size);
 		
 		numCords = 20;
-		color = new int[] {160, 50, 50};
-		
-		setFillColor(color);
 	}
 	
 	public void display(PApplet g) {	
@@ -37,11 +36,22 @@ public class Bridge extends Element{
 	
 	private void drawDeck(PApplet g) {
 		// one Rectangular red prism
-		g.translate(getX(), getY(), getZ());
-		g.fill(getFillColor()[0], getFillColor()[1], getFillColor()[2]);
-		g.box(getSize() * 10, getSize() / 10, getSize());
-//		g.box(50, 20, 100);
+		int x0 = (int) getX();
+		int y0 = (int) getY();
+		int z0 = (int) getZ();
+		
+		g.pushMatrix();
+		g.translate(x0, y0, z0);
+		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
+		g.box(getSize() * 10, getSize() / 5, getSize());
+		g.popMatrix();
+		
 		// one grey rect prism
+		g.pushMatrix();
+		g.translate(x0, y0 - (getSize() / 10), z0);
+		g.fill(ROAD_COLOR[0], ROAD_COLOR[1], ROAD_COLOR[2]);
+		g.box(getSize() * 10, getSize() / 5, getSize());
+		g.popMatrix();
 		// one red rect prism
 		//one red rect prism underneath grey prism
 	}
