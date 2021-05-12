@@ -7,17 +7,25 @@ import drawingPackage.DrawingSurface;
 import processing.core.PApplet;
 
 public class Viewfinder {
-	private Rectangle button;
+	private Rectangle toggle, shutterButton;
 	public float ratioX, ratioY;
+	private Shutter shutter;
 
 	public Viewfinder() {
-//		button = new Rectangle(800/2-100,600/2-50,200,100);
-		button = new Rectangle(25,25,120,20);
+		toggle = new Rectangle(25,25,120,20);
+		shutterButton = new Rectangle(620, 30, 120, 30);
 
+		shutter = new Shutter();
 	}
 	
 	public void draw(PApplet marker) {
-				
+		//Rectangle toggle, shutterButton;
+		
+//		button = new Rectangle(800/2-100,600/2-50,200,100);
+
+		//toggle = new Rectangle(25,25,120,20);
+		//shutterButton = new Rectangle(marker.width - 180, 30, 120, 30);
+		
 		//draw viewfinder
 		marker.pushMatrix();
 		
@@ -32,27 +40,36 @@ public class Viewfinder {
 
 		//toggle
 		marker.fill(225, 120, 120);
-		marker.rect(button.x - 5, button.y - 5, button.width, button.height, 10, 10, 10, 10);
+		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, 10);
 		
 		//toggle text
 		marker.fill(0);
 		marker.textSize(12);
 		String str = "Switch to Portfolio";
 		float w = marker.textWidth(str);
-		marker.text(str, button.x+button.width/2-w/2 - 5, button.y+button.height/2);
+		marker.text(str, toggle.x+toggle.width/2-w/2 - 5, toggle.y+toggle.height/2);
 		
+		//shutter 
+		marker.fill(120);
+		marker.rect(shutterButton.x, shutterButton.y, shutterButton.width, shutterButton.height);
+
+		//key instruction text
 		marker.fill(255);
 		marker.textSize(15);
 		String keyDefinitions = "Up/Down/Left/Right: WASD, Forward: Q, Back: E";
-		marker.text(keyDefinitions, button.x, marker.height - 30);
+		marker.text(keyDefinitions, toggle.x, marker.height - 30);
 		
 		marker.popMatrix();
 	}
 	
 	public void mousePressed(DrawingSurface marker) {		
 		Point p = new Point(marker.mouseX,marker.mouseY);
-		if (button.contains(p)) {
+		if (toggle.contains(p)) {
 			marker.switchScreen(1);
 		}
+		if (shutterButton.contains(p)) {
+			
+		}
+		
 	}
 }
