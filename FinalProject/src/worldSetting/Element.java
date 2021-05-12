@@ -60,6 +60,6 @@ public class Element {
 	
 	public int[] getFillColor() { return fillColor; }
 	
-	public void setFillColor(int[] newColor) { fillColor = newColors;}
+	public void setFillColor(int[] newColor) { fillColor = newColor;}
 	
 }

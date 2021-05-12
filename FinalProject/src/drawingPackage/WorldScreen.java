@@ -15,13 +15,9 @@ import java.util.ArrayList;
 public class WorldScreen extends Screen {
 
 	private ArrayList<Integer> keys;
-
-	//private Camera camera;
 	private CameraNoMouse cameraNoMouse;
-
 	private World world;
 	private Viewfinder viewfinder;
-
 	public float ratioX, ratioY;
 
 
@@ -29,12 +25,9 @@ public class WorldScreen extends Screen {
 		super(800,600);
 
 		world = new World();
-		//camera = new Camera();
 		cameraNoMouse = new CameraNoMouse();
 		viewfinder = new Viewfinder();
-
 		keys = new ArrayList<Integer>();
-
 	}
 
 	//TODO: draw world + menu + tabs here
@@ -48,13 +41,11 @@ public class WorldScreen extends Screen {
 
 		//3D aspects
 		marker.pushMatrix();
-//		camera.draw(marker);
 		cameraNoMouse.draw(marker);
 		
 		world.display(marker);
 		marker.popMatrix();
 		
-		//2D viewfinder
 		viewfinder.draw(marker);
 		
 
@@ -62,24 +53,16 @@ public class WorldScreen extends Screen {
 		
 		//control z, move forward/back
 		if (checkKey(KeyEvent.VK_W)) {
-			//System.out.println("moving z");
-//			camera.moveZ(1);
 			cameraNoMouse.moveY(moveFactor);
-
-			//System.out.println("W after");
-
 		} else if (checkKey(KeyEvent.VK_S)) {
-//			camera.moveZ(-1);
 			cameraNoMouse.moveY(moveFactor*-1);
 		}
 		
 		//control x, move left/right
 		if (checkKey(KeyEvent.VK_A)) {
-//			camera.moveX(1);
 			cameraNoMouse.moveX(moveFactor*-1);
 
 		} else if (checkKey(KeyEvent.VK_D)) {
-//			camera.moveX(-1);
 			cameraNoMouse.moveX(moveFactor);
 		}
 		
@@ -90,55 +73,14 @@ public class WorldScreen extends Screen {
 		} else if (checkKey(KeyEvent.VK_E)) {
 			cameraNoMouse.moveZ(moveFactor*-1);
 		}
-		
-		
-//		//control z, move forward/back
-//		if (checkKey(KeyEvent.VK_W)) {
-//			//System.out.println("moving z");
-////			camera.moveZ(1);
-//			cameraNoMouse.moveZ(moveFactor);
-//
-//			//System.out.println("W after");
-//
-//		} else if (checkKey(KeyEvent.VK_S)) {
-////			camera.moveZ(-1);
-//			cameraNoMouse.moveZ(moveFactor*-1);
-//		}
-//		
-//		//control x, move left/right
-//		if (checkKey(KeyEvent.VK_A)) {
-////			camera.moveX(1);
-//			cameraNoMouse.moveX(moveFactor);
-//
-//		} else if (checkKey(KeyEvent.VK_D)) {
-////			camera.moveX(-1);
-//			cameraNoMouse.moveX(moveFactor*-1);
-//		}
-//		
-//		//control y, move up/down with "Q" and "E" keys
-//		if (checkKey(KeyEvent.VK_Q)) {
-//			cameraNoMouse.moveY(moveFactor);
-//
-//		} else if (checkKey(KeyEvent.VK_E)) {
-//			cameraNoMouse.moveY(moveFactor*-1);
-//		}
 	}
-
-	public void checkCamera() {
-	}
-
 
 	public void setPlayerAtStart() {
 		//camera.moveTo(start.getX(), start.getY()-15, start.getZ());
-//		camera.moveTo(350, 350, 50);
 		cameraNoMouse.moveTo(350, 350, 50);
-
-
 	}
 	
 	public void keyPressed(PApplet marker) {
-		//System.out.println("calling key pressed");
-
 		if (!checkKey(marker.keyCode))
 			keys.add(marker.keyCode);
 

@@ -17,26 +17,10 @@ public class Viewfinder {
 	}
 	
 	public void draw(PApplet marker) {
-		
-		//ratioX = (float)marker.width/marker.DRAWING_WIDTH;
-		//ratioY = (float)marker.height/this.DRAWING_HEIGHT;
-		
+				
 		//draw viewfinder
 		marker.pushMatrix();
-
 		
-//		surface.background(255);   // Clear the screen with a white background
-//		surface.stroke(0);     // Set line drawing color to white
-//		surface.noFill();
-//
-//		surface.rect(x,y,30,30);
-//		
-//		surface.fill(0);
-//		surface.text("Move: Arrow keys",10,30);
-//		surface.text("Menu: Space",10,50);
-		
-		
-		//marker.background(0,0,0);
 		marker.fill(0);
 		
 		//viewfinder black border
@@ -58,37 +42,17 @@ public class Viewfinder {
 		marker.text(str, button.x+button.width/2-w/2 - 5, button.y+button.height/2);
 		
 		marker.fill(255);
-		//marker.stroke(10);
 		marker.textSize(15);
 		String keyDefinitions = "Up/Down/Left/Right: WASD, Forward: Q, Back: E";
-		//marker.text(keyDefinitions, button.x+button.width/2-w/2 - 5, button.y+button.height/2);
 		marker.text(keyDefinitions, button.x, marker.height - 30);
-
 		
 		marker.popMatrix();
 	}
 	
-	public void mousePressed(DrawingSurface marker) {
-		System.out.println("calling mouse pressed from viewfinder");
-		
-//		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
+	public void mousePressed(DrawingSurface marker) {		
 		Point p = new Point(marker.mouseX,marker.mouseY);
-
-		System.out.println("point p from viewfinder: " + p);
 		if (button.contains(p)) {
-			System.out.println("buttons contains p in viewfinder");
-
 			marker.switchScreen(1);
-
 		}
 	}
-	
-	//TODO: THIS DOESN"T WORK!!
-//	public Point assumedCoordinatesToActual(Point assumed) {
-//		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
-//	}
-//
-//	public Point actualCoordinatesToAssumed(Point actual) {
-//		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
-//	}
 }

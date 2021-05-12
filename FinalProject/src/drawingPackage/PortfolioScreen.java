@@ -59,7 +59,7 @@ public class PortfolioScreen extends Screen {
 		marker.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
 		marker.fill(0);
 
-		String str = "Click me!";
+		String str = "Switch to Viewfinder World";
 		float w = marker.textWidth(str);
 		marker.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
 		
