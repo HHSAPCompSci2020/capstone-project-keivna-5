@@ -2,8 +2,8 @@ package portfolio;
 
 import java.util.ArrayList;
 
+import drawingPackage.Constants;
 import processing.core.PApplet;
-import processing.core.PGraphics;
 import processing.core.PImage;
 import worldSetting.Shutter;
 
@@ -14,13 +14,6 @@ public class Portfolio {
 		shutter = new Shutter();
 	}
 	
-//	public void setup(PApplet marker) {
-////		img = marker.loadImage("photo-0138.png");
-//		//pg = createGraphics(80, 80, processing.core.P2D);
-////		img = marker.loadImage("photo1.png");
-//
-//	}
-	
 	public void draw(PApplet marker) {
 		
 		ArrayList<PImage> images = Shutter.getallImages();
@@ -29,26 +22,14 @@ public class Portfolio {
 		//display images in row in portfolio
 		for (int i = 0; i < images.size(); i++) {
 			PImage img = images.get(i);
-			String name = i + ".png";
-			img = marker.loadImage(name);
+			//images name from shutter are in format "index.png"
+			img = marker.loadImage(i + ".png");
 			
-			img.copy(60, 60, marker.width-120, marker.height-120, 0, 0,  marker.width, marker.height);
+			//crop image to remove viewfinder
+			int a = (int) Constants.viewfinderIndent;
+			img.copy(a, a, marker.width-(2*a), marker.height-(2*a), 0, 0,  marker.width, marker.height);
 
 			marker.image(img, 100 + (marker.width/4*i), 100, marker.width/5, marker.height/5);
-
 		}
-		//int index = 0;
-		//PImage img0 = images.get(index);
-//		String name = img0.toString();
-		//String name = index + ".png";
-		//System.out.println("name of img0: " + name);
-		
-		
-//		img = marker.loadImage("photo-0138.png");
-		//img = marker.loadImage(name);
-
-//		marker.background(185, 230, 255);
-		//System.out.println("img: " + img.toString());
-//		marker.image(img, 100, 100, marker.width/5, marker.height/5);
 	}
 }

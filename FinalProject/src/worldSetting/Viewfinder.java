@@ -14,7 +14,9 @@ public class Viewfinder {
 	private Shutter shutter;
 
 	public Viewfinder() {
-		toggle = new Rectangle(25,25,120,20);
+//		toggle = new Rectangle(25,25,120,20);
+		toggle = new Rectangle(Constants.toggleX,Constants.toggleY,Constants.toggleWidth,Constants.toggleHeight);
+
 		shutterButton = new Rectangle(620, 30, 120, 30);
 //		button = new Rectangle(800/2-100,600/2-50,200,100);
 		shutter = new Shutter();
@@ -33,7 +35,7 @@ public class Viewfinder {
 
 		//toggle
 		marker.fill(225, 120, 120);
-		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, 10);
+		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, Constants.toggleRadius);
 		
 		//toggle text
 		marker.fill(0);

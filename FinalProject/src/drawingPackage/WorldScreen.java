@@ -22,7 +22,7 @@ public class WorldScreen extends Screen {
 
 
 	public WorldScreen() {
-		super(800,600);
+		super(Constants.screenWidth,Constants.screenHeight);
 
 		world = new World();
 		cameraNoMouse = new CameraNoMouse();
@@ -44,7 +44,7 @@ public class WorldScreen extends Screen {
 		cameraNoMouse.draw(marker);
 		
 		world.display(marker);
-		marker.popMatrix();
+		marker.popMatrix(); //get out of 3D world
 		
 		viewfinder.draw(marker);
 				
@@ -64,7 +64,6 @@ public class WorldScreen extends Screen {
 			cameraNoMouse.moveX(Constants.keyMoveFactor*-1);
 		}
 		//control y, move up/down with "Q" and "E" keys
-//		if (checkKey(KeyEvent.VK_Q)) {
 		if (checkKey(KeyEvent.VK_UP)) {
 			cameraNoMouse.moveZ(Constants.keyMoveFactor);
 

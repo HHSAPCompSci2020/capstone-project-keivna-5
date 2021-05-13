@@ -4,7 +4,12 @@ public class Constants {
 	//how much the viewfinder goes into the screen
 	public static final float viewfinderIndent = 60;
 	public static final int keyMoveFactor = 2;
-	
+	public static final int toggleX = 25;
+	public static final int toggleY = 25;
+	public static final int toggleWidth = 120;
+	public static final int toggleHeight = 30;
+	public static final int toggleRadius = 10;
+
 	
 	
 }

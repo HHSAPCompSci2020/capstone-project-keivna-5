@@ -13,14 +13,14 @@ import processing.core.PApplet;
 public class PortfolioScreen extends Screen {
 	
 	public float ratioX, ratioY;
-	private Rectangle button;
+	private Rectangle toggle;
 	private Portfolio portfolio;
 	
 	public PortfolioScreen() {
 		super(800,600);
 		
 		//button = new Rectangle(800/2-100,600/2-50,200,100);
-		button = new Rectangle(25,25,120,20);
+		toggle = new Rectangle(Constants.toggleX,Constants.toggleY,Constants.toggleWidth,Constants.toggleHeight);
 		portfolio = new Portfolio();
 	}
 	
@@ -36,13 +36,15 @@ public class PortfolioScreen extends Screen {
 
 		portfolio.draw(marker);
 		
-		marker.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
+		//toggle
+		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, Constants.toggleRadius);
+		
+		//toggle text
 		marker.fill(0);
 		marker.textSize(12);
-
 		String str = "Switch to Viewfinder";
 		float w = marker.textWidth(str);
-		marker.text(str, button.x+button.width/2-w/2 + 2, button.y+button.height/2 + 5);
+		marker.text(str, toggle.x+toggle.width/2-w/2 - 5, toggle.y+toggle.height/2);
 		
 		marker.popStyle();
 	}
@@ -50,7 +52,7 @@ public class PortfolioScreen extends Screen {
 	public void mousePressed(DrawingSurface marker) {
 		Point p = new Point(marker.mouseX,marker.mouseY);
 
-		if (button.contains(p)) {
+		if (toggle.contains(p)) {
 			marker.switchScreen(0);
 		}
 	}
