@@ -76,11 +76,12 @@ public class Viewfinder {
 		if (toggle.contains(p)) {
 			marker.switchScreen(1);
 		}
+		//CALLS THE WRONG THING!
 		if (shutterButton.contains(p)) {
 			System.out.println("shutter capture");
-			shutter.draw(marker);
+			//shutter.draw(marker);
 			//shutter.capture(marker);
-			PImage image = shutter.getScreenshot();
+			shutter.screenshot(marker);
 		}
 		
 	}
