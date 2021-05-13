@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.awt.Robot;
 import java.util.ArrayList;
 
+import drawingPackage.Constants;
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
@@ -43,7 +44,7 @@ public class Shutter {
 	public static void screenshot(PApplet marker) {
 		try {
 			Robot robot = new Robot();
-			PImage screenshot = new PImage(robot.createScreenCapture(new Rectangle(0,0,1920, 1080)));
+			PImage screenshot = new PImage(robot.createScreenCapture(new Rectangle((int)Constants.viewfinderIndent,(int)Constants.viewfinderIndent,marker.width - (int)Constants.viewfinderIndent, marker.height - (int)Constants.viewfinderIndent)));
 			images.add(screenshot);
 			System.out.println("adding this image: " + screenshot);
 			

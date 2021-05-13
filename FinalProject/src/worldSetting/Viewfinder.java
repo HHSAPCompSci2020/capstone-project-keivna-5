@@ -3,6 +3,7 @@ package worldSetting;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import drawingPackage.Constants;
 import drawingPackage.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -34,10 +35,10 @@ public class Viewfinder {
 		
 		//viewfinder black border
 		marker.strokeWeight(0);
-		marker.rect(0, 0, marker.width, 60); //top
-		marker.rect(0, 0, 60, marker.height); //left
-		marker.rect(marker.width - 60, 0, 60, marker.height); //right
-		marker.rect(0, marker.height - 60, marker.width, 60); //bottom
+		marker.rect(0, 0, marker.width, Constants.viewfinderIndent); //top
+		marker.rect(0, 0, Constants.viewfinderIndent, marker.height); //left
+		marker.rect(marker.width - Constants.viewfinderIndent, 0, Constants.viewfinderIndent, marker.height); //right
+		marker.rect(0, marker.height - Constants.viewfinderIndent, marker.width, Constants.viewfinderIndent); //bottom
 
 		//toggle
 		marker.fill(225, 120, 120);
