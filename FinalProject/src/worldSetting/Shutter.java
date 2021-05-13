@@ -44,6 +44,7 @@ public class Shutter {
 	public static void screenshot(PApplet marker) {
 		try {
 			Robot robot = new Robot();
+			//FIX THIS!
 			PImage screenshot = new PImage(robot.createScreenCapture(new Rectangle((int)Constants.viewfinderIndent,(int)Constants.viewfinderIndent,marker.width - (int)Constants.viewfinderIndent, marker.height - (int)Constants.viewfinderIndent)));
 			images.add(screenshot);
 			System.out.println("adding this image: " + screenshot);

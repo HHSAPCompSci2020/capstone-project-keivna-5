@@ -53,17 +53,25 @@ public class WorldScreen extends Screen {
 		
 		//control z, move forward/back
 		if (checkKey(KeyEvent.VK_W)) {
-			cameraNoMouse.moveY(moveFactor);
-		} else if (checkKey(KeyEvent.VK_S)) {
+//			cameraNoMouse.moveY(moveFactor);
 			cameraNoMouse.moveY(moveFactor*-1);
+
+		} else if (checkKey(KeyEvent.VK_S)) {
+//			cameraNoMouse.moveY(moveFactor*-1);
+			cameraNoMouse.moveY(moveFactor);
+
 		}
 		
 		//control x, move left/right
 		if (checkKey(KeyEvent.VK_A)) {
-			cameraNoMouse.moveX(moveFactor*-1);
+//			cameraNoMouse.moveX(moveFactor*-1);
+			cameraNoMouse.moveX(moveFactor);
+
 
 		} else if (checkKey(KeyEvent.VK_D)) {
-			cameraNoMouse.moveX(moveFactor);
+//			cameraNoMouse.moveX(moveFactor);
+			cameraNoMouse.moveX(moveFactor*-1);
+
 		}
 		
 		//control y, move up/down with "Q" and "E" keys
