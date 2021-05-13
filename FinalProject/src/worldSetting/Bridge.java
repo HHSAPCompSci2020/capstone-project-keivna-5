@@ -4,30 +4,33 @@ import processing.core.PApplet;
 
 public class Bridge extends Element{
 	
-	private int numCords;
-	
 	private final int[] METAL_COLOR = new int[] {160, 50, 50};
 	private final int[] ROAD_COLOR = new int[] {110, 120, 120};
+	
+	private int numCords;
+	private float bridgeLength;
+	private float bridgeHeight;
 
 	// the point that gets passed in should be starting point of the base of the bridge
+	// size represents the width of the bridge
 	public Bridge(float x, float y, float z, float size) {
 		super(x, y, z, size);
 		
 		numCords = 20;
+		bridgeLength = size * 10;
+		bridgeHeight = size / 5;
 	}
 	
 	public void display(PApplet g) {	
-		// draws the base
 		g.pushMatrix();
+		
 		drawDeck(g);
-		// draws 2 towers
 		drawTower(g);
 		drawTower(g);
-		// draws the suspension cords
 		for (int i = 0; i < numCords; i++) {
 			drawSuspensionCord(g);
-		}
 			// which draws the supports
+		}
 		
 		g.popMatrix();
 	}
@@ -35,25 +38,35 @@ public class Bridge extends Element{
 	//draw physical components:
 	
 	private void drawDeck(PApplet g) {
-		// one Rectangular red prism
-		int x0 = (int) getX();
-		int y0 = (int) getY();
-		int z0 = (int) getZ();
+		float sideHeight = bridgeHeight / 2;
 		
+		//one red rect prism underneath grey prism
 		g.pushMatrix();
-		g.translate(x0, y0, z0);
+		g.translate(getX(), getY(), getZ());
 		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
-		g.box(getSize() * 10, getSize() / 5, getSize());
+		g.box(bridgeLength, bridgeHeight, getSize());
 		g.popMatrix();
 		
 		// one grey rect prism
 		g.pushMatrix();
-		g.translate(x0, y0 - (getSize() / 10), z0);
+		g.translate(getX(), getY() - (sideHeight), getZ());
 		g.fill(ROAD_COLOR[0], ROAD_COLOR[1], ROAD_COLOR[2]);
-		g.box(getSize() * 10, getSize() / 5, getSize());
+		g.box(bridgeLength, bridgeHeight, getSize());
 		g.popMatrix();
-		// one red rect prism
-		//one red rect prism underneath grey prism
+		
+		// two red rect prisms to the left and right
+		g.pushMatrix();
+		g.translate(getX(), getY() - sideHeight, getZ() - (int) (bridgeHeight * 2.5));
+		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
+		g.box(bridgeLength, bridgeHeight * 2, sideHeight);
+		g.popMatrix();
+		
+		g.pushMatrix();
+		g.translate(getX(), getY() - sideHeight, getZ() + (int) (bridgeHeight * 2.5));
+		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
+		g.box(bridgeLength, bridgeHeight * 2, sideHeight);
+		g.popMatrix();
+		
 	}
 	
 	private void drawTower(PApplet g) {
