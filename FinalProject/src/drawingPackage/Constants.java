@@ -7,9 +7,11 @@ public class Constants {
 	public static final int toggleX = 25;
 	public static final int toggleY = 25;
 	public static final int toggleWidth = 120;
-	public static final int toggleHeight = 30;
+	public static final int toggleHeight = 20;
 	public static final int toggleRadius = 10;
 
-	
+	public static final int screenWidth = 800;
+	public static final int screenHeight = 600;
+
 	
 }

@@ -17,9 +17,7 @@ public class PortfolioScreen extends Screen {
 	private Portfolio portfolio;
 	
 	public PortfolioScreen() {
-		super(800,600);
-		
-		//button = new Rectangle(800/2-100,600/2-50,200,100);
+		super(Constants.screenWidth,Constants.screenHeight);
 		toggle = new Rectangle(Constants.toggleX,Constants.toggleY,Constants.toggleWidth,Constants.toggleHeight);
 		portfolio = new Portfolio();
 	}
