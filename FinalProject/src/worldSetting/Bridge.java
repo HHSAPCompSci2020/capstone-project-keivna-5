@@ -7,9 +7,11 @@ public class Bridge extends Element{
 	private final int[] METAL_COLOR = new int[] {160, 50, 50};
 	private final int[] ROAD_COLOR = new int[] {110, 120, 120};
 	
-	private int numCords;
 	private float bridgeLength;
 	private float bridgeHeight;
+	
+	private int towerHeightInNs = 4;
+	private int numCords;
 
 	// the point that gets passed in should be starting point of the base of the bridge
 	// size represents the width of the bridge
@@ -38,14 +40,14 @@ public class Bridge extends Element{
 	//draw physical components:
 	
 	private void drawDeck(PApplet g) {
-		float sideHeight = bridgeHeight / 2;
-		
 		//one red rect prism underneath grey prism
 		g.pushMatrix();
 		g.translate(getX(), getY(), getZ());
 		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
 		g.box(bridgeLength, bridgeHeight, getSize());
 		g.popMatrix();
+		
+		float sideHeight = bridgeHeight / 2;
 		
 		// one grey rect prism
 		g.pushMatrix();
@@ -70,12 +72,16 @@ public class Bridge extends Element{
 	}
 	
 	private void drawTower(PApplet g) {
-		// stack of n shaped objects
-		// decreasing in height
-		// each n made of
-		// vertical rectangular prism
-		// horizontal rectangular prism
+		// stack of n shaped objects, decreasing in height, each n made of, vertical rectangular prism, horizontal rectangular prism
 		// same size v rect prism, just at the end of h prism
+		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
+		int levelHeight = 50;
+		for(int i = towerHeightInNs; i > 0; i--) {
+			g.pushMatrix();
+			g.translate(getX() + (bridgeLength / 6), getY() - (levelHeight * i) - (bridgeHeight * i), getZ() + (int) (bridgeHeight * 2.5));
+			g.box(bridgeHeight, levelHeight * (i == 0 ? 1 : i), (bridgeHeight / 2) - ((i == 0 ? 1 : i)*2));
+			g.popMatrix();
+		}
 	}
 	
 	private void drawSuspensionCord(PApplet g) {
