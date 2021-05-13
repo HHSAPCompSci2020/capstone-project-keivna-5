@@ -16,21 +16,12 @@ public class Viewfinder {
 	public Viewfinder() {
 		toggle = new Rectangle(25,25,120,20);
 		shutterButton = new Rectangle(620, 30, 120, 30);
-
+//		button = new Rectangle(800/2-100,600/2-50,200,100);
 		shutter = new Shutter();
 	}
 	
-	public void draw(PApplet marker) {
-		//Rectangle toggle, shutterButton;
-		
-//		button = new Rectangle(800/2-100,600/2-50,200,100);
-
-		//toggle = new Rectangle(25,25,120,20);
-		//shutterButton = new Rectangle(marker.width - 180, 30, 120, 30);
-		
-		//draw viewfinder
-		marker.pushMatrix();
-		
+	public void draw(PApplet marker) {		
+		marker.pushMatrix();		
 		marker.fill(0);
 		
 		//viewfinder black border
@@ -47,7 +38,6 @@ public class Viewfinder {
 		//toggle text
 		marker.fill(0);
 		marker.textSize(12);
-
 		String str = "Switch to Portfolio";
 		float w = marker.textWidth(str);
 		marker.text(str, toggle.x+toggle.width/2-w/2 - 5, toggle.y+toggle.height/2);
@@ -61,7 +51,6 @@ public class Viewfinder {
 		String shutterStr = "Shutter";
 		//float w = marker.textWidth(str);
 		marker.text(shutterStr, shutterButton.x + 5, shutterButton.y + 15);
-		
 		
 		//key instruction text
 		marker.fill(255);
@@ -77,13 +66,8 @@ public class Viewfinder {
 		if (toggle.contains(p)) {
 			marker.switchScreen(1);
 		}
-		//CALLS THE WRONG THING!
 		if (shutterButton.contains(p)) {
-			System.out.println("shutter capture");
-			//shutter.draw(marker);
-			//shutter.capture(marker);
 			shutter.screenshot(marker);
 		}
-		
 	}
 }

@@ -28,9 +28,7 @@ public class PortfolioScreen extends Screen {
 		
 		ratioX = (float)marker.width/this.DRAWING_WIDTH;
 		ratioY = (float)marker.height/this.DRAWING_HEIGHT;
-		
-		// Draw stuff
-		
+				
 		marker.pushStyle();
 		
 		marker.background(0,0,0);
@@ -50,19 +48,10 @@ public class PortfolioScreen extends Screen {
 	}
 	
 	public void mousePressed(DrawingSurface marker) {
-//		Point p = actualCoordinatesToAssumed(new Point(marker.mouseX,marker.mouseY));
 		Point p = new Point(marker.mouseX,marker.mouseY);
 
 		if (button.contains(p)) {
 			marker.switchScreen(0);
 		}
 	}
-	
-//	public Point assumedCoordinatesToActual(Point assumed) {
-//		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
-//	}
-//
-//	public Point actualCoordinatesToAssumed(Point actual) {
-//		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
-//	}
 }

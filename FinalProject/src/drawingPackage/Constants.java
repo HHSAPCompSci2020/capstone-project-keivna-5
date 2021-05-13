@@ -5,4 +5,6 @@ public class Constants {
 	public static final float viewfinderIndent = 60;
 	public static final int keyMoveFactor = 2;
 	
+	
+	
 }
