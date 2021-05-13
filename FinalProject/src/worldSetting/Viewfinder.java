@@ -66,7 +66,7 @@ public class Viewfinder {
 		//key instruction text
 		marker.fill(255);
 		marker.textSize(15);
-		String keyDefinitions = "Up/Down/Left/Right: WASD, Forward: Q, Back: E";
+		String keyDefinitions = "Up/Down/Left/Right: WASD, Forward: UP, Back: DOWN";
 		marker.text(keyDefinitions, toggle.x, marker.height - 30);
 		
 		marker.popMatrix();

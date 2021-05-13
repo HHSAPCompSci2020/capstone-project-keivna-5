@@ -47,39 +47,30 @@ public class WorldScreen extends Screen {
 		marker.popMatrix();
 		
 		viewfinder.draw(marker);
-		
-
-		int moveFactor = 2;
-		
+				
 		//control z, move forward/back
 		if (checkKey(KeyEvent.VK_W)) {
-//			cameraNoMouse.moveY(moveFactor);
-			cameraNoMouse.moveY(moveFactor*-1);
+			cameraNoMouse.moveY(Constants.keyMoveFactor*-1);
 
 		} else if (checkKey(KeyEvent.VK_S)) {
-//			cameraNoMouse.moveY(moveFactor*-1);
-			cameraNoMouse.moveY(moveFactor);
-
+			cameraNoMouse.moveY(Constants.keyMoveFactor);
 		}
-		
 		//control x, move left/right
 		if (checkKey(KeyEvent.VK_A)) {
-//			cameraNoMouse.moveX(moveFactor*-1);
-			cameraNoMouse.moveX(moveFactor);
+			cameraNoMouse.moveX(Constants.keyMoveFactor);
 
 
 		} else if (checkKey(KeyEvent.VK_D)) {
-//			cameraNoMouse.moveX(moveFactor);
-			cameraNoMouse.moveX(moveFactor*-1);
-
+			cameraNoMouse.moveX(Constants.keyMoveFactor*-1);
 		}
-		
 		//control y, move up/down with "Q" and "E" keys
-		if (checkKey(KeyEvent.VK_Q)) {
-			cameraNoMouse.moveZ(moveFactor);
+//		if (checkKey(KeyEvent.VK_Q)) {
+		if (checkKey(KeyEvent.VK_UP)) {
+			cameraNoMouse.moveZ(Constants.keyMoveFactor);
 
-		} else if (checkKey(KeyEvent.VK_E)) {
-			cameraNoMouse.moveZ(moveFactor*-1);
+		} else if (checkKey(KeyEvent.VK_DOWN)) {
+		
+			cameraNoMouse.moveZ(Constants.keyMoveFactor*-1);
 		}
 	}
 
