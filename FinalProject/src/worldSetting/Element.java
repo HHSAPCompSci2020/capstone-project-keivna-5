@@ -2,11 +2,23 @@ package worldSetting;
 
 import processing.core.*;
 
+/**
+ * represents a simple 3D element
+ * @author katia
+ *
+ */
 public class Element {
 	private float x, y, z, size;
 	private int[] fillColor;
 	
-	//for now just draws a block
+	/**
+	 * initializes element fields
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param size
+	 * @param fillColor
+	 */
 	public Element(float x, float y, float z, float size, int[] fillColor) {
 		this.x = x;
 		this.y = y;
@@ -15,6 +27,13 @@ public class Element {
 		this.fillColor = fillColor;
 	}
 	
+	/**
+	 * initializes fields
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param size
+	 */
 	public Element(float x, float y, float z, float size) {
 		this.x = x;
 		this.y = y;
@@ -23,6 +42,12 @@ public class Element {
 		fillColor = new int[] {200, 140, 230};
 	}
 
+	/**
+	 * draws a simple box
+	 * @param g
+	 * @pre PApplet g is not null
+	 * @post PApplet g is modified
+	 */
 	public void display(PApplet g) {
 		g.pushMatrix();
 		g.translate(x, y, z);
@@ -31,16 +56,34 @@ public class Element {
 		g.popMatrix();
 	}
 
+	/**
+	 * @return X
+	 */
 	public float getX() { return x; }
 
+	/**
+	 * @return Y
+	 */
 	public float getY() { return y; }
 
+	/**
+	 * @return Z
+	 */
 	public float getZ() { return z; }
 
+	/**
+	 * @return size
+	 */
 	public float getSize() { return size; }
 	
+	/**
+	 * @return fillColor
+	 */
 	public int[] getFillColor() { return fillColor; }
 	
-	public void setFillColor(int[] newColor) { fillColor = newColor;}
-	
+	/**
+	 * sets fillColor to param
+	 * @param newColor
+	 */
+	public void setFillColor(int[] newColor) { fillColor = newColor;}	
 }
