@@ -14,6 +14,7 @@ import processing.core.PImage;
 public class Viewfinder {
 	private Rectangle toggle, shutterButton;
 	private Shutter shutter;
+	
 	/**
 	 * Represents the ratios for the size of the screen
 	 */

@@ -1,9 +1,14 @@
 package drawingPackage;
-import java.awt.Point;
+
 import java.awt.event.MouseEvent;
 
 import processing.core.PApplet;
 
+/**
+ * Creates the skeleton of the screens
+ * @author Katia and Elise
+ *
+ */
 public abstract class Screen {
 
 	public final int DRAWING_WIDTH, DRAWING_HEIGHT;

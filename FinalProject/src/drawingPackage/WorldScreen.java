@@ -2,7 +2,6 @@ package drawingPackage;
 
 import processing.core.*;
 
-
 import worldSetting.CameraNoMouse;
 import worldSetting.Viewfinder;
 import worldSetting.World;

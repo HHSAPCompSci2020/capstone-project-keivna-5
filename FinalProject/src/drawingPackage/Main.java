@@ -2,6 +2,11 @@ package drawingPackage;
 
 import processing.core.*;
 
+/**
+ * Main class that should be running
+ * @author Katia and Elise
+ *
+ */
 public class Main{
 
 	/**
