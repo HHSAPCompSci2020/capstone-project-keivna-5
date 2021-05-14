@@ -119,17 +119,18 @@ public class CameraNoMouse {
 		// how you moved so you need to take into account position
 		center = PVector.add(position, forward);
 		g.camera(position.x, position.y, position.z, center.x, center.y, center.z, 0, 1, 0);
-	}
 
 	}
 
-	public float getViewDistance() {
-		return viewDistance;
+	public float getViewDistance() { return viewDistance; }
 
-	public void setViewDistance(float f) {
-		viewDistance = f;
-	}
+	public void setViewDistance(float f) { viewDistance = f; }
 
+	public void moveX(int dir) { velocity.add(PVector.mult(right, speed * dir)); }
+
+	public void moveZ(int dir) { velocity.add(PVector.mult(forward, speed * dir)); }
+
+	public void moveY(int dir) { velocity.add(PVector.mult(up, speed * dir)); }
 	
 	/**
 	 * Gets the position of the camera
@@ -148,12 +149,6 @@ public class CameraNoMouse {
 //	public float getPan() { return pan; }
 //
 //	public float getTilt() { return tilt; }
-//
-//	public void moveX(int dir) { velocity.add(PVector.mult(right, speed * dir)); }
-//
-//	public void moveZ(int dir) { velocity.add(PVector.mult(forward, speed * dir)); }
-//
-//	public void moveY(int dir) { velocity.add(PVector.mult(up, speed * dir)); }
 //
 //	public float getFOV() { return fov; }
 //
