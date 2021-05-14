@@ -9,19 +9,32 @@ import java.awt.event.*;
 import portfolio.Portfolio;
 import processing.core.PApplet;
 
-
+/**
+ * The Screen that draws the Portfolio and implements all other user interactions
+ * @author elise
+ */
 public class PortfolioScreen extends Screen {
 	
 	public float ratioX, ratioY;
 	private Rectangle toggle;
 	private Portfolio portfolio;
 	
+	/**
+	 * PortfolioScreen constructor
+	 * Initializes all fields
+	 */
 	public PortfolioScreen() {
 		super(Constants.screenWidth,Constants.screenHeight);
 		toggle = new Rectangle(Constants.toggleX,Constants.toggleY,Constants.toggleWidth,Constants.toggleHeight);
 		portfolio = new Portfolio();
 	}
 	
+	/**
+	 * Draws a portfolio of photos as well as interaction keys
+	 * @param marker
+	 * @pre PApplet marker cannot be null
+	 * @post the PApplet parameter is changed
+	 */
 	public void draw(PApplet marker) {
 		
 		ratioX = (float)marker.width/this.DRAWING_WIDTH;
@@ -57,6 +70,10 @@ public class PortfolioScreen extends Screen {
 				
 	}
 	
+	/**
+	 * Checks if the toggle has been pressed and switches screen through the DrawingSurface
+	 * @pre DrawingSurface marker cannot be null
+	 */
 	public void mousePressed(DrawingSurface marker) {
 		Point p = new Point(marker.mouseX,marker.mouseY);
 

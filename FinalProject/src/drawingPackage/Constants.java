@@ -1,5 +1,9 @@
 package drawingPackage;
 
+/**
+ * Represents the Constants class, only contains public static final variables
+ * @author elise
+ */
 public class Constants {
 	//how much the viewfinder goes into the screen
 	public static final float viewfinderIndent = 60;

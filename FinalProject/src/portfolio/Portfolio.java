@@ -7,8 +7,18 @@ import processing.core.PApplet;
 import processing.core.PImage;
 import worldSetting.Shutter;
 
+/**
+ * Represents the portfolio itself
+ * @author elise
+ */
 public class Portfolio {
 
+	/**
+	 * Draws a grid of photos from all of the photos captured in the viewfinder world
+	 * @param marker
+	 * @pre PApplet marker cannot be null
+	 * @post the PApplet parameter is changed
+	 */
 	public void draw(PApplet marker) {
 		ArrayList<PImage> images = Shutter.getallImages();
 		marker.background(255);
