@@ -31,7 +31,7 @@ public class Portfolio {
 			img = marker.loadImage(i + ".png");
 
 			//crop image to remove viewfinder
-			int a = (int) Constants.viewfinderIndent;
+			int a = 60; //viewfinder indent
 			img.copy(a, a, marker.width-(2*a), marker.height-(2*a), 0, 0,  marker.width, marker.height);
 
 

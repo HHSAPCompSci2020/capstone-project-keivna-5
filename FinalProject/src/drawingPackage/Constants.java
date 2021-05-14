@@ -1,13 +1,13 @@
 package drawingPackage;
 
 /**
- * Represents the Constants class, only contains public static final variables
+ * Represents the Constants class, only contains public static final 
  * @author elise
  */
 public class Constants {
 	//how much the viewfinder goes into the screen
-	public static final float viewfinderIndent = 60;
-	public static final int keyMoveFactor = 2;
+	//public static final float viewfinderIndent = 60;
+//	public static final int keyMoveFactor = 2;
 	public static final int toggleX = 25;
 	public static final int toggleY = 25;
 	public static final int toggleWidth = 120;

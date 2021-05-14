@@ -16,7 +16,7 @@ public class Viewfinder {
 	private Rectangle toggle, shutterButton;
 	public float ratioX, ratioY;
 	private Shutter shutter;
-
+	public static final float viewfinderIndent = 60;
 	/**
 	 * initializes fields
 	 */
@@ -38,10 +38,10 @@ public class Viewfinder {
 		
 		//viewfinder black border
 		marker.strokeWeight(0);
-		marker.rect(0, 0, marker.width, Constants.viewfinderIndent); //top
-		marker.rect(0, 0, Constants.viewfinderIndent, marker.height); //left
-		marker.rect(marker.width - Constants.viewfinderIndent, 0, Constants.viewfinderIndent, marker.height); //right
-		marker.rect(0, marker.height - Constants.viewfinderIndent, marker.width, Constants.viewfinderIndent); //bottom
+		marker.rect(0, 0, marker.width, viewfinderIndent); //top
+		marker.rect(0, 0, viewfinderIndent, marker.height); //left
+		marker.rect(marker.width - viewfinderIndent, 0,viewfinderIndent, marker.height); //right
+		marker.rect(0, marker.height - viewfinderIndent, marker.width, viewfinderIndent); //bottom
 
 		//toggle
 		marker.fill(225, 120, 120);
