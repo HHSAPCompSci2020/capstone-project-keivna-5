@@ -8,8 +8,8 @@ import processing.core.*;
  * @author Katia and Elise
  *
  */
-public class World { //build water, bridge, background
-
+public class World { 
+	
 	private int[] sky;
 	private Water water;
 	private Bridge bridge;
