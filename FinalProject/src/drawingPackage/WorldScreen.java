@@ -23,7 +23,7 @@ public class WorldScreen extends Screen {
 		super(screenWidth, screenHeight);
 
 		world = new World(marker);
-		cameraNoMouse = new CameraNoMouse();
+		cameraNoMouse = new CameraNoMouse(1, .75f, PConstants.PI / 3f, 60f);
 		viewfinder = new Viewfinder();
 		keys = new ArrayList<Integer>();
 	}
