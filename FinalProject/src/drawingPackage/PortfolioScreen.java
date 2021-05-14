@@ -18,14 +18,17 @@ public class PortfolioScreen extends Screen {
 	public float ratioX, ratioY;
 	private Rectangle toggle;
 	private Portfolio portfolio;
-	
+	public static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20;
+
+
+
 	/**
 	 * PortfolioScreen constructor
 	 * Initializes all fields
 	 */
 	public PortfolioScreen() {
 		super(Constants.screenWidth,Constants.screenHeight);
-		toggle = new Rectangle(Constants.toggleX,Constants.toggleY,Constants.toggleWidth,Constants.toggleHeight);
+		toggle = new Rectangle(toggleX, toggleY, toggleWidth, toggleHeight);
 		portfolio = new Portfolio();
 	}
 	

@@ -17,11 +17,14 @@ public class Viewfinder {
 	public float ratioX, ratioY;
 	private Shutter shutter;
 	public static final float viewfinderIndent = 60;
+	public static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20;
+
+
 	/**
 	 * initializes fields
 	 */
 	public Viewfinder() {
-		toggle = new Rectangle(Constants.toggleX,Constants.toggleY,Constants.toggleWidth,Constants.toggleHeight);
+		toggle = new Rectangle(toggleX,toggleY, toggleWidth, toggleHeight);
 		shutterButton = new Rectangle(620, 30, 120, 30);
 		shutter = new Shutter();		
 	}

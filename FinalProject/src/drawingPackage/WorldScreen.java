@@ -16,7 +16,7 @@ public class WorldScreen extends Screen {
 	private World world;
 	private Viewfinder viewfinder;
 	public float ratioX, ratioY;
-
+	public static final int keyMoveFactor = 2;
 
 	public WorldScreen(PApplet marker) {
 		super(Constants.screenWidth,Constants.screenHeight);
@@ -47,26 +47,26 @@ public class WorldScreen extends Screen {
 				
 		//control z, move forward/back
 		if (checkKey(KeyEvent.VK_W)) {
-			cameraNoMouse.moveY(Constants.keyMoveFactor*-1);
+			cameraNoMouse.moveY(keyMoveFactor*-1);
 
 		} else if (checkKey(KeyEvent.VK_S)) {
-			cameraNoMouse.moveY(Constants.keyMoveFactor);
+			cameraNoMouse.moveY(keyMoveFactor);
 		}
 		//control x, move left/right
 		if (checkKey(KeyEvent.VK_A)) {
-			cameraNoMouse.moveX(Constants.keyMoveFactor);
+			cameraNoMouse.moveX(keyMoveFactor);
 
 
 		} else if (checkKey(KeyEvent.VK_D)) {
-			cameraNoMouse.moveX(Constants.keyMoveFactor*-1);
+			cameraNoMouse.moveX(keyMoveFactor*-1);
 		}
 		//control y, move up/down with "Q" and "E" keys
 		if (checkKey(KeyEvent.VK_UP)) {
-			cameraNoMouse.moveZ(Constants.keyMoveFactor);
+			cameraNoMouse.moveZ(keyMoveFactor);
 
 		} else if (checkKey(KeyEvent.VK_DOWN)) {
 		
-			cameraNoMouse.moveZ(Constants.keyMoveFactor*-1);
+			cameraNoMouse.moveZ(keyMoveFactor*-1);
 		}
 	}
 
