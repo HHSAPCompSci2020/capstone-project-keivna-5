@@ -9,16 +9,39 @@ import worldSetting.World;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+/**
+ * Creates all the elements that pertain with using the world
+ * @author Katia and Elise
+ *
+ */
 public class WorldScreen extends Screen {
 
 	private ArrayList<Integer> keys;
 	private CameraNoMouse cameraNoMouse;
 	private World world;
 	private Viewfinder viewfinder;
+	
+	/**
+	 * Ration of the screen
+	 */
 	public float ratioX, ratioY;
+	
+	/**
+	 * The constant for the speed at which movement should occur
+	 */
 	public static final int keyMoveFactor = 2;
+	
+	/**
+	 * The constants for the size of the screen
+	 */
 	public static final int screenWidth = 800, screenHeight = 600;
 
+	/**
+	 * Sets up the world, camera, viewfinder, and keys arraylist
+	 * sets the size of the screen too
+	 * @param marker the PApplet that is shared
+	 * @pre marker can't be null
+	 */
 	public WorldScreen(PApplet marker) {
 		super(screenWidth, screenHeight);
 
@@ -28,9 +51,13 @@ public class WorldScreen extends Screen {
 		keys = new ArrayList<Integer>();
 	}
 
-	//TODO: draw world + menu + tabs here
+	/**
+	 * Draws the world and viewfinder and catches key presses
+	 * @param marker PApplet that is shared
+	 * @pre marker can't be null
+	 * @post changes the PApplet
+	 */
 	public void draw(PApplet marker) {
-
 		ratioX = (float)marker.width/this.DRAWING_WIDTH;
 		ratioY = (float)marker.height/this.DRAWING_HEIGHT;
 
@@ -40,7 +67,6 @@ public class WorldScreen extends Screen {
 		//3D aspects
 		marker.pushMatrix();
 		cameraNoMouse.draw(marker);
-		
 		world.display(marker);
 		marker.popMatrix(); //get out of 3D world
 		
@@ -49,24 +75,21 @@ public class WorldScreen extends Screen {
 		//control z, move forward/back
 		if (checkKey(KeyEvent.VK_W)) {
 			cameraNoMouse.moveY(keyMoveFactor*-1);
-
 		} else if (checkKey(KeyEvent.VK_S)) {
 			cameraNoMouse.moveY(keyMoveFactor);
 		}
+		
 		//control x, move left/right
 		if (checkKey(KeyEvent.VK_A)) {
 			cameraNoMouse.moveX(keyMoveFactor);
-
-
 		} else if (checkKey(KeyEvent.VK_D)) {
 			cameraNoMouse.moveX(keyMoveFactor*-1);
 		}
+		
 		//control y, move up/down with "Q" and "E" keys
 		if (checkKey(KeyEvent.VK_UP)) {
 			cameraNoMouse.moveZ(keyMoveFactor);
-
 		} else if (checkKey(KeyEvent.VK_DOWN)) {
-		
 			cameraNoMouse.moveZ(keyMoveFactor*-1);
 		}
 		
@@ -76,38 +99,62 @@ public class WorldScreen extends Screen {
 		} else if (checkKey(KeyEvent.VK_RIGHT)) {
 			cameraNoMouse.setPan(cameraNoMouse.getPan() - marker.QUARTER_PI / 180 * keyMoveFactor);
 		}
-//		System.out.print("x: " + getX() + ", y: " + getY() + ", z: " + getZ());
 	}
 
+	/**
+	 * Sets the position of the camera to be in a certain spot and spun a certain amount
+	 * @param marker
+	 * @pre marker can't be null
+	 * @post changes the camera's position and pan
+	 */
 	public void setCameraAtStart(PApplet marker) {
 		cameraNoMouse.moveTo(-350, -700, 700);
 		cameraNoMouse.setPan(marker.QUARTER_PI * 7);
 	}
 	
+	/**
+	 * Adds the key that is being pressed to the key array list
+	 * @param marker the PApplet that is shared
+	 * @pre marker can't be null
+	 */
 	public void keyPressed(PApplet marker) {
 		if (!checkKey(marker.keyCode))
 			keys.add(marker.keyCode);
-
-		//		if (checkKey(KeyEvent.VK_SPACE))
-		//			camera.jump();
 	}
 
-	// Removes key from array list
+	/**
+	 * Removes key from array list
+	 * @param marker the PApplet that is shared
+	 * @pre marker can't be null
+	 */
 	public void keyReleased(PApplet marker) {
 		while (checkKey(marker.keyCode))
 			keys.remove(new Integer(marker.keyCode));
 	}
 
-	// Checks if given key code is in the array list
+	/** 
+	 * Checks if given key code is in the array list
+	 * @param i index of the key
+	 * @return whether it is in the array list
+	 */
 	public boolean checkKey(int i) {
 		return keys.contains(i);
 	}
 
+	/**
+	 * Checks to see if a key has been pressed
+	 * @param code The code for the key clicked
+	 * @return whether the keyboard button has been clicked
+	 */
 	public boolean isPressed(Integer code) {
 		return keys.contains(code);
 	}
 
-	//calls viewfinder for tab switching
+	/**
+	 * Calls ViewFinder for tab switching
+	 * @param marker the DrawingSurface
+	 * @pre marker can't be null
+	 */
 	public void mousePressed(DrawingSurface marker) {
 		viewfinder.mousePressed(marker);
 	}
