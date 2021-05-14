@@ -42,9 +42,9 @@ import processing.core.*;
  */
 public class CameraNoMouse {
 
-	private PVector center, forward, position, velocity;
+	private PVector center, right, forward, up, position, velocity;
 
-	private float pan, tilt, fov, viewDistance, friction;
+	private float pan, tilt, fov, viewDistance, speed, friction;
 	private Point mouse, pMouse;
 
 	/**
@@ -55,11 +55,15 @@ public class CameraNoMouse {
 	 * @param viewDistance Not sure
 	 */
 	public CameraNoMouse(float speed, float friction, float fov, float viewDistance) {
+		this.speed = speed;
 		this.friction = friction;
 		this.fov = fov;
 		this.viewDistance = viewDistance;
 
 		position = new PVector(0f, 0f, 0f);
+		right = new PVector(1f, 0f, 0f);
+		up = new PVector(0f, 1f, 0f);
+
 		forward = new PVector(0f, 0f, 1f);
 		velocity = new PVector(0f, 0f, 0f);
 
@@ -103,18 +107,30 @@ public class CameraNoMouse {
 		// make it a unit vector because the direction is all that matters
 		forward.normalize();
 
+		// subtract pi/2 from pan to get the vector perpendicular to forward to show
+		// which way is right
+		right = new PVector(PApplet.cos(pan - PConstants.PI / 2), 0, PApplet.sin(pan - PConstants.PI / 2));
+
 		// account for friction
 		velocity.mult(friction);
-		
 		// use velocity to find out location of new position
 		position.add(velocity);
-		
 		// center of the sketch is in the direction of forward but translated based on
 		// how you moved so you need to take into account position
 		center = PVector.add(position, forward);
 		g.camera(position.x, position.y, position.z, center.x, center.y, center.z, 0, 1, 0);
 	}
 
+	}
+
+	public float getViewDistance() {
+		return viewDistance;
+
+	public void setViewDistance(float f) {
+		viewDistance = f;
+	}
+
+	
 	/**
 	 * Gets the position of the camera
 	 * @return the x, y and z position of the camera
