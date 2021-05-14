@@ -15,10 +15,8 @@ import processing.core.PVector;
  *
  */
 public class Shutter {
-	boolean smoothOn;
-	int x,y;
-	PVector screen;
-	
+	//boolean smoothOn;
+	//int x,y;	
 	static ArrayList<PImage> images;
 	
 	/**
