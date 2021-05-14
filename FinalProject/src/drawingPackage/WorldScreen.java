@@ -69,11 +69,19 @@ public class WorldScreen extends Screen {
 		
 			cameraNoMouse.moveZ(keyMoveFactor*-1);
 		}
+		
+		//control y, move up/down with "Q" and "E" keys
+		if (checkKey(KeyEvent.VK_LEFT)) {
+			cameraNoMouse.setPan(cameraNoMouse.getPan() + marker.QUARTER_PI / 180 * keyMoveFactor);
+		} else if (checkKey(KeyEvent.VK_RIGHT)) {
+			cameraNoMouse.setPan(cameraNoMouse.getPan() - marker.QUARTER_PI / 180 * keyMoveFactor);
+		}
+//		System.out.print("x: " + getX() + ", y: " + getY() + ", z: " + getZ());
 	}
 
-	public void setPlayerAtStart() {
-		//camera.moveTo(start.getX(), start.getY()-15, start.getZ());
-		cameraNoMouse.moveTo(350, 350, 50);
+	public void setCameraAtStart(PApplet marker) {
+		cameraNoMouse.moveTo(-350, -700, 700);
+		cameraNoMouse.setPan(marker.QUARTER_PI * 7);
 	}
 	
 	public void keyPressed(PApplet marker) {
