@@ -6,6 +6,13 @@ public class Water extends Element{
 	
 	private int[] color;
 	
+	/**
+	 * Create the Water
+	 * @param x x-coordinate for the center of the bridge
+	 * @param y y-coordinate for the center of the bridge
+	 * @param z z-coordinate for the center of the bridge
+	 * @param size the length of the water block
+	 */
 	public Water(float x, float y, float z, float size) {
 		super(x, y, z, size);
 		
@@ -14,6 +21,10 @@ public class Water extends Element{
 		setFillColor(color);
 	}
 	
+	/**
+	 * Draws the blue block of water
+	 * @param g can't be null
+	 */
 	@Override
 	public void display(PApplet g) {
 		g.pushMatrix();

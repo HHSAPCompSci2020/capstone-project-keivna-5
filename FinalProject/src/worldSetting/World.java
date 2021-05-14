@@ -16,8 +16,11 @@ public class World {
 
 	int savedTime;
 	int totalTime = 60000;
+	
+	/**
+	 * Length of the seaSound
+	 */
 	public static final int seaSoundDurationMillis = 259000; //4:19 minutes
-
 
 	/**
 	 * Creates the world elements:
@@ -71,11 +74,20 @@ public class World {
 		}
 	}
 
+	/**
+	 * Sets the camera to a specific position on the screen
+	 * specifically at (100, -3000, 50)
+	 * @param camera can't be null
+	 */
 	public void setPlayerAtStart(CameraNoMouse camera) {
 		camera.moveTo(100, -3000, 50);
 	}
 
-	public void setBackground(int[] color) {
+	/**
+	 * Sets the color of the sky
+	 * @param color array of rgb colors
+	 */
+	public void setSky(int[] color) {
 		sky = color;
 	}
 
