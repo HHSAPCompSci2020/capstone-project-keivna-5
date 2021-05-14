@@ -3,31 +3,43 @@ package worldSetting;
 import drawingPackage.Constants;
 import processing.core.*;
 
+/**
+ * Creates the water, bridge and background for the world,
+ * also controlling the sound that gets played
+ * @author Katia and Elise
+ *
+ */
 public class World { //build water, bridge, background
 
+	private int[] sky;
 	private Water water;
 	private Bridge bridge;
-
-	private int[] backgroundColor;
 
 	int savedTime;
 	int totalTime = 60000;
 
+	/**
+	 * Creates the world elements:
+	 * water, bridge and sky
+	 * @param marker can't be null
+	 */
 	public World(PApplet marker) {
+		sky = new int[] {185, 230, 255};
 		water = new Water(350, 350, 50, 5000);
 		bridge = new Bridge(350, -500, 50, 200);
-
-		backgroundColor = new int[] {185, 230, 255};
 
 		savedTime = marker.millis();
 		SoundPlayer.playSeaSound();
 
 	}
 
-
+	/**
+	 * Displays water and bridge and paints the sky
+	 * Starts playing ocean sounds
+	 * @param g can't be null
+	 */
 	public void display(PApplet g) {
-		g.background(backgroundColor[0], backgroundColor[1], backgroundColor[2]);
-
+		g.background(sky[0], sky[1], sky[2]);
 		water.display(g);
 		bridge.display(g);
 
@@ -58,12 +70,12 @@ public class World { //build water, bridge, background
 		}
 	}
 
-	public void setPlayerAtStart(Camera player) {
-		player.moveTo(100, -3000, 50);
+	public void setPlayerAtStart(CameraNoMouse camera) {
+		camera.moveTo(100, -3000, 50);
 	}
 
 	public void setBackground(int[] color) {
-		backgroundColor = color;
+		sky = color;
 	}
 
 }
