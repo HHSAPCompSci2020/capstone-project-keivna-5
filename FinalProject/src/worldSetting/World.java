@@ -22,6 +22,7 @@ public class World { //build water, bridge, background
 		
 		water.display(g);
 		bridge.display(g);
+		SoundPlayer.playSeaSound();
 	}
 	
 	public void setPlayerAtStart(Camera player) {

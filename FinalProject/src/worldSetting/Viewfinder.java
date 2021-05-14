@@ -71,7 +71,9 @@ public class Viewfinder {
 		}
 		if (shutterButton.contains(p)) {
 			shutter.screenshot(marker);
-			soundPlayer.playShutterSound();
+//			soundPlayer.playShutterSound();
+			SoundPlayer.playShutterSound();
+
 		}
 	}
 }
