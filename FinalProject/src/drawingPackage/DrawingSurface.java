@@ -15,7 +15,7 @@ public class DrawingSurface extends PApplet{
 		screens = new ArrayList<Screen>();
 
 		//0
-		worldScreen = new WorldScreen();
+		worldScreen = new WorldScreen(this);
 		screens.add(worldScreen);
 
 		//1

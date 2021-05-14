@@ -11,13 +11,13 @@ public class SoundPlayer{
 		soundTest.addSoundEffects(soundEffects);
 		soundTest.playSoundEffect(0);
 	}
-	
-	//gets pissed if initialize in construtor, not sure why
-		public static void playSeaSound() {
-			String[] soundEffects = new String[]{"sea-sound.mp3"};
-			JayLayer soundTest = new JayLayer("audio/","audio/",false);
-			soundTest.addSoundEffects(soundEffects);
-			soundTest.playSoundEffect(0);
-		}
+
+	//length is 4:19
+	public static void playSeaSound() {
+		String[] soundEffects = new String[]{"sea-sound.mp3"};
+		JayLayer soundTest = new JayLayer("audio/","audio/",false);
+		soundTest.addSoundEffects(soundEffects);
+		soundTest.playSoundEffect(0);
+	}
 }
 

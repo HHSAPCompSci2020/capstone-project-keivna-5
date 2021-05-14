@@ -18,10 +18,10 @@ public class WorldScreen extends Screen {
 	public float ratioX, ratioY;
 
 
-	public WorldScreen() {
+	public WorldScreen(PApplet marker) {
 		super(Constants.screenWidth,Constants.screenHeight);
 
-		world = new World();
+		world = new World(marker);
 		cameraNoMouse = new CameraNoMouse();
 		viewfinder = new Viewfinder();
 		keys = new ArrayList<Integer>();
