@@ -1,5 +1,6 @@
 package drawingPackage;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import processing.core.*;
 
@@ -34,7 +35,8 @@ public class DrawingSurface extends PApplet{
 		surface.setResizable(true);
 		for (Screen s : screens)
 			s.setup();
-		worldScreen.setPlayerAtStart();
+
+		//		worldScreen.setPlayerAtStart();
 	}
 
 	public void draw() {
@@ -45,6 +47,7 @@ public class DrawingSurface extends PApplet{
 		scale(ratioX, ratioY);
 
 		activeScreen.draw(this);
+
 		popMatrix();
 
 	}
@@ -87,5 +90,9 @@ public class DrawingSurface extends PApplet{
 
 	public void switchScreen(int i) {
 		activeScreen = screens.get(i);
+	}
+	
+	public void mouseWheel(MouseEvent event) {
+		activeScreen.mouseWheel(event);
 	}
 }

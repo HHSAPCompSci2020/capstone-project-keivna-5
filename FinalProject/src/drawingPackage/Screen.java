@@ -1,5 +1,6 @@
 package drawingPackage;
 import java.awt.Point;
+import java.awt.event.MouseEvent;
 
 import processing.core.PApplet;
 
@@ -41,6 +42,11 @@ public abstract class Screen {
 	}
 	
 	public void keyReleased(PApplet marker) {
+		
+	}
+
+	public void mouseWheel(MouseEvent event) {
+		// TODO Auto-generated method stub
 		
 	}
 

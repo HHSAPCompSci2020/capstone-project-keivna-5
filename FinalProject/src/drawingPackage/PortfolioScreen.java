@@ -45,6 +45,16 @@ public class PortfolioScreen extends Screen {
 		marker.text(str, toggle.x+toggle.width/2-w/2 - 5, toggle.y+toggle.height/2);
 		
 		marker.popStyle();
+		
+		//control y, move up/down with "Q" and "E" keys
+//				if (checkKey(KeyEvent.VK_UP)) {
+//					cameraNoMouse.moveZ(Constants.keyMoveFactor);
+//
+//				} else if (checkKey(KeyEvent.VK_DOWN)) {
+//				
+//					cameraNoMouse.moveZ(Constants.keyMoveFactor*-1);
+//				}
+				
 	}
 	
 	public void mousePressed(DrawingSurface marker) {
@@ -54,4 +64,13 @@ public class PortfolioScreen extends Screen {
 			marker.switchScreen(0);
 		}
 	}
+	
+//	public void mouseWheel(PApplet marker, MouseEvent event) {
+//		float e = event.getCount();
+//		marker.mouseEvent();
+//		  float e = event.getCount();
+//		  System.out.println(e);
+//		}
+
+	
 }
