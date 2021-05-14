@@ -2,6 +2,11 @@ package worldSetting;
 
 import processing.core.PApplet;
 
+/**
+ * Draws the Golden Gate Bridge
+ * @author Katia
+ *
+ */
 public class Bridge extends Element{
 	
 	private final int[] METAL_COLOR = new int[] {160, 50, 50};
@@ -15,8 +20,13 @@ public class Bridge extends Element{
 	private int numCords;
 	private int towerHeight;
 
-	// the point that gets passed in should be starting point of the base of the bridge
-	// size represents the width of the bridge
+	/**
+	 * Creates the base coordinates for the rest of the bridge to build off of.
+	 * @param x x-coordinate for the center of the bridge
+	 * @param y y-coordinate for the center of the bridge
+	 * @param z z-coordinate for the center of the bridge
+	 * @param size represents the width of the bridge (z-axis)
+	 */
 	public Bridge(float x, float y, float z, float size) {
 		super(x, y, z, size);
 		
@@ -27,9 +37,12 @@ public class Bridge extends Element{
 		towerHeight = 0;
 	}
 	
+	/**
+	 * Draws the deck, two towers, suspension cords and supports
+	 * @param g PApplet of the main 3D world, can't be null
+	 */
 	public void display(PApplet g) {	
 		g.pushMatrix();
-		
 		drawDeck(g);
 		drawTower(g, getX() + (bridgeLength / 6));
 		drawTower(g, getX() - (bridgeLength / 6));
@@ -37,12 +50,12 @@ public class Bridge extends Element{
 			drawSuspensionCord(g);
 			// which draws the supports
 		}
-		
 		g.popMatrix();
 	}
 	
-	//draw physical components:
-	
+	/*
+	 * Draws physical elements:
+	 */
 	private void drawDeck(PApplet g) {
 		//one red rect prism underneath grey prism
 		g.pushMatrix();
@@ -81,22 +94,21 @@ public class Bridge extends Element{
 		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
 		int levelHeight = 100;
 		for(int i = towerHeightInNs; i > 0; i--) {
+			towerHeight += levelHeight * i;
+			
 			g.pushMatrix();
 			g.translate(x, getY() - (levelHeight * i) - ((bridgeHeight/2) * i), getZ() + (int) (bridgeHeight * 2.5));
 			g.box(bridgeHeight, levelHeight * i, (bridgeHeight / 2) - i);
 			g.popMatrix();
-		}
-		for(int i = towerHeightInNs; i > 0; i--) {
-			g.pushMatrix();
-			g.translate(x, getY() - (levelHeight * i) - ((bridgeHeight/2) * i), getZ() - (int) (bridgeHeight * 2.5));
-			g.box(bridgeHeight, levelHeight * i, (bridgeHeight / 2) - i);
-			towerHeight += levelHeight * i;
-			g.popMatrix();
-		}
-		for(int i = towerHeightInNs; i >= 0; i--) {
+			
 			g.pushMatrix();
 			g.translate(x, getY() - ((i == 0? 1: i) * levelHeight) - ((i == 0? 1: i) * bridgeHeight), getZ());
 			g.box(bridgeHeight, bridgeHeight - (i == 0? 1: i), bridgeWidth);
+			g.popMatrix();
+			
+			g.pushMatrix();
+			g.translate(x, getY() - (levelHeight * i) - ((bridgeHeight/2) * i), getZ() - (int) (bridgeHeight * 2.5));
+			g.box(bridgeHeight, levelHeight * i, (bridgeHeight / 2) - i);
 			g.popMatrix();
 		}
 	}
@@ -105,8 +117,8 @@ public class Bridge extends Element{
 		// starting point should be top of one tower
 		g.strokeWeight(10);
 		g.noFill();
-		g.arc(getX(), getY() - (bridgeHeight * 2), 100, 100, g.PI + g.HALF_PI, g.PI * 2f, g.OPEN); //g.OPEN);  g.QUARTER_PI
-		g.arc(getX(), getY() - (bridgeHeight * 5), 80, 80, 3*g.PI / 4, g.PI + g.QUARTER_PI, g.OPEN);
+//		g.arc(getX(), getY() - (bridgeHeight * 2), 100, 100, g.PI + g.HALF_PI, g.PI * 2f, g.OPEN); //g.OPEN);  g.QUARTER_PI
+		g.arc(getX(), getY() - (bridgeHeight * 5), 80, 80, 3 * g.PI / 4, g.PI + g.QUARTER_PI, g.OPEN);
 		// mid part of the arc be mid point (p much touching the base
 		// ending point at the top of the second tower
 	}
