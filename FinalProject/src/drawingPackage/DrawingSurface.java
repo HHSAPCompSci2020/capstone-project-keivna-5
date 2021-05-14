@@ -34,8 +34,7 @@ public class DrawingSurface extends PApplet{
 		surface.setResizable(true);
 		for (Screen s : screens)
 			s.setup();
-
-		//		worldScreen.setPlayerAtStart();
+		worldScreen.setPlayerAtStart();
 	}
 
 	public void draw() {
@@ -46,7 +45,6 @@ public class DrawingSurface extends PApplet{
 		scale(ratioX, ratioY);
 
 		activeScreen.draw(this);
-
 		popMatrix();
 
 	}

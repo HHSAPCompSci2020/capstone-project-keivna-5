@@ -43,10 +43,23 @@ public class World { //build water, bridge, background
 //			//background(random(255)); // Color a new background
 //			savedTime = g.millis(); // Save the current time to restart the timer!
 //		}
+		//SoundPlayer.playSeaSound();
+
+		// Calculate how much time has passed
+		int passedTime = g.millis() - savedTime;
+		//the time is a factor of the duration of sea sound, play sound again
+		//currently doesn't work but it's fine bc sound plays for 4 minutes when window is opened
+		if (passedTime % Constants.seaSoundDurationMillis == 0) {
+			SoundPlayer.playSeaSound();
+
+			//System.out.println("1 minute has passed!");
+			//background(random(255)); // Color a new background
+			savedTime = g.millis(); // Save the current time to restart the timer!
+		}
 	}
 
 	public void setPlayerAtStart(Camera player) {
-		//		player.moveTo(element.getX(), element.getY()-15, element.getZ());
+		player.moveTo(100, -3000, 50);
 	}
 
 	public void setBackground(int[] color) {
