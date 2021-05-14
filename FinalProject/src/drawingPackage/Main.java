@@ -14,7 +14,6 @@ import processing.opengl.PSurfaceJOGL;
 public class Main{
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		DrawingSurface drawing = new DrawingSurface();
 		//PApplet.main("Main"); 
 		PApplet.runSketch(new String[]{""}, drawing);

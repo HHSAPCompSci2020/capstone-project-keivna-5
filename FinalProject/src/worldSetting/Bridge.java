@@ -7,8 +7,9 @@ public class Bridge extends Element{
 	private final int[] METAL_COLOR = new int[] {160, 50, 50};
 	private final int[] ROAD_COLOR = new int[] {110, 120, 120};
 	
-	private float bridgeLength;
-	private float bridgeHeight;
+	private float bridgeLength; //x
+	private float bridgeHeight; //y
+	private float bridgeWidth; //z
 	
 	private int towerHeightInNs = 4;
 	private int numCords;
@@ -21,14 +22,15 @@ public class Bridge extends Element{
 		numCords = 20;
 		bridgeLength = size * 10;
 		bridgeHeight = size / 5;
+		bridgeWidth = size;
 	}
 	
 	public void display(PApplet g) {	
 		g.pushMatrix();
 		
 		drawDeck(g);
-		drawTower(g);
-		drawTower(g);
+		drawTower(g, getX() + (bridgeLength / 6));
+		drawTower(g, getX() - (bridgeLength / 6));
 		for (int i = 0; i < numCords; i++) {
 			drawSuspensionCord(g);
 			// which draws the supports
@@ -44,7 +46,7 @@ public class Bridge extends Element{
 		g.pushMatrix();
 		g.translate(getX(), getY(), getZ());
 		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
-		g.box(bridgeLength, bridgeHeight, getSize());
+		g.box(bridgeLength, bridgeHeight, bridgeWidth);
 		g.popMatrix();
 		
 		float sideHeight = bridgeHeight / 2;
@@ -53,7 +55,7 @@ public class Bridge extends Element{
 		g.pushMatrix();
 		g.translate(getX(), getY() - (sideHeight), getZ());
 		g.fill(ROAD_COLOR[0], ROAD_COLOR[1], ROAD_COLOR[2]);
-		g.box(bridgeLength, bridgeHeight, getSize());
+		g.box(bridgeLength, bridgeHeight, bridgeWidth);
 		g.popMatrix();
 		
 		// two red rect prisms to the left and right
@@ -71,15 +73,27 @@ public class Bridge extends Element{
 		
 	}
 	
-	private void drawTower(PApplet g) {
+	private void drawTower(PApplet g, float x) {
 		// stack of n shaped objects, decreasing in height, each n made of, vertical rectangular prism, horizontal rectangular prism
 		// same size v rect prism, just at the end of h prism
 		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
-		int levelHeight = 50;
+		int levelHeight = 100;
 		for(int i = towerHeightInNs; i > 0; i--) {
 			g.pushMatrix();
-			g.translate(getX() + (bridgeLength / 6), getY() - (levelHeight * i) - (bridgeHeight * i), getZ() + (int) (bridgeHeight * 2.5));
-			g.box(bridgeHeight, levelHeight * (i == 0 ? 1 : i), (bridgeHeight / 2) - ((i == 0 ? 1 : i)*2));
+			g.translate(x, getY() - (levelHeight * i) - ((bridgeHeight/2) * i), getZ() + (int) (bridgeHeight * 2.5));
+			g.box(bridgeHeight, levelHeight * i, (bridgeHeight / 2) - i);
+			g.popMatrix();
+		}
+		for(int i = towerHeightInNs; i > 0; i--) {
+			g.pushMatrix();
+			g.translate(x, getY() - (levelHeight * i) - ((bridgeHeight/2) * i), getZ() - (int) (bridgeHeight * 2.5));
+			g.box(bridgeHeight, levelHeight * i, (bridgeHeight / 2) - i);
+			g.popMatrix();
+		}
+		for(int i = towerHeightInNs; i >= 0; i--) {
+			g.pushMatrix();
+			g.translate(x, getY() - ((i == 0? 1: i) * levelHeight) - ((i == 0? 1: i) * bridgeHeight), getZ());
+			g.box(bridgeHeight, bridgeHeight - (i == 0? 1: i), bridgeWidth);
 			g.popMatrix();
 		}
 	}

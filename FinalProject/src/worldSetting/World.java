@@ -35,7 +35,7 @@ public class World { //build water, bridge, background
 		// Calculate how much time has passed
 		int passedTime = g.millis() - savedTime;
 		//the time is a factor of the duration of sea sound, play sound again
-		//currenlty doesn't work but it's fine bc sound plays for 4 minutes when window is opened
+		//currently doesn't work but it's fine bc sound plays for 4 minutes when window is opened
 		if (passedTime % Constants.seaSoundDurationMillis == 0) {
 			SoundPlayer.playSeaSound();
 
@@ -46,7 +46,7 @@ public class World { //build water, bridge, background
 	}
 
 	public void setPlayerAtStart(Camera player) {
-		//		player.moveTo(element.getX(), element.getY()-15, element.getZ());
+		player.moveTo(100, -3000, 50);
 	}
 
 	public void setBackground(int[] color) {
