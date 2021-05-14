@@ -13,6 +13,7 @@ public class Bridge extends Element{
 	
 	private int towerHeightInNs = 4;
 	private int numCords;
+	private int towerHeight;
 
 	// the point that gets passed in should be starting point of the base of the bridge
 	// size represents the width of the bridge
@@ -23,6 +24,7 @@ public class Bridge extends Element{
 		bridgeLength = size * 10;
 		bridgeHeight = size / 5;
 		bridgeWidth = size;
+		towerHeight = 0;
 	}
 	
 	public void display(PApplet g) {	
@@ -88,6 +90,7 @@ public class Bridge extends Element{
 			g.pushMatrix();
 			g.translate(x, getY() - (levelHeight * i) - ((bridgeHeight/2) * i), getZ() - (int) (bridgeHeight * 2.5));
 			g.box(bridgeHeight, levelHeight * i, (bridgeHeight / 2) - i);
+			towerHeight += levelHeight * i;
 			g.popMatrix();
 		}
 		for(int i = towerHeightInNs; i >= 0; i--) {
@@ -100,6 +103,10 @@ public class Bridge extends Element{
 	
 	private void drawSuspensionCord(PApplet g) {
 		// starting point should be top of one tower
+		g.strokeWeight(10);
+		g.noFill();
+		g.arc(getX(), getY() - (bridgeHeight * 2), 100, 100, g.PI + g.HALF_PI, g.PI * 2f, g.OPEN); //g.OPEN);  g.QUARTER_PI
+		g.arc(getX(), getY() - (bridgeHeight * 5), 80, 80, 3*g.PI / 4, g.PI + g.QUARTER_PI, g.OPEN);
 		// mid part of the arc be mid point (p much touching the base
 		// ending point at the top of the second tower
 	}
