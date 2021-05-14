@@ -38,13 +38,11 @@ import processing.core.*;
  * 
  * @author jrc03c This class represents the camera on the screen that you can use
  *         to move/look around
- *
+ * @author elise the class has been modified to not take in mouse interactions
  */
 public class CameraNoMouse {
 
-	//private Robot robot;
-	private PVector center, right, forward, position, velocity;
-	private PVector up; //IMPLEMENT THIS FOR MOVING IN Y DIRECTION
+	private PVector center, right, forward, up, position, velocity;
 
 	private float speed, xSensitivity, ySensitivity, pan, tilt, friction, fov, viewDistance;
 	private Point mouse, pMouse;
@@ -53,6 +51,9 @@ public class CameraNoMouse {
 	private boolean grounded;
 	private float gravity;
 
+	/**
+	 * initializes with default values
+	 */
 	public CameraNoMouse() {
 		//this(3, 1, 1, .75f, PConstants.PI / 3f, 1000f);
 		this(1, 3, 1, 1, .5f, .5f, .75f, PConstants.PI / 3f, 60f);
@@ -61,10 +62,6 @@ public class CameraNoMouse {
 
 	public CameraNoMouse(float w, float h, float d, float speed, float xSensitivity, float ySensitivity, float friction,
 			float fov, float viewDistance) {
-//		try {
-//			robot = new Robot();
-//		} catch (AWTException e) {
-//		}
 
 		this.speed = speed;
 		this.xSensitivity = xSensitivity;
@@ -93,9 +90,6 @@ public class CameraNoMouse {
 
 	public void setup(PApplet g) {
 		g.perspective(fov, (float) g.width / (float) g.height, 0.01f, viewDistance);
-		// Moves the mouse to the center of the screen at the start of the game
-//		robot.mouseMove((int) ((GLWindow) g.getSurface().getNative()).getX() + g.width / 2,
-//				(int) ((GLWindow) g.getSurface().getNative()).getY() + g.height / 2);
 	}
 
 	public void draw(PApplet g) {
@@ -113,40 +107,6 @@ public class CameraNoMouse {
 		if (pMouse == null)
 			pMouse = new Point(mouse.x, mouse.y);
 
-		// means that the mouse went off the screen to the left so move it to the right
-//		if (mouse.x < left + 2 && (mouse.x - pMouse.x) < 0) {
-////			robot.mouseMove(windowRight - 2, mouse.y);
-//			mouse.x = windowRight - 2;
-//			pMouse.x = windowRight - 2;
-//		}
-//
-//		// means that the mouse went off the screen to the right so move it to the left
-//		if (mouse.x > windowRight - 2 && (mouse.x - pMouse.x) > 0) {
-////			robot.mouseMove(left + 2, mouse.y);
-//			mouse.x = left + 2;
-//			pMouse.x = left + 2;
-//		}
-//
-//		// means that the mouse went up off the screen so move it to the bottom
-//		if (mouse.y < top + 10 && (mouse.y - pMouse.y) < 0) {
-////			robot.mouseMove(mouse.x, bottom - 5);
-//			mouse.y = bottom - 5;
-//			pMouse.y = bottom - 5;
-//		}
-//
-//		// means that the mouse went down off the screen so move it to the top
-//		if (mouse.y > bottom - 5 && (mouse.y - pMouse.y) > 0) {
-////			robot.mouseMove(mouse.x, top + 10);
-//			mouse.y = top + 10;
-//			pMouse.y = top + 10;
-//		}
-
-		// map the mouse value to the corresponding angle between 0 and 2PI for x
-		// rotation(pan) because you have 360º rotation
-//		pan += PApplet.map(mouse.x - pMouse.x, 0, g.width, 0, PConstants.TWO_PI) * xSensitivity;
-//		tilt += PApplet.map(mouse.y - pMouse.y, 0, g.height, 0, PConstants.PI) * ySensitivity;
-//		tilt = clamp(tilt, -PConstants.PI / 2.01f, PConstants.PI / 2.01f);
-
 		// tan of pi/2 or -pi/2 is undefined so if it happens to be exactly that
 		// increase it so the code works
 		if (tilt == PConstants.PI / 2)
@@ -163,9 +123,6 @@ public class CameraNoMouse {
 		// subtract pi/2 from pan to get the vector perpendicular to forward to show
 		// which way is right
 		right = new PVector(PApplet.cos(pan - PConstants.PI / 2), 0, PApplet.sin(pan - PConstants.PI / 2));
-
-		//have the previous mouse set to the current mouse to use it for the next call to draw()
-//		pMouse = new Point(mouse.x, mouse.y);
 
 		// account for friction
 		velocity.mult(friction);
@@ -278,14 +235,6 @@ public class CameraNoMouse {
 	public Point getMouse() {
 		return mouse;
 	}
-
-//	public void setMouse(Point mouse) {
-//		robot.mouseMove(mouse.x, mouse.y);
-//	}
-//
-//	public void setMouse(int x, int y) {
-//		robot.mouseMove(x, y);
-//	}
 
 	public void setPan(double angle) {
 		pan = (float) angle;

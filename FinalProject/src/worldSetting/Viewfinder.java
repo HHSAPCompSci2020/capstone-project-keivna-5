@@ -8,18 +8,30 @@ import drawingPackage.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/**
+ * Represents the 2D aspect of the World, where photos are taken and settings are changed
+ * @author elise
+ */
 public class Viewfinder {
 	private Rectangle toggle, shutterButton;
 	public float ratioX, ratioY;
 	private Shutter shutter;
 
+	/**
+	 * initializes fields
+	 */
 	public Viewfinder() {
 		toggle = new Rectangle(Constants.toggleX,Constants.toggleY,Constants.toggleWidth,Constants.toggleHeight);
-
 		shutterButton = new Rectangle(620, 30, 120, 30);
 		shutter = new Shutter();		
 	}
 	
+	/**
+	 * draws the 2D border viewfinder surrounding the world
+	 * @param PApplet marker
+	 * @pre marker can't be null
+	 * @post the PApplet marker will changed
+	 */
 	public void draw(PApplet marker) {		
 		marker.pushMatrix();		
 		marker.fill(0);
@@ -61,6 +73,11 @@ public class Viewfinder {
 		marker.popMatrix();
 	}
 	
+	/**
+	 * checks for user interactions for toggling between screens and capturing a photo
+	 * @param marker
+	 * @pre DrawingSurface marker is not null
+	 */
 	public void mousePressed(DrawingSurface marker) {		
 		Point p = new Point(marker.mouseX,marker.mouseY);
 		if (toggle.contains(p)) {
