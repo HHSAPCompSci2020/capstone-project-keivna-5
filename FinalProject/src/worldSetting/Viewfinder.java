@@ -13,14 +13,29 @@ import processing.core.PImage;
  */
 public class Viewfinder {
 	private Rectangle toggle, shutterButton;
-	public float ratioX, ratioY;
 	private Shutter shutter;
+	/**
+	 * Represents the ratios for the size of the screen
+	 */
+	public float ratioX, ratioY;
+	
+	/**
+	 * Constant for the spacing for the ViewFinder
+	 */
 	public static final float viewfinderIndent = 60;
-	public static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20, toggleRadius = 10, screenWidth = 800, screenHeight = 600;
-
+	
+	/**
+	 * Constants for the size of the toggle button
+	 */
+	public static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20, toggleRadius = 10;
+	
+	/**
+	 * Constants for the size of the screen
+	 */
+	public static final int screenWidth = 800, screenHeight = 600;
 
 	/**
-	 * initializes fields
+	 * Initializes fields
 	 */
 	public Viewfinder() {
 		toggle = new Rectangle(toggleX,toggleY, toggleWidth, toggleHeight);
@@ -29,10 +44,10 @@ public class Viewfinder {
 	}
 	
 	/**
-	 * draws the 2D border viewfinder surrounding the world
+	 * Draws the 2D border ViewFinder surrounding the world
 	 * @param PApplet marker
 	 * @pre marker can't be null
-	 * @post the PApplet marker will changed
+	 * @post the PApplet marker will change
 	 */
 	public void draw(PApplet marker) {		
 		marker.pushMatrix();		
@@ -69,14 +84,14 @@ public class Viewfinder {
 		//key instruction text
 		marker.fill(255);
 		marker.textSize(15);
-		String keyDefinitions = "Up/Down/Left/Right: WASD, Forward: UP, Back: DOWN";
+		String keyDefinitions = "Up/Down/Left/Right: WASD, Forward: UP, Back: DOWN, Spin: LEFT/RIGHT";
 		marker.text(keyDefinitions, toggle.x, marker.height - 30);
 		
 		marker.popMatrix();
 	}
 	
 	/**
-	 * checks for user interactions for toggling between screens and capturing a photo
+	 * Checks for user interactions for toggling between screens and capturing a photo
 	 * @param marker
 	 * @pre DrawingSurface marker is not null
 	 */
