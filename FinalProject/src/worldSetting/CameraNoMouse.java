@@ -35,37 +35,27 @@ import com.jogamp.newt.opengl.GLWindow;
 import processing.core.*;
 
 /**
- * 
+ * The class has been modified to not take in mouse interactions
  * @author jrc03c This class represents the camera on the screen that you can use
  *         to move/look around
- * @author elise the class has been modified to not take in mouse interactions
+ * @author Elise and Katia
  */
 public class CameraNoMouse {
 
 	private PVector center, right, forward, up, position, velocity;
 
-	private float speed, xSensitivity, ySensitivity, pan, tilt, friction, fov, viewDistance;
+	private float pan, tilt, fov, viewDistance, speed, friction;
 	private Point mouse, pMouse;
-	
-	private float w, h, d;
-	private boolean grounded;
-	private float gravity;
 
 	/**
-	 * initializes with default values
+	 * Creates the "perspective" of the user and is used to move around the 3D world
+	 * @param speed not sure
+	 * @param friction not sure
+	 * @param fov not sure
+	 * @param viewDistance Not sure
 	 */
-	public CameraNoMouse() {
-		//this(3, 1, 1, .75f, PConstants.PI / 3f, 1000f);
-		this(1, 3, 1, 1, .5f, .5f, .75f, PConstants.PI / 3f, 60f);
-
-	}
-
-	public CameraNoMouse(float w, float h, float d, float speed, float xSensitivity, float ySensitivity, float friction,
-			float fov, float viewDistance) {
-
+	public CameraNoMouse(float speed, float friction, float fov, float viewDistance) {
 		this.speed = speed;
-		this.xSensitivity = xSensitivity;
-		this.ySensitivity = ySensitivity;
 		this.friction = friction;
 		this.fov = fov;
 		this.viewDistance = viewDistance;
@@ -79,23 +69,21 @@ public class CameraNoMouse {
 
 		pan = 0;
 		tilt = 0;
-		
-		//from player
-		this.w = w;
-		this.h = h;
-		this.d = d;
-		grounded = true;
-		gravity = 0.06f;
 	}
 
+	/**
+	 * Creates the camera by setting the perspective of the PApplent
+	 * @param g can't be null
+	 */
 	public void setup(PApplet g) {
 		g.perspective(fov, (float) g.width / (float) g.height, 0.01f, viewDistance);
 	}
 
+	/**
+	 * Draws the window of the Camera, the view of the view finder
+	 * @param g can't be null
+	 */
 	public void draw(PApplet g) {
-		//robot moves mouse back around if at a border
-		
-		
 		// Get the coordinates of the borders of the window
 		int top = ((GLWindow) g.getSurface().getNative()).getY();
 		int left = ((GLWindow) g.getSurface().getNative()).getX();
@@ -107,8 +95,7 @@ public class CameraNoMouse {
 		if (pMouse == null)
 			pMouse = new Point(mouse.x, mouse.y);
 
-		// tan of pi/2 or -pi/2 is undefined so if it happens to be exactly that
-		// increase it so the code works
+		// tan of pi/2 or -pi/2 is undefined so if it happens to be exactly that increase it so the code works
 		if (tilt == PConstants.PI / 2)
 			tilt += 0.001f;
 		if (tilt == -PConstants.PI / 2)
@@ -134,159 +121,66 @@ public class CameraNoMouse {
 		g.camera(position.x, position.y, position.z, center.x, center.y, center.z, 0, 1, 0);
 	}
 
-	// "Clamp" the x value to within the range of min-max
-	private float clamp(float x, float min, float max) {
-		if (x > max)
-			return max;
-		if (x < min)
-			return min;
-		return x;
-	}
-
-	public PVector getForward() {
-		return forward;
-	}
-
-	public PVector getPosition() {
-		return position;
-	}
-
-	public PVector getVelocity() {
-		return velocity;
-	}
-
-	public PVector getCenter() {
-		return center;
-	}
-
-	public PVector getRight() {
-		return right;
-	}
-
-	public float getPan() {
-		return pan;
-	}
-
-	public float getTilt() {
-		return tilt;
-	}
-
-	public void moveX(int dir) {
-		velocity.add(PVector.mult(right, speed * dir));
-	}
-
-	public void moveZ(int dir) {
-		velocity.add(PVector.mult(forward, speed * dir));
-	}
-	
-	//just added this
-	public void moveY(int dir) {
-		velocity.add(PVector.mult(up, speed * dir));
-	}
-
-	public float xSensitivity() {
-		return xSensitivity;
-	}
-
-	public float ySensitivity() {
-		return ySensitivity;
-	}
-
-	public void setXSensitivity(float f) {
-		xSensitivity = f;
-	}
-
-	public void setYSensitivity(float f) {
-		ySensitivity = f;
-	}
-
-	public float getSpeed() {
-		return speed;
-	}
-
-	public void setSpeed(float f) {
-		speed = f;
-	}
-
-	public float getFriction() {
-		return friction;
-	}
-
-	public void setFriction(float f) {
-		friction = f;
-	}
-
-	public float getFOV() {
-		return fov;
-	}
-
-	public void setFOV(float f) {
-		fov = f;
 	}
 
 	public float getViewDistance() {
 		return viewDistance;
-	}
 
 	public void setViewDistance(float f) {
 		viewDistance = f;
 	}
 
-	public Point getMouse() {
-		return mouse;
-	}
-
-	public void setPan(double angle) {
-		pan = (float) angle;
-	}
 	
 	/**
-	 * Checks to see if the player is colliding with any of the Block objects inside
-	 * the specified ArrayList
-	 * 
-	 * @param elements
-	 *            ArrayList of Block objects to check collision with
+	 * Gets the position of the camera
+	 * @return the x, y and z position of the camera
 	 */
-	public void act(ArrayList<Element> elements) {
-		
-	}
+	public PVector getPosition() { return position; }
 	
-	//from player
-	public void jump() {
-		if (grounded) {
-			grounded = false;
-			getVelocity().y -= 3f;
-			getPosition().y -= .5;
-		}
-	}
-
-	public float getWidth() {
-		return w;
-	}
-
-	public float getHeight() {
-		return h;
-	}
-
-	public float getDepth() {
-		return d;
-	}
+//	public PVector getForward() { return forward; }
+//
+//	public PVector getVelocity() { return velocity; }
+//
+//	public PVector getCenter() { return center; }
+//
+//	public PVector getRight() { return right; }
+//
+//	public float getPan() { return pan; }
+//
+//	public float getTilt() { return tilt; }
+//
+//	public void moveX(int dir) { velocity.add(PVector.mult(right, speed * dir)); }
+//
+//	public void moveZ(int dir) { velocity.add(PVector.mult(forward, speed * dir)); }
+//
+//	public void moveY(int dir) { velocity.add(PVector.mult(up, speed * dir)); }
+//
+//	public float getFOV() { return fov; }
+//
+//	public void setFOV(float f) { fov = f; }
+//	
+//	public float getFriction() { return friction; }
+//
+//	public void setFriction(float f) { friction = f; }
+//
+//	public float getViewDistance() { return viewDistance; }
+//
+//	public void setViewDistance(float f) { viewDistance = f; }
+//
+//	public Point getMouse() { return mouse; }
+//
+//	public void setPan(double angle) { pan = (float) angle; }
 	
 	/**
 	 * Sets the position of the player to the given coordinates
-	 * 
-	 * @param x
-	 *            x-coordinate of where to move the player
-	 * @param y
-	 *            y-coordinate of where to move the player
-	 * @param z
-	 *            z-coordinate of where to move the player
+	 * @param x x-coordinate of where to move the player
+	 * @param y y-coordinate of where to move the player
+	 * @param z z-coordinate of where to move the player
 	 */
 	public void moveTo(float x, float y, float z) {
 		this.getPosition().x = x;
 		this.getPosition().y = y;
 		this.getPosition().z = z;
 	}
-	
-}
 
+}
