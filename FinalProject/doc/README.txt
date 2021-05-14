@@ -1,6 +1,6 @@
 ﻿Keivna
 Authors: Katia Bravo and Elise Vambenepe
-Revision: 5/4/2021
+Revision: 5/14/2021
 
 
 Introduction: 
@@ -33,9 +33,9 @@ What are the primary features of your program?
 
 Instructions:
 Which keyboard keys will do what? 
-* wasd to navigate x and y axis
-* up/down/left/right for z-axis
-* Use the mouse to click any other buttons on the window
+* WASD keys to navigate the x and y axis in the 3D world
+* Up/down arrow keys for the z-axis
+* Use the mouse to click the shutter and toggle button
 
 
 Where will you need to click? 
@@ -43,9 +43,9 @@ Where will you need to click?
 
 
 Will you have menus that need to be navigated? What will they look like? 
-* There will be two main viewing options that will take the form of tabs
-* World: Tap the tab to get access to the camera, move around in the environment, and take photos that will be saved in the portfolio
-* Portfolio: Tap the tab to view all photos captured in a grid list view.
+* There will be two main viewing options that will take the form of a single toggle, switches between Viewfinder World and Portfolio
+* Viewfinder World: Toggle to get access to the camera, move around in the environment, and take photos that will be saved in the portfolio
+* Portfolio: Toggle to view all photos captured in a grid list view.
 
 
 Do actions need to be taken in a certain order?
@@ -144,28 +144,27 @@ Class List:
 UML link
 
 
+      * DrawingPackage:
       * Main: implements a drawingSurface
       * DrawingSurface: switches between both tabs
+      * PortfolioScreen: draws all portfolio components
+      * WorldScreen: draws all world components (3D and 2D aspects)
+      * abstract Screen: extended by PortfolioScreen and WorldScreen
       * WorldSetting package
-      * World: drawing surface of the world setting -> Maze equivalent in 3D
+      * World: drawings 3D aspect of WorldScreen
       * Camera: the point of view of the person
       * Element: superclass for 3D objects (bridge, water)
       * Bridge: creates all parts of the bridge
       * Water: creates all parts of the water
       * Viewfinder: displays border on world
       * SoundPlayer: plays sounds from SoundFiles
-      * Shutter: captures photo, adds to portfolio
-      * Use processing’s saveFrame()
-      * capture(), creates a Photo and adds it to the static Portfolio class
-      * Later on: WorldMenu (add components etc…)
+      * Shutter: captures photo, adds to arraylist of images
+      * CodeWeMightNeed: some old code we don’t want to remove
       * Portfolio package
-      * Photo: photo object, just contains a filename for now
-      * Future:name, date/time of capture
-      * Portfolio: displays a grid of all the photos taken
-      * Later on: PortfolioViewingScreen
-      * SoundFiles folder:
-      * background.mp3
-      * Shutter.mp3
+      * Portfolio: displays a grid of all the photos taken, uses photos in Shutter
+      * Audio folder:
+      * sea-sound.mp3
+      * shutter-click.mp3
 
 
 Credits:
@@ -181,26 +180,34 @@ Credits:
       * PortfolioScreen
       * World
       * Try getting controls working
+      * UML diagram
+      * ReadMe
+      * Javadocs
       * Elise only:
+      * Viewfinder
+      * CameraNoMouse
+      * Shutter
+      * Portfolio
+      * PortfolioScreen
+      * Ability to take images and save them
+      * All sound-related code
+      * Shutter sound and background screen sound
+      * UML diagram for beta build
       * Katia only:
-      * Person A:
-      * water, sky, viewfinder
-      * Player
-      * Main 
-      * Portfolio help
-      * Person B:
       * Bridge
-      * display
-      * Sound package
-      * portfolio
+      * Display
+      * Water, sky
+      * Javadocs for shared classes (for beta build)
       * Give credit to all outside resources used. This includes downloaded images or sounds, external java libraries, parent/tutor/student coding help, etc.]
       * Processing
-      * Sound effects from some site (tbd)
       * Mr. Shelby (for now: coming up with a general idea, processing library)
       * MazeRunner (Coding Demo by Homestead Programming Club)
       * Use that as a base for a 3D world
       * Using it for control
       * ScreenSwitcher (Coding Demo for having multiple screens)
+      * Link to shutter sound
+      * Link to sea background sound
+      * JaysEasierSound
 [a]How does the user get here? Wouldn't this be impossible in real life?
 [b]that's the whole point of the online world
 [c]_Marked as resolved_
