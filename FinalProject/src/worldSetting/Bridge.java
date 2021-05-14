@@ -17,8 +17,8 @@ public class Bridge extends Element{
 	private float bridgeWidth; //z
 	
 	private int towerHeightInNs = 4;
+	private int towerNHeight = 100;
 	private int numCords;
-	private int towerHeight;
 
 	/**
 	 * Creates the base coordinates for the rest of the bridge to build off of.
@@ -34,7 +34,6 @@ public class Bridge extends Element{
 		bridgeLength = size * 10;
 		bridgeHeight = size / 5;
 		bridgeWidth = size;
-		towerHeight = 0;
 	}
 	
 	/**
@@ -44,11 +43,10 @@ public class Bridge extends Element{
 	public void display(PApplet g) {	
 		g.pushMatrix();
 		drawDeck(g);
-		drawTower(g, getX() + (bridgeLength / 6));
-		drawTower(g, getX() - (bridgeLength / 6));
+		drawTower(g, getX() + (bridgeLength / 5));
+		drawTower(g, getX() - (bridgeLength / 5));
 		for (int i = 0; i < numCords; i++) {
-			drawSuspensionCord(g);
-			// which draws the supports
+			drawSuspensionCord(g); // which draws the supports
 		}
 		g.popMatrix();
 	}
@@ -89,43 +87,45 @@ public class Bridge extends Element{
 	}
 	
 	private void drawTower(PApplet g, float x) {
-		// stack of n shaped objects, decreasing in height, each n made of, vertical rectangular prism, horizontal rectangular prism
+		// stack of n shaped objects, decreasing in height, each n made of,
+		// vertical rectangular prism, horizontal rectangular prism
 		// same size v rect prism, just at the end of h prism
 		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
-		int levelHeight = 100;
+		
 		for(int i = towerHeightInNs; i > 0; i--) {
-			towerHeight += levelHeight * i;
-			
 			g.pushMatrix();
-			g.translate(x, getY() - (levelHeight * i) - ((bridgeHeight/2) * i), getZ() + (int) (bridgeHeight * 2.5));
-			g.box(bridgeHeight, levelHeight * i, (bridgeHeight / 2) - i);
+			g.translate(x, getY() - (towerNHeight * i) - ((bridgeHeight/2) * i), getZ() + (int) (bridgeHeight * 2.5));
+			g.box(bridgeHeight, towerNHeight * i, (bridgeHeight / 2) - i);
 			g.popMatrix();
 			
 			g.pushMatrix();
-			g.translate(x, getY() - ((i == 0? 1: i) * levelHeight) - ((i == 0? 1: i) * bridgeHeight), getZ());
+			g.translate(x, getY() - ((i == 0? 1: i) * towerNHeight) - ((i == 0? 1: i) * bridgeHeight), getZ());
 			g.box(bridgeHeight, bridgeHeight - (i == 0? 1: i), bridgeWidth);
 			g.popMatrix();
 			
 			g.pushMatrix();
-			g.translate(x, getY() - (levelHeight * i) - ((bridgeHeight/2) * i), getZ() - (int) (bridgeHeight * 2.5));
-			g.box(bridgeHeight, levelHeight * i, (bridgeHeight / 2) - i);
+			g.translate(x, getY() - (towerNHeight * i) - ((bridgeHeight/2) * i), getZ() - (int) (bridgeHeight * 2.5));
+			g.box(bridgeHeight, towerNHeight * i, (bridgeHeight / 2) - i);
 			g.popMatrix();
 		}
 	}
 	
 	private void drawSuspensionCord(PApplet g) {
-		// starting point should be top of one tower
+		float radiusOfArc = towerNHeight * towerHeightInNs;
+		
+		g.pushMatrix();
+		
 		g.strokeWeight(10);
 		g.noFill();
-//		g.arc(getX(), getY() - (bridgeHeight * 2), 100, 100, g.PI + g.HALF_PI, g.PI * 2f, g.OPEN); //g.OPEN);  g.QUARTER_PI
-		g.arc(getX(), getY() - (bridgeHeight * 5), 80, 80, 3 * g.PI / 4, g.PI + g.QUARTER_PI, g.OPEN);
-		// mid part of the arc be mid point (p much touching the base
-		// ending point at the top of the second tower
+		g.translate(getX(), getY() - (bridgeHeight / 2), getZ());
+		// start: top of tower 1, mid: point between towers, end: top of tower 2
+		g.arc(getX() - (bridgeLength/5), getY() - (radiusOfArc / 2), radiusOfArc * 2, radiusOfArc, 0, g.PI, g.OPEN);
+		
+		g.popMatrix();
 	}
 	
 	private void drawSupports(PApplet g) {
-		// evenly spaced apart
-		// is a simple vertical cylindrical going from the suspension to the deck
+		// evenly spaced apart, simple vertical cylindrical going from the suspension to the deck
 	}
 
 }
