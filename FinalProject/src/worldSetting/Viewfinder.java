@@ -12,15 +12,12 @@ public class Viewfinder {
 	private Rectangle toggle, shutterButton;
 	public float ratioX, ratioY;
 	private Shutter shutter;
-	private SoundPlayer soundPlayer;
 
 	public Viewfinder() {
 		toggle = new Rectangle(Constants.toggleX,Constants.toggleY,Constants.toggleWidth,Constants.toggleHeight);
 
 		shutterButton = new Rectangle(620, 30, 120, 30);
-		shutter = new Shutter();
-		
-		soundPlayer = new SoundPlayer();
+		shutter = new Shutter();		
 	}
 	
 	public void draw(PApplet marker) {		
@@ -71,9 +68,7 @@ public class Viewfinder {
 		}
 		if (shutterButton.contains(p)) {
 			shutter.screenshot(marker);
-//			soundPlayer.playShutterSound();
 			SoundPlayer.playShutterSound();
-
 		}
 	}
 }
