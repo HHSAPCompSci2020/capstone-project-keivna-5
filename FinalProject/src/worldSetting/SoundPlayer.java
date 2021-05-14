@@ -2,44 +2,23 @@ package worldSetting;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-//import processing.sound.*;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
-
 import jay.jaysound.JayLayer;
-import jay.jaysound.JayLayerListener;
-import processing.core.*;
-//import processing.sound.*;
 
-//public class SoundPlayer implements ActionListener, JayLayerListener{
 public class SoundPlayer{
-
-	// TODO Your Instance Variables Here
-//	private JComboBox<String> effects;
-//	private JButton play, startstop, next;
 
 	private static JayLayer sound;
 	String shutterString = "shutter-click.mp3";
 
 	public SoundPlayer () {
-		//super();
 
 		JPanel p0 = new JPanel();
 		p0.setLayout(new BoxLayout(p0,BoxLayout.Y_AXIS));
 		p0.setBackground(Color.WHITE);
 
-//		String[] soundEffects = new String[]{"title1.mp3","title2.mp3","title3.mp3","title4.mp3","title5.mp3"};
-		String[] soundEffects = new String[]{"shutter-click.mp3"};
+		//String[] soundEffects = new String[]{"shutter-click.mp3"};
 
 		String[] songs = new String[]{"game1.mp3","game2.mp3","game3.mp3","game4.mp3","game5.mp3"};
 
@@ -72,10 +51,10 @@ public class SoundPlayer{
 //		setBackground(Color.WHITE);
 
 		sound=new JayLayer("audio/","audio/",false);
-		sound.addPlayList();
-		sound.addSongs(0,songs);
-		sound.addSoundEffects(soundEffects);
-		sound.changePlayList(0);
+		//sound.addPlayList();
+		//sound.addSongs(0,songs);
+		//sound.addSoundEffects(soundEffects);
+//		sound.changePlayList(0);
 //		sound.addJayLayerListener(this);
 //
 //		add(p0);
@@ -84,11 +63,17 @@ public class SoundPlayer{
 	}
 
 	public static void playShutterSound() {
-		sound.playSoundEffect(0);
+		String[] soundEffects = new String[]{"shutter-click.mp3"};
+
+		JayLayer soundTest = new JayLayer("audio/","audio/",false);
+		soundTest.addSoundEffects(soundEffects);
+		soundTest.playSoundEffect(0);
+//		sound.playSoundEffect(0);
 
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
+		System.out.println("action performed is being called");
 		String source = arg0.getActionCommand();
 		if (source.equals("Play!")) {
 //			int i = effects.getSelectedIndex();
