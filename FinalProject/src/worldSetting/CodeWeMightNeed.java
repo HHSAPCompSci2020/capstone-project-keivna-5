@@ -1,5 +1,9 @@
 package worldSetting;
 
+import java.awt.event.MouseEvent;
+
+import processing.core.PApplet;
+
 /**
  * Just some code we might use some time
  * @author Katia
@@ -42,5 +46,12 @@ public class CodeWeMightNeed {
 
 		return false;
 	}
+//	
+//	public void mouseWheel(PApplet marker, MouseEvent event) {
+//		float e = event.getCount();
+//		marker.mouseEvent();
+//		float e = event.getCount();
+//		System.out.println(e);
+//	}
 
 }

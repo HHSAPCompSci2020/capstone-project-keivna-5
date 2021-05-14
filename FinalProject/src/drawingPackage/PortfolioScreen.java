@@ -1,27 +1,36 @@
 package drawingPackage;
 
-
-
 import java.awt.Point;
+
 import java.awt.Rectangle;
-import java.awt.event.*;
 
 import portfolio.Portfolio;
 import processing.core.PApplet;
 
 /**
  * The Screen that draws the Portfolio and implements all other user interactions
- * @author elise
+ * @author Elise
  */
 public class PortfolioScreen extends Screen {
 	
-	public float ratioX, ratioY;
 	private Rectangle toggle;
 	private Portfolio portfolio;
-	public static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20, toggleRadius = 10, screenWidth = 800, screenHeight = 600;
-
-
-
+	
+	/**
+	 * Represents the ratios for the size of the screen
+	 */
+	public float ratioX, ratioY;
+	
+	/**
+	 * Constants for the size of the toggle button
+	 */
+	public static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20, toggleRadius = 10;
+	
+	/**
+	 * Constants for the size of the screen
+	 */
+	public static final int screenWidth = 800, screenHeight = 600;
+	
 	/**
 	 * PortfolioScreen constructor
 	 * Initializes all fields
@@ -60,17 +69,7 @@ public class PortfolioScreen extends Screen {
 		float w = marker.textWidth(str);
 		marker.text(str, toggle.x+toggle.width/2-w/2 - 5, toggle.y+toggle.height/2);
 		
-		marker.popStyle();
-		
-		//control y, move up/down with "Q" and "E" keys
-//				if (checkKey(KeyEvent.VK_UP)) {
-//					cameraNoMouse.moveZ(Constants.keyMoveFactor);
-//
-//				} else if (checkKey(KeyEvent.VK_DOWN)) {
-//				
-//					cameraNoMouse.moveZ(Constants.keyMoveFactor*-1);
-//				}
-				
+		marker.popStyle();			
 	}
 	
 	/**
@@ -84,13 +83,5 @@ public class PortfolioScreen extends Screen {
 			marker.switchScreen(0);
 		}
 	}
-	
-//	public void mouseWheel(PApplet marker, MouseEvent event) {
-//		float e = event.getCount();
-//		marker.mouseEvent();
-//		  float e = event.getCount();
-//		  System.out.println(e);
-//		}
 
-	
 }
