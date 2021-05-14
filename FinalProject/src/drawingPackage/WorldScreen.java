@@ -17,9 +17,10 @@ public class WorldScreen extends Screen {
 	private Viewfinder viewfinder;
 	public float ratioX, ratioY;
 	public static final int keyMoveFactor = 2;
+	public static final int screenWidth = 800, screenHeight = 600;
 
 	public WorldScreen(PApplet marker) {
-		super(Constants.screenWidth,Constants.screenHeight);
+		super(screenWidth, screenHeight);
 
 		world = new World(marker);
 		cameraNoMouse = new CameraNoMouse();

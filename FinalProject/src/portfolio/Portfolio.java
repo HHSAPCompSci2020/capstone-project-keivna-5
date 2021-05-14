@@ -2,7 +2,6 @@ package portfolio;
 
 import java.util.ArrayList;
 
-import drawingPackage.Constants;
 import processing.core.PApplet;
 import processing.core.PImage;
 import worldSetting.Shutter;

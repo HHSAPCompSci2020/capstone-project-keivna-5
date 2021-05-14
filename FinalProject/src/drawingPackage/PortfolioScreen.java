@@ -18,7 +18,7 @@ public class PortfolioScreen extends Screen {
 	public float ratioX, ratioY;
 	private Rectangle toggle;
 	private Portfolio portfolio;
-	public static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20;
+	public static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20, toggleRadius = 10, screenWidth = 800, screenHeight = 600;
 
 
 
@@ -27,7 +27,7 @@ public class PortfolioScreen extends Screen {
 	 * Initializes all fields
 	 */
 	public PortfolioScreen() {
-		super(Constants.screenWidth,Constants.screenHeight);
+		super(screenWidth, screenHeight);
 		toggle = new Rectangle(toggleX, toggleY, toggleWidth, toggleHeight);
 		portfolio = new Portfolio();
 	}
@@ -51,7 +51,7 @@ public class PortfolioScreen extends Screen {
 		portfolio.draw(marker);
 		
 		//toggle
-		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, Constants.toggleRadius);
+		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, toggleRadius);
 		
 		//toggle text
 		marker.fill(0);

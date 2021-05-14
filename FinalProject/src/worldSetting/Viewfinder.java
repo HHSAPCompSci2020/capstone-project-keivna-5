@@ -3,7 +3,6 @@ package worldSetting;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import drawingPackage.Constants;
 import drawingPackage.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -17,7 +16,7 @@ public class Viewfinder {
 	public float ratioX, ratioY;
 	private Shutter shutter;
 	public static final float viewfinderIndent = 60;
-	public static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20;
+	public static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20, toggleRadius = 10, screenWidth = 800, screenHeight = 600;
 
 
 	/**
@@ -48,7 +47,7 @@ public class Viewfinder {
 
 		//toggle
 		marker.fill(225, 120, 120);
-		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, Constants.toggleRadius);
+		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, toggleRadius);
 		
 		//toggle text
 		marker.fill(0);

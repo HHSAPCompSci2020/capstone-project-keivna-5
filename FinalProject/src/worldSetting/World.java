@@ -1,6 +1,5 @@
 package worldSetting;
 
-import drawingPackage.Constants;
 import processing.core.*;
 
 /**
@@ -17,6 +16,8 @@ public class World { //build water, bridge, background
 
 	int savedTime;
 	int totalTime = 60000;
+	public static final int seaSoundDurationMillis = 259000; //4:19 minutes
+
 
 	/**
 	 * Creates the world elements:
@@ -61,7 +62,7 @@ public class World { //build water, bridge, background
 		int passedTime = g.millis() - savedTime;
 		//the time is a factor of the duration of sea sound, play sound again
 		//currently doesn't work but it's fine bc sound plays for 4 minutes when window is opened
-		if (passedTime % Constants.seaSoundDurationMillis == 0) {
+		if (passedTime % seaSoundDurationMillis == 0) {
 			SoundPlayer.playSeaSound();
 
 			//System.out.println("1 minute has passed!");
