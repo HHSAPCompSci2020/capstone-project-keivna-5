@@ -1,5 +1,10 @@
 package worldSetting;
 
+/**
+ * Just some code we might use some time
+ * @author Katia
+ *
+ */
 public class CodeWeMightNeed {
 	
 //	elements = new Element[size][size];
