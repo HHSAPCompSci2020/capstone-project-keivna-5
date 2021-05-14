@@ -3,13 +3,10 @@ package drawingPackage;
 import processing.core.*;
 
 
-import worldSetting.Camera;
 import worldSetting.CameraNoMouse;
 import worldSetting.Viewfinder;
 import worldSetting.World;
 import java.awt.event.KeyEvent;
-import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.ArrayList;
 
 public class WorldScreen extends Screen {
