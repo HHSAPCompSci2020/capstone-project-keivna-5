@@ -113,14 +113,18 @@ public class Bridge extends Element{
 	private void drawSuspensionCord(PApplet g) {
 		float radiusOfArc = towerNHeight * towerHeightInNs;
 		
-		g.pushMatrix();
-		
 		g.strokeWeight(10);
+		g.stroke(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
 		g.noFill();
-		g.translate(getX(), getY() - (bridgeHeight / 2), getZ());
-		// start: top of tower 1, mid: point between towers, end: top of tower 2
-		g.arc(getX() - (bridgeLength/5), getY() - (radiusOfArc / 2), radiusOfArc * 2, radiusOfArc, 0, g.PI, g.OPEN);
 		
+		g.pushMatrix(); // start: top of tower 1, mid: point between towers, end: top of tower 2
+		g.translate(getX(), getY(), getZ() - (int) (bridgeHeight * 2.5));
+		g.arc(getX() - (bridgeLength/5) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.PI);
+		g.popMatrix();
+		
+		g.pushMatrix(); // start: top of tower 1, mid: point between towers, end: top of tower 2
+		g.translate(getX(), getY(), getZ() + (int) (bridgeHeight * 2.5));
+		g.arc(getX() - (bridgeLength/5) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.PI);
 		g.popMatrix();
 	}
 	
