@@ -42,14 +42,23 @@ public class World {
 	 * Starts playing ocean sounds
 	 * @param g can't be null
 	 */
-	public void display(PApplet g) {
+	public void display(PApplet g, double ISOval) {
 		g.background(sky[0], sky[1], sky[2]);
-		
+		g.smooth();
 		g.lights();
 		
-//		if (g.mousePressed) {
-//			
-//		}
+		int ISOfor3D = (int)((ISOval/6400.0)*255.0);
+		//System.out.println("ISOfor3D: " + ISOfor3D);
+		g.ambientLight(ISOfor3D, ISOfor3D, ISOfor3D);
+
+		
+//		g.tint(150);
+		if (g.mousePressed) {
+			
+			//g.pointLight(255, 255, 255, g.width/2, g.height/2, 400);
+
+//			g.tint(100);
+		}
 		
 
 		
