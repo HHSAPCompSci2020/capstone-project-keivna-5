@@ -43,7 +43,6 @@ import processing.core.*;
 public class CameraNoMouse {
 
 	private PVector center, right, forward, up, position, velocity;
-
 	private float pan, tilt, fov, viewDistance, speed, friction;
 	private Point mouse, pMouse;
 
@@ -122,49 +121,53 @@ public class CameraNoMouse {
 
 	}
 
-	public float getViewDistance() { return viewDistance; }
-
-	public void setViewDistance(float f) { viewDistance = f; }
-
+	/**
+	 * Move the x position of the camera, takes into account speed
+	 * @param dir the amount to move by
+	 */
 	public void moveX(int dir) { velocity.add(PVector.mult(right, speed * dir)); }
 
-	public void moveZ(int dir) { velocity.add(PVector.mult(forward, speed * dir)); }
-
+	/**
+	 * Move the y position of the camera, takes into account speed
+	 * @param dir the amount to move by
+	 */
 	public void moveY(int dir) { velocity.add(PVector.mult(up, speed * dir)); }
+	
+	/**
+	 * Move the z position of the camera, takes into account speed
+	 * @param dir the amount to move by
+	 */
+	public void moveZ(int dir) { velocity.add(PVector.mult(forward, speed * dir)); }
+	
+	/**
+	 * Gets the viewDistance of the camera
+	 * @return the viewDistance of the camera
+	 */
+	public float getViewDistance() { return viewDistance; }
+
+	/**
+	 * Sets the viewDistance of the camera
+	 * @param distance the new distance of the camera
+	 */
+	public void setViewDistance(float distance) { viewDistance = distance; }
+	
+	/**
+	 * Gets the angle of the camera
+	 * @return the angle of the camera
+	 */
+	public float getPan() { return pan; }
+	
+	/**
+	 * Sets the angle of the camera
+	 * @param angle the new angle of the camera
+	 */
+	public void setPan(double angle) { pan = (float) angle; }
 	
 	/**
 	 * Gets the position of the camera
 	 * @return the x, y and z position of the camera
 	 */
 	public PVector getPosition() { return position; }
-	
-//	public PVector getForward() { return forward; }
-//
-//	public PVector getVelocity() { return velocity; }
-//
-//	public PVector getCenter() { return center; }
-//
-//	public PVector getRight() { return right; }
-//
-//	public float getPan() { return pan; }
-//
-//	public float getTilt() { return tilt; }
-//
-//	public float getFOV() { return fov; }
-//
-//	public void setFOV(float f) { fov = f; }
-//	
-//	public float getFriction() { return friction; }
-//
-//	public void setFriction(float f) { friction = f; }
-//
-//	public float getViewDistance() { return viewDistance; }
-//
-//	public void setViewDistance(float f) { viewDistance = f; }
-//
-//	public Point getMouse() { return mouse; }
-//
-//	public void setPan(double angle) { pan = (float) angle; }
 	
 	/**
 	 * Sets the position of the player to the given coordinates
