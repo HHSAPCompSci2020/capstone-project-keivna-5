@@ -1,13 +1,13 @@
 package worldSetting;
 
 import java.awt.AWTException;
+
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.core.PImage;
-import processing.core.PVector;
 
 /**
  * Represents the physical Shutter on the Viewfinder
@@ -20,14 +20,14 @@ public class Shutter {
 	static ArrayList<PImage> images;
 	
 	/**
-	 * Constructor that initializes fields
+	 * Initializes the list of images
 	 */
 	public Shutter() {
 		images = new ArrayList<PImage>();
 	}
 
 	/**
-	 * captures a screenshot of the screen
+	 * Captures a screenshot of the screen, not including the viewfinder
 	 * @param marker
 	 */
 	public static void screenshot(PApplet marker) {

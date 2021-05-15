@@ -18,14 +18,13 @@ public class SoundPlayer{
 		soundTest.playSoundEffect(0);
 	}
 
-	//length is 4:19
 	/**
-	 * plays a background sea sound with waves crashing
+	 * Plays a background sea sound with waves crashing
 	 */
 	public static void playSeaSound() {
 		String[] soundEffects = new String[]{"sea-sound.mp3"};
 		JayLayer soundTest = new JayLayer("audio/","audio/",false);
-		soundTest.addSoundEffects(soundEffects);
+		soundTest.addSoundEffects(soundEffects); //length is 4:19
 		soundTest.playSoundEffect(0);
 	}
 }
