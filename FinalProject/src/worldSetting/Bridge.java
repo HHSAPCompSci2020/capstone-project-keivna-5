@@ -128,6 +128,11 @@ public class Bridge extends Element{
 		g.popMatrix();
 		
 		g.pushMatrix(); // start: top of tower 1, mid: point between towers, end: top of tower 2
+		g.translate(getX(), getY(), getZ() - (int) (bridgeHeight * 2.5));
+		g.arc(getX() - (3 * bridgeLength/5) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.HALF_PI);
+		g.popMatrix();
+		
+		g.pushMatrix(); // start: top of tower 1, mid: point between towers, end: top of tower 2
 		g.translate(getX(), getY(), getZ() + (int) (bridgeHeight * 2.5));
 		g.arc(getX() + (bridgeLength/5) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, g.HALF_PI, g.PI);
 		g.popMatrix();
@@ -135,6 +140,11 @@ public class Bridge extends Element{
 		g.pushMatrix(); // start: top of tower 1, mid: point between towers, end: top of tower 2
 		g.translate(getX(), getY(), getZ() + (int) (bridgeHeight * 2.5));
 		g.arc(getX() - (bridgeLength/5) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.PI);
+		g.popMatrix();
+		
+		g.pushMatrix(); // start: top of tower 1, mid: point between towers, end: top of tower 2
+		g.translate(getX(), getY(), getZ() + (int) (bridgeHeight * 2.5));
+		g.arc(getX() - (3 * bridgeLength/5) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.HALF_PI);
 		g.popMatrix();
 	}
 	
