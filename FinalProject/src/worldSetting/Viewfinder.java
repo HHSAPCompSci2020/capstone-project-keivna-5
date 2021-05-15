@@ -3,6 +3,9 @@ package worldSetting;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import java.awt.Shape;
+
+
 import drawingPackage.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -15,6 +18,7 @@ public class Viewfinder {
 	
 	private Rectangle toggle, shutterButton;
 	private Shutter shutter;
+	private Rectangle ISOup, ISOdown;
 	
 	/**
 	 * Represents the ratios for the size of the screen
@@ -42,7 +46,8 @@ public class Viewfinder {
 	public Viewfinder() {
 		toggle = new Rectangle(toggleX,toggleY, toggleWidth, toggleHeight);
 		shutterButton = new Rectangle(620, 30, 120, 30);
-		shutter = new Shutter();		
+		shutter = new Shutter();	
+		ISOup = new Rectangle (650, 30, 30, 30);
 	}
 	
 	/**
@@ -88,6 +93,10 @@ public class Viewfinder {
 		marker.textSize(15);
 		String keyDefinitions = "Up/Down/Left/Right: WASD, Forward: UP, Back: DOWN, Spin: LEFT/RIGHT";
 		marker.text(keyDefinitions, toggle.x, marker.height - 30);
+		
+		//ISO up triangle
+		marker.fill(255, 255, 0);
+		marker.triangle(ISOup.x, ISOup.y + ISOup.height, ISOup.x + ISOup.width, ISOup.y + ISOup.height, ISOup.x + (ISOup.width/2), ISOup.y + ISOup.height);
 		
 		marker.popMatrix();
 	}

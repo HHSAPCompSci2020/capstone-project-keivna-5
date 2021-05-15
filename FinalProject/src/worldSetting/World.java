@@ -44,8 +44,20 @@ public class World {
 	 */
 	public void display(PApplet g) {
 		g.background(sky[0], sky[1], sky[2]);
+		
+		g.lights();
+		
+//		if (g.mousePressed) {
+//			
+//		}
+		
+
+		
 		water.display(g);
 		bridge.display(g);
+		
+		
+
 
 		//DO NOT DELETE!!! IDC HOW DESPERATELY YOU WANT TO DONT.
 //		// Calculate how much time has passed
