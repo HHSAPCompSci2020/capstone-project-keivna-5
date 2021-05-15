@@ -3,21 +3,22 @@ package worldSetting;
 import processing.core.*;
 
 /**
- * represents a simple 3D element
- * @author katia
+ * Represents a simple 3D element
+ * @author Katia
  *
  */
 public class Element {
+	
 	private float x, y, z, size;
 	private int[] fillColor;
 	
 	/**
-	 * initializes element fields
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @param size
-	 * @param fillColor
+	 * Initializes element fields
+	 * @param x x-coordinate of the Element
+	 * @param y y-coordinate of the Element
+	 * @param z z-coordinate of the Element
+	 * @param size the length of the cube
+	 * @param fillColor the color of the cube in [r,g,b]
 	 */
 	public Element(float x, float y, float z, float size, int[] fillColor) {
 		this.x = x;
@@ -28,11 +29,11 @@ public class Element {
 	}
 	
 	/**
-	 * initializes fields
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @param size
+	 * Initializes fields
+	 * @param x x-coordinate of the Element
+	 * @param y y-coordinate of the Element
+	 * @param z z-coordinate of the Element
+	 * @param size the length of the cube
 	 */
 	public Element(float x, float y, float z, float size) {
 		this.x = x;
@@ -43,7 +44,8 @@ public class Element {
 	}
 
 	/**
-	 * draws a simple box
+	 * Draws a simple box with the color fillColor
+	 * and the length of size and coordinates of x, y, z
 	 * @param g
 	 * @pre PApplet g is not null
 	 * @post PApplet g is modified
@@ -57,33 +59,39 @@ public class Element {
 	}
 
 	/**
-	 * @return X
+	 * Get x-coordinate of the Element
+	 * @return X The current x-coordinate
 	 */
 	public float getX() { return x; }
 
 	/**
-	 * @return Y
+	 * Get y-coordinate of the Element
+	 * @return Y The current y-coordinate
 	 */
 	public float getY() { return y; }
 
 	/**
-	 * @return Z
+	 * Get z-coordinate of the Element
+	 * @return Z The current z-coordinate
 	 */
 	public float getZ() { return z; }
 
 	/**
-	 * @return size
+	 * Get the length of the Element
+	 * @return size The current size
 	 */
 	public float getSize() { return size; }
 	
 	/**
-	 * @return fillColor
+	 * Get the color of the Element
+	 * @return fillColor The current color
 	 */
 	public int[] getFillColor() { return fillColor; }
 	
 	/**
-	 * sets fillColor to param
-	 * @param newColor
+	 * Sets fillColor to a new color
+	 * @param newColor New color
 	 */
 	public void setFillColor(int[] newColor) { fillColor = newColor;}	
+	
 }
