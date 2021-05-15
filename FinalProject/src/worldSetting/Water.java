@@ -35,5 +35,4 @@ public class Water extends Element{
 		
 		g.popMatrix();
 	}
-
 }

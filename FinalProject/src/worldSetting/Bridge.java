@@ -127,5 +127,4 @@ public class Bridge extends Element{
 	private void drawSupports(PApplet g) {
 		// evenly spaced apart, simple vertical cylindrical going from the suspension to the deck
 	}
-
 }

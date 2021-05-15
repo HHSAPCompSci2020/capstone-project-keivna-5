@@ -90,5 +90,4 @@ public class World {
 	public void setSky(int[] color) {
 		sky = color;
 	}
-
 }

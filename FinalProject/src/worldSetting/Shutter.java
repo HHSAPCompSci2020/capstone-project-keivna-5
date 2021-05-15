@@ -17,6 +17,7 @@ import processing.core.PImage;
 public class Shutter {
 	//boolean smoothOn;
 	//int x,y;	
+	
 	static ArrayList<PImage> images;
 	
 	/**

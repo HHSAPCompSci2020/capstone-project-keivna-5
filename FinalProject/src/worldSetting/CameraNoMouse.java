@@ -180,5 +180,4 @@ public class CameraNoMouse {
 		this.getPosition().y = y;
 		this.getPosition().z = z;
 	}
-
 }

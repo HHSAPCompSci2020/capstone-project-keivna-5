@@ -83,5 +83,4 @@ public class PortfolioScreen extends Screen {
 			marker.switchScreen(0);
 		}
 	}
-
 }

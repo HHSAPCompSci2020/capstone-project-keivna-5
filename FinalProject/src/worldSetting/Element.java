@@ -93,5 +93,4 @@ public class Element {
 	 * @param newColor New color
 	 */
 	public void setFillColor(int[] newColor) { fillColor = newColor;}	
-	
 }

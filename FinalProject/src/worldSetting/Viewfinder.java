@@ -12,6 +12,7 @@ import processing.core.PImage;
  * @author elise
  */
 public class Viewfinder {
+	
 	private Rectangle toggle, shutterButton;
 	private Shutter shutter;
 	
