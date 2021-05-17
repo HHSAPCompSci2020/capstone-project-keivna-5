@@ -66,7 +66,7 @@ public class WorldScreen extends Screen {
 		//3D aspects
 		marker.pushMatrix();
 		cameraNoMouse.draw(marker);
-		world.display(marker, viewfinder.getISOvalue(), viewfinder.getLightSourceY());
+		world.draw(marker, viewfinder.getISOvalue(), viewfinder.getLightSourceY(), viewfinder.getLightSourceX());
 		marker.popMatrix(); //get out of 3D world
 		
 		viewfinder.draw(marker);
@@ -80,9 +80,9 @@ public class WorldScreen extends Screen {
 		
 		//control x, move left/right
 		if (checkKey(KeyEvent.VK_A)) {
-			cameraNoMouse.moveX(keyMoveFactor);
-		} else if (checkKey(KeyEvent.VK_D)) {
 			cameraNoMouse.moveX(keyMoveFactor*-1);
+		} else if (checkKey(KeyEvent.VK_D)) {
+			cameraNoMouse.moveX(keyMoveFactor);
 		}
 		
 		//control y, move up/down with "Q" and "E" keys
@@ -98,6 +98,8 @@ public class WorldScreen extends Screen {
 		} else if (checkKey(KeyEvent.VK_RIGHT)) {
 			cameraNoMouse.setPan(cameraNoMouse.getPan() - marker.QUARTER_PI / 180 * keyMoveFactor);
 		}
+		
+		
 	}
 
 	/**

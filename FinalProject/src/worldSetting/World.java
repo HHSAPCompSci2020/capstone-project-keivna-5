@@ -42,32 +42,50 @@ public class World {
 	 * Starts playing ocean sounds
 	 * @param g can't be null
 	 */
-	public void display(PApplet g, double ISOval, double lightSourceY) {
+	public void draw(PApplet g, double ISOval, double lightSourceY, double lightSourceX) {
 		g.background(sky[0], sky[1], sky[2]);
-//		g.smooth();
+		g.smooth();
 		g.lights();
 		
 		int ISOfor3D = (int)((ISOval/6400.0)*255.0);
 		//System.out.println("ISOfor3D: " + ISOfor3D);
 		g.ambientLight(ISOfor3D, ISOfor3D, ISOfor3D);
 
+
 		double pointLightY = lightSourceY*g.height;
 		
-		System.out.println("g.height: " + g.height);
-		System.out.println("pointLightY: " + pointLightY);
-		System.out.println("lightSourceY: " + lightSourceY);
+		if (lightSourceY < 0.1) {
+			pointLightY = 0;
+		}
+		
+		double pointLightX = lightSourceX*g.width;
+		if (lightSourceX < 0.1) {
+			pointLightX = 0;
+		}
+		System.out.println("g.height: " + g.height + ", pointLightY: " + pointLightY + ", lightSourceY: " + lightSourceY);
+		
+//		System.out.println("g.width: " + g.width + ", pointLightX: " + pointLightX + ", lightSourceX: " + lightSourceX);
 
-		g.pointLight(255, 255, 255, g.width/2, (float) pointLightY, 400);
+
+//		g.pointLight(255, 255, 255, (float) pointLightX, (float) pointLightY, 400);
+//		g.pointLight(255, 255, 255, g.width/2, g.height/2, 400);
+//		g.pointLight(128, 128, 128, g.width/2, g.height/2, 400);
+//		g.directionalLight(128, 128, 128, g.width/2, g.height/2, 400);
+		g.directionalLight(128, 128, 128, (float) pointLightX, (float) pointLightY, 400);
+//		g.directionalLight(128, 128, 128, (float) lightSourceX, (float) lightSourceY, 400);
+
 //		g.pointLight(255, 255, 255, g.width/2, g.height/2, 400);
 
 
 //		g.tint(150);
-		if (g.mousePressed) {
-			
+//		if (g.mousePressed) {
+//			g.pointLight(128, 128, 128, g.width/2, (float) pointLightY, 400);
+//		g.directionalLight(128, 128, 128, 0, -1, 0);
+
 //			g.pointLight(255, 255, 255, g.width/2, g.height/4, 400);
 
 //			g.tint(100);
-		}
+		//}
 		
 
 		

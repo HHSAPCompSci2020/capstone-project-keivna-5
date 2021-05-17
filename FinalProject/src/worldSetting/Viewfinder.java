@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import java.awt.Shape;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import drawingPackage.DrawingSurface;
@@ -188,6 +189,24 @@ public class Viewfinder {
 				lightSourceY = 0;
 			}
 		}
+		
+		else if (lightSourceLeft.contains(p)) {
+			if (lightSourceX < 1) {
+				lightSourceX+= 0.1;
+			}
+			if (lightSourceX > 1) {
+				lightSourceX = 1;
+			}
+		}
+		
+		else if (lightSourceRight.contains(p)) {
+			if (lightSourceX > 0) {
+				lightSourceX-= 0.1;
+			} 
+			if (lightSourceX < 0) {
+				lightSourceX = 0;
+			}
+		}
 	}
 	
 	public int getISOvalue() {
@@ -196,5 +215,13 @@ public class Viewfinder {
 	
 	public double getLightSourceY() {
 		return lightSourceY;
+	}
+	
+	public double getLightSourceX() {
+		return lightSourceX;
+	}
+	
+	public double getLightSourceZ() {
+		return lightSourceZ;
 	}
 }
