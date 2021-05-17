@@ -66,7 +66,7 @@ public class WorldScreen extends Screen {
 		//3D aspects
 		marker.pushMatrix();
 		cameraNoMouse.draw(marker);
-		world.display(marker, viewfinder.getISOvalue());
+		world.display(marker, viewfinder.getISOvalue(), viewfinder.getLightSourceY());
 		marker.popMatrix(); //get out of 3D world
 		
 		viewfinder.draw(marker);

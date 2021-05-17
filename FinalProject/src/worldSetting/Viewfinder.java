@@ -18,9 +18,10 @@ public class Viewfinder {
 
 	private Rectangle toggle, shutterButton;
 	private Shutter shutter;
-	private Rectangle ISOup, ISOdown;
+	private Rectangle ISOup, ISOdown, lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight;
 	private final int[] ISOvalues = {100, 200, 400, 800, 1600, 3200, 6400};
 	private int ISOindex;
+	private double lightSourceX, lightSourceY, lightSourceZ; //from 0-1, to be multiplied by marker.width or height in world draw
 	/**
 	 * Represents the ratios for the size of the screen
 	 */
@@ -50,6 +51,17 @@ public class Viewfinder {
 		shutter = new Shutter();	
 		ISOup = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*2, 30, 30);
 		ISOdown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*3 + 15, 30, 30);
+		
+		lightSourceUp = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*5, 30, 30);
+		lightSourceDown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*5.5) + 10, 30, 30);
+
+		lightSourceLeft = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*6.5), 30, 30);
+		lightSourceRight = new Rectangle (800 - (int)(viewfinderIndent/4) - 10, (int)(viewfinderIndent*6.5), 30, 30);
+		
+		lightSourceX = 0.5;
+		lightSourceY = 0.5;
+		lightSourceZ = 0.5;
+
 		ISOindex = 3;
 	}
 
@@ -98,14 +110,36 @@ public class Viewfinder {
 		marker.text(keyDefinitions, toggle.x, marker.height - 30);
 
 		//ISO up triangle
-		marker.fill(255, 0, 255);
+//		marker.fill(0, 0, 255);
 		marker.triangle(ISOup.x, ISOup.y + ISOup.height, ISOup.x + ISOup.width, ISOup.y + ISOup.height, ISOup.x + (ISOup.width/2), ISOup.y);
 
+		//ISO text
 		marker.text("ISO", ISOdown.x + 3, ISOdown.y - (viewfinderIndent/4) - 10);
 		marker.text(getISOvalue(), ISOdown.x, ISOdown.y - (viewfinderIndent/8));
 
 		//ISO down triangle
 		marker.triangle(ISOdown.x, ISOdown.y, ISOdown.x + ISOdown.width, ISOdown.y, ISOdown.x + (ISOdown.width/2), ISOdown.y + ISOdown.height);
+		
+		//lighting text
+//		marker.text("light \nsource", lightSourceUp.x - (lightSourceUp.width/4), lightSourceUp.y - lightSourceUp.height);		
+		marker.text("light", lightSourceUp.x - (lightSourceUp.width/4), lightSourceUp.y - lightSourceUp.height);
+		marker.text("source", lightSourceUp.x - (lightSourceUp.width/4), lightSourceUp.y - (lightSourceUp.height/2));		
+
+		//light source up triangle
+		marker.triangle(lightSourceUp.x, lightSourceUp.y + lightSourceUp.height, lightSourceUp.x + lightSourceUp.width, lightSourceUp.y + lightSourceUp.height, lightSourceUp.x + (lightSourceUp.width/2), lightSourceUp.y);
+		
+		//light source down triangle
+		marker.triangle(lightSourceDown.x, lightSourceDown.y, lightSourceDown.x + lightSourceDown.width, lightSourceDown.y, lightSourceDown.x + (lightSourceDown.width/2), lightSourceDown.y + lightSourceDown.height);
+
+		//points plotted in counterclockwise direction starting from very left
+		//light source left triangle
+//		marker.rect(lightSourceLeft.x, lightSourceLeft.y, lightSourceLeft.width, lightSourceLeft.height);
+		marker.triangle(lightSourceLeft.x - (lightSourceLeft.width/4), lightSourceLeft.y + (lightSourceLeft.height/2), lightSourceLeft.x + (lightSourceLeft.width/2), lightSourceLeft.y + lightSourceLeft.height, lightSourceLeft.x + (lightSourceLeft.width/2), lightSourceLeft.y);
+		
+		//light source right triangle
+//		marker.rect(lightSourceRight.x, lightSourceRight.y, lightSourceRight.width, lightSourceRight.height);
+		marker.triangle(lightSourceRight.x, lightSourceRight.y, lightSourceRight.x, lightSourceRight.y + lightSourceRight.height, lightSourceRight.x + (3*lightSourceRight.width/4), lightSourceRight.y + (lightSourceRight.height/2));
+		
 		marker.popMatrix();
 	}
 
@@ -118,27 +152,49 @@ public class Viewfinder {
 		Point p = new Point(marker.mouseX,marker.mouseY);
 		if (toggle.contains(p)) {
 			marker.switchScreen(1);
-		}
-		if (shutterButton.contains(p)) {
+		} 
+		
+		else if (shutterButton.contains(p)) {
 			shutter.screenshot(marker);
 			SoundPlayer.playShutterSound();
 		}
 		
-		
-		if (ISOup.contains(p)) {
+		else if (ISOup.contains(p)) {
 			if (ISOindex < ISOvalues.length - 1) {
 				ISOindex++;
 			}
 		}
 		
-		if (ISOdown.contains(p)) {
+		else if (ISOdown.contains(p)) {
 			if (ISOindex > 0) {
 				ISOindex--;
+			}
+		}
+		
+		else if (lightSourceUp.contains(p)) {
+			if (lightSourceY < 1) {
+				lightSourceY+= 0.1;
+			}
+			if (lightSourceY > 1) {
+				lightSourceY = 1;
+			}
+		}
+		
+		else if (lightSourceDown.contains(p)) {
+			if (lightSourceY > 0) {
+				lightSourceY-= 0.1;
+			} 
+			if (lightSourceY < 0) {
+				lightSourceY = 0;
 			}
 		}
 	}
 	
 	public int getISOvalue() {
 		return ISOvalues[ISOindex];
+	}
+	
+	public double getLightSourceY() {
+		return lightSourceY;
 	}
 }
