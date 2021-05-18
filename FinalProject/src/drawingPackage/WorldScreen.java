@@ -21,7 +21,7 @@ public class WorldScreen extends Screen {
 	private Viewfinder viewfinder;
 	
 	/**
-	 * Ration of the screen
+	 * Ratio of the screen
 	 */
 	public float ratioX, ratioY;
 	

@@ -17,7 +17,7 @@ import processing.core.PImage;
  */
 public class Viewfinder {
 
-	private Rectangle toggle, shutterButton;
+	private Rectangle toggle, shutterButton, longExpoShutterButton;
 	private Shutter shutter;
 	private Rectangle ISOup, ISOdown, lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight;
 	private final int[] ISOvalues = {100, 200, 400, 800, 1600, 3200, 6400};
@@ -49,6 +49,8 @@ public class Viewfinder {
 	public Viewfinder() {
 		toggle = new Rectangle(toggleX,toggleY, toggleWidth, toggleHeight);
 		shutterButton = new Rectangle(620, 30, 120, 30);
+		longExpoShutterButton = new Rectangle(420, 30, 120, 30);
+		
 		shutter = new Shutter();	
 		ISOup = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*2, 30, 30);
 		ISOdown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*3 + 15, 30, 30);
@@ -103,6 +105,16 @@ public class Viewfinder {
 		String shutterStr = "Shutter";
 		//float w = marker.textWidth(str);
 		marker.text(shutterStr, shutterButton.x + 5, shutterButton.y + 15);
+		
+		//long expo shutter 
+		marker.fill(120);
+		marker.rect(longExpoShutterButton.x, longExpoShutterButton.y, longExpoShutterButton.width, longExpoShutterButton.height);
+
+		//shutter text
+		marker.fill(0);
+		String longExpoShutterStr = "Long Expo Shutter";
+		//float w = marker.textWidth(str);
+		marker.text(longExpoShutterStr, longExpoShutterButton.x + 5, longExpoShutterButton.y + 15);
 
 		//key instruction text
 		marker.fill(255);
@@ -157,6 +169,11 @@ public class Viewfinder {
 		
 		else if (shutterButton.contains(p)) {
 			shutter.screenshot(marker);
+			SoundPlayer.playShutterSound();
+		}
+		
+		else if (longExpoShutterButton.contains(p)) {
+			shutter.longExposureScreenshot(marker);
 			SoundPlayer.playShutterSound();
 		}
 		

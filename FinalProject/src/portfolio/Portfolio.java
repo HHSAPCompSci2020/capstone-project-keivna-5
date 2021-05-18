@@ -20,28 +20,47 @@ public class Portfolio {
 	 */
 	public void draw(PApplet marker) {
 		ArrayList<PImage> images = Shutter.getallImages();
+		ArrayList<ArrayList<PImage>> longExposureImages = Shutter.getallLongExpoImages();
+
 		marker.background(255);
+		
+		//all hard coded for now
+		ArrayList<PImage> longExpoArray0 = longExposureImages.get(0);
+		PImage longExpoImg0 = longExpoArray0.get(0);
+		longExpoImg0 = marker.loadImage(0 + "." + 0 + ".png");
+		
+		PImage longExpoImg1 = longExpoArray0.get(1);
+		longExpoImg1 = marker.loadImage(0 + "." + 1 + ".png");
 
-		//display images in row in portfolio
-		for (int i = 0; i < images.size(); i++) {
+		PImage longExpoImg2 = longExpoArray0.get(2);
+		longExpoImg2 = marker.loadImage(0 + "." + 2 + ".png");
 
-			PImage img = images.get(i);
-			//images name from shutter are in format "index.png"
-			img = marker.loadImage(i + ".png");
-
-			//crop image to remove viewfinder
-			int a = 60; //viewfinder indent
-			img.copy(a, a, marker.width-(2*a), marker.height-(2*a), 0, 0,  marker.width, marker.height);
+		//place all 3 photos at same location
+		marker.image(longExpoImg0, 20, 50, marker.width/5, marker.height/5);
+		marker.image(longExpoImg1, 20, 50, marker.width/5, marker.height/5);
+		marker.image(longExpoImg2, 20, 50, marker.width/5, marker.height/5);
 
 
-			//find out how many rows down images needs to be at
-			//4 photos per row, go to next row after
-			int b = i % 4; //remainder when divided by 4
-			int c = i-b; //c is divisible by 4
-			int yMultiple = (c/4);
-
-			//marker.image(img, 20 + (marker.width/4*i), y, marker.width/5, marker.height/5);
-			marker.image(img, 20 + (marker.width/4*((i%4))), (150*yMultiple) + 50, marker.width/5, marker.height/5);
-		}
+		//display images in row in portfolio, commented for now to work on long expo
+//		for (int i = 0; i < images.size(); i++) {
+//
+//			PImage img = images.get(i);
+//			//images name from shutter are in format "index.png"
+//			img = marker.loadImage(i + ".png");
+//
+//			//crop image to remove viewfinder
+//			int a = 60; //viewfinder indent
+//			img.copy(a, a, marker.width-(2*a), marker.height-(2*a), 0, 0,  marker.width, marker.height);
+//
+//
+//			//find out how many rows down images needs to be at
+//			//4 photos per row, go to next row after
+//			int b = i % 4; //remainder when divided by 4
+//			int c = i-b; //c is divisible by 4
+//			int yMultiple = (c/4);
+//
+//			//marker.image(img, 20 + (marker.width/4*i), y, marker.width/5, marker.height/5);
+//			marker.image(img, 20 + (marker.width/4*((i%4))), (150*yMultiple) + 50, marker.width/5, marker.height/5);
+//		}
 	}
 }
