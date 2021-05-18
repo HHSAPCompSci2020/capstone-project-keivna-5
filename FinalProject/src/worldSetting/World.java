@@ -1,5 +1,7 @@
 package worldSetting;
 
+import java.util.ArrayList;
+
 import processing.core.*;
 
 /**
@@ -13,6 +15,7 @@ public class World {
 	private int[] sky;
 	private Water water;
 	private Bridge bridge;
+	private ArrayList<Car> cars;
 
 	int savedTime;
 	int totalTime = 60000;
@@ -31,6 +34,11 @@ public class World {
 		sky = new int[] {185, 230, 255};
 		water = new Water(350, 350, 50, 5000);
 		bridge = new Bridge(350, -500, 50, 200);
+		cars = new ArrayList<Car>();
+		
+		for(int i = -8; i <= 8; i++) {
+			cars.add(new Car(350 + (i * 45 * 2) + (float) (i * Math.random()), -560, 90, 45));
+		}
 
 		savedTime = marker.millis();
 		SoundPlayer.playSeaSound();
@@ -77,6 +85,9 @@ public class World {
 		water.display(g);
 		bridge.display(g);	
 
+		for(Car c: cars) {
+			c.display(g);
+		}
 
 		//DO NOT DELETE!!! IDC HOW DESPERATELY YOU WANT TO DONT.
 //		// Calculate how much time has passed
