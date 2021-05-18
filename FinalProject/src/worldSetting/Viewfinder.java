@@ -46,12 +46,12 @@ public class Viewfinder {
 	/**
 	 * Initializes fields
 	 */
-	public Viewfinder() {
+	public Viewfinder(PApplet marker) {
 		toggle = new Rectangle(toggleX,toggleY, toggleWidth, toggleHeight);
 		shutterButton = new Rectangle(620, 30, 120, 30);
 		longExpoShutterButton = new Rectangle(420, 30, 120, 30);
 		
-		shutter = new Shutter();	
+		shutter = new Shutter(marker);	
 		ISOup = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*2, 30, 30);
 		ISOdown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*3 + 15, 30, 30);
 		

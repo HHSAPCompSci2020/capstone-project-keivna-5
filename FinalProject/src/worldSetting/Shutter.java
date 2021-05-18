@@ -28,12 +28,11 @@ public class Shutter {
 	/**
 	 * Initializes the list of images
 	 */
-//	public Shutter(PApplet marker) {
-	public Shutter() {
+	public Shutter(PApplet marker) {
 		images = new ArrayList<PImage>();
 		longExposureImages = new ArrayList<ArrayList<PImage>>();
 		
-//		savedTime = marker.millis();
+		savedTime = marker.millis();
 
 	}
 

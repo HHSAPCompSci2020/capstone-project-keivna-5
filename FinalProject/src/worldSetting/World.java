@@ -68,7 +68,7 @@ public class World {
 		g.directionalLight(128, 128, 128, (float) pointLightX, (float) pointLightY, 400);
 		
 		//change color
-		g.pointLight(0, 255, 0, g.width/2, g.height/2, 400);
+//		g.pointLight(0, 255, 0, g.width/2, g.height/2, 400);
 
 
 //		g.tint(255);
