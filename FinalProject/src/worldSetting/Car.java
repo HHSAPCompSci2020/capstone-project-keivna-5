@@ -40,7 +40,7 @@ public class Car extends Element{
 	public void display(PApplet g) {	
 		g.pushMatrix();
 		drawBase(g);
-//		moveX();
+		this.moveX(-2);
 		g.popMatrix();
 	}
 	
@@ -66,10 +66,5 @@ public class Car extends Element{
 		g.circle(getX(), getY(), carWidth / 2);
 		g.popMatrix();	
 	}
-	
-//	private void moveX(int n) {
-//		this.setX(n);
-//	}
-//	
 
 }

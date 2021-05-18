@@ -56,10 +56,12 @@ public class World {
 		g.lights();
 		
 		int ISOfor3D = (int)((ISOval/6400.0)*255.0);
+		//System.out.println("ISOfor3D: " + ISOfor3D);
 		g.ambientLight(ISOfor3D, ISOfor3D, ISOfor3D);
 
 
 		double pointLightY = lightSourceY*g.height;
+		
 		if (lightSourceY < 0.1) {
 			pointLightY = 0;
 		}
@@ -68,23 +70,35 @@ public class World {
 		if (lightSourceX < 0.1) {
 			pointLightX = 0;
 		}
-//		System.out.println("g.height: " + g.height + ", pointLightY: " + pointLightY + ", lightSourceY: " + lightSourceY);
+		System.out.println("g.height: " + g.height + ", pointLightY: " + pointLightY + ", lightSourceY: " + lightSourceY);
+		
 //		System.out.println("g.width: " + g.width + ", pointLightX: " + pointLightX + ", lightSourceX: " + lightSourceX);
 
-		//128 is half of 255 to remove all tint
-		//change lighting
+
+//		g.pointLight(255, 255, 255, (float) pointLightX, (float) pointLightY, 400);
+//		g.pointLight(255, 255, 255, g.width/2, g.height/2, 400);
+//		g.pointLight(128, 128, 128, g.width/2, g.height/2, 400);
+//		g.directionalLight(128, 128, 128, g.width/2, g.height/2, 400);
 		g.directionalLight(128, 128, 128, (float) pointLightX, (float) pointLightY, 400);
+//		g.directionalLight(128, 128, 128, (float) lightSourceX, (float) lightSourceY, 400);
+
+//		g.pointLight(255, 255, 255, g.width/2, g.height/2, 400);
+
+
+//		g.tint(150);
+//		if (g.mousePressed) {
+//			g.pointLight(128, 128, 128, g.width/2, (float) pointLightY, 400);
+//		g.directionalLight(128, 128, 128, 0, -1, 0);
+
+//			g.pointLight(255, 255, 255, g.width/2, g.height/4, 400);
+
+//			g.tint(100);
+		//}
 		
-		//change color
-//		g.pointLight(0, 255, 0, g.width/2, g.height/2, 400);
-
-
-//		g.tint(255);
 
 		
 		water.display(g);
-		bridge.display(g);	
-
+		bridge.display(g);
 		for(Car c: cars) {
 			c.display(g);
 		}
@@ -132,4 +146,6 @@ public class World {
 	public void setSky(int[] color) {
 		sky = color;
 	}
+	
+	
 }
