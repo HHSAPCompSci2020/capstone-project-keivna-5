@@ -22,14 +22,15 @@ public class Shutter {
 
 	//each ArrayList<PImage> is 1 long exposure image
 	private static ArrayList<ArrayList<PImage>> longExposureImages;
-
-
+	private static int longExpoSize;
+	
 	/**
 	 * Initializes the list of images
 	 */
 	public Shutter(PApplet marker) {
 		images = new ArrayList<PImage>();
 		longExposureImages = new ArrayList<ArrayList<PImage>>();
+		longExpoSize = 0;
 	}
 
 	/**
@@ -57,50 +58,29 @@ public class Shutter {
 	public static void longExposureScreenshot(PApplet marker, int outerArrIndex, int innerArrIndex) {
 		try {
 			Robot robot = new Robot();
-			
-			
 			ArrayList<PImage> currLongExpo;
 			
 			//this arraylist already exists
-			if (outerArrIndex < longExposureImages.size()) {
+			if (outerArrIndex < longExpoSize) {
 				currLongExpo = longExposureImages.get(outerArrIndex);
-			} else {
+			} else { //make a new array
 				currLongExpo = new ArrayList<PImage>();
-
+				longExpoSize++;
 			}
-			
-//			int allLongExpoIndex = longExposureImages.size();			
-
+						
 			PImage shot = new PImage(robot.createScreenCapture(new Rectangle(0,0,marker.width, marker.height)));
+			//ex: 3rd photo in second arraylist of pimages (ie 2nd long expo shot) is in format "2.3.png"
 			marker.saveFrame(outerArrIndex + "." + innerArrIndex + ".png");
 			currLongExpo.add(shot);
-
-
-
-			//			long startTime = System.currentTimeMillis();
-			//long elapsedTime = System.currentTimeMillis() - startTime;
-
-			//shutter speed is 1 second
-			//TODO: make shutter speed variablized for user to change
-			//			int index = 0;
-			//			while (System.currentTimeMillis() - startTime < 1000) { 
-			//				long elapsedTime = System.currentTimeMillis() - startTime;
-			//				PImage shot = new PImage(robot.createScreenCapture(new Rectangle(0,0,marker.width, marker.height)));
-			//				marker.saveFrame(allLongExpoIndex + "." + index + ".png");
-			//				currLongExpo.add(shot);
-			//
-			//				index++;
-			//				System.out.println("curr time - start time: " +elapsedTime);
-			//			}
 
 			longExposureImages.add(currLongExpo);
 
 		} catch (AWTException e) { }
 	}
 
-	public int getOuterArrIndex() {
-		return longExposureImages.size();		
-	}
+//	public int getOuterArrIndex() {
+//		return longExposureImages.size();		
+//	}
 
 	/**
 	 * @return ArrayList<PImage> all non-long exposure images captured while the window is opened
@@ -114,5 +94,9 @@ public class Shutter {
 	 */
 	public static ArrayList<ArrayList<PImage>> getallLongExpoImages(){
 		return longExposureImages;
+	}
+	
+	public static int longExpoSize() {
+		return longExpoSize;
 	}
 }

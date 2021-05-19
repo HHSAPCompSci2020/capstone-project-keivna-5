@@ -170,8 +170,15 @@ public class Viewfinder {
 		}
 		
 		else if (longExpoShutterButton.contains(p)) {
-//			shutter.longExposureScreenshot(marker);
-			screenshot0(marker);
+			int outerArrIndex = shutter.longExpoSize(); //for shutter to see if it needs to make a new long expo arraylist or not
+			//5 represents the number of screenshots
+			for (int i = 0; i < 5; i++) {
+				SoundPlayer.playShutterSound();
+
+				shutter.longExposureScreenshot(marker, outerArrIndex, i);
+				drawABunchOfTimes(marker); //draw in between screenshots to get long exposure effect
+
+			}
 			SoundPlayer.playShutterSound();
 		}
 		
@@ -224,37 +231,11 @@ public class Viewfinder {
 		}
 	}
 	
+	//get 3d world to redraw in between calls to screenshot to get long exposure effect
 	private void drawABunchOfTimes(DrawingSurface marker) {
-		for (int i = 0; i < 100; i ++) {
+		for (int i = 0; i < 50; i ++) {
 			marker.draw();
 		}
-	}
-	
-	private void screenshot0(DrawingSurface marker) {
-		int outerArrIndex = shutter.getOuterArrIndex();
-		drawABunchOfTimes(marker);
-
-		shutter.longExposureScreenshot(marker, outerArrIndex, 0);
-		drawABunchOfTimes(marker);
-		screenshot1(marker, outerArrIndex);
-	}
-	
-	
-	
-	private void screenshot1(DrawingSurface marker, int outerArrIndex) {
-		drawABunchOfTimes(marker);
-
-		shutter.longExposureScreenshot(marker, outerArrIndex, 1);
-		drawABunchOfTimes(marker);
-
-		screenshot2(marker, outerArrIndex);
-	}
-
-	private void screenshot2(DrawingSurface marker, int outerArrIndex) {
-		drawABunchOfTimes(marker);
-
-		shutter.longExposureScreenshot(marker, outerArrIndex, 2);
-		
 	}
 	
 	public int getISOvalue() {
