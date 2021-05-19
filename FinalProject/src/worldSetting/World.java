@@ -37,7 +37,7 @@ public class World {
 		cars = new ArrayList<Car>();
 		
 		for(int i = -8; i <= 8; i++) {
-			cars.add(new Car(350 + (i * 45 * 2) + (float) (i * Math.random()), -560, 90, 45));
+			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 90, 45));
 		}
 
 		savedTime = marker.millis();
