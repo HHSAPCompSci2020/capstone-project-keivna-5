@@ -47,7 +47,7 @@ public class Car extends Element{
 		drawBase(g);
 //		drawWheel(g);
 		drawLights(g);
-//		this.moveX(-1);
+		this.moveX(-1);
 		g.popMatrix();
 	}
 	
