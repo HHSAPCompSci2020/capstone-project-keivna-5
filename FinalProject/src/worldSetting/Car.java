@@ -19,6 +19,8 @@ public class Car extends Element{
 	private float carLength; //x
 	private float carHeight; //y
 	private float carWidth; //z
+	
+	private boolean forward;
 
 	/**
 	 * Creates the base coordinates for the rest of the bridge to build off of.
@@ -27,7 +29,7 @@ public class Car extends Element{
 	 * @param z z-coordinate for the center of the bridge
 	 * @param size represents the width of the bridge (z-axis)
 	 */
-	public Car(float x, float y, float z, float size) {
+	public Car(float x, float y, float z, float size, boolean direction) {
 		super(x, y, z, size);
 		
 		carLength = size * (float) (1 + Math.random());
@@ -36,6 +38,7 @@ public class Car extends Element{
 		
 		brightness = 100;
 		CAR_COLOR = new int[] {(int)(Math.random()*brightness), (int)(Math.random()*brightness), (int)(Math.random()*brightness)};
+		forward = direction;
 	}
 	
 	/**
@@ -47,7 +50,7 @@ public class Car extends Element{
 		drawBase(g);
 		drawWheels(g);
 		drawLights(g);
-		this.moveX(-1);
+		this.moveX((forward ? 1 : -1) * 2);
 		g.popMatrix();
 	}
 	
@@ -71,12 +74,12 @@ public class Car extends Element{
 			int[] color;
 			if(i < 2) {
 				// yellow in the front
-				side = -1;
-				color = FRONT_LIGHT_COLOR;
+				side = 1;
+				color = forward ? FRONT_LIGHT_COLOR : BACK_LIGHT_COLOR;
 			} else {
 				//red in the back
-				side = 1;
-				color = BACK_LIGHT_COLOR;
+				side = -1;
+				color = forward ? BACK_LIGHT_COLOR: FRONT_LIGHT_COLOR;
 			}
 			g.pushMatrix();
 			g.translate(getX() + (side * carLength/2), getY(), 
@@ -102,7 +105,7 @@ public class Car extends Element{
 		}	
 	}
 	
-	//https://vormplus.be/full-articles/drawing-a-cylinder-with-processing
+	//Written by https://vormplus.be/full-articles/drawing-a-cylinder-with-processing
 	private void drawCylinder(PApplet g, int sides, float r, float h){
 	    float angle = 360 / sides;
 	    float halfHeight = h / 2;
@@ -114,6 +117,7 @@ public class Car extends Element{
 	        g.vertex( x, y, -halfHeight );    
 	    }
 	    g.endShape(PApplet.CLOSE);
+	    
 	    // draw bottom shape
 	    g.beginShape();
 	    for (int i = 0; i < sides; i++) {

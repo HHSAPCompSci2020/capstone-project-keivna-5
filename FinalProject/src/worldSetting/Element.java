@@ -68,13 +68,19 @@ public class Element {
 	 * Moves x-coordinate of the Element
 	 * @param add Move x by this amount
 	 */
-	public void moveX(int add) { x += add;}	
+	public void moveX(float add) { x += add;}	
 
 	/**
 	 * Get y-coordinate of the Element
 	 * @return Y The current y-coordinate
 	 */
 	public float getY() { return y; }
+	
+	/**
+	 * Moves y-coordinate of the Element
+	 * @param add Move y by this amount
+	 */
+	public void moveY(float newY) { y = newY; } 
 
 	/**
 	 * Get z-coordinate of the Element
