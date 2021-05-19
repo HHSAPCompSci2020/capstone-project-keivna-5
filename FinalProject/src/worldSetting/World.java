@@ -56,9 +56,7 @@ public class World {
 		g.lights();
 		
 		int ISOfor3D = (int)((ISOval/6400.0)*255.0);
-		//System.out.println("ISOfor3D: " + ISOfor3D);
 		g.ambientLight(ISOfor3D, ISOfor3D, ISOfor3D);
-
 
 		double pointLightY = lightSourceY*g.height;
 		
@@ -70,55 +68,8 @@ public class World {
 		if (lightSourceX < 0.1) {
 			pointLightX = 0;
 		}
-		System.out.println("g.height: " + g.height + ", pointLightY: " + pointLightY + ", lightSourceY: " + lightSourceY);
-		
-//		System.out.println("g.width: " + g.width + ", pointLightX: " + pointLightX + ", lightSourceX: " + lightSourceX);
 
-
-//		g.pointLight(255, 255, 255, (float) pointLightX, (float) pointLightY, 400);
-//		g.pointLight(255, 255, 255, g.width/2, g.height/2, 400);
-//		g.pointLight(128, 128, 128, g.width/2, g.height/2, 400);
-//		g.directionalLight(128, 128, 128, g.width/2, g.height/2, 400);
 		g.directionalLight(128, 128, 128, (float) pointLightX, (float) pointLightY, 400);
-//		g.directionalLight(128, 128, 128, (float) lightSourceX, (float) lightSourceY, 400);
-//<<<<<<< Updated upstream
-//
-////		g.pointLight(255, 255, 255, g.width/2, g.height/2, 400);
-//=======
-//>>>>>>> Stashed changes
-
-//		g.pointLight(255, 255, 255, g.width/2, g.height/2, 400);
-
-//<<<<<<< Updated upstream
-////		g.tint(150);
-////		if (g.mousePressed) {
-////			g.pointLight(128, 128, 128, g.width/2, (float) pointLightY, 400);
-////		g.directionalLight(128, 128, 128, 0, -1, 0);
-//
-//=======
-//
-////		g.tint(150);
-////		if (g.mousePressed) {
-////			g.pointLight(128, 128, 128, g.width/2, (float) pointLightY, 400);
-////		g.directionalLight(128, 128, 128, 0, -1, 0);
-//
-//<<<<<<< HEAD
-//		if (g.mousePressed) {
-//			g.pointLight(0, 255, 255, g.width/2, g.height/2, 400);
-//		}
-//		water.display(g);
-//		bridge.display(g);	
-//=======
-//>>>>>>> Stashed changes
-////			g.pointLight(255, 255, 255, g.width/2, g.height/4, 400);
-//
-////			g.tint(100);
-//		//}
-//		
-//<<<<<<< Updated upstream
-//=======
-//>>>>>>> b1e2452aaffc08e3e11f7ad9e1a09f82e3848883
-//>>>>>>> Stashed changes
 
 		
 		water.display(g);
@@ -127,31 +78,14 @@ public class World {
 			c.display(g);
 		}
 
-		//DO NOT DELETE!!! IDC HOW DESPERATELY YOU WANT TO DONT.
 //		// Calculate how much time has passed
 //		int passedTime = g.millis() - savedTime;
 //		//the time is a factor of the duration of sea sound, play sound again
-//		//currenlty doesn't work but it's fine bc sound plays for 4 minutes when window is opened
-//		if (passedTime % Constants.seaSoundDurationMillis == 0) {
+//		//currently doesn't work but it's fine bc sound plays for 4 minutes when window is opened
+//		if (passedTime % seaSoundDurationMillis == 0) {
 //			SoundPlayer.playSeaSound();
-//
-//			//System.out.println("1 minute has passed!");
-//			//background(random(255)); // Color a new background
 //			savedTime = g.millis(); // Save the current time to restart the timer!
 //		}
-		//SoundPlayer.playSeaSound();
-
-		// Calculate how much time has passed
-		int passedTime = g.millis() - savedTime;
-		//the time is a factor of the duration of sea sound, play sound again
-		//currently doesn't work but it's fine bc sound plays for 4 minutes when window is opened
-		if (passedTime % seaSoundDurationMillis == 0) {
-			SoundPlayer.playSeaSound();
-
-			//System.out.println("1 minute has passed!");
-			//background(random(255)); // Color a new background
-			savedTime = g.millis(); // Save the current time to restart the timer!
-		}
 	}
 
 	/**

@@ -24,11 +24,13 @@ public class Portfolio {
 
 		marker.background(255);
 		
+		marker.tint(255, 126); //opacity for layering
+
 		//all hard coded for now
 		ArrayList<PImage> longExpoArray0 = longExposureImages.get(0);
 		PImage longExpoImg0 = longExpoArray0.get(0);
 		longExpoImg0 = marker.loadImage(0 + "." + 0 + ".png");
-		
+		marker.tint(255, 126); 
 		PImage longExpoImg1 = longExpoArray0.get(1);
 		longExpoImg1 = marker.loadImage(0 + "." + 1 + ".png");
 
@@ -36,9 +38,10 @@ public class Portfolio {
 		longExpoImg2 = marker.loadImage(0 + "." + 2 + ".png");
 
 		//place all 3 photos at same location
-		marker.image(longExpoImg0, 20, 50, marker.width/5, marker.height/5);
-		marker.image(longExpoImg1, 20, 50, marker.width/5, marker.height/5);
-		marker.image(longExpoImg2, 20, 50, marker.width/5, marker.height/5);
+		int diviseFactor = 2;
+		marker.image(longExpoImg0, 20, 50, marker.width/diviseFactor, marker.height/diviseFactor);
+		marker.image(longExpoImg1, 20, 50, marker.width/diviseFactor, marker.height/diviseFactor);
+		marker.image(longExpoImg2, 20, 50, marker.width/diviseFactor, marker.height/diviseFactor);
 
 
 		//display images in row in portfolio, commented for now to work on long expo
