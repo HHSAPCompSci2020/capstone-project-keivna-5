@@ -81,20 +81,44 @@ public class World {
 //		g.directionalLight(128, 128, 128, g.width/2, g.height/2, 400);
 		g.directionalLight(128, 128, 128, (float) pointLightX, (float) pointLightY, 400);
 //		g.directionalLight(128, 128, 128, (float) lightSourceX, (float) lightSourceY, 400);
+//<<<<<<< Updated upstream
+//
+////		g.pointLight(255, 255, 255, g.width/2, g.height/2, 400);
+//=======
+//>>>>>>> Stashed changes
 
 //		g.pointLight(255, 255, 255, g.width/2, g.height/2, 400);
 
-
-//		g.tint(150);
+//<<<<<<< Updated upstream
+////		g.tint(150);
+////		if (g.mousePressed) {
+////			g.pointLight(128, 128, 128, g.width/2, (float) pointLightY, 400);
+////		g.directionalLight(128, 128, 128, 0, -1, 0);
+//
+//=======
+//
+////		g.tint(150);
+////		if (g.mousePressed) {
+////			g.pointLight(128, 128, 128, g.width/2, (float) pointLightY, 400);
+////		g.directionalLight(128, 128, 128, 0, -1, 0);
+//
+//<<<<<<< HEAD
 //		if (g.mousePressed) {
-//			g.pointLight(128, 128, 128, g.width/2, (float) pointLightY, 400);
-//		g.directionalLight(128, 128, 128, 0, -1, 0);
-
-//			g.pointLight(255, 255, 255, g.width/2, g.height/4, 400);
-
-//			g.tint(100);
-		//}
-		
+//			g.pointLight(0, 255, 255, g.width/2, g.height/2, 400);
+//		}
+//		water.display(g);
+//		bridge.display(g);	
+//=======
+//>>>>>>> Stashed changes
+////			g.pointLight(255, 255, 255, g.width/2, g.height/4, 400);
+//
+////			g.tint(100);
+//		//}
+//		
+//<<<<<<< Updated upstream
+//=======
+//>>>>>>> b1e2452aaffc08e3e11f7ad9e1a09f82e3848883
+//>>>>>>> Stashed changes
 
 		
 		water.display(g);
