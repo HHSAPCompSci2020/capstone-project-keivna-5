@@ -23,7 +23,7 @@ public class Shutter {
 	//each ArrayList<PImage> is 1 long exposure image
 	private static ArrayList<ArrayList<PImage>> longExposureImages;
 	private static int longExpoSize;
-	
+	private static ArrayList<Integer> currLongExpoSize; 
 	/**
 	 * Initializes the list of images
 	 */
@@ -31,6 +31,7 @@ public class Shutter {
 		images = new ArrayList<PImage>();
 		longExposureImages = new ArrayList<ArrayList<PImage>>();
 		longExpoSize = 0;
+		currLongExpoSize = new ArrayList<Integer>();
 	}
 
 	/**
@@ -63,9 +64,11 @@ public class Shutter {
 			//this arraylist already exists
 			if (outerArrIndex < longExpoSize) {
 				currLongExpo = longExposureImages.get(outerArrIndex);
+				
 			} else { //make a new array
 				currLongExpo = new ArrayList<PImage>();
 				longExpoSize++;
+				currLongExpoSize.add(1);
 			}
 						
 			PImage shot = new PImage(robot.createScreenCapture(new Rectangle(0,0,marker.width, marker.height)));

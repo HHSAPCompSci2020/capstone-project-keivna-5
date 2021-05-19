@@ -23,8 +23,11 @@ public class Portfolio {
 		ArrayList<ArrayList<PImage>> longExposureImages = Shutter.getallLongExpoImages();
 
 		marker.background(255);
-		
+		marker.text("Long Exposure Shots: ", 20, 75);
+
 		marker.tint(255, 126); //opacity for layering
+		int longExpoYMultiple = 0;
+		//int yMultiple = 0;
 		
 		//for some reason i need to call this method bc longExposureImages.size doesn't work
 		for (int a = 0; a < Shutter.longExpoSize(); a++) { //goes thru each arraylist in arrayList<arraylist<pimage>>
@@ -35,25 +38,28 @@ public class Portfolio {
 
 			int d = a % 4; //remainder when divided by 4
 			int e = a-d; //c is divisible by 4
-			int yMultiple = (e/4);
-			
-			System.out.println("currLongExpo.size(): " + currLongExpo.size());
+			longExpoYMultiple = (e/4);
+			System.out.println("longExpoYMultiple: " + longExpoYMultiple);
 
-			for (int b = 0; b < currLongExpo.size(); b++) { //goes thru each pimage in the arrayList<pimage>
+//			for (int b = 0; b < currLongExpo.size(); b++) { //goes thru each pimage in the arrayList<pimage>
+			for (int b = 0; b < 5; b++) { //goes thru each pimage in the arrayList<pimage>
+
 				PImage longExpoImg = currLongExpo.get(b);
-				
+				longExpoImg = marker.loadImage(a + "." + b + ".png");
+
 				longExpoImg.copy(f, f, marker.width-(2*f), marker.height-(2*f), 0, 0,  marker.width, marker.height);
 
-				longExpoImg = marker.loadImage(a + "." + b + ".png");
-				marker.image(longExpoImg, 20 + (marker.width/4*((a%4))), (150*yMultiple) + 50, marker.width/5, marker.height/5);
+				marker.image(longExpoImg, 20 + (marker.width/4*((a%4))), (150*longExpoYMultiple) + 100, marker.width/5, marker.height/5);
 
 			}
 		}
 
 		marker.tint(255); //undo from long expo
+		System.out.println("longExpoYMultiple: " + longExpoYMultiple);
 
+		marker.text("Simple Shots: ", 20 , (longExpoYMultiple + 2) * marker.width/5);
 
-		//display images in row in portfolio, commented for now to work on long expo
+		//display images in row in portfolio
 		for (int i = 0; i < images.size(); i++) {
 
 			PImage img = images.get(i);
@@ -69,10 +75,10 @@ public class Portfolio {
 			//4 photos per row, go to next row after
 			int b = i % 4; //remainder when divided by 4
 			int c = i-b; //c is divisible by 4
-			int yMultiple = (c/4);
+			int yMultiple = (c/4) + longExpoYMultiple;
 
 			//marker.image(img, 20 + (marker.width/4*i), y, marker.width/5, marker.height/5);
-			marker.image(img, 20 + (marker.width/4*((i%4))), (150*yMultiple) + 50, marker.width/5, marker.height/5);
+			marker.image(img, 20 + (marker.width/4*((i%4))), (150*yMultiple) + 350, marker.width/5, marker.height/5);
 		}
 	}
 }
