@@ -45,7 +45,7 @@ public class Car extends Element{
 	public void display(PApplet g) {	
 		g.pushMatrix();
 		drawBase(g);
-//		drawWheel(g);
+		drawWheels(g);
 		drawLights(g);
 		this.moveX(-1);
 		g.popMatrix();
@@ -65,14 +65,16 @@ public class Car extends Element{
 	}
 	
 	private void drawLights(PApplet g) {
-		// one small base of the car
+		// car lights
 		for(int i = 0; i < 4; i++) {
 			int side;
 			int[] color;
 			if(i < 2) {
+				// yellow in the front
 				side = -1;
 				color = FRONT_LIGHT_COLOR;
 			} else {
+				//red in the back
 				side = 1;
 				color = BACK_LIGHT_COLOR;
 			}
@@ -86,14 +88,18 @@ public class Car extends Element{
 		}	
 	}
 	
-	private void drawWheel(PApplet g) {
-		// one small base of the car
-		g.pushMatrix();
-		g.translate(getX(), getY(), getZ());
-		g.noStroke();
-		g.fill(WHEEL_COLOR[0], WHEEL_COLOR[1], WHEEL_COLOR[2]);
-		drawCylinder(g, 360, carLength / 6, carWidth/4);
-		g.popMatrix();	
+	private void drawWheels(PApplet g) {
+		// car wheels, similar implementation to the lights
+		for(int i = 0; i < 4; i++) {
+			int side = (i < 2) ? -1 : 1;
+			g.pushMatrix();
+			g.translate(getX() + (side * carLength / 3), getY() + (carHeight / 3), 
+					getZ() + ((i % 2 == 0 ? -1 : 1) * carWidth / 2));
+			g.noStroke();
+			g.fill(WHEEL_COLOR[0], WHEEL_COLOR[1], WHEEL_COLOR[2]);
+			drawCylinder(g, 360, carLength / 8, carWidth / 6);
+			g.popMatrix();	
+		}	
 	}
 	
 	//https://vormplus.be/full-articles/drawing-a-cylinder-with-processing
