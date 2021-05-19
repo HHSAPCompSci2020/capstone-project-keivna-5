@@ -13,16 +13,21 @@ import processing.core.PImage;
 
 /**
  * Represents the 2D aspect of the World, where photos are taken and settings are changed
- * @author elise
+ * @author Elise
  */
 public class Viewfinder {
 
 	private Rectangle toggle, shutterButton, longExpoShutterButton;
 	private Shutter shutter;
-	private Rectangle ISOup, ISOdown, lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight;
+	private Rectangle ISOup, ISOdown, shutterSpeedUp, shutterSpeedDown, lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight;
 	private final int[] ISOvalues = {100, 200, 400, 800, 1600, 3200, 6400};
 	private int ISOindex;
+	
+	private final static int[] shutterSpeedValues = {3, 5, 10, 20};
+	private static int shutterSpeedIndex;
+
 	private double lightSourceX, lightSourceY, lightSourceZ; //from 0-1, to be multiplied by marker.width or height in world draw
+	//private static int shutterSpeed;
 	/**
 	 * Represents the ratios for the size of the screen
 	 */
@@ -55,16 +60,20 @@ public class Viewfinder {
 		ISOup = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*2, 30, 30);
 		ISOdown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*3 + 15, 30, 30);
 		
-		lightSourceUp = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*5, 30, 30);
-		lightSourceDown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*5.5) + 10, 30, 30);
+		shutterSpeedUp = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*4, 30, 30);
+		shutterSpeedDown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*5.25) + 15, 30, 30);
+		
+		lightSourceUp = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*7, 30, 30);
+		lightSourceDown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*7.5) + 10, 30, 30);
 
-		lightSourceLeft = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*6.5), 30, 30);
-		lightSourceRight = new Rectangle (800 - (int)(viewfinderIndent/4) - 10, (int)(viewfinderIndent*6.5), 30, 30);
+		lightSourceLeft = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*8.5), 30, 30);
+		lightSourceRight = new Rectangle (800 - (int)(viewfinderIndent/4) - 10, (int)(viewfinderIndent*8.5), 30, 30);
 		
 		lightSourceX = 0.5;
 		lightSourceY = 0.5;
 		lightSourceZ = 0.5;
-
+		
+		shutterSpeedIndex = 1;
 		ISOindex = 3;
 	}
 
@@ -123,7 +132,6 @@ public class Viewfinder {
 		marker.text(keyDefinitions, toggle.x, marker.height - 30);
 
 		//ISO up triangle
-//		marker.fill(0, 0, 255);
 		marker.triangle(ISOup.x, ISOup.y + ISOup.height, ISOup.x + ISOup.width, ISOup.y + ISOup.height, ISOup.x + (ISOup.width/2), ISOup.y);
 
 		//ISO text
@@ -132,6 +140,19 @@ public class Viewfinder {
 
 		//ISO down triangle
 		marker.triangle(ISOdown.x, ISOdown.y, ISOdown.x + ISOdown.width, ISOdown.y, ISOdown.x + (ISOdown.width/2), ISOdown.y + ISOdown.height);
+		
+		
+		//Shutter speed up triangle
+		marker.triangle(shutterSpeedUp.x, shutterSpeedUp.y + shutterSpeedUp.height, shutterSpeedUp.x + shutterSpeedUp.width, shutterSpeedUp.y + shutterSpeedUp.height, shutterSpeedUp.x + (shutterSpeedUp.width/2), shutterSpeedUp.y);
+
+		//Shutter speed text
+		marker.text("Shutter", shutterSpeedDown.x - 8, shutterSpeedDown.y - (viewfinderIndent/4) - 25);
+		marker.text("Speed", shutterSpeedDown.x - 5, shutterSpeedDown.y - (viewfinderIndent/4) - 10);
+		marker.text(getShutterSpeed(), shutterSpeedDown.x + 8, shutterSpeedDown.y - (viewfinderIndent/8));
+
+		//Shutter speed down triangle
+		marker.triangle(shutterSpeedDown.x, shutterSpeedDown.y, shutterSpeedDown.x + shutterSpeedDown.width, shutterSpeedDown.y, shutterSpeedDown.x + (shutterSpeedDown.width/2), shutterSpeedDown.y + shutterSpeedDown.height);
+		
 		
 		//lighting text
 		marker.text("light", lightSourceUp.x - (lightSourceUp.width/4), lightSourceUp.y - lightSourceUp.height);
@@ -170,10 +191,11 @@ public class Viewfinder {
 		}
 		
 		else if (longExpoShutterButton.contains(p)) {
+			SoundPlayer.playShutterSound();
+
 			int outerArrIndex = shutter.longExpoSize(); //for shutter to see if it needs to make a new long expo arraylist or not
 			//5 represents the number of screenshots
-			for (int i = 0; i < 5; i++) {
-				SoundPlayer.playShutterSound();
+			for (int i = 0; i < getShutterSpeed(); i++) {
 
 				shutter.longExposureScreenshot(marker, outerArrIndex, i);
 				drawABunchOfTimes(marker); //draw in between screenshots to get long exposure effect
@@ -191,6 +213,18 @@ public class Viewfinder {
 		else if (ISOdown.contains(p)) {
 			if (ISOindex > 0) {
 				ISOindex--;
+			}
+		}
+		
+		else if (shutterSpeedUp.contains(p)) {
+			if (shutterSpeedIndex < shutterSpeedValues.length - 1) {
+				shutterSpeedIndex++;
+			}
+		}
+		
+		else if (shutterSpeedDown.contains(p)) {
+			if (shutterSpeedIndex > 0) {
+				shutterSpeedIndex--;
 			}
 		}
 		
@@ -232,10 +266,15 @@ public class Viewfinder {
 	}
 	
 	//get 3d world to redraw in between calls to screenshot to get long exposure effect
+	//draws 60x which is equal to 1 second in between draws
 	private void drawABunchOfTimes(DrawingSurface marker) {
-		for (int i = 0; i < 50; i ++) {
+		for (int i = 0; i < 60; i ++) {
 			marker.draw();
 		}
+	}
+	
+	public static int getShutterSpeed() {
+		return shutterSpeedValues[shutterSpeedIndex];
 	}
 	
 	public int getISOvalue() {

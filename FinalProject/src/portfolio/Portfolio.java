@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PImage;
 import worldSetting.Shutter;
+import worldSetting.Viewfinder;
 
 /**
  * Represents the portfolio itself
@@ -27,7 +28,6 @@ public class Portfolio {
 
 		marker.tint(255, 126); //opacity for layering
 		int longExpoYMultiple = 0;
-		//int yMultiple = 0;
 		
 		//for some reason i need to call this method bc longExposureImages.size doesn't work
 		for (int a = 0; a < Shutter.longExpoSize(); a++) { //goes thru each arraylist in arrayList<arraylist<pimage>>
@@ -39,10 +39,9 @@ public class Portfolio {
 			int d = a % 4; //remainder when divided by 4
 			int e = a-d; //c is divisible by 4
 			longExpoYMultiple = (e/4);
-			System.out.println("longExpoYMultiple: " + longExpoYMultiple);
 
 //			for (int b = 0; b < currLongExpo.size(); b++) { //goes thru each pimage in the arrayList<pimage>
-			for (int b = 0; b < 5; b++) { //goes thru each pimage in the arrayList<pimage>
+			for (int b = 0; b < Viewfinder.getShutterSpeed(); b++) { //goes thru each pimage in the arrayList<pimage>
 
 				PImage longExpoImg = currLongExpo.get(b);
 				longExpoImg = marker.loadImage(a + "." + b + ".png");
@@ -55,7 +54,6 @@ public class Portfolio {
 		}
 
 		marker.tint(255); //undo from long expo
-		System.out.println("longExpoYMultiple: " + longExpoYMultiple);
 
 		marker.text("Simple Shots: ", 20 , (longExpoYMultiple + 2) * marker.width/5);
 
@@ -66,10 +64,10 @@ public class Portfolio {
 			//images name from shutter are in format "index.png"
 			img = marker.loadImage(i + ".png");
 
-			//crop image to remove viewfinder
 			int a = 60; //viewfinder indent
-			img.copy(a, a, marker.width-(2*a), marker.height-(2*a), 0, 0,  marker.width, marker.height);
 
+			//crop image to remove viewfinder
+			img.copy(a, a, marker.width-(2*a), marker.height-(2*a), 0, 0,  marker.width, marker.height);
 
 			//find out how many rows down images needs to be at
 			//4 photos per row, go to next row after
@@ -77,7 +75,6 @@ public class Portfolio {
 			int c = i-b; //c is divisible by 4
 			int yMultiple = (c/4) + longExpoYMultiple;
 
-			//marker.image(img, 20 + (marker.width/4*i), y, marker.width/5, marker.height/5);
 			marker.image(img, 20 + (marker.width/4*((i%4))), (150*yMultiple) + 350, marker.width/5, marker.height/5);
 		}
 	}
