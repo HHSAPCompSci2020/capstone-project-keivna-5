@@ -46,6 +46,8 @@ public class DrawingSurface extends PApplet{
 	 * then it sets the position of the camera by calling setCameraAtStart()
 	 */
 	public void setup() {
+		frameRate(240); //speed up for long exposure
+		
 		surface.setResizable(true);
 		for (Screen s : screens)
 			s.setup();

@@ -170,7 +170,8 @@ public class Viewfinder {
 		}
 		
 		else if (longExpoShutterButton.contains(p)) {
-			shutter.longExposureScreenshot(marker);
+//			shutter.longExposureScreenshot(marker);
+			screenshot0(marker);
 			SoundPlayer.playShutterSound();
 		}
 		
@@ -221,6 +222,39 @@ public class Viewfinder {
 				lightSourceX = 0;
 			}
 		}
+	}
+	
+	private void drawABunchOfTimes(DrawingSurface marker) {
+		for (int i = 0; i < 100; i ++) {
+			marker.draw();
+		}
+	}
+	
+	private void screenshot0(DrawingSurface marker) {
+		int outerArrIndex = shutter.getOuterArrIndex();
+		drawABunchOfTimes(marker);
+
+		shutter.longExposureScreenshot(marker, outerArrIndex, 0);
+		drawABunchOfTimes(marker);
+		screenshot1(marker, outerArrIndex);
+	}
+	
+	
+	
+	private void screenshot1(DrawingSurface marker, int outerArrIndex) {
+		drawABunchOfTimes(marker);
+
+		shutter.longExposureScreenshot(marker, outerArrIndex, 1);
+		drawABunchOfTimes(marker);
+
+		screenshot2(marker, outerArrIndex);
+	}
+
+	private void screenshot2(DrawingSurface marker, int outerArrIndex) {
+		drawABunchOfTimes(marker);
+
+		shutter.longExposureScreenshot(marker, outerArrIndex, 2);
+		
 	}
 	
 	public int getISOvalue() {
