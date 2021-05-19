@@ -134,7 +134,6 @@ public class Viewfinder {
 		marker.triangle(ISOdown.x, ISOdown.y, ISOdown.x + ISOdown.width, ISOdown.y, ISOdown.x + (ISOdown.width/2), ISOdown.y + ISOdown.height);
 		
 		//lighting text
-//		marker.text("light \nsource", lightSourceUp.x - (lightSourceUp.width/4), lightSourceUp.y - lightSourceUp.height);		
 		marker.text("light", lightSourceUp.x - (lightSourceUp.width/4), lightSourceUp.y - lightSourceUp.height);
 		marker.text("source", lightSourceUp.x - (lightSourceUp.width/4), lightSourceUp.y - (lightSourceUp.height/2));		
 
@@ -146,11 +145,9 @@ public class Viewfinder {
 
 		//points plotted in counterclockwise direction starting from very left
 		//light source left triangle
-//		marker.rect(lightSourceLeft.x, lightSourceLeft.y, lightSourceLeft.width, lightSourceLeft.height);
 		marker.triangle(lightSourceLeft.x - (lightSourceLeft.width/4), lightSourceLeft.y + (lightSourceLeft.height/2), lightSourceLeft.x + (lightSourceLeft.width/2), lightSourceLeft.y + lightSourceLeft.height, lightSourceLeft.x + (lightSourceLeft.width/2), lightSourceLeft.y);
 		
 		//light source right triangle
-//		marker.rect(lightSourceRight.x, lightSourceRight.y, lightSourceRight.width, lightSourceRight.height);
 		marker.triangle(lightSourceRight.x, lightSourceRight.y, lightSourceRight.x, lightSourceRight.y + lightSourceRight.height, lightSourceRight.x + (3*lightSourceRight.width/4), lightSourceRight.y + (lightSourceRight.height/2));
 		
 		marker.popMatrix();

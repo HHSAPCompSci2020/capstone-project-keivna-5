@@ -77,15 +77,6 @@ public class World {
 		for(Car c: cars) {
 			c.display(g);
 		}
-
-//		// Calculate how much time has passed
-//		int passedTime = g.millis() - savedTime;
-//		//the time is a factor of the duration of sea sound, play sound again
-//		//currently doesn't work but it's fine bc sound plays for 4 minutes when window is opened
-//		if (passedTime % seaSoundDurationMillis == 0) {
-//			SoundPlayer.playSeaSound();
-//			savedTime = g.millis(); // Save the current time to restart the timer!
-//		}
 	}
 
 	/**
@@ -104,6 +95,4 @@ public class World {
 	public void setSky(int[] color) {
 		sky = color;
 	}
-	
-	
 }
