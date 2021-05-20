@@ -58,7 +58,16 @@ public class Car extends Element{
 	 * Draws physical elements:
 	 */
 	private void drawBase(PApplet g) {
-		// one small base of the car
+		// top of the car
+		float topHeight = 3 * carHeight / 5;
+		g.pushMatrix();
+		g.translate(getX(), getY() - topHeight, getZ());
+		g.noStroke();
+		g.fill(CAR_COLOR[0], CAR_COLOR[1], CAR_COLOR[2]);
+		g.box(3 * carLength / 5, topHeight, carWidth);
+		g.popMatrix();	
+		
+		// bottom of the car
 		g.pushMatrix();
 		g.translate(getX(), getY(), getZ());
 		g.noStroke();
