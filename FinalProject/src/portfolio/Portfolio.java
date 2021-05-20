@@ -26,7 +26,7 @@ public class Portfolio {
 		marker.background(255);
 		marker.text("Long Exposure Shots: ", 20, 75);
 
-		marker.tint(255, 126); //opacity for layering
+		marker.tint(255, 126); //opacity for layering for long expo
 		int longExpoYMultiple = 0;
 		
 		int photosPerRow = 2;
@@ -36,24 +36,21 @@ public class Portfolio {
 			//find out how many rows down images needs to be at
 			//4 photos per row, go to next row after
 			int f = 60; //viewfinder indent
-
-//			int d = a % 4; //remainder when divided by 4
 			int d = a % photosPerRow; //remainder when divided by photosPerRow
+			int e = a-d;
+			
+			longExpoYMultiple = (e/photosPerRow);
 
-			int e = a-d; //c is divisible by 4
-			longExpoYMultiple = (e/4);
-
-//			for (int b = 0; b < currLongExpo.size(); b++) { //goes thru each pimage in the arrayList<pimage>
 			for (int b = 0; b < Viewfinder.getShutterSpeed(); b++) { //goes thru each pimage in the arrayList<pimage>
 
 				PImage longExpoImg = currLongExpo.get(b);
 				longExpoImg = marker.loadImage(a + "." + b + ".png");
 
-				longExpoImg.copy(f, f, marker.width-(2*f), marker.height-(2*f), 0, 0,  marker.width, marker.height);
+				longExpoImg.copy(f, f, marker.width-(2*f), marker.height-(2*f), 0, 0,  marker.width, marker.height); //crop image
 
-//				marker.image(longExpoImg, 20 + (marker.width/4*((a%4))), (150*longExpoYMultiple) + 100, marker.width/5, marker.height/5);
-				marker.image(longExpoImg, 20 + (marker.width/4*((a%photosPerRow))), (150*longExpoYMultiple) + 100, marker.width/3, marker.height/3);
+				marker.image(longExpoImg, 20 + (marker.width/photosPerRow*((a%photosPerRow))), ((marker.height/photosPerRow)*longExpoYMultiple) + 100, marker.width/3, marker.height/3);
 
+//				marker.image(longExpoImg, 20 + (marker.width/photosPerRow*((a%photosPerRow))), (150*longExpoYMultiple) + 100, marker.width/3, marker.height/3);
 			}
 		}
 
