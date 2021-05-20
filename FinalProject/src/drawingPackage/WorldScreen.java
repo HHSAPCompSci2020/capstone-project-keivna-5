@@ -49,6 +49,10 @@ public class WorldScreen extends Screen {
 		viewfinder = new Viewfinder(marker);
 		keys = new ArrayList<Integer>();
 	}
+	
+	public void setup(PApplet marker) {
+		world.setup(marker);
+	}
 
 	/**
 	 * Draws the world and viewfinder and catches key presses

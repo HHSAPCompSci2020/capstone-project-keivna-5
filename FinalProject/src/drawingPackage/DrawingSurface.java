@@ -47,7 +47,7 @@ public class DrawingSurface extends PApplet{
 	 */
 	public void setup() {
 //		frameRate(240); //speed up for long exposure
-		
+		worldScreen.setup(this); //for background image
 		surface.setResizable(true);
 		for (Screen s : screens)
 			s.setup();

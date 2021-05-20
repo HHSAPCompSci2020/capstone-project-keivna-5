@@ -13,7 +13,7 @@ public class SoundPlayer{
 	 */
 	public static void playShutterSound() {
 		String[] soundEffects = new String[]{"shutter-click.mp3"};
-		JayLayer soundTest = new JayLayer("audio/","audio/",false);
+		JayLayer soundTest = new JayLayer("media/","media/",false);
 		soundTest.addSoundEffects(soundEffects);
 		soundTest.playSoundEffect(0);
 	}
@@ -23,7 +23,7 @@ public class SoundPlayer{
 	 */
 	public static void playSeaSound() {
 		String[] soundEffects = new String[]{"sea-sound.mp3"};
-		JayLayer soundTest = new JayLayer("audio/","audio/",false);
+		JayLayer soundTest = new JayLayer("media/","media/",false);
 		soundTest.addSoundEffects(soundEffects); //length is 4:19
 		soundTest.playSoundEffect(0);
 	}

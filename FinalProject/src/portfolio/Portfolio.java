@@ -29,6 +29,7 @@ public class Portfolio {
 		marker.tint(255, 126); //opacity for layering
 		int longExpoYMultiple = 0;
 		
+		int photosPerRow = 2;
 		//for some reason i need to call this method bc longExposureImages.size doesn't work
 		for (int a = 0; a < Shutter.longExpoSize(); a++) { //goes thru each arraylist in arrayList<arraylist<pimage>>
 			ArrayList<PImage> currLongExpo = longExposureImages.get(a);
@@ -36,7 +37,9 @@ public class Portfolio {
 			//4 photos per row, go to next row after
 			int f = 60; //viewfinder indent
 
-			int d = a % 4; //remainder when divided by 4
+//			int d = a % 4; //remainder when divided by 4
+			int d = a % photosPerRow; //remainder when divided by photosPerRow
+
 			int e = a-d; //c is divisible by 4
 			longExpoYMultiple = (e/4);
 
@@ -48,7 +51,8 @@ public class Portfolio {
 
 				longExpoImg.copy(f, f, marker.width-(2*f), marker.height-(2*f), 0, 0,  marker.width, marker.height);
 
-				marker.image(longExpoImg, 20 + (marker.width/4*((a%4))), (150*longExpoYMultiple) + 100, marker.width/5, marker.height/5);
+//				marker.image(longExpoImg, 20 + (marker.width/4*((a%4))), (150*longExpoYMultiple) + 100, marker.width/5, marker.height/5);
+				marker.image(longExpoImg, 20 + (marker.width/4*((a%photosPerRow))), (150*longExpoYMultiple) + 100, marker.width/3, marker.height/3);
 
 			}
 		}

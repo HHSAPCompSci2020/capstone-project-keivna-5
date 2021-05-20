@@ -16,6 +16,7 @@ public class World {
 	private Water water;
 	private Bridge bridge;
 	private ArrayList<Car> cars;
+	PImage backgroundSky;
 
 	int savedTime;
 	int totalTime = 60000;
@@ -43,9 +44,17 @@ public class World {
 		for(int i = -8; i <= 8; i++) {
 			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 15, 45, false));
 		}
-
+		
+		
+//		backgroundSky = marker.loadImage("background-horizon.jpeg");
 		savedTime = marker.millis();
 		SoundPlayer.playSeaSound();
+		
+		
+	}
+	
+	public void setup(PApplet marker) {
+		backgroundSky = marker.loadImage("media/800x600 background.jpeg");
 
 	}
 
@@ -55,7 +64,10 @@ public class World {
 	 * @param g can't be null
 	 */
 	public void draw(PApplet g, double ISOval, double lightSourceY, double lightSourceX) {
-		g.background(sky[0], sky[1], sky[2]);
+//		g.background(sky[0], sky[1], sky[2]);
+		
+		g.background(backgroundSky);
+
 		g.smooth();
 		g.lights();
 		
