@@ -33,7 +33,7 @@ public class World {
 	 */
 	public World(PApplet marker) {
 		sky = new int[] {185, 230, 255};
-		water = new Water(350, 350, 50, 5000);
+		water = new Water(350, 350, 50, 100000);
 		bridge = new Bridge(350, -500, 50, 200);
 		cars = new ArrayList<Car>();
 
