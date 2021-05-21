@@ -64,6 +64,8 @@ public class Element {
 	 */
 	public float getX() { return x; }
 	
+	public void setX(float newX) { x = newX;}
+	
 	/**
 	 * Moves x-coordinate of the Element
 	 * @param add Move x by this amount
