@@ -23,8 +23,8 @@ public class Car extends Element{
 	
 	private int carSpeedFactor;
 	
-	private float LEFT_EDGE_OF_BRIDGE = 350;
-	private float RIGHT_EDGE_OF_BRIDGE = 2350;
+	private float bridgeStartX;
+	private float bridgeEdgeFromCenter;
 	
 	private boolean forward;
 
@@ -35,7 +35,7 @@ public class Car extends Element{
 	 * @param z z-coordinate for the center of the bridge
 	 * @param size represents the width of the bridge (z-axis)
 	 */
-	public Car(float x, float y, float z, float size, boolean direction) {
+	public Car(float x, float y, float z, float size, boolean direction, float bridgeX, float bridgeSize) {
 		super(x, y, z, size);
 		
 		carLength = size * (float) (1 + Math.random());
@@ -45,6 +45,9 @@ public class Car extends Element{
 		brightness = 50;
 		CAR_COLOR = new int[] {(int)(Math.random()*brightness), (int)(Math.random()*brightness), (int)(Math.random()*brightness)};
 		forward = direction;
+		
+		bridgeStartX = bridgeX;
+		bridgeEdgeFromCenter = 10 * bridgeSize / 2;
 		
 		carSpeedFactor = 10;
 	}
@@ -59,12 +62,11 @@ public class Car extends Element{
 		drawWheels(g);
 		drawLights(g);
 		this.moveX((forward ? 1 : -1) * carSpeedFactor);
-		if (forward) {
-//			this.setX();
-		} else {
-			
+		if (forward && this.getX() >= (bridgeStartX + bridgeEdgeFromCenter)) {
+			this.setX(bridgeStartX - bridgeEdgeFromCenter);
+		} else if (!forward && this.getX() <= (bridgeStartX - bridgeEdgeFromCenter)) {
+			this.setX(bridgeStartX + bridgeEdgeFromCenter);
 		}
-		
 		g.popMatrix();
 	}
 	

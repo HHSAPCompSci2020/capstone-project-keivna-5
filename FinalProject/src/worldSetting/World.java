@@ -38,11 +38,11 @@ public class World {
 		cars = new ArrayList<Car>();
 
 		for(int i = -8; i <= 8; i++) {
-			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 85, 45, true));
+			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 85, 45, true, 350, 200));
 		}
 
 		for(int i = -8; i <= 8; i++) {
-			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 15, 45, false));
+			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 15, 45, false, 350, 200));
 		}
 
 		savedTime = marker.millis();
@@ -58,7 +58,7 @@ public class World {
 		if (backgroundColor == BackgroundColor.LIGHTBLUE) {
 			g.background(sky[0], sky[1], sky[2]);
 		} else if (backgroundColor == BackgroundColor.STARS){
-			background = g.loadImage("media/800x600 background.jpeg");
+			background = g.loadImage("media/sky-night-stars.png");
 			g.background(background);
 
 		}
