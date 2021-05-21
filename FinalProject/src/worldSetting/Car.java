@@ -14,11 +14,14 @@ public class Car extends Element{
 	
 	private final int[] WHEEL_COLOR = new int[] {55, 60, 65};
 	private final int[] FRONT_LIGHT_COLOR = new int[] {255, 250, 185};
-	private final int[] BACK_LIGHT_COLOR = new int[] {255, 55, 0};
-	
+//	private final int[] BACK_LIGHT_COLOR = new int[] {255, 55, 0};
+	private final int[] BACK_LIGHT_COLOR = new int[] {253, 28, 3};
+
 	private float carLength; //x
 	private float carHeight; //y
 	private float carWidth; //z
+	
+	private int carSpeedFactor;
 	
 	private boolean forward;
 
@@ -36,9 +39,11 @@ public class Car extends Element{
 		carHeight = size / 2;
 		carWidth = size;
 		
-		brightness = 100;
+		brightness = 50;
 		CAR_COLOR = new int[] {(int)(Math.random()*brightness), (int)(Math.random()*brightness), (int)(Math.random()*brightness)};
 		forward = direction;
+		
+		carSpeedFactor = 10;
 	}
 	
 	/**
@@ -50,7 +55,8 @@ public class Car extends Element{
 		drawBase(g);
 		drawWheels(g);
 		drawLights(g);
-		this.moveX((forward ? 1 : -1) * 2);
+		this.moveX((forward ? 1 : -1) * carSpeedFactor);
+		
 		g.popMatrix();
 	}
 	

@@ -39,6 +39,7 @@ public class DrawingSurface extends PApplet{
 	 */
 	public void settings() {
 		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT, processing.core.PConstants.P3D);
+		
 	}
 
 	/**

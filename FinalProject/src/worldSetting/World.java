@@ -49,13 +49,19 @@ public class World {
 //		backgroundSky = marker.loadImage("background-horizon.jpeg");
 		savedTime = marker.millis();
 		SoundPlayer.playSeaSound();
-		
+//		marker.size(marker.width - 120, marker.height - 120);
+
 		
 	}
 	
 	public void setup(PApplet marker) {
 		backgroundSky = marker.loadImage("media/800x600 background.jpeg");
+//		marker.size(marker.width - 120, marker.height - 120);
 
+	}
+	
+	public void settings(PApplet marker) {
+//		marker.size(-20, -20);
 	}
 
 	/**
@@ -63,10 +69,10 @@ public class World {
 	 * Starts playing ocean sounds
 	 * @param g can't be null
 	 */
-	public void draw(PApplet g, double ISOval, double lightSourceY, double lightSourceX) {
-//		g.background(sky[0], sky[1], sky[2]);
+	public void draw(PApplet g, double ISOval, double lightSourceY, double lightSourceX, Viewfinder viewfinder) {
+		g.background(sky[0], sky[1], sky[2]);
 		
-		g.background(backgroundSky);
+//		g.background(backgroundSky);
 
 		g.smooth();
 		g.lights();
@@ -93,6 +99,8 @@ public class World {
 		for(Car c: cars) {
 			c.display(g);
 		}
+		
+		//viewfinder.draw(g);
 	}
 
 	/**
