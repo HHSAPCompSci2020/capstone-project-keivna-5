@@ -195,12 +195,13 @@ public class Viewfinder {
 
 			int outerArrIndex = shutter.longExpoSize(); //for shutter to see if it needs to make a new long expo arraylist or not
 			//represents the number of screenshots
-			for (int i = 0; i < getShutterSpeed()*10; i++) {
+//			for (int i = 0; i < getShutterSpeed()*10; i++) {
+			for (int i = 0; i < getShutterSpeed(); i++) {
+				drawABunchOfTimes(marker); //draw in between screenshots to get long exposure effect
+
 				SoundPlayer.playShutterSound();
 
 				shutter.longExposureScreenshot(marker, outerArrIndex, i);
-				drawABunchOfTimes(marker); //draw in between screenshots to get long exposure effect
-
 			}
 			SoundPlayer.playShutterSound();
 		}
@@ -269,7 +270,7 @@ public class Viewfinder {
 	//get 3d world to redraw in between calls to screenshot to get long exposure effect
 	//draws 60x which is equal to 1 second in between draws
 	private void drawABunchOfTimes(DrawingSurface marker) {
-		for (int i = 0; i < 5; i ++) {
+		for (int i = 0; i < 60; i ++) {
 			marker.draw();
 		}
 	}

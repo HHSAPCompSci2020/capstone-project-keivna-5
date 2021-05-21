@@ -28,7 +28,7 @@ public class WorldScreen extends Screen {
 	/**
 	 * The constant for the speed at which movement should occur
 	 */
-	public static final int keyMoveFactor = 2;
+	public static final int keyMoveFactor = 4;
 	
 	/**
 	 * The constants for the size of the screen
