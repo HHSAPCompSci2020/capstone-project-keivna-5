@@ -152,7 +152,7 @@ public class Car extends Element{
 	    }
 	    g.endShape(PApplet.CLOSE);
 	    
-	    // draw body
+	    // draw body (connects top and bottom)
 	    g.beginShape(PApplet.TRIANGLE_STRIP);
 	    for (int i = 0; i < sides + 1; i++) {
 	        float x = PApplet.cos( PApplet.radians( i * angle ) ) * r;
