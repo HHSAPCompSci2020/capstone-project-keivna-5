@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import drawingPackage.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
+import worldSetting.World.BackgroundColor;
 
 /**
  * Represents the 2D aspect of the World, where photos are taken and settings are changed
@@ -22,6 +23,8 @@ public class Viewfinder {
 	private Rectangle ISOup, ISOdown, shutterSpeedUp, shutterSpeedDown, lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight;
 	private final int[] ISOvalues = {100, 200, 400, 800, 1600, 3200, 6400};
 	private int ISOindex;
+	
+	private BackgroundColor backgroundColor;
 	
 	private final static int[] shutterSpeedValues = {3, 5, 10, 20};
 	private static int shutterSpeedIndex;
@@ -79,6 +82,8 @@ public class Viewfinder {
 		ISOindex = 3;
 		
 		longExpoSpeedFactor = 20;
+		
+		backgroundColor = BackgroundColor.LIGHTBLUE;
 	}
 
 	/**
@@ -295,5 +300,9 @@ public class Viewfinder {
 	
 	public double getLightSourceZ() {
 		return lightSourceZ;
+	}
+	
+	public BackgroundColor getBackgroundEnum() {
+		return backgroundColor;
 	}
 }

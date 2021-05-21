@@ -48,7 +48,6 @@ public class DrawingSurface extends PApplet{
 	 */
 	public void setup() {
 //		frameRate(480); //speed up because all the 3D elements make everything a lot slower
-		worldScreen.setup(this); //for background image
 		surface.setResizable(true);
 		for (Screen s : screens)
 			s.setup();

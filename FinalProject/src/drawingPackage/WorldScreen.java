@@ -49,10 +49,6 @@ public class WorldScreen extends Screen {
 		viewfinder = new Viewfinder(marker);
 		keys = new ArrayList<Integer>();
 	}
-	
-	public void setup(PApplet marker) {
-		world.setup(marker);
-	}
 
 	/**
 	 * Draws the world and viewfinder and catches key presses
@@ -70,7 +66,7 @@ public class WorldScreen extends Screen {
 		//3D aspects
 		marker.pushMatrix();
 		cameraNoMouse.draw(marker);
-		world.draw(marker, viewfinder.getISOvalue(), viewfinder.getLightSourceY(), viewfinder.getLightSourceX(), viewfinder);
+		world.draw(marker, viewfinder.getISOvalue(), viewfinder.getLightSourceY(), viewfinder.getLightSourceX(), viewfinder.getBackgroundEnum());
 		marker.popMatrix(); //get out of 3D world
 		
 		viewfinder.draw(marker);

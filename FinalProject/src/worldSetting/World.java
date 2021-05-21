@@ -11,16 +11,16 @@ import processing.core.*;
  *
  */
 public class World { 
-	
+
 	private int[] sky;
 	private Water water;
 	private Bridge bridge;
 	private ArrayList<Car> cars;
-	PImage backgroundSky;
+	PImage background;
 
 	int savedTime;
 	int totalTime = 60000;
-	
+
 	/**
 	 * Length of the seaSound
 	 */
@@ -36,32 +36,17 @@ public class World {
 		water = new Water(350, 350, 50, 100000);
 		bridge = new Bridge(350, -500, 50, 200);
 		cars = new ArrayList<Car>();
-		
+
 		for(int i = -8; i <= 8; i++) {
 			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 85, 45, true));
 		}
-		
+
 		for(int i = -8; i <= 8; i++) {
 			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 15, 45, false));
 		}
-		
-		
-//		backgroundSky = marker.loadImage("background-horizon.jpeg");
+
 		savedTime = marker.millis();
 		SoundPlayer.playSeaSound();
-//		marker.size(marker.width - 120, marker.height - 120);
-
-		
-	}
-	
-	public void setup(PApplet marker) {
-		backgroundSky = marker.loadImage("media/800x600 background.jpeg");
-//		marker.size(marker.width - 120, marker.height - 120);
-
-	}
-	
-	public void settings(PApplet marker) {
-//		marker.size(-20, -20);
 	}
 
 	/**
@@ -69,23 +54,31 @@ public class World {
 	 * Starts playing ocean sounds
 	 * @param g can't be null
 	 */
-	public void draw(PApplet g, double ISOval, double lightSourceY, double lightSourceX, Viewfinder viewfinder) {
-		g.background(sky[0], sky[1], sky[2]);
-		
-//		g.background(backgroundSky);
+	public void draw(PApplet g, double ISOval, double lightSourceY, double lightSourceX, BackgroundColor backgroundColor) {
+		if (backgroundColor == BackgroundColor.LIGHTBLUE) {
+			g.background(sky[0], sky[1], sky[2]);
+		} else if (backgroundColor == BackgroundColor.STARS){
+			background = g.loadImage("media/800x600 background.jpeg");
+			g.background(background);
+
+		}
+
+
+		//		g.background(sky[0], sky[1], sky[2]);
+
 
 		g.smooth();
 		g.lights();
-		
+
 		int ISOfor3D = (int)((ISOval/6400.0)*255.0);
 		g.ambientLight(ISOfor3D, ISOfor3D, ISOfor3D);
 
 		double pointLightY = lightSourceY*g.height;
-		
+
 		if (lightSourceY < 0.1) {
 			pointLightY = 0;
 		}
-		
+
 		double pointLightX = lightSourceX*g.width;
 		if (lightSourceX < 0.1) {
 			pointLightX = 0;
@@ -93,13 +86,13 @@ public class World {
 
 		g.directionalLight(128, 128, 128, (float) pointLightX, (float) pointLightY, 400);
 
-		
+
 		water.display(g);
 		bridge.display(g);
 		for(Car c: cars) {
 			c.display(g);
 		}
-		
+
 		//viewfinder.draw(g);
 	}
 
@@ -118,5 +111,13 @@ public class World {
 	 */
 	public void setSky(int[] color) {
 		sky = color;
+	}
+
+	enum BackgroundColor{
+		LIGHTBLUE,
+		STARS,
+		PUREBLACK,
+		ClOUDY,
+		SUNSET
 	}
 }
