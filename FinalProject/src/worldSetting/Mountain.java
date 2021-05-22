@@ -63,39 +63,5 @@ public class Mountain extends Element{
 		
 		g.popMatrix();	
 	}
-	
-	
-	//Written by https://vormplus.be/full-articles/drawing-a-cylinder-with-processing
-	private void drawCylinder(PApplet g, int sides, float r, float h){
-	    float angle = 360 / sides;
-	    float halfHeight = h / 2;
-	    // draw top shape
-	    g.beginShape();
-	    for (int i = 0; i < sides; i++) {
-	        float x = PApplet.cos( PApplet.radians( i * angle ) ) * r;
-	        float y = PApplet.sin( PApplet.radians( i * angle ) ) * r;
-	        g.vertex( x, y, -halfHeight );    
-	    }
-	    g.endShape(PApplet.CLOSE);
-	    
-	    // draw bottom shape
-	    g.beginShape();
-	    for (int i = 0; i < sides; i++) {
-	        float x = PApplet.cos( PApplet.radians( i * angle ) ) * r;
-	        float y = PApplet.sin( PApplet.radians( i * angle ) ) * r;
-	        g.vertex( x, y, halfHeight );    
-	    }
-	    g.endShape(PApplet.CLOSE);
-	    
-	    // draw body
-	    g.beginShape(PApplet.TRIANGLE_STRIP);
-	    for (int i = 0; i < sides + 1; i++) {
-	        float x = PApplet.cos( PApplet.radians( i * angle ) ) * r;
-	        float y = PApplet.sin( PApplet.radians( i * angle ) ) * r;
-	        g.vertex( x, y, halfHeight);
-	        g.vertex( x, y, -halfHeight);    
-	    }
-	    g.endShape(PApplet.CLOSE);
-	}
 
 }

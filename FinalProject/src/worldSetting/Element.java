@@ -57,6 +57,39 @@ public class Element {
 		g.box(size, size, size);
 		g.popMatrix();
 	}
+	
+	//Written by https://vormplus.be/full-articles/drawing-a-cylinder-with-processing
+	public void drawCylinder(PApplet g, int sides, float r, float h){
+		float angle = 360 / sides;
+		float halfHeight = h / 2;
+		// draw top shape
+		g.beginShape();
+		for (int i = 0; i < sides; i++) {
+			float x = PApplet.cos( PApplet.radians( i * angle ) ) * r;
+			float y = PApplet.sin( PApplet.radians( i * angle ) ) * r;
+			g.vertex( x, y, -halfHeight );    
+		}
+		g.endShape(PApplet.CLOSE);
+
+		// draw bottom shape
+		g.beginShape();
+		for (int i = 0; i < sides; i++) {
+			float x = PApplet.cos( PApplet.radians( i * angle ) ) * r;
+			float y = PApplet.sin( PApplet.radians( i * angle ) ) * r;
+			g.vertex( x, y, halfHeight );    
+		}
+		g.endShape(PApplet.CLOSE);
+
+		// draw body (connects top and bottom)
+		g.beginShape(PApplet.TRIANGLE_STRIP);
+		for (int i = 0; i < sides + 1; i++) {
+			float x = PApplet.cos( PApplet.radians( i * angle ) ) * r;
+			float y = PApplet.sin( PApplet.radians( i * angle ) ) * r;
+			g.vertex( x, y, halfHeight);
+			g.vertex( x, y, -halfHeight);    
+		}
+		g.endShape(PApplet.CLOSE);
+	}
 
 	/**
 	 * Get x-coordinate of the Element

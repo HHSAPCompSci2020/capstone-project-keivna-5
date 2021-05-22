@@ -46,7 +46,9 @@ public class Bridge extends Element{
 		g.pushMatrix();
 		drawDeck(g);
 		drawTower(g, getX() + (bridgeLength / 5));
+		drawSupport(g, getX() + (bridgeLength / 5));
 		drawTower(g, getX() - (bridgeLength / 5));
+		drawSupport(g, getX() - (bridgeLength / 5));
 		for (int i = 0; i < numCords; i++) {
 			drawSuspensionCord(g); // which draws the supports
 		}
@@ -111,9 +113,18 @@ public class Bridge extends Element{
 		}
 	}
 	
+	private void drawSupport(PApplet g, float x) {
+		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
+		g.pushMatrix();
+		g.translate(x, getY() + ((towerNHeight * towerHeightInNs) / 2), getZ());
+		g.rotateX(g.PI/2);
+		drawCylinder(g, 360, (3 * bridgeWidth / 4) / 2, towerNHeight * towerHeightInNs);
+		g.popMatrix();
+	}
+	
 	private void drawSuspensionCord(PApplet g) {
 		float radiusOfArc = (bridgeLength / 5);
-		
+		// clean up and simplify code
 		g.strokeWeight(10);
 		g.stroke(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
 		g.noFill();
@@ -149,7 +160,7 @@ public class Bridge extends Element{
 		g.popMatrix();
 	}
 	
-	private void drawSupports(PApplet g) {
+	private void drawVerticalSuspension(PApplet g) {
 		// evenly spaced apart, simple vertical cylindrical going from the suspension to the deck
 	}
 }
