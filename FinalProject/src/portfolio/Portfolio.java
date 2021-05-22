@@ -41,7 +41,8 @@ public class Portfolio {
 			
 			longExpoYMultiple = (e/photosPerRow);
 
-			for (int b = 0; b < Viewfinder.getShutterSpeed(); b++) { //goes thru each pimage in the arrayList<pimage>
+			System.out.println("Viewfinder.getNumPhotosPerLongExpo(): " + Viewfinder.getNumPhotosPerLongExpo());
+			for (int b = 0; b < Viewfinder.getNumPhotosPerLongExpo(); b++) { //goes thru each pimage in the arrayList<pimage>
 
 				PImage longExpoImg = currLongExpo.get(b);
 				longExpoImg = marker.loadImage(a + "." + b + ".png");

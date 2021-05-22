@@ -21,6 +21,7 @@ public class Viewfinder {
 	private Rectangle toggle, shutterButton, longExpoShutterButton;
 	private Shutter shutter;
 	private Rectangle ISOup, ISOdown, shutterSpeedUp, shutterSpeedDown, lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight;
+	private Rectangle[] backgroundSquares;
 	private final int[] ISOvalues = {100, 200, 400, 800, 1600, 3200, 6400};
 	private int ISOindex;
 	
@@ -29,7 +30,7 @@ public class Viewfinder {
 	private final static int[] shutterSpeedValues = {3, 5, 10, 20};
 	private static int shutterSpeedIndex;
 	
-	private double longExpoSpeedFactor;
+	private static double longExpoSpeedFactor;
 
 	private double lightSourceX, lightSourceY, lightSourceZ; //from 0-1, to be multiplied by marker.width or height in world draw
 	//private static int shutterSpeed;
@@ -84,6 +85,12 @@ public class Viewfinder {
 		longExpoSpeedFactor = 20;
 		
 		backgroundColor = BackgroundColor.LIGHTBLUE;
+		
+		backgroundSquares = new Rectangle[BackgroundColor.values().length];
+		//TODO: finish implementing this!
+		for (int i = 0; i < backgroundSquares.length; i++) {
+			//backgroundSquares[i] = new Rectangle..;
+		}
 	}
 
 	/**
@@ -157,7 +164,8 @@ public class Viewfinder {
 		//Shutter speed text
 		marker.text("Shutter", shutterSpeedDown.x - 8, shutterSpeedDown.y - (viewfinderIndent/4) - 25);
 		marker.text("Speed", shutterSpeedDown.x - 5, shutterSpeedDown.y - (viewfinderIndent/4) - 10);
-		marker.text(getShutterSpeed(), shutterSpeedDown.x + 8, shutterSpeedDown.y - (viewfinderIndent/8));
+		int actualShutterSpeed = shutterSpeedValues[shutterSpeedIndex];
+		marker.text(actualShutterSpeed, shutterSpeedDown.x + 8, shutterSpeedDown.y - (viewfinderIndent/8));
 
 		//Shutter speed down triangle
 		marker.triangle(shutterSpeedDown.x, shutterSpeedDown.y, shutterSpeedDown.x + shutterSpeedDown.width, shutterSpeedDown.y, shutterSpeedDown.x + (shutterSpeedDown.width/2), shutterSpeedDown.y + shutterSpeedDown.height);
@@ -204,7 +212,7 @@ public class Viewfinder {
 
 			int outerArrIndex = shutter.longExpoSize(); //for shutter to see if it needs to make a new long expo arraylist or not
 			//represents the number of screenshots
-			for (int i = 0; i < getShutterSpeed()*longExpoSpeedFactor; i++) {
+			for (int i = 0; i < getNumPhotosPerLongExpo(); i++) {
 				drawABunchOfTimes(marker); //draw in between screenshots to get long exposure effect
 
 				SoundPlayer.playShutterSound();
@@ -282,8 +290,8 @@ public class Viewfinder {
 		}
 	}
 	
-	public static int getShutterSpeed() {
-		return shutterSpeedValues[shutterSpeedIndex];
+	public static int getNumPhotosPerLongExpo() {
+		return (int) (shutterSpeedValues[shutterSpeedIndex]*longExpoSpeedFactor);
 	}
 	
 	public int getISOvalue() {
