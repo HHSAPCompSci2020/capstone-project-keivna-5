@@ -34,7 +34,7 @@ public class World {
 	public World(PApplet marker) {
 		sky = new int[] {185, 230, 255};
 		water = new Water(350, 350, 50, 100000);
-		bridge = new Bridge(350, -500, 50, 200, 4);
+		bridge = new Bridge(350, -500, 50, 200, 5);
 		cars = new ArrayList<Car>();
 
 		for(int i = -8; i <= 8; i++) {

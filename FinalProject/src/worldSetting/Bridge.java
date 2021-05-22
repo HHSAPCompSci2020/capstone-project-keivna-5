@@ -95,7 +95,7 @@ public class Bridge extends Element{
 		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
 		for(int i = 0; i < towerHeightInNs; i++) {
 			g.pushMatrix();
-			g.translate(x, getY() - (towerNHeight * i) - ((bridgeHeight/2) * i), getZ() + (int) (bridgeHeight * 2.5));
+			g.translate(x, getY() - (towerNHeight * i) + (bridgeHeight/2), getZ() + (int) (bridgeHeight * 2.5));
 			g.box(bridgeHeight, towerNHeight * i, (bridgeHeight / 2) - i);
 			g.popMatrix();
 			
@@ -105,14 +105,14 @@ public class Bridge extends Element{
 			g.popMatrix();
 			
 			g.pushMatrix();
-			g.translate(x, getY() - (towerNHeight * i) - ((bridgeHeight/2) * i), getZ() - (int) (bridgeHeight * 2.5));
+			g.translate(x, getY() - (towerNHeight * i) + (bridgeHeight/2), getZ() - (int) (bridgeHeight * 2.5));
 			g.box(bridgeHeight, towerNHeight * i, (bridgeHeight / 2) - i);
 			g.popMatrix();
 		}
 	}
 	
 	private void drawSuspensionCord(PApplet g) {
-		float radiusOfArc = towerNHeight * towerHeightInNs;
+		float radiusOfArc = (bridgeLength / 5);
 		
 		g.strokeWeight(10);
 		g.stroke(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
@@ -120,32 +120,32 @@ public class Bridge extends Element{
 		
 		g.pushMatrix(); // start: top of tower 1, mid: point between towers, end: top of tower 2
 		g.translate(getX(), getY(), getZ() - (int) (bridgeHeight * 2.5));
-		g.arc(getX() + (bridgeLength/5) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, g.HALF_PI, g.PI);
+		g.arc(getX() + radiusOfArc + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, g.HALF_PI, g.PI);
 		g.popMatrix();
 		
 		g.pushMatrix(); // start: top of tower 1, mid: point between towers, end: top of tower 2
 		g.translate(getX(), getY(), getZ() - (int) (bridgeHeight * 2.5));
-		g.arc(getX() - (bridgeLength/5) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.PI);
+		g.arc(getX() - radiusOfArc + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.PI);
 		g.popMatrix();
 		
 		g.pushMatrix(); // start: top of tower 1, mid: point between towers, end: top of tower 2
 		g.translate(getX(), getY(), getZ() - (int) (bridgeHeight * 2.5));
-		g.arc(getX() - (3 * bridgeLength/5) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.HALF_PI);
+		g.arc(getX() - (3 * radiusOfArc) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.HALF_PI);
 		g.popMatrix();
 		
 		g.pushMatrix(); // start: top of tower 1, mid: point between towers, end: top of tower 2
 		g.translate(getX(), getY(), getZ() + (int) (bridgeHeight * 2.5));
-		g.arc(getX() + (bridgeLength/5) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, g.HALF_PI, g.PI);
+		g.arc(getX() + radiusOfArc + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, g.HALF_PI, g.PI);
 		g.popMatrix();
 		
 		g.pushMatrix(); // start: top of tower 1, mid: point between towers, end: top of tower 2
 		g.translate(getX(), getY(), getZ() + (int) (bridgeHeight * 2.5));
-		g.arc(getX() - (bridgeLength/5) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.PI);
+		g.arc(getX() - radiusOfArc + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.PI);
 		g.popMatrix();
 		
 		g.pushMatrix(); // start: top of tower 1, mid: point between towers, end: top of tower 2
 		g.translate(getX(), getY(), getZ() + (int) (bridgeHeight * 2.5));
-		g.arc(getX() - (3 * bridgeLength/5) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.HALF_PI);
+		g.arc(getX() - (3 * radiusOfArc) + bridgeHeight, getY() - (3 * bridgeHeight), radiusOfArc * 2, radiusOfArc * 1.5f, 0, g.HALF_PI);
 		g.popMatrix();
 	}
 	
