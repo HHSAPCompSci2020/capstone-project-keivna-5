@@ -55,12 +55,41 @@ public class World {
 	 * @param g can't be null
 	 */
 	public void draw(PApplet g, double ISOval, double lightSourceY, double lightSourceX, BackgroundColor backgroundColor) {
-		if (backgroundColor == BackgroundColor.LIGHTBLUE) {
+		boolean isColor = false;
+		String imageName = "media/sky-";
+		
+		switch(backgroundColor) {
+			case CLEAR_DAY:
+				imageName += "day-clear.png";
+				break;
+			case CLOUDY_DAY:
+				imageName += "day-cloudy.png";
+				break;
+			case CLOUDY_NIGHT:
+				imageName += "night-cloudy.png";
+				break;
+			case SUNSET_CLOUDY:
+				imageName += "night-sunset.png";
+				break;
+			case STARS_NIGHT:
+				imageName += "night-stars.png";
+				break;
+			case PUREBLACK:
+				isColor = true;
+				sky = new int[] {0,0,0};
+				break;
+			default:
+				isColor = true;
+				sky = new int[] {185, 230, 255};
+				break;
+		}
+		
+		background = g.loadImage(imageName);
+		
+		if (isColor) {
 			g.background(sky[0], sky[1], sky[2]);
-		} else if (backgroundColor == BackgroundColor.STARS){
-			background = g.loadImage("media/sky-night-stars.png");
+		} else {
 			g.background(background);
-
 		}
 
 
@@ -114,10 +143,11 @@ public class World {
 	}
 
 	enum BackgroundColor{
-		LIGHTBLUE,
-		STARS,
-		PUREBLACK,
-		ClOUDY,
-		SUNSET
+		CLEAR_DAY,
+		CLOUDY_DAY,
+		CLOUDY_NIGHT,
+		SUNSET_CLOUDY,
+		STARS_NIGHT,
+		PUREBLACK
 	}
 }
