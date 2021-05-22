@@ -93,14 +93,7 @@ public class Bridge extends Element{
 		// vertical rectangular prism, horizontal rectangular prism
 		// same size v rect prism, just at the end of h prism
 		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
-		boolean passedZero = false;
-		for(int i = -1 * (towerHeightInNs/2); i < (towerHeightInNs/2); i++) {
-			System.out.println("i before: " + i);
-			if (i == 0) {
-				i = 1;
-				passedZero = true;
-			}
-			System.out.println("i mid: " + i);
+		for(int i = 0; i < towerHeightInNs; i++) {
 			g.pushMatrix();
 			g.translate(x, getY() - (towerNHeight * i) - ((bridgeHeight/2) * i), getZ() + (int) (bridgeHeight * 2.5));
 			g.box(bridgeHeight, towerNHeight * i, (bridgeHeight / 2) - i);
@@ -115,11 +108,6 @@ public class Bridge extends Element{
 			g.translate(x, getY() - (towerNHeight * i) - ((bridgeHeight/2) * i), getZ() - (int) (bridgeHeight * 2.5));
 			g.box(bridgeHeight, towerNHeight * i, (bridgeHeight / 2) - i);
 			g.popMatrix();
-			if (passedZero) {
-				i--;
-				passedZero = false;
-			}
-			System.out.println("i after: " + i);
 		}
 	}
 	

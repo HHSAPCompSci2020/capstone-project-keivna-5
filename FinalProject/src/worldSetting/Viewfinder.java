@@ -84,7 +84,7 @@ public class Viewfinder {
 		
 		longExpoSpeedFactor = 20;
 		
-		backgroundColor = BackgroundColor.LIGHTBLUE;
+		backgroundColor = BackgroundColor.CLEAR_DAY;
 		
 		backgroundSquares = new Rectangle[BackgroundColor.values().length];
 		//TODO: finish implementing this!
