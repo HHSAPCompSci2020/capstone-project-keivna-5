@@ -120,6 +120,10 @@ public class CameraNoMouse {
 		g.camera(position.x, position.y, position.z, center.x, center.y, center.z, 0, 1, 0);
 
 	}
+	
+	public float getX() { return position.x; }
+	public float getY() { return position.y; }
+	public float getZ() { return position.z; }
 
 	/**
 	 * Move the x position of the camera, takes into account speed

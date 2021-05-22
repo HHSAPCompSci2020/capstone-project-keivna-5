@@ -3,6 +3,7 @@ package drawingPackage;
 import processing.core.*;
 
 import worldSetting.CameraNoMouse;
+import worldSetting.SoundPlayer;
 import worldSetting.Viewfinder;
 import worldSetting.World;
 import java.awt.event.KeyEvent;
@@ -19,6 +20,8 @@ public class WorldScreen extends Screen {
 	private CameraNoMouse cameraNoMouse;
 	private World world;
 	private Viewfinder viewfinder;
+	
+	private boolean playingCarSound = false;
 	
 	/**
 	 * Ratio of the screen
@@ -71,6 +74,10 @@ public class WorldScreen extends Screen {
 		marker.popMatrix(); //get out of 3D world
 		
 		viewfinder.draw(marker);
+		
+		if(cameraNoMouse.getX() <= 350 + 100) {
+			SoundPlayer.playCarSound();
+		}
 				
 		//control z, move forward/back
 		if (checkKey(KeyEvent.VK_W)) {
