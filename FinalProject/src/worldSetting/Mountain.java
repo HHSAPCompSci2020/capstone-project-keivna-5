@@ -53,6 +53,14 @@ public class Mountain extends Element{
 		g.fill(MOUNTAIN_COLOR[0], MOUNTAIN_COLOR[1], MOUNTAIN_COLOR[2]);
 		// gonna have a lot of random vertexes, and connect them using a line
 		
+		 g.beginShape();
+//	    for (int i = 0; i < sides; i++) {
+//	        float x = PApplet.cos( PApplet.radians( i * angle ) ) * r;
+//	        float y = PApplet.sin( PApplet.radians( i * angle ) ) * r;
+//	        g.vertex( x, y, -halfHeight );    
+//	    }
+//	    g.endShape(PApplet.CLOSE);
+		
 		g.popMatrix();	
 	}
 	
