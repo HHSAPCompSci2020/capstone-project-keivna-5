@@ -16,8 +16,8 @@ public class Bridge extends Element{
 	private float bridgeHeight; //y
 	private float bridgeWidth; //z
 	
-	private int towerHeightInNs = 4;
-	private int towerNHeight = 100;
+	private int towerHeightInNs;
+	private int towerNHeight;
 	private int numCords;
 
 	/**
@@ -27,13 +27,15 @@ public class Bridge extends Element{
 	 * @param z z-coordinate for the center of the bridge
 	 * @param size represents the width of the bridge (z-axis)
 	 */
-	public Bridge(float x, float y, float z, float size) {
+	public Bridge(float x, float y, float z, float size, int towerHeight) {
 		super(x, y, z, size);
 		
 		numCords = 20;
 		bridgeLength = size * 10;
 		bridgeHeight = size / 5;
 		bridgeWidth = size;
+		towerHeightInNs = towerHeight;
+		towerNHeight = 100;
 	}
 	
 	/**
@@ -92,21 +94,23 @@ public class Bridge extends Element{
 		// same size v rect prism, just at the end of h prism
 		g.fill(METAL_COLOR[0], METAL_COLOR[1], METAL_COLOR[2]);
 		
-		for(int i = towerHeightInNs; i > 0; i--) {
+		for(int i = -towerHeightInNs/2; i < towerHeightInNs/2; i++) {
+			i = i == 0 ? 1 : i;
 			g.pushMatrix();
 			g.translate(x, getY() - (towerNHeight * i) - ((bridgeHeight/2) * i), getZ() + (int) (bridgeHeight * 2.5));
 			g.box(bridgeHeight, towerNHeight * i, (bridgeHeight / 2) - i);
 			g.popMatrix();
 			
 			g.pushMatrix();
-			g.translate(x, getY() - ((i == 0? 1: i) * towerNHeight) - ((i == 0? 1: i) * bridgeHeight), getZ());
-			g.box(bridgeHeight, bridgeHeight - (i == 0? 1: i), bridgeWidth);
+			g.translate(x, getY() - (towerNHeight * i) - (bridgeHeight * i), getZ());
+			g.box(bridgeHeight, bridgeHeight - i, bridgeWidth);
 			g.popMatrix();
 			
 			g.pushMatrix();
 			g.translate(x, getY() - (towerNHeight * i) - ((bridgeHeight/2) * i), getZ() - (int) (bridgeHeight * 2.5));
 			g.box(bridgeHeight, towerNHeight * i, (bridgeHeight / 2) - i);
 			g.popMatrix();
+			i -= 1;
 		}
 	}
 	
