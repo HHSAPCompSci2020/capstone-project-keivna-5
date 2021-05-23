@@ -108,7 +108,9 @@ public class Viewfinder {
 		//fill up background Images
 		for (int i = 0; i < backgroundSquares.length; i++) {
 			backgroundSquares[i] = new Rectangle ((int)(viewfinderIndent/4), (int)(viewfinderIndent + (viewfinderIndent*i)), (int)(viewfinderIndent/2), (int)(viewfinderIndent/2));
-			String imageName = "media/sky-";
+			
+			
+			String imageName = "media/cropped-sky-";
 			switch (i) {
 			case 0:
 				imageName += "day-clear.png";
@@ -130,6 +132,10 @@ public class Viewfinder {
 				break;
 			}
 			backgroundImages[i] = marker.loadImage(imageName);
+
+			//crop image
+//			PImage backgroundImg = backgroundImages[i];
+//			backgroundImg.copy(0, 0, marker.width, marker.height, 0, 0, backgroundSquares[i].width, backgroundSquares[i].height);
 
 		}
 		
@@ -226,10 +232,12 @@ public class Viewfinder {
 			marker.rect(backgroundSquares[i].x, backgroundSquares[i].y, backgroundSquares[i].width, backgroundSquares[i].height);
 			PImage backgroundImg = backgroundImages[i];
 //			backgroundImage.copy(0, 0, backgroundSquares[i].width, backgroundSquares[i].height, 0, 0, marker.width, marker.height);
-			backgroundImg.copy(0, 0, marker.width, marker.height, 0, 0, backgroundSquares[i].width, backgroundSquares[i].height);
+			//backgroundImg.copy(0, 0, marker.width, marker.height, 0, 0, backgroundSquares[i].width, backgroundSquares[i].height);
 
 			//TODO: DRAWS THE SMALL BACKGROUND AND THE ENTIRE ONE TOO, CROP DOESN'T WORK
-			//marker.image(backgroundImg, backgroundSquares[i].x, backgroundSquares[i].y);
+//			marker.image(backgroundImages[i], backgroundSquares[i].x, backgroundSquares[i].y);
+			marker.image(backgroundImg, backgroundSquares[i].x, backgroundSquares[i].y);
+
 		}
 
 		marker.popMatrix();
