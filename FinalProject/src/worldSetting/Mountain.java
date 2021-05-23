@@ -18,9 +18,9 @@ public class Mountain extends Element{
 	};
 
 	//honestly won't use these
-	private float mountainLength; //x
-	private float mountainHeight; //y
-	private float mountainWidth; //z
+//	private float mountainLength; //x
+	private float height; //y
+	private float sideLength; //z
 	
 	private PImage mountainColor;
 
@@ -34,9 +34,9 @@ public class Mountain extends Element{
 	public Mountain(float x, float y, float z, float size) { // int numOfRidges
 		super(x, y, z, size);
 		
-		mountainLength = 3 * size / 2;
-		mountainHeight = size;
-		mountainWidth = size;
+//		mountainLength = 3 * size / 2;
+		height = size;
+		sideLength = size / 2;
 	}
 	
 	/**
@@ -58,13 +58,29 @@ public class Mountain extends Element{
 		g.translate(getX(), getY(), getZ());
 //		g.texture(mountainColor);
 		g.noStroke();
-//		g.fill(MOUNTAIN_COLORS[i][0], MOUNTAIN_COLORS[i][1], MOUNTAIN_COLORS[i][2]);		
-		g.beginShape(PApplet.TRIANGLE_STRIP);
-	    for (int i = 0; i < 3; i++) {
-			g.fill(MOUNTAIN_COLORS[i][0], MOUNTAIN_COLORS[i][1], MOUNTAIN_COLORS[i][2]);
-	        g.vertex(getX(), getY() - (10 * i), getZ() + (5 * i) );    
-	    }
+		g.fill(MOUNTAIN_COLORS[0][0], MOUNTAIN_COLORS[0][1], MOUNTAIN_COLORS[0][2]);
+		g.rotateX(g.PI/2);
+		// square part of pyramid
+//		g.beginShape(); //PApplet.TRIANGLE_STRIP
+//        g.stroke(0);
+//        g.vertex(getX() - sideLength, getY() + height, getZ() + sideLength);
+//        g.vertex(getX() - sideLength, getY() + height, getZ() - sideLength);
+//        g.vertex(getX() + sideLength, getY() + height, getZ() - sideLength);
+//        g.vertex(getX() + sideLength, getY() + height, getZ() + sideLength);
+//        g.endShape(PApplet.CLOSE);
+        
+        g.beginShape(PApplet.TRIANGLE_STRIP);
+        g.vertex(getX() - sideLength, getY() + height, getZ() + sideLength);
+        g.vertex(getX() + sideLength, getY(), getZ() - sideLength); 
+        g.vertex(getX() - sideLength, getY() + height, getZ() - sideLength);
+        g.vertex(getX() - sideLength, getY(), getZ() + sideLength);
+        g.vertex(getX() + sideLength, getY() + height, getZ() - sideLength);
+        g.vertex(getX() - sideLength, getY(), getZ() + sideLength);
+        g.vertex(getX() + sideLength, getY() + height, getZ() + sideLength);
+        g.vertex(getX() + sideLength, getY(), getZ() + sideLength);
+       
 	    g.endShape(PApplet.CLOSE);
+	    g.noStroke();
 		
 		g.popMatrix();	
 	}
