@@ -103,9 +103,7 @@ public class Viewfinder {
 	 * @pre marker can't be null
 	 * @post the PApplet marker will change
 	 */
-	public void draw(PApplet marker) {	
-		System.out.println("change longExpoSpeedFactor back!");
-		
+	public void draw(PApplet marker) {			
 		//fill up background Images
 		for (int i = 0; i < backgroundImages.length; i++) {			
 			String imageName = "media/cropped-sky-";

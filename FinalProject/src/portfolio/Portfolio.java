@@ -30,6 +30,11 @@ public class Portfolio {
 	
 	private final int viewfinderIndent = 60;
 	
+	/**
+	 * initializes all fields in portfolio
+	 * @param width of screen
+	 * @param height of screen
+	 */
 	public Portfolio(int width, int height) {
 		images = new ArrayList<PImage>();
 		imageRects = new ArrayList<Rectangle>();
@@ -116,10 +121,8 @@ public class Portfolio {
 		}
 	}
 	
-	public void drawSingleFullScreenImg(PApplet marker, int index, boolean isLongExpo) {
+	private void drawSingleFullScreenImg(PApplet marker, int index, boolean isLongExpo) {
 		if (isLongExpo) {
-			System.out.println("drawing single long expo from full screen");
-
 			drawSingleLongExpo(marker, index, 0, 0, marker.width, marker.height);
 		} else {
 			drawSingleShot(marker, index, 0, 0, marker.width, marker.height);
@@ -147,8 +150,6 @@ public class Portfolio {
 		for (int b = 0; b < Viewfinder.getNumPhotosPerLongExpo(); b++) { //goes thru each pimage in the arrayList<pimage>
 
 			PImage longExpoImg = longExposureImages.get(index).get(b);
-			//String s = index + "." + b + ".png";
-			//System.out.println("s: " + s);
 			longExpoImg = marker.loadImage(index + "." + b + ".png");
 
 			longExpoImg.copy(viewfinderIndent, viewfinderIndent, marker.width-(2*viewfinderIndent), marker.height-(2*viewfinderIndent), 0, 0,  marker.width, marker.height); //crop image
@@ -166,7 +167,6 @@ public class Portfolio {
 				hasClickedOnImage = true;
 				photoIndex = i;
 				isLongExpo = false;
-//				marker.image(images.get(i), 0, 0, marker.width, marker.height); //image takes up entire screen
 			}
 		}
 		
@@ -177,7 +177,6 @@ public class Portfolio {
 				hasClickedOnImage = true;
 				photoIndex = i;
 				isLongExpo = true;
-//				marker.image(images.get(i), 0, 0, marker.width, marker.height); //image takes up entire screen
 			}
 		}
 		
