@@ -173,6 +173,10 @@ public class CameraNoMouse {
 	 */
 	public PVector getPosition() { return position; }
 	
+	public void setTilt(double angle) { tilt = (float) angle; }
+	
+	public float getTilt() { return tilt; }
+	
 	/**
 	 * Sets the position of the player to the given coordinates
 	 * @param x x-coordinate of where to move the player

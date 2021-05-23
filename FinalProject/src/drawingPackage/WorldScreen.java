@@ -79,7 +79,7 @@ public class WorldScreen extends Screen {
 			SoundPlayer.playCarSound();
 		}
 				
-		//control z, move forward/back
+		//control y, move forward/back
 		if (checkKey(KeyEvent.VK_W)) {
 			cameraNoMouse.moveY(keyMoveFactor*-1);
 		} else if (checkKey(KeyEvent.VK_S)) {
@@ -88,23 +88,30 @@ public class WorldScreen extends Screen {
 		
 		//control x, move left/right
 		if (checkKey(KeyEvent.VK_A)) {
-			cameraNoMouse.moveX(keyMoveFactor*-1);
-		} else if (checkKey(KeyEvent.VK_D)) {
 			cameraNoMouse.moveX(keyMoveFactor);
+		} else if (checkKey(KeyEvent.VK_D)) {
+			cameraNoMouse.moveX(keyMoveFactor*-1);
 		}
 		
-		//control y, move up/down with "Q" and "E" keys
-		if (checkKey(KeyEvent.VK_UP)) {
+		//control a, move up/down with "Q" and "E" keys
+		if (checkKey(KeyEvent.VK_Q)) {
 			cameraNoMouse.moveZ(keyMoveFactor);
-		} else if (checkKey(KeyEvent.VK_DOWN)) {
+		} else if (checkKey(KeyEvent.VK_E)) {
 			cameraNoMouse.moveZ(keyMoveFactor*-1);
 		}
 		
-		//control y, move up/down with "Q" and "E" keys
+		//control the pan, move left/right with "LEFT" and "RIGHT" keys
 		if (checkKey(KeyEvent.VK_LEFT)) {
-			cameraNoMouse.setPan(cameraNoMouse.getPan() + marker.QUARTER_PI / 180 * keyMoveFactor);
-		} else if (checkKey(KeyEvent.VK_RIGHT)) {
 			cameraNoMouse.setPan(cameraNoMouse.getPan() - marker.QUARTER_PI / 180 * keyMoveFactor);
+		} else if (checkKey(KeyEvent.VK_RIGHT)) {
+			cameraNoMouse.setPan(cameraNoMouse.getPan() + marker.QUARTER_PI / 180 * keyMoveFactor);
+		}
+		
+		//control the tilt, move up/down with "UP" and "DOWN" keys
+		if (checkKey(KeyEvent.VK_UP)) {
+			cameraNoMouse.setTilt(cameraNoMouse.getTilt() - marker.QUARTER_PI / 180 * keyMoveFactor);
+		} else if (checkKey(KeyEvent.VK_DOWN)) {
+			cameraNoMouse.setTilt(cameraNoMouse.getTilt() + marker.QUARTER_PI / 180 * keyMoveFactor);
 		}
 		
 		
@@ -117,8 +124,10 @@ public class WorldScreen extends Screen {
 	 * @post changes the camera's position and pan
 	 */
 	public void setCameraAtStart(PApplet marker) {
-		cameraNoMouse.moveTo(-350, -700, 700); //350, -200, 700 for viewing the water better
-		cameraNoMouse.setPan(marker.QUARTER_PI * 7); //marker.QUARTER_PI * 6
+		// to look at mountains --> 750, -700, -900, marker.QUARTER_PI * 2
+		// to look at water --> 350, -200, 700, marker.QUARTER_PI * 6
+		cameraNoMouse.moveTo(-350, -700, 700);
+		cameraNoMouse.setPan(marker.QUARTER_PI * 7);
 	}
 	
 	/**
