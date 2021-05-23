@@ -58,9 +58,7 @@ public class Mountain extends Element{
 		g.translate(getX(), getY(), getZ());
 //		g.texture(mountainColor);
 		g.noStroke();
-//		g.fill(MOUNTAIN_COLORS[i][0], MOUNTAIN_COLORS[i][1], MOUNTAIN_COLORS[i][2]);
-		// gonna have a lot of random vertexes, and connect them using a line
-		
+//		g.fill(MOUNTAIN_COLORS[i][0], MOUNTAIN_COLORS[i][1], MOUNTAIN_COLORS[i][2]);		
 		g.beginShape(PApplet.TRIANGLE_STRIP);
 	    for (int i = 0; i < 3; i++) {
 			g.fill(MOUNTAIN_COLORS[i][0], MOUNTAIN_COLORS[i][1], MOUNTAIN_COLORS[i][2]);
@@ -69,7 +67,6 @@ public class Mountain extends Element{
 	    g.endShape(PApplet.CLOSE);
 		
 		g.popMatrix();	
-//		System.out.println("mountain drawn");
 	}
 
 }
