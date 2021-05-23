@@ -60,6 +60,7 @@ public class PortfolioScreen extends Screen {
 		portfolio.draw(marker);
 		
 		//toggle
+		marker.fill(120);
 		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, toggleRadius);
 		
 		//toggle text

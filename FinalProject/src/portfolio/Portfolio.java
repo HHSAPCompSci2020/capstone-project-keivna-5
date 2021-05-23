@@ -134,13 +134,13 @@ public class Portfolio {
 		marker.rect(backButton.x, backButton.y, backButton.width, backButton.height);
 		
 		marker.fill(0);
-		marker.text("Back", backButton.x + 5, backButton.y + (backButton.height/2));
+		marker.text("Back", backButton.x + 5, backButton.y + (3*backButton.height/4));
 		
 	}
 	
 	public void mousePressed(DrawingSurface marker) {		
 		//start w simple shots
-		Point p = new Point(marker.mouseX,marker.mouseY);
+		Point p = new Point(marker.mouseX, marker.mouseY);
 				
 		//small -> large
 		for (int i = 0; i < imageRects.size(); i++) {
@@ -151,6 +151,10 @@ public class Portfolio {
 
 			}
 			
+		}
+		
+		if (hasClickedOnImage && backButton.contains(p)) {
+			hasClickedOnImage = false;
 		}
 	}
 }
