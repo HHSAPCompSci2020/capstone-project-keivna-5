@@ -79,7 +79,7 @@ public class WorldScreen extends Screen {
 			SoundPlayer.playCarSound();
 		}
 				
-		//control z, move forward/back
+		//control y, move forward/back
 		if (checkKey(KeyEvent.VK_W)) {
 			cameraNoMouse.moveY(keyMoveFactor*-1);
 		} else if (checkKey(KeyEvent.VK_S)) {
@@ -93,18 +93,25 @@ public class WorldScreen extends Screen {
 			cameraNoMouse.moveX(keyMoveFactor);
 		}
 		
-		//control y, move up/down with "Q" and "E" keys
-		if (checkKey(KeyEvent.VK_UP)) {
+		//control a, move up/down with "Q" and "E" keys
+		if (checkKey(KeyEvent.VK_Q)) {
 			cameraNoMouse.moveZ(keyMoveFactor);
-		} else if (checkKey(KeyEvent.VK_DOWN)) {
+		} else if (checkKey(KeyEvent.VK_E)) {
 			cameraNoMouse.moveZ(keyMoveFactor*-1);
 		}
 		
-		//control y, move up/down with "Q" and "E" keys
+		//control the pan, move left/right with "LEFT" and "RIGHT" keys
 		if (checkKey(KeyEvent.VK_LEFT)) {
-			cameraNoMouse.setPan(cameraNoMouse.getPan() + marker.QUARTER_PI / 180 * keyMoveFactor);
-		} else if (checkKey(KeyEvent.VK_RIGHT)) {
 			cameraNoMouse.setPan(cameraNoMouse.getPan() - marker.QUARTER_PI / 180 * keyMoveFactor);
+		} else if (checkKey(KeyEvent.VK_RIGHT)) {
+			cameraNoMouse.setPan(cameraNoMouse.getPan() + marker.QUARTER_PI / 180 * keyMoveFactor);
+		}
+		
+		//control the tilt, move up/down with "UP" and "DOWN" keys
+		if (checkKey(KeyEvent.VK_UP)) {
+			cameraNoMouse.setTilt(cameraNoMouse.getTilt() - marker.QUARTER_PI / 180 * keyMoveFactor);
+		} else if (checkKey(KeyEvent.VK_DOWN)) {
+			cameraNoMouse.setTilt(cameraNoMouse.getTilt() + marker.QUARTER_PI / 180 * keyMoveFactor);
 		}
 		
 		
