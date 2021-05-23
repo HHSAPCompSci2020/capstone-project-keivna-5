@@ -1,6 +1,8 @@
 package worldSetting;
 
 import processing.core.PApplet;
+import processing.core.PImage;
+import processing.core.PShape;
 
 /**
  * Draws a Mountain
@@ -11,12 +13,15 @@ public class Mountain extends Element{
 	
 	private final int[] MOUNTAIN_COLOR = new int[] {55, 60, 65};
 
-	
+	//honestly won't use these
 	private float mountainLength; //x
 	private float mountainHeight; //y
 	private float mountainWidth; //z
 	
-//	private int unevenness;
+	private float unevenness;
+	private PShape mountain;
+	private PShape aMountain;
+	private PImage mountainColor;
 
 	/**
 	 * Creates the base coordinates for the rest of the mountain to build off of.
@@ -28,9 +33,10 @@ public class Mountain extends Element{
 	public Mountain(float x, float y, float z, float size) { // int numOfRidges
 		super(x, y, z, size);
 		
-		mountainLength = size * (float) (1 + Math.random());
-		mountainHeight = size / 2;
-		mountainWidth = size;
+		unevenness = size;
+//		mountainLength = size * (float) (1 + Math.random());
+//		mountainHeight = size / 2;
+//		mountainWidth = size;
 	}
 	
 	/**
@@ -39,6 +45,8 @@ public class Mountain extends Element{
 	 */
 	public void display(PApplet g) {	
 		g.pushMatrix();
+		mountain = g.loadShape("media/desert-mountain.obj");
+		mountainColor = g.loadImage("media/mountain-color.jpg");
 		drawMountain(g);
 		g.popMatrix();
 	}
@@ -49,11 +57,14 @@ public class Mountain extends Element{
 	private void drawMountain(PApplet g) {
 		g.pushMatrix();
 		g.translate(getX(), getY(), getZ());
-		g.noStroke();
-		g.fill(MOUNTAIN_COLOR[0], MOUNTAIN_COLOR[1], MOUNTAIN_COLOR[2]);
-		// gonna have a lot of random vertexes, and connect them using a line
-		
-		 g.beginShape();
+		g.fill(255);
+		g.shape(mountain);
+//		g.texture(mountainColor);
+//		g.noStroke();
+//		g.fill(MOUNTAIN_COLOR[0], MOUNTAIN_COLOR[1], MOUNTAIN_COLOR[2]);
+//		// gonna have a lot of random vertexes, and connect them using a line
+//		
+//		g.beginShape();
 //	    for (int i = 0; i < sides; i++) {
 //	        float x = PApplet.cos( PApplet.radians( i * angle ) ) * r;
 //	        float y = PApplet.sin( PApplet.radians( i * angle ) ) * r;
@@ -62,6 +73,7 @@ public class Mountain extends Element{
 //	    g.endShape(PApplet.CLOSE);
 		
 		g.popMatrix();	
+		System.out.println("mountain drawn");
 	}
 
 }
