@@ -1,8 +1,6 @@
 package worldSetting;
 
 import processing.core.PApplet;
-import processing.core.PImage;
-import processing.core.PShape;
 
 /**
  * Draws a Mountain
@@ -11,18 +9,15 @@ import processing.core.PShape;
  */
 public class Mountain extends Element{
 	
+	// TODO: try using these to make gradient
 	private final int[][] MOUNTAIN_COLORS = new int[][] {
 		{50, 65, 40}, //dark green
 		{45, 30, 10}, //dark brown
 		{90, 80, 40}  //dark yellow
 	};
 
-	//honestly won't use these
-//	private float mountainLength; //x
-	private float height; //y
-	private float sideLength; //z
-	
-	private PImage mountainColor;
+	private float height;
+	private float sideLength;
 
 	/**
 	 * Creates the base coordinates for the rest of the mountain to build off of.
@@ -34,7 +29,6 @@ public class Mountain extends Element{
 	public Mountain(float x, float y, float z, float size) { // int numOfRidges
 		super(x, y, z, size);
 		
-//		mountainLength = 3 * size / 2;
 		height = size;
 		sideLength = size / 2;
 	}
@@ -45,7 +39,10 @@ public class Mountain extends Element{
 	 */
 	public void display(PApplet g) {	
 		g.pushMatrix();
-//		mountainColor = g.loadImage("media/mountain-color.jpg");
+		g.translate(getX(), getY(), getZ());
+		g.noStroke();
+		g.fill(MOUNTAIN_COLORS[0][0], MOUNTAIN_COLORS[0][1], MOUNTAIN_COLORS[0][2]);
+		g.rotateX(g.PI/2);
 		drawMountain(g);
 		g.popMatrix();
 	}
@@ -55,46 +52,25 @@ public class Mountain extends Element{
 	 */
 	private void drawMountain(PApplet g) {
 		g.pushMatrix();
-		g.translate(getX(), getY(), getZ());
-//		g.texture(mountainColor);
-		g.noStroke();
-		g.fill(MOUNTAIN_COLORS[0][0], MOUNTAIN_COLORS[0][1], MOUNTAIN_COLORS[0][2]);
-//		g.rotateX(g.PI/2);
+		g.beginShape(PApplet.TRIANGLES);
 
-        
-        g.beginShape();//PApplet.TRIANGLES)
-        
-//        g.vertex(getX() + sideLength, getY(), getZ() - sideLength); 
-//        g.vertex(getX() - sideLength, getY() + height, getZ() - sideLength);
-//        g.vertex(getX() - sideLength, getY(), getZ() + sideLength);
-//        g.vertex(getX() + sideLength, getY() + height, getZ() - sideLength);
-//        g.vertex(getX() - sideLength, getY()z, getZ() + sideLength);
-//        g.vertex(getX() + sideLength, getY() + height, getZ() + sideLength);
-//        g.vertex(getX() + sideLength, getY(), getZ() + sideLength);
-       
-	    g.vertex(getX() + sideLength, getY(), getZ() - sideLength); 
-	    g.vertex(getX() - sideLength, getY(), getZ() + sideLength);
-        g.vertex(getX() - sideLength, getY() + height, getZ() - sideLength);
+		g.vertex(getX() + sideLength, getY() - sideLength, getZ()); 
+		g.vertex(getX() - sideLength, getY() - sideLength, getZ());
+		g.vertex(getX(), getY(), getZ() + height);
 
-        g.vertex(getX() - sideLength, getY(), getZ() + sideLength);
-        g.vertex(getX() - sideLength, getY(), getZ() + sideLength);
-        g.vertex(getX() - sideLength, getY() + height, getZ() - sideLength);
+		g.vertex(getX() - sideLength, getY() - sideLength, getZ());
+		g.vertex(getX() - sideLength, getY() + sideLength, getZ());
+		g.vertex(getX(), getY(), getZ() + height);
 
-        g.vertex(getX() - sideLength, getY(), getZ() + sideLength);
-        g.vertex(getX() + sideLength, getY(), getZ() + sideLength);
-        g.vertex(getX() - sideLength, getY() + height, getZ() - sideLength);
+		g.vertex(getX() - sideLength, getY() + sideLength, getZ());
+        g.vertex(getX() + sideLength, getY() + sideLength, getZ());
+        g.vertex(getX(), getY(), getZ() + height);
 
-        g.vertex(getX() + sideLength, getY(), getZ() + sideLength);
-        g.vertex(getX() + sideLength, getY(), getZ() - sideLength); 
-        g.vertex(getX() - sideLength, getY() + height, getZ() - sideLength);
-        //g.vertex(getX(), getY() + height, getZ());
+        g.vertex(getX() + sideLength, getY() + sideLength, getZ());
+        g.vertex(getX() + sideLength, getY() - sideLength, getZ()); 
+        g.vertex(getX(), getY(), getZ() + height);
 
         g.endShape(PApplet.CLOSE);
-	    
-	    
-	    
-	    g.noStroke();
-		
 		g.popMatrix();	
 	}
 
