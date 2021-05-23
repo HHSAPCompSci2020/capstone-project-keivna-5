@@ -111,6 +111,8 @@ public class Element {
 	 */
 	public float getY() { return y; }
 	
+	public void setY(float newY) { y = newY; }
+	
 	/**
 	 * Moves y-coordinate of the Element
 	 * @param add Move y by this amount

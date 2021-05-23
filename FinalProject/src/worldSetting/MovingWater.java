@@ -46,10 +46,12 @@ public class MovingWater extends Element{
 	public void display(PApplet g) {
 		g.pushMatrix();
 		g.fill(WATER_COLOR[0], WATER_COLOR[1], WATER_COLOR[2]);
+		g.noStroke();
 		g.rotateX(g.PI/2);
 		updateMesh();
 		g.translate(getX(), getY(), getZ());
 		drawMesh(g);
+		g.translate(getX(), getY(), getZ());
 		g.popMatrix();
 	}
 
@@ -85,10 +87,8 @@ public class MovingWater extends Element{
 	  if (waveOrNot != 0) {
 	    int mouseX = 350;
 	    int mouseY = 350;
-	    int width = 1000;
-	    int height = 1000;
-	    int MouseXIndex = 2 + (funberOfPArticles-4) * mouseX / width;
-	    int MouseYIndex = 2 + (funberOfPArticles-4) * mouseY / height;
+	    int MouseXIndex = 2 + (funberOfPArticles-4) * mouseX / 1000; //width
+	    int MouseYIndex = 2 + (funberOfPArticles-4) * mouseY / 1000; //height
 	    particlesSpeedNew[MouseXIndex][MouseYIndex] = waveOrNot;
 	    particlesSpeedNew[MouseXIndex+1][MouseYIndex+1] = waveOrNot;
 	    particlesSpeedNew[MouseXIndex+1][MouseYIndex] = waveOrNot;
@@ -113,12 +113,14 @@ public class MovingWater extends Element{
 		for (int x = 0; x<funberOfPArticles-1; x++) {
 			for (int y = 0; y<funberOfPArticles-1; y++) {
 				g.beginShape();
-				g.vertex( (x)*zoom, (y)*zoom, particle[x][y] );
-				g.vertex( (x+1)*zoom, (y)*zoom, particle[x+1][y] );
-				g.vertex( (x+1)*zoom, (y+1)*zoom, particle[x+1][y+1] );
-				g.vertex( (x)*zoom, (y+1)*zoom, particle[x][y+1] );
+				g.vertex(getX() - (x*zoom), getY() - (y*zoom), particle[x][y] );
+				g.vertex(getX() - ((x+1)*zoom), getY() - (y*zoom), particle[x+1][y] );
+				g.vertex(getX() - ((x+1)*zoom), getY() - ((y+1)*zoom), particle[x+1][y+1] );
+				g.vertex(getX() - (x*zoom), getY() - ((y+1)*zoom), particle[x][y+1] );
 				g.endShape();
 			}
 		}
 	}
+
+	
 }
