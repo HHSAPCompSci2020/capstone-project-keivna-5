@@ -89,7 +89,7 @@ public class Viewfinder {
 		backgroundSquares = new Rectangle[BackgroundColor.values().length];
 		//TODO: finish implementing this!
 		for (int i = 0; i < backgroundSquares.length; i++) {
-			//backgroundSquares[i] = new Rectangle..;
+			backgroundSquares[i] = new Rectangle ((int)(viewfinderIndent/4), (int)(viewfinderIndent + (viewfinderIndent*i)), (int)(viewfinderIndent/2), (int)(viewfinderIndent/2));
 		}
 	}
 
@@ -188,6 +188,11 @@ public class Viewfinder {
 		//light source right triangle
 		marker.triangle(lightSourceRight.x, lightSourceRight.y, lightSourceRight.x, lightSourceRight.y + lightSourceRight.height, lightSourceRight.x + (3*lightSourceRight.width/4), lightSourceRight.y + (lightSourceRight.height/2));
 		
+		//squares to change background
+		for (int i = 0; i < backgroundSquares.length; i++) {
+			marker.rect(backgroundSquares[i].x, backgroundSquares[i].y, backgroundSquares[i].width, backgroundSquares[i].height);
+		}
+			
 		marker.popMatrix();
 	}
 
