@@ -14,8 +14,7 @@ public class Car extends Element{
 	
 	private final int[] WHEEL_COLOR = new int[] {55, 60, 65};
 	private final int[] FRONT_LIGHT_COLOR = new int[] {255, 250, 185};
-//	private final int[] BACK_LIGHT_COLOR = new int[] {255, 55, 0};
-	private final int[] BACK_LIGHT_COLOR = new int[] {253, 28, 3};
+	private final int[] BACK_LIGHT_COLOR = new int[] {255, 30, 0};
 
 	private float carLength; //x
 	private float carHeight; //y

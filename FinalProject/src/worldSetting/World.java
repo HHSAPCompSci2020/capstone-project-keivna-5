@@ -15,6 +15,7 @@ public class World {
 	private int[] sky;
 	private Water water;
 	private Bridge bridge;
+	private Mountain mountain;
 	private ArrayList<Car> cars;
 	PImage background;
 
@@ -35,6 +36,7 @@ public class World {
 		sky = new int[] {185, 230, 255};
 		water = new Water(350, 350, 50, 100000);
 		bridge = new Bridge(350, -500, 50, 200, 5);
+		mountain = new Mountain(350, -500, 50, 1000);
 		cars = new ArrayList<Car>();
 
 		for(int i = -8; i <= 8; i++) {
@@ -92,10 +94,6 @@ public class World {
 			g.background(background);
 		}
 
-
-		//		g.background(sky[0], sky[1], sky[2]);
-
-
 		g.smooth();
 		g.lights();
 
@@ -118,6 +116,7 @@ public class World {
 
 		water.display(g);
 		bridge.display(g);
+		mountain.display(g);
 		for(Car c: cars) {
 			c.display(g);
 		}

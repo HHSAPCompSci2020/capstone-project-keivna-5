@@ -11,16 +11,17 @@ import processing.core.PShape;
  */
 public class Mountain extends Element{
 	
-	private final int[] MOUNTAIN_COLOR = new int[] {55, 60, 65};
+	private final int[][] MOUNTAIN_COLORS = new int[][] {
+		{50, 65, 40}, //dark green
+		{45, 30, 10}, //dark brown
+		{90, 80, 40}  //dark yellow
+	};
 
 	//honestly won't use these
 	private float mountainLength; //x
 	private float mountainHeight; //y
 	private float mountainWidth; //z
 	
-	private float unevenness;
-	private PShape mountain;
-	private PShape aMountain;
 	private PImage mountainColor;
 
 	/**
@@ -33,10 +34,9 @@ public class Mountain extends Element{
 	public Mountain(float x, float y, float z, float size) { // int numOfRidges
 		super(x, y, z, size);
 		
-		unevenness = size;
-//		mountainLength = size * (float) (1 + Math.random());
-//		mountainHeight = size / 2;
-//		mountainWidth = size;
+		mountainLength = 3 * size / 2;
+		mountainHeight = size;
+		mountainWidth = size;
 	}
 	
 	/**
@@ -45,8 +45,7 @@ public class Mountain extends Element{
 	 */
 	public void display(PApplet g) {	
 		g.pushMatrix();
-		mountain = g.loadShape("media/desert-mountain.obj");
-		mountainColor = g.loadImage("media/mountain-color.jpg");
+//		mountainColor = g.loadImage("media/mountain-color.jpg");
 		drawMountain(g);
 		g.popMatrix();
 	}
@@ -57,20 +56,17 @@ public class Mountain extends Element{
 	private void drawMountain(PApplet g) {
 		g.pushMatrix();
 		g.translate(getX(), getY(), getZ());
-		g.fill(255);
-		g.shape(mountain);
 //		g.texture(mountainColor);
-//		g.noStroke();
-//		g.fill(MOUNTAIN_COLOR[0], MOUNTAIN_COLOR[1], MOUNTAIN_COLOR[2]);
-//		// gonna have a lot of random vertexes, and connect them using a line
-//		
-//		g.beginShape();
-//	    for (int i = 0; i < sides; i++) {
-//	        float x = PApplet.cos( PApplet.radians( i * angle ) ) * r;
-//	        float y = PApplet.sin( PApplet.radians( i * angle ) ) * r;
-//	        g.vertex( x, y, -halfHeight );    
-//	    }
-//	    g.endShape(PApplet.CLOSE);
+		g.noStroke();
+//		g.fill(MOUNTAIN_COLORS[i][0], MOUNTAIN_COLORS[i][1], MOUNTAIN_COLORS[i][2]);
+		// gonna have a lot of random vertexes, and connect them using a line
+		
+		g.beginShape(PApplet.TRIANGLE_STRIP);
+	    for (int i = 0; i < 3; i++) {
+			g.fill(MOUNTAIN_COLORS[i][0], MOUNTAIN_COLORS[i][1], MOUNTAIN_COLORS[i][2]);
+	        g.vertex(getX(), getY() - (10 * i), getZ() + (5 * i) );    
+	    }
+	    g.endShape(PApplet.CLOSE);
 		
 		g.popMatrix();	
 		System.out.println("mountain drawn");
