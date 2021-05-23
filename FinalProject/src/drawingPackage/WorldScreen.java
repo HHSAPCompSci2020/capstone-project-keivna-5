@@ -88,9 +88,9 @@ public class WorldScreen extends Screen {
 		
 		//control x, move left/right
 		if (checkKey(KeyEvent.VK_A)) {
-			cameraNoMouse.moveX(keyMoveFactor*-1);
-		} else if (checkKey(KeyEvent.VK_D)) {
 			cameraNoMouse.moveX(keyMoveFactor);
+		} else if (checkKey(KeyEvent.VK_D)) {
+			cameraNoMouse.moveX(keyMoveFactor*-1);
 		}
 		
 		//control a, move up/down with "Q" and "E" keys

@@ -39,8 +39,8 @@ public class World {
 		backWater = new Water(350, 330, 50, 100000);
 		water = new MovingWater(1350, 350, 50, 500);
 		bridge = new Bridge(350, -500, 50, 200, 5);
-		mountain1 = new Mountain(-350, -200, 200, 500);
-		mountain2 = new Mountain(700, -200, 200, 500);
+		mountain1 = new Mountain(-350, -200, 200, 800);
+		mountain2 = new Mountain(700, -200, 200, 800);
 		cars = new ArrayList<Car>();
 		for(int i = -8; i <= 8; i++) {
 			// different sides of the road
