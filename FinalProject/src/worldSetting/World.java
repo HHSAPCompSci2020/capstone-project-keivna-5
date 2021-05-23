@@ -16,7 +16,8 @@ public class World {
 	private Water backWater;
 	private MovingWater water;
 	private Bridge bridge;
-	private Mountain mountain;
+	private Mountain mountain1;
+	private Mountain mountain2;
 	private ArrayList<Car> cars;
 	PImage background;
 
@@ -35,20 +36,18 @@ public class World {
 	 */
 	public World(PApplet marker) {
 		sky = new int[] {185, 230, 255};
-		backWater = new Water(350, 350, 50, 100000);
+		backWater = new Water(350, 330, 50, 100000);
 		water = new MovingWater(1350, 350, 50, 500);
 		bridge = new Bridge(350, -500, 50, 200, 5);
-		mountain = new Mountain(350, -500, 50, 500);
+		mountain1 = new Mountain(-350, -200, 200, 500);
+		mountain2 = new Mountain(700, -200, 200, 500);
 		cars = new ArrayList<Car>();
-
 		for(int i = -8; i <= 8; i++) {
+			// different sides of the road
 			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 85, 45, true, 350, 200));
-		}
-
-		for(int i = -8; i <= 8; i++) {
 			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 15, 45, false, 350, 200));
 		}
-
+		
 		savedTime = marker.millis();
 		SoundPlayer.playSeaSound();
 	}
@@ -72,7 +71,6 @@ public class World {
 		g.ambientLight(ISOfor3D, ISOfor3D, ISOfor3D);
 
 		double pointLightY = lightSourceY*g.height;
-
 		if (lightSourceY < 0.1) {
 			pointLightY = 0;
 		}
@@ -84,15 +82,14 @@ public class World {
 
 		g.directionalLight(128, 128, 128, (float) pointLightX, (float) pointLightY, 400);
 
-
+		backWater.display(g);
 		water.display(g);
 		bridge.display(g);
-		mountain.display(g);
+		mountain1.display(g);
+		mountain2.display(g);
 		for(Car c: cars) {
 			c.display(g);
 		}
-
-		//viewfinder.draw(g);
 	}
 
 	/**

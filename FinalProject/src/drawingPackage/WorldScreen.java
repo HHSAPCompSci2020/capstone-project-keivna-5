@@ -117,8 +117,10 @@ public class WorldScreen extends Screen {
 	 * @post changes the camera's position and pan
 	 */
 	public void setCameraAtStart(PApplet marker) {
-		cameraNoMouse.moveTo(-350, -700, 700); //350, -200, 700 for viewing the water better
-		cameraNoMouse.setPan(marker.QUARTER_PI * 7); //marker.QUARTER_PI * 6
+		// to look at mountains --> 750, -700, -900, marker.QUARTER_PI * 2
+		// to look at water --> 350, -200, 700, marker.QUARTER_PI * 6
+		cameraNoMouse.moveTo(-350, -700, 700);
+		cameraNoMouse.setPan(marker.QUARTER_PI * 7);
 	}
 	
 	/**
