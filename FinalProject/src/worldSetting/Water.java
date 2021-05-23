@@ -4,7 +4,7 @@ import processing.core.PApplet;
 
 public class Water extends Element{
 	
-	private int[] color;
+	private int[] WATER_COLOR = new int[] {15, 50, 70};
 	
 	/**
 	 * Create the Water
@@ -15,10 +15,6 @@ public class Water extends Element{
 	 */
 	public Water(float x, float y, float z, float size) {
 		super(x, y, z, size);
-		
-		color = new int[] {15, 50, 70};
-		
-		setFillColor(color);
 	}
 	
 	/**
@@ -30,7 +26,7 @@ public class Water extends Element{
 		g.pushMatrix();
 		
 		g.translate(getX(), getY(), getZ());
-		g.fill(getFillColor()[0], getFillColor()[1], getFillColor()[2]);
+		g.fill(WATER_COLOR[0], WATER_COLOR[1], WATER_COLOR[2]);
 		g.box(getSize(), getSize() / 100, getSize());
 		
 		g.popMatrix();
