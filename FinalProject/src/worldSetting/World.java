@@ -65,27 +65,22 @@ public class World {
 			case CLEAR_DAY:
 				imageName += "day-clear.png";
 				background = g.loadImage(imageName);
-
 				break;
 			case CLOUDY_DAY:
 				imageName += "day-cloudy.png";
 				background = g.loadImage(imageName);
-
 				break;
 			case CLOUDY_NIGHT:
 				imageName += "night-cloudy.png";
 				background = g.loadImage(imageName);
-
 				break;
 			case SUNSET_CLOUDY:
 				imageName += "night-sunset.png";
 				background = g.loadImage(imageName);
-
 				break;
 			case STARS_NIGHT:
 				imageName += "night-stars.png";
 				background = g.loadImage(imageName);
-
 				break;
 			case PUREBLACK:
 				isColor = true;
@@ -96,9 +91,7 @@ public class World {
 				sky = new int[] {185, 230, 255};
 				break;
 		}
-		
-//		background = g.loadImage(imageName);
-		
+				
 		if (isColor) {
 			g.background(sky[0], sky[1], sky[2]);
 		} else {

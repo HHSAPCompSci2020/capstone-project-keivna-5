@@ -22,14 +22,16 @@ public class Viewfinder {
 	private Shutter shutter;
 	private Rectangle ISOup, ISOdown, shutterSpeedUp, shutterSpeedDown, lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight;
 	private Rectangle[] backgroundSquares;
+	private PImage[] backgroundImages;
+
 	private final int[] ISOvalues = {100, 200, 400, 800, 1600, 3200, 6400};
 	private int ISOindex;
-	
+
 	private BackgroundColor backgroundColor;
-	
+
 	private final static int[] shutterSpeedValues = {3, 5, 10, 20};
 	private static int shutterSpeedIndex;
-	
+
 	private static double longExpoSpeedFactor;
 
 	private double lightSourceX, lightSourceY, lightSourceZ; //from 0-1, to be multiplied by marker.width or height in world draw
@@ -61,33 +63,35 @@ public class Viewfinder {
 		toggle = new Rectangle(toggleX,toggleY, toggleWidth, toggleHeight);
 		shutterButton = new Rectangle(620, 30, 120, 30);
 		longExpoShutterButton = new Rectangle(420, 30, 120, 30);
-		
+
 		shutter = new Shutter(marker);	
 		ISOup = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*2, 30, 30);
 		ISOdown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*3 + 15, 30, 30);
-		
+
 		shutterSpeedUp = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*4, 30, 30);
 		shutterSpeedDown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*5.25) + 15, 30, 30);
-		
+
 		lightSourceUp = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*7, 30, 30);
 		lightSourceDown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*7.5) + 10, 30, 30);
 
 		lightSourceLeft = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*8.5), 30, 30);
 		lightSourceRight = new Rectangle (800 - (int)(viewfinderIndent/4) - 10, (int)(viewfinderIndent*8.5), 30, 30);
-		
+
 		lightSourceX = 0.5;
 		lightSourceY = 0.5;
 		lightSourceZ = 0.5;
-		
+
 		shutterSpeedIndex = 1;
 		ISOindex = 3;
-		
+
 		longExpoSpeedFactor = 20;
-		
+
 		backgroundColor = BackgroundColor.CLEAR_DAY;
-		
+
 		backgroundSquares = new Rectangle[BackgroundColor.values().length];
-		//TODO: finish implementing this!
+		backgroundImages = new PImage[BackgroundColor.values().length];
+
+		//creates rectangles for images w dimensions
 		for (int i = 0; i < backgroundSquares.length; i++) {
 			backgroundSquares[i] = new Rectangle ((int)(viewfinderIndent/4), (int)(viewfinderIndent + (viewfinderIndent*i)), (int)(viewfinderIndent/2), (int)(viewfinderIndent/2));
 		}
@@ -99,7 +103,36 @@ public class Viewfinder {
 	 * @pre marker can't be null
 	 * @post the PApplet marker will change
 	 */
-	public void draw(PApplet marker) {		
+	public void draw(PApplet marker) {	
+		
+		//fill up background Images
+		for (int i = 0; i < backgroundSquares.length; i++) {
+			backgroundSquares[i] = new Rectangle ((int)(viewfinderIndent/4), (int)(viewfinderIndent + (viewfinderIndent*i)), (int)(viewfinderIndent/2), (int)(viewfinderIndent/2));
+			String imageName = "media/sky-";
+			switch (i) {
+			case 0:
+				imageName += "day-clear.png";
+				break;
+			case 1:
+				imageName += "day-cloudy.png";
+				break;
+			case 2:
+				imageName += "night-cloudy.png";
+				break;
+			case 3:
+				imageName += "night-sunset.png";
+				break;
+			case 4:
+				imageName += "night-stars.png";
+				break;
+			case 5:
+				imageName += "pure-black.png";
+				break;
+			}
+			backgroundImages[i] = marker.loadImage(imageName);
+
+		}
+		
 		marker.pushMatrix();		
 		marker.fill(0);
 
@@ -130,7 +163,7 @@ public class Viewfinder {
 		String shutterStr = "Shutter";
 		//float w = marker.textWidth(str);
 		marker.text(shutterStr, shutterButton.x + 5, shutterButton.y + 15);
-		
+
 		//long expo shutter 
 		marker.fill(120);
 		marker.rect(longExpoShutterButton.x, longExpoShutterButton.y, longExpoShutterButton.width, longExpoShutterButton.height);
@@ -156,8 +189,8 @@ public class Viewfinder {
 
 		//ISO down triangle
 		marker.triangle(ISOdown.x, ISOdown.y, ISOdown.x + ISOdown.width, ISOdown.y, ISOdown.x + (ISOdown.width/2), ISOdown.y + ISOdown.height);
-		
-		
+
+
 		//Shutter speed up triangle
 		marker.triangle(shutterSpeedUp.x, shutterSpeedUp.y + shutterSpeedUp.height, shutterSpeedUp.x + shutterSpeedUp.width, shutterSpeedUp.y + shutterSpeedUp.height, shutterSpeedUp.x + (shutterSpeedUp.width/2), shutterSpeedUp.y);
 
@@ -169,30 +202,36 @@ public class Viewfinder {
 
 		//Shutter speed down triangle
 		marker.triangle(shutterSpeedDown.x, shutterSpeedDown.y, shutterSpeedDown.x + shutterSpeedDown.width, shutterSpeedDown.y, shutterSpeedDown.x + (shutterSpeedDown.width/2), shutterSpeedDown.y + shutterSpeedDown.height);
-		
-		
+
+
 		//lighting text
 		marker.text("light", lightSourceUp.x - (lightSourceUp.width/4), lightSourceUp.y - lightSourceUp.height);
 		marker.text("source", lightSourceUp.x - (lightSourceUp.width/4), lightSourceUp.y - (lightSourceUp.height/2));		
 
 		//light source up triangle
 		marker.triangle(lightSourceUp.x, lightSourceUp.y + lightSourceUp.height, lightSourceUp.x + lightSourceUp.width, lightSourceUp.y + lightSourceUp.height, lightSourceUp.x + (lightSourceUp.width/2), lightSourceUp.y);
-		
+
 		//light source down triangle
 		marker.triangle(lightSourceDown.x, lightSourceDown.y, lightSourceDown.x + lightSourceDown.width, lightSourceDown.y, lightSourceDown.x + (lightSourceDown.width/2), lightSourceDown.y + lightSourceDown.height);
 
 		//points plotted in counterclockwise direction starting from very left
 		//light source left triangle
 		marker.triangle(lightSourceLeft.x - (lightSourceLeft.width/4), lightSourceLeft.y + (lightSourceLeft.height/2), lightSourceLeft.x + (lightSourceLeft.width/2), lightSourceLeft.y + lightSourceLeft.height, lightSourceLeft.x + (lightSourceLeft.width/2), lightSourceLeft.y);
-		
+
 		//light source right triangle
 		marker.triangle(lightSourceRight.x, lightSourceRight.y, lightSourceRight.x, lightSourceRight.y + lightSourceRight.height, lightSourceRight.x + (3*lightSourceRight.width/4), lightSourceRight.y + (lightSourceRight.height/2));
-		
+
 		//squares to change background
 		for (int i = 0; i < backgroundSquares.length; i++) {
 			marker.rect(backgroundSquares[i].x, backgroundSquares[i].y, backgroundSquares[i].width, backgroundSquares[i].height);
+			PImage backgroundImg = backgroundImages[i];
+//			backgroundImage.copy(0, 0, backgroundSquares[i].width, backgroundSquares[i].height, 0, 0, marker.width, marker.height);
+			backgroundImg.copy(0, 0, marker.width, marker.height, 0, 0, backgroundSquares[i].width, backgroundSquares[i].height);
+
+			//TODO: DRAWS THE SMALL BACKGROUND AND THE ENTIRE ONE TOO, CROP DOESN'T WORK
+			//marker.image(backgroundImg, backgroundSquares[i].x, backgroundSquares[i].y);
 		}
-			
+
 		marker.popMatrix();
 	}
 
@@ -206,12 +245,12 @@ public class Viewfinder {
 		if (toggle.contains(p)) {
 			marker.switchScreen(1);
 		} 
-		
+
 		else if (shutterButton.contains(p)) {
 			shutter.screenshot(marker);
 			SoundPlayer.playShutterSound();
 		}
-		
+
 		else if (longExpoShutterButton.contains(p)) {
 			SoundPlayer.playShutterSound();
 
@@ -225,31 +264,31 @@ public class Viewfinder {
 				shutter.longExposureScreenshot(marker, outerArrIndex, i);
 			}
 		}
-		
+
 		else if (ISOup.contains(p)) {
 			if (ISOindex < ISOvalues.length - 1) {
 				ISOindex++;
 			}
 		}
-		
+
 		else if (ISOdown.contains(p)) {
 			if (ISOindex > 0) {
 				ISOindex--;
 			}
 		}
-		
+
 		else if (shutterSpeedUp.contains(p)) {
 			if (shutterSpeedIndex < shutterSpeedValues.length - 1) {
 				shutterSpeedIndex++;
 			}
 		}
-		
+
 		else if (shutterSpeedDown.contains(p)) {
 			if (shutterSpeedIndex > 0) {
 				shutterSpeedIndex--;
 			}
 		}
-		
+
 		else if (lightSourceUp.contains(p)) {
 			if (lightSourceY < 1) {
 				lightSourceY+= 0.1;
@@ -258,7 +297,7 @@ public class Viewfinder {
 				lightSourceY = 1;
 			}
 		}
-		
+
 		else if (lightSourceDown.contains(p)) {
 			if (lightSourceY > 0) {
 				lightSourceY-= 0.1;
@@ -267,7 +306,7 @@ public class Viewfinder {
 				lightSourceY = 0;
 			}
 		}
-		
+
 		else if (lightSourceLeft.contains(p)) {
 			if (lightSourceX < 1) {
 				lightSourceX+= 0.1;
@@ -276,7 +315,7 @@ public class Viewfinder {
 				lightSourceX = 1;
 			}
 		}
-		
+
 		else if (lightSourceRight.contains(p)) {
 			if (lightSourceX > 0) {
 				lightSourceX-= 0.1;
@@ -291,7 +330,7 @@ public class Viewfinder {
 			}
 		}
 	}
-	
+
 	//get 3d world to redraw in between calls to screenshot to get long exposure effect
 	//draws 60x which is equal to 1 second in between draws
 	private void drawABunchOfTimes(DrawingSurface marker) {
@@ -299,27 +338,27 @@ public class Viewfinder {
 			marker.draw();
 		}
 	}
-	
+
 	public static int getNumPhotosPerLongExpo() {
 		return (int) (shutterSpeedValues[shutterSpeedIndex]*longExpoSpeedFactor);
 	}
-	
+
 	public int getISOvalue() {
 		return ISOvalues[ISOindex];
 	}
-	
+
 	public double getLightSourceY() {
 		return lightSourceY;
 	}
-	
+
 	public double getLightSourceX() {
 		return lightSourceX;
 	}
-	
+
 	public double getLightSourceZ() {
 		return lightSourceZ;
 	}
-	
+
 	public BackgroundColor getBackgroundEnum() {
 		return backgroundColor;
 	}
