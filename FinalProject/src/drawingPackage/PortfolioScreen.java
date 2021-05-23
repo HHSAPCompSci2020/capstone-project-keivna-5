@@ -38,7 +38,7 @@ public class PortfolioScreen extends Screen {
 	public PortfolioScreen() {
 		super(screenWidth, screenHeight);
 		toggle = new Rectangle(toggleX, toggleY, toggleWidth, toggleHeight);
-		portfolio = new Portfolio();
+		portfolio = new Portfolio(screenWidth, screenHeight);
 	}
 	
 	/**
@@ -82,5 +82,6 @@ public class PortfolioScreen extends Screen {
 		if (toggle.contains(p)) {
 			marker.switchScreen(0);
 		}
+		portfolio.mousePressed(marker);
 	}
 }

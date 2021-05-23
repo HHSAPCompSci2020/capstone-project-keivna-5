@@ -1,7 +1,10 @@
 	package portfolio;
 
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import drawingPackage.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
 import worldSetting.Shutter;
@@ -12,6 +15,24 @@ import worldSetting.Viewfinder;
  * @author elise
  */
 public class Portfolio {
+	
+	private ArrayList<PImage> images;
+	private ArrayList<Rectangle> imageRects;
+	private ArrayList<ArrayList<PImage>> longExposureImages;
+	private boolean hasClickedOnImage;
+	private int photoIndex;
+	private Rectangle backButton;
+	
+	public Portfolio(int width, int height) {
+		images = new ArrayList<PImage>();
+		imageRects = new ArrayList<Rectangle>();
+		hasClickedOnImage = false;
+
+		longExposureImages = new ArrayList<ArrayList<PImage>>();
+		photoIndex = 0;
+		
+		backButton = new Rectangle(width - 100, height/20, 60, height/20);
+	}
 
 	/**
 	 * Draws a grid of photos from all of the photos captured in the viewfinder world
@@ -20,8 +41,18 @@ public class Portfolio {
 	 * @post the PApplet parameter is changed
 	 */
 	public void draw(PApplet marker) {
-		ArrayList<PImage> images = Shutter.getallImages();
-		ArrayList<ArrayList<PImage>> longExposureImages = Shutter.getallLongExpoImages();
+		if (!hasClickedOnImage) {
+			drawPortfolioGrid(marker);
+		} else {
+			drawSingleFullScreenImg(marker, photoIndex);
+		}
+		
+	}
+	
+	private void drawPortfolioGrid(PApplet marker) {
+		imageRects = new ArrayList<Rectangle>();
+		images = Shutter.getallImages();
+		longExposureImages = Shutter.getallLongExpoImages();
 
 		marker.background(255);
 		marker.text("Long Exposure Shots: ", 20, 75);
@@ -79,8 +110,47 @@ public class Portfolio {
 			int b = i % 4; //remainder when divided by 4
 			int c = i-b; //c is divisible by 4
 			int yMultiple = (c/4) + longExpoYMultiple;
+			
+			int x =  20 + (marker.width/4*((i%4)));
+			int y = (150*yMultiple) + 350;
+			int width = marker.width/5;
+			int height = marker.height/5;
 
-			marker.image(img, 20 + (marker.width/4*((i%4))), (150*yMultiple) + 350, marker.width/5, marker.height/5);
+//			marker.image(img, 20 + (marker.width/4*((i%4))), (150*yMultiple) + 350, marker.width/5, marker.height/5);
+			marker.image(img, x, y, width, height);
+			//images.add(img);
+			imageRects.add(new Rectangle(x, y, width, height));
+		}
+	}
+	
+	public void drawSingleFullScreenImg(PApplet marker, int index) {
+		PImage img = images.get(index);
+		img = marker.loadImage(index + ".png");
+
+		int a = 60; //viewfinder indent
+		img.copy(a, a, marker.width-(2*a), marker.height-(2*a), 0, 0,  marker.width, marker.height);
+
+		marker.image(img, 0, 0, marker.width, marker.height); //image takes up entire screen
+		marker.rect(backButton.x, backButton.y, backButton.width, backButton.height);
+		
+		marker.fill(0);
+		marker.text("Back", backButton.x + 5, backButton.y + (backButton.height/2));
+		
+	}
+	
+	public void mousePressed(DrawingSurface marker) {		
+		//start w simple shots
+		Point p = new Point(marker.mouseX,marker.mouseY);
+				
+		//small -> large
+		for (int i = 0; i < imageRects.size(); i++) {
+			if (imageRects.get(i).contains(p)) {
+				hasClickedOnImage = true;
+				photoIndex = i;
+//				marker.image(images.get(i), 0, 0, marker.width, marker.height); //image takes up entire screen
+
+			}
+			
 		}
 	}
 }

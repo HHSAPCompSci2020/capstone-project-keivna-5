@@ -84,7 +84,8 @@ public class Viewfinder {
 		shutterSpeedIndex = 1;
 		ISOindex = 3;
 
-		longExpoSpeedFactor = 20;
+//		longExpoSpeedFactor = 20;
+		longExpoSpeedFactor = 10;
 
 		backgroundColor = BackgroundColor.CLEAR_DAY;
 
