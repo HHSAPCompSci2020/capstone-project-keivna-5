@@ -84,7 +84,6 @@ public class Viewfinder {
 		shutterSpeedIndex = 1;
 		ISOindex = 3;
 
-//		longExpoSpeedFactor = 20;
 		longExpoSpeedFactor = 10;
 
 		backgroundColor = BackgroundColor.CLEAR_DAY;
@@ -105,6 +104,7 @@ public class Viewfinder {
 	 * @post the PApplet marker will change
 	 */
 	public void draw(PApplet marker) {	
+		System.out.println("change longExpoSpeedFactor back!");
 		
 		//fill up background Images
 		for (int i = 0; i < backgroundImages.length; i++) {			
