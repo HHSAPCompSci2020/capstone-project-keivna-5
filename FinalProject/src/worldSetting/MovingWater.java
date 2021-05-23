@@ -56,57 +56,56 @@ public class MovingWater extends Element{
 	}
 
 	private void updateMesh() {
-	  for (int x = 1; x<funberOfPArticles-2; x++) {
-	    for (int y = 1; y<funberOfPArticles-2; y++) {
-	      //under 
-	      float force1 = 0.0f;
-	      force1 += particle[x-1][y-1] - particle[x][y];
-	      force1 += particle[x-1][y] - particle[x][y];
-	      force1 += particle[x-1][y+1] - particle[x][y];
-	      //over
-	      force1 += particle[x+1][y-1] - particle[x][y];
-	      force1 += particle[x+1][y] - particle[x][y];
-	      force1 += particle[x+1][y+1] - particle[x][y];
-	      //sidene
-	      force1 += particle[x][y-1] - particle[x][y];
-	      force1 += particle[x][y+1] - particle[x][y];
+		for (int x = 1; x<funberOfPArticles-2; x++) {
+			for (int y = 1; y<funberOfPArticles-2; y++) {
+				//under 
+				float force1 = 0.0f;
+				force1 += particle[x-1][y-1] - particle[x][y];
+				force1 += particle[x-1][y] - particle[x][y];
+				force1 += particle[x-1][y+1] - particle[x][y];
+				//over
+				force1 += particle[x+1][y-1] - particle[x][y];
+				force1 += particle[x+1][y] - particle[x][y];
+				force1 += particle[x+1][y+1] - particle[x][y];
+				//sidene
+				force1 += particle[x][y-1] - particle[x][y];
+				force1 += particle[x][y+1] - particle[x][y];
 
-	      force1 -= particle[x][y+1] / 8;
+				force1 -= particle[x][y+1] / 8;
 
-	      particlesSpeedNew[x][y] = (float) (0.995 * particlesSpeedNew[x][y] + force1/100);
+				particlesSpeedNew[x][y] = (float) (0.995 * particlesSpeedNew[x][y] + force1/100);
 
-	      particlesNew[x][y] = particle[x][y] + particlesSpeedNew[x][y];
-	    }
-	  }
+				particlesNew[x][y] = particle[x][y] + particlesSpeedNew[x][y];
+			}
+		}
+		for (int x = 1; x<funberOfPArticles-1; x++) {
+			for (int y = 1; y<funberOfPArticles-1; y++) {
+				particle[x][y] = particlesNew[x][y];
+			}
+		}
+		if (waveOrNot != 0) {
+			int mouseX = 350;
+			int mouseY = 350;
+			int MouseXIndex = 2 + (funberOfPArticles-4) * mouseX / 1000; //width
+			int MouseYIndex = 2 + (funberOfPArticles-4) * mouseY / 1000; //height
+			particlesSpeedNew[MouseXIndex][MouseYIndex] = waveOrNot;
+			particlesSpeedNew[MouseXIndex+1][MouseYIndex+1] = waveOrNot;
+			particlesSpeedNew[MouseXIndex+1][MouseYIndex] = waveOrNot;
+			particlesSpeedNew[MouseXIndex+1][MouseYIndex-1] = waveOrNot;
+			particlesSpeedNew[MouseXIndex][MouseYIndex-1] = waveOrNot;
+			particlesSpeedNew[MouseXIndex-1][MouseYIndex+1] = waveOrNot;
+			particlesSpeedNew[MouseXIndex-1][MouseYIndex] = waveOrNot;
+			particlesSpeedNew[MouseXIndex-1][MouseYIndex-1] = waveOrNot;
 
-	  for (int x = 1; x<funberOfPArticles-1; x++) {
-	    for (int y = 1; y<funberOfPArticles-1; y++) {
-	      particle[x][y] = particlesNew[x][y];
-	    }
-	  }
-	  if (waveOrNot != 0) {
-	    int mouseX = 350;
-	    int mouseY = 350;
-	    int MouseXIndex = 2 + (funberOfPArticles-4) * mouseX / 1000; //width
-	    int MouseYIndex = 2 + (funberOfPArticles-4) * mouseY / 1000; //height
-	    particlesSpeedNew[MouseXIndex][MouseYIndex] = waveOrNot;
-	    particlesSpeedNew[MouseXIndex+1][MouseYIndex+1] = waveOrNot;
-	    particlesSpeedNew[MouseXIndex+1][MouseYIndex] = waveOrNot;
-	    particlesSpeedNew[MouseXIndex+1][MouseYIndex-1] = waveOrNot;
-	    particlesSpeedNew[MouseXIndex][MouseYIndex-1] = waveOrNot;
-	    particlesSpeedNew[MouseXIndex-1][MouseYIndex+1] = waveOrNot;
-	    particlesSpeedNew[MouseXIndex-1][MouseYIndex] = waveOrNot;
-	    particlesSpeedNew[MouseXIndex-1][MouseYIndex-1] = waveOrNot;
-
-	    particle[MouseXIndex][MouseYIndex] = waveOrNot*10;
-	    particle[MouseXIndex+1][MouseYIndex+1] = waveOrNot*5;
-	    particle[MouseXIndex+1][MouseYIndex] = waveOrNot*10;
-	    particle[MouseXIndex+1][MouseYIndex-1] = waveOrNot*5;
-	    particle[MouseXIndex][MouseYIndex-1] = waveOrNot*10;
-	    particle[MouseXIndex-1][MouseYIndex+1] = waveOrNot*5;
-	    particle[MouseXIndex-1][MouseYIndex] = waveOrNot*10;
-	    particle[MouseXIndex-1][MouseYIndex-1] = waveOrNot*5;
-	  }
+			particle[MouseXIndex][MouseYIndex] = waveOrNot*10;
+			particle[MouseXIndex+1][MouseYIndex+1] = waveOrNot*5;
+			particle[MouseXIndex+1][MouseYIndex] = waveOrNot*10;
+			particle[MouseXIndex+1][MouseYIndex-1] = waveOrNot*5;
+			particle[MouseXIndex][MouseYIndex-1] = waveOrNot*10;
+			particle[MouseXIndex-1][MouseYIndex+1] = waveOrNot*5;
+			particle[MouseXIndex-1][MouseYIndex] = waveOrNot*10;
+			particle[MouseXIndex-1][MouseYIndex-1] = waveOrNot*5;
+		}
 	}
 
 	private void drawMesh(PApplet g) {
