@@ -13,7 +13,8 @@ import processing.core.*;
 public class World { 
 
 	private int[] sky;
-	private Water water;
+//	private Water water;
+	private MovingWater water;
 	private Bridge bridge;
 	private Mountain mountain;
 	private ArrayList<Car> cars;
@@ -34,7 +35,7 @@ public class World {
 	 */
 	public World(PApplet marker) {
 		sky = new int[] {185, 230, 255};
-		water = new Water(350, 350, 50, 100000);
+		water = new MovingWater(350, 350, 50, 100);//new Water(350, 350, 50, 100000);
 		bridge = new Bridge(350, -500, 50, 200, 5);
 		mountain = new Mountain(350, -500, 50, 1000);
 		cars = new ArrayList<Car>();

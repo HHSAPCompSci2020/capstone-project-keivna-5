@@ -69,7 +69,7 @@ public class Mountain extends Element{
 	    g.endShape(PApplet.CLOSE);
 		
 		g.popMatrix();	
-		System.out.println("mountain drawn");
+//		System.out.println("mountain drawn");
 	}
 
 }
