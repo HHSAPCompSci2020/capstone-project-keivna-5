@@ -285,6 +285,11 @@ public class Viewfinder {
 				lightSourceX = 0;
 			}
 		}
+		for (int i = 0; i < backgroundSquares.length; i++) {
+			if (backgroundSquares[i].contains(p)) {
+				backgroundColor = BackgroundColor.values()[i];
+			}
+		}
 	}
 	
 	//get 3d world to redraw in between calls to screenshot to get long exposure effect
