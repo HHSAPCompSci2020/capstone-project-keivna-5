@@ -38,7 +38,7 @@ public class World {
 		backWater = new Water(350, 350, 50, 100000);
 		water = new MovingWater(1350, 350, 50, 500);
 		bridge = new Bridge(350, -500, 50, 200, 5);
-		mountain = new Mountain(350, -500, 50, 1000);
+		mountain = new Mountain(350, -500, 50, 500);
 		cars = new ArrayList<Car>();
 
 		for(int i = -8; i <= 8; i++) {
