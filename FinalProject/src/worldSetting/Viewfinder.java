@@ -285,7 +285,7 @@ public class Viewfinder {
 	//get 3d world to redraw in between calls to screenshot to get long exposure effect
 	//draws 60x which is equal to 1 second in between draws
 	private void drawABunchOfTimes(DrawingSurface marker) {
-		for (int i = 0; i < 60.0/(longExpoSpeedFactor*3); i ++) {
+		for (int i = 0; i < 60.0/(longExpoSpeedFactor*5); i ++) {
 			marker.draw();
 		}
 	}
