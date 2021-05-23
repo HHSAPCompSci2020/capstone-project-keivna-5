@@ -106,10 +106,7 @@ public class Viewfinder {
 	public void draw(PApplet marker) {	
 		
 		//fill up background Images
-		for (int i = 0; i < backgroundSquares.length; i++) {
-			backgroundSquares[i] = new Rectangle ((int)(viewfinderIndent/4), (int)(viewfinderIndent + (viewfinderIndent*i)), (int)(viewfinderIndent/2), (int)(viewfinderIndent/2));
-			
-			
+		for (int i = 0; i < backgroundImages.length; i++) {			
 			String imageName = "media/cropped-sky-";
 			switch (i) {
 			case 0:
@@ -132,11 +129,6 @@ public class Viewfinder {
 				break;
 			}
 			backgroundImages[i] = marker.loadImage(imageName);
-
-			//crop image
-//			PImage backgroundImg = backgroundImages[i];
-//			backgroundImg.copy(0, 0, marker.width, marker.height, 0, 0, backgroundSquares[i].width, backgroundSquares[i].height);
-
 		}
 		
 		marker.pushMatrix();		
@@ -228,14 +220,21 @@ public class Viewfinder {
 		marker.triangle(lightSourceRight.x, lightSourceRight.y, lightSourceRight.x, lightSourceRight.y + lightSourceRight.height, lightSourceRight.x + (3*lightSourceRight.width/4), lightSourceRight.y + (lightSourceRight.height/2));
 
 		//squares to change background
+		
 		for (int i = 0; i < backgroundSquares.length; i++) {
-			marker.rect(backgroundSquares[i].x, backgroundSquares[i].y, backgroundSquares[i].width, backgroundSquares[i].height);
 			PImage backgroundImg = backgroundImages[i];
-//			backgroundImage.copy(0, 0, backgroundSquares[i].width, backgroundSquares[i].height, 0, 0, marker.width, marker.height);
-			//backgroundImg.copy(0, 0, marker.width, marker.height, 0, 0, backgroundSquares[i].width, backgroundSquares[i].height);
+			
+			String backgroundDisplayed = backgroundColor.toString();
+			 //if background being displayed rn is one in loop, make border red
+			if (BackgroundColor.valueOf(backgroundDisplayed).ordinal() == i) {
+				marker.fill(255, 0, 0);
+			}
+			int borderExtra = 2; //how much farther the border goes past the background image
+			//draws rect a bit larger to make border
+			marker.rect(backgroundSquares[i].x - borderExtra, backgroundSquares[i].y - borderExtra, backgroundSquares[i].width + (2*borderExtra), backgroundSquares[i].height + (2*borderExtra));
 
-			//TODO: DRAWS THE SMALL BACKGROUND AND THE ENTIRE ONE TOO, CROP DOESN'T WORK
-//			marker.image(backgroundImages[i], backgroundSquares[i].x, backgroundSquares[i].y);
+			marker.fill(255); //reset to white
+
 			marker.image(backgroundImg, backgroundSquares[i].x, backgroundSquares[i].y);
 
 		}
