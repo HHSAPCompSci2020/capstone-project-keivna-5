@@ -36,7 +36,7 @@ public class World {
 	public World(PApplet marker) {
 		sky = new int[] {185, 230, 255};
 		backWater = new Water(350, 350, 50, 100000);
-		water = new MovingWater(350, 350, 50, 500);
+		water = new MovingWater(1350, 350, 50, 500);
 		bridge = new Bridge(350, -500, 50, 200, 5);
 		mountain = new Mountain(350, -500, 50, 1000);
 		cars = new ArrayList<Car>();
@@ -59,41 +59,7 @@ public class World {
 	 * @param g can't be null
 	 */
 	public void draw(PApplet g, double ISOval, double lightSourceY, double lightSourceX, BackgroundColor backgroundColor) {
-		boolean isColor = false;
-		String imageName = "media/sky-";
-		
-		switch(backgroundColor) {
-			case CLEAR_DAY:
-				imageName += "day-clear.png";
-				background = g.loadImage(imageName);
-				break;
-			case CLOUDY_DAY:
-				imageName += "day-cloudy.png";
-				background = g.loadImage(imageName);
-				break;
-			case CLOUDY_NIGHT:
-				imageName += "night-cloudy.png";
-				background = g.loadImage(imageName);
-				break;
-			case SUNSET_CLOUDY:
-				imageName += "night-sunset.png";
-				background = g.loadImage(imageName);
-				break;
-			case STARS_NIGHT:
-				imageName += "night-stars.png";
-				background = g.loadImage(imageName);
-				break;
-			case PUREBLACK:
-				isColor = true;
-				sky = new int[] {0,0,0};
-				break;
-			default:
-				isColor = true;
-				sky = new int[] {185, 230, 255};
-				break;
-		}
-				
-		if (isColor) {
+		if (setSky(g, backgroundColor)) {
 			g.background(sky[0], sky[1], sky[2]);
 		} else {
 			g.background(background);
@@ -130,20 +96,43 @@ public class World {
 	}
 
 	/**
-	 * Sets the camera to a specific position on the screen
-	 * specifically at (100, -3000, 50)
-	 * @param camera can't be null
-	 */
-	public void setPlayerAtStart(CameraNoMouse camera) {
-		camera.moveTo(100, -3000, 50);
-	}
-
-	/**
 	 * Sets the color of the sky
 	 * @param color array of rgb colors
 	 */
-	public void setSky(int[] color) {
-		sky = color;
+	public boolean setSky(PApplet g, BackgroundColor newBackground) {
+		boolean isColor = false;
+		String imageName = "media/sky-";	
+		switch(newBackground) {
+			case CLEAR_DAY:
+				imageName += "day-clear.png";
+				background = g.loadImage(imageName);
+				break;
+			case CLOUDY_DAY:
+				imageName += "day-cloudy.png";
+				background = g.loadImage(imageName);
+				break;
+			case CLOUDY_NIGHT:
+				imageName += "night-cloudy.png";
+				background = g.loadImage(imageName);
+				break;
+			case SUNSET_CLOUDY:
+				imageName += "night-sunset.png";
+				background = g.loadImage(imageName);
+				break;
+			case STARS_NIGHT:
+				imageName += "night-stars.png";
+				background = g.loadImage(imageName);
+				break;
+			case PUREBLACK:
+				isColor = true;
+				sky = new int[] {0,0,0};
+				break;
+			default:
+				isColor = true;
+				sky = new int[] {185, 230, 255};
+				break;
+		}
+		return isColor;
 	}
 
 	enum BackgroundColor{
