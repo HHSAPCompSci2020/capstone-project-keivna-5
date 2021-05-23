@@ -176,7 +176,7 @@ public class Viewfinder {
 		//key instruction text
 		marker.fill(255);
 		marker.textSize(15);
-		String keyDefinitions = "Up/Down/Left/Right: WASD, Forward: UP, Back: DOWN, Spin: LEFT/RIGHT";
+		String keyDefinitions = "Up/Down/Left/Right: WASD, Spin: UP/DOWN/LEFT/RIGHT";
 		marker.text(keyDefinitions, toggle.x, marker.height - 30);
 
 		//ISO up triangle
