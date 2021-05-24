@@ -132,6 +132,7 @@ public class Viewfinder {
 		
 		marker.pushMatrix();		
 		marker.fill(0);
+		marker.hint(marker.DISABLE_DEPTH_TEST);
 
 		//viewfinder black border
 		marker.strokeWeight(0);
@@ -237,7 +238,7 @@ public class Viewfinder {
 			marker.image(backgroundImg, backgroundSquares[i].x, backgroundSquares[i].y);
 
 		}
-
+		marker.hint(marker.ENABLE_DEPTH_TEST);
 		marker.popMatrix();
 	}
 
