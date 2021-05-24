@@ -72,53 +72,53 @@ public class Portfolio {
 		
 		marker.background(255);
 		marker.text("Click on a photo to expand it!", 20, 55);
-		marker.text("Long Exposure Shots: ", 20, 75);
-
-		int currY = 0;
 		
-		for (int a = 0; a < longExposureImages.size(); a++) {
-			//find out how many rows down images needs to be at
-			int b = a % 4; //remainder when divided by 4
+		int currY = 75;
 
-			int c = a-b; //c is divisible by 4
+		if (longExposureImages.size() > 0) {
+			marker.text("Long Exposure Shots: ", 20, currY);
+			for (int a = 0; a < longExposureImages.size(); a++) {
+				//find out how many rows down images needs to be at
+				int b = a % 4; //remainder when divided by 4
+				int c = a-b; //c is divisible by 4
+				int yMultiple = (c/4);
+				int x =  20 + (marker.width/4*((a%4)));
+				currY = (150*yMultiple) + 100;
 
-//			longExpoYMultiple = (e/photosPerRow);
-			int yMultiple = (c/4);
-
-			int x =  20 + (marker.width/4*((a%4)));
-
-			currY = (150*yMultiple) + 100;
-
-			int width = marker.width/5;
-			int height = marker.height/5;
-			
-			drawSingleLongExpo(marker, a, x, currY, width, height);
-			longExpoImageRects.add(new Rectangle(x, currY, width, height));		
-			currY += height;
+				int width = marker.width/5;
+				int height = marker.height/5;
+				
+				drawSingleLongExpo(marker, a, x, currY, width, height);
+				longExpoImageRects.add(new Rectangle(x, currY, width, height));		
+				currY += height;
+			}
 		}
-		
-		currY += 40;
-		
-		int lastLongExpoY = currY;
 
-		marker.tint(255); //undo from long expo
-		marker.text("Simple Shots: ", 20 , currY);
+		if (images.size() > 0) {
+			//spacing between long expo and simple shots
+			currY += 40;
+			
+			int lastLongExpoY = currY;
 
-		//display images in row in portfolio
-		for (int i = 0; i < images.size(); i++) {
-			//find out how many rows down images needs to be at
-			//4 photos per row, go to next row after
-			int b = i % 4; //remainder when divided by 4
-			int c = i-b; //c is divisible by 4
-			int yMultiple = (c/4);
-			
-			currY = (150*yMultiple) + lastLongExpoY + 20;			
-			int x =  20 + (marker.width/4*((i%4)));
-			int width = marker.width/5;
-			int height = marker.height/5;
-			
-			drawSingleShot(marker, i, x, currY, width, height);
-			imageRects.add(new Rectangle(x, currY, width, height));
+			marker.tint(255); //undo from long expo
+			marker.text("Simple Shots: ", 20 , currY);
+
+			//display images in row in portfolio
+			for (int i = 0; i < images.size(); i++) {
+				//find out how many rows down images needs to be at
+				//4 photos per row, go to next row after
+				int b = i % 4; //remainder when divided by 4
+				int c = i-b; //c is divisible by 4
+				int yMultiple = (c/4);
+				
+				currY = (150*yMultiple) + lastLongExpoY + 20;			
+				int x =  20 + (marker.width/4*((i%4)));
+				int width = marker.width/5;
+				int height = marker.height/5;
+				
+				drawSingleShot(marker, i, x, currY, width, height);
+				imageRects.add(new Rectangle(x, currY, width, height));
+			}
 		}
 	}
 	

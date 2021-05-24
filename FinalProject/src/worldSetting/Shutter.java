@@ -12,7 +12,7 @@ import processing.core.PImage;
 
 /**
  * Represents the physical Shutter on the Viewfinder
- * @author elise
+ * @author Elise
  *
  */
 public class Shutter {
