@@ -13,7 +13,7 @@ import processing.core.PApplet;
  */
 public class PortfolioScreen extends Screen {
 	
-	private Rectangle toggle;
+	//private Rectangle toggle;
 	private Portfolio portfolio;
 	
 	/**
@@ -37,7 +37,7 @@ public class PortfolioScreen extends Screen {
 	 */
 	public PortfolioScreen() {
 		super(screenWidth, screenHeight);
-		toggle = new Rectangle(toggleX, toggleY, toggleWidth, toggleHeight);
+//		toggle = new Rectangle(toggleX, toggleY, toggleWidth, toggleHeight);
 		portfolio = new Portfolio(screenWidth, screenHeight);
 	}
 	
@@ -59,16 +59,16 @@ public class PortfolioScreen extends Screen {
 
 		portfolio.draw(marker);
 		
-		//toggle
-		marker.fill(120);
-		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, toggleRadius);
-		
-		//toggle text
-		marker.fill(0);
-		marker.textSize(12);
-		String str = "Switch to Viewfinder";
-		float w = marker.textWidth(str);
-		marker.text(str, toggle.x+toggle.width/2-w/2 - 5, toggle.y+toggle.height/2);
+//		//toggle
+//		marker.fill(120);
+//		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, toggleRadius);
+//		
+//		//toggle text
+//		marker.fill(0);
+//		marker.textSize(12);
+//		String str = "Switch to Viewfinder";
+//		float w = marker.textWidth(str);
+//		marker.text(str, toggle.x+toggle.width/2-w/2 - 5, toggle.y+toggle.height/2);
 		
 		marker.popStyle();			
 	}
@@ -78,11 +78,11 @@ public class PortfolioScreen extends Screen {
 	 * @pre DrawingSurface marker cannot be null
 	 */
 	public void mousePressed(DrawingSurface marker) {
-		Point p = new Point(marker.mouseX,marker.mouseY);
-
-		if (toggle.contains(p)) {
-			marker.switchScreen(0);
-		}
+//		Point p = new Point(marker.mouseX,marker.mouseY);
+//		if (toggle.contains(p)) {
+//			marker.switchScreen(0);
+//		}
+		
 		portfolio.mousePressed(marker);
 	}
 }

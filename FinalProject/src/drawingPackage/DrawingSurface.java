@@ -54,7 +54,6 @@ public class DrawingSurface extends PApplet{
 	 */
 	public void settings() {
 		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT, processing.core.PConstants.P3D);
-
 	}
 
 	/**
@@ -142,19 +141,19 @@ public class DrawingSurface extends PApplet{
 		activeScreen.mousePressed(this);
 	}
 
-	/**
-	 * Switches the active screen to what is passed in
-	 * @param i The index of the screen
-	 */
-	public void switchScreen(int i) {
-		activeScreen = screens.get(i);
-	}
+//	/**
+//	 * Switches the active screen to what is passed in
+//	 * @param i The index of the screen
+//	 */
+//	public void switchScreen(int i) {
+//		activeScreen = screens.get(i);
+//	}
 
-	/**
-	 * Calls the activeScreen's mouseWheel()
-	 * @param event The mouse action that was done
-	 */
-	public void mouseWheel(MouseEvent event) {
-		activeScreen.mouseWheel(event);
-	}
+//	/**
+//	 * Calls the activeScreen's mouseWheel()
+//	 * @param event The mouse action that was done
+//	 */
+//	public void mouseWheel(MouseEvent event) {
+//		activeScreen.mouseWheel(event);
+//	}
 }
