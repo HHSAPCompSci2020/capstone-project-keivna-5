@@ -48,7 +48,7 @@ public class Car extends Element{
 		bridgeStartX = bridgeX;
 		bridgeEdgeFromCenter = 10 * bridgeSize / 2;
 		
-		carSpeedFactor = 20;
+		carSpeedFactor = 30;
 	}
 	
 	/**

@@ -30,9 +30,10 @@ public class Viewfinder {
 	private BackgroundColor backgroundColor;
 
 	private final static int[] shutterSpeedValues = {3, 5, 10, 20};
+
 	private static int shutterSpeedIndex;
 
-	private static double longExpoSpeedFactor;
+	private static final double longExpoSpeedFactor = 30;
 
 	private double lightSourceX, lightSourceY; //from 0-1, to be multiplied by marker.width or height in world draw
 
@@ -61,10 +62,8 @@ public class Viewfinder {
 		lightSourceX = 0.5;
 		lightSourceY = 0.5;
 
-		shutterSpeedIndex = 1;
+		shutterSpeedIndex = 0;
 		ISOindex = 3;
-
-		longExpoSpeedFactor = 10;
 
 		backgroundColor = BackgroundColor.CLEAR_DAY;
 
@@ -191,7 +190,6 @@ public class Viewfinder {
 		//squares to change background		
 		for (int i = 0; i < backgroundSquares.length; i++) {
 			PImage backgroundImg = backgroundImages[i];
-			
 			String backgroundDisplayed = backgroundColor.toString();
 			 //if background being displayed rn is one in loop, make border red
 			if (BackgroundColor.valueOf(backgroundDisplayed).ordinal() == i) {
@@ -202,10 +200,9 @@ public class Viewfinder {
 			marker.rect(backgroundSquares[i].x - borderExtra, backgroundSquares[i].y - borderExtra, backgroundSquares[i].width + (2*borderExtra), backgroundSquares[i].height + (2*borderExtra));
 
 			marker.fill(255); //reset to white
-
 			marker.image(backgroundImg, backgroundSquares[i].x, backgroundSquares[i].y);
-
 		}
+		
 		marker.hint(marker.ENABLE_DEPTH_TEST);
 		marker.popMatrix();
 	}
@@ -304,16 +301,17 @@ public class Viewfinder {
 	//get 3d world to redraw in between calls to screenshot to get long exposure effect
 	//draws 60x which is equal to 1 second in between draws
 	private void drawABunchOfTimes(DrawingSurface marker) {
-		for (int i = 0; i < 60.0/(longExpoSpeedFactor); i ++) {
+//		for (int i = 0; i < 60.0/(longExpoSpeedFactor*5.0); i ++) {
 			marker.draw();
-		}
+//		}
 	}
 
 	/**
 	 * @return the number of photos in each long exposure shot
 	 */
 	public static int getNumPhotosPerLongExpo() {
-		return (int) (shutterSpeedValues[shutterSpeedIndex]*longExpoSpeedFactor);
+		return (int) (3*longExpoSpeedFactor);
+//		return (int) (shutterSpeedValues[shutterSpeedIndex]*longExpoSpeedFactor);
 	}
 
 	/**

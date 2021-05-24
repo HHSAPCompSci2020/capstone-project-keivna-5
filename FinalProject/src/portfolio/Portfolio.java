@@ -135,15 +135,21 @@ public class Portfolio {
 	}
 	
 	private void drawSingleLongExpo(PApplet marker, int index, int x, int y, int width, int height) {
-		double tint = 255.0/((double)Viewfinder.getNumPhotosPerLongExpo());
+		System.out.println("make 20 added a variable of 3, 5, 10 etc!");
+		double tint = 255.0/((double)Viewfinder.getNumPhotosPerLongExpo()) + 10;
 		marker.tint(255, (int)tint); //opacity for layering for long expo
+		
+		
+		//marker.ambientLight(255, 255, 255);
+
 		for (int b = 0; b < Viewfinder.getNumPhotosPerLongExpo(); b++) { //goes thru each pimage in the arrayList<pimage>
 			PImage longExpoImg = longExposureImages.get(index).get(b);
 			longExpoImg = marker.loadImage(index + "." + b + ".png");
 			longExpoImg.copy(viewfinderIndent, viewfinderIndent, marker.width-(2*viewfinderIndent), marker.height-(2*viewfinderIndent), 0, 0,  marker.width, marker.height); //crop image
+			longExpoImg.filter(marker.ERODE);
 			marker.image(longExpoImg, x, y, width, height);
 		}
-		marker.tint(255, 255); //reset
+		marker.tint(255);
 	}
 	
 	/**

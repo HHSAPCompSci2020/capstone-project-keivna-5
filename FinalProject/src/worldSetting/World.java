@@ -38,7 +38,8 @@ public class World {
 	 * @param marker can't be null
 	 */
 	public World(PApplet marker) {
-		numCars = 4;
+//		numCars = 4;
+		
 		sky = new int[] {185, 230, 255};
 		backWater = new Water(350, 330, 50, 100000);
 //		water = new MovingWater(1350, 350, 50, 500);
@@ -46,11 +47,19 @@ public class World {
 		mountain1 = new Mountain(-450, 0, 150, 900);
 		mountain2 = new Mountain(800, 0, 150, 900);
 		cars = new ArrayList<Car>();
-		for(int i = -numCars; i <= numCars; i++) {
+		
+		for(int i = -8; i <= 8; i++) {
 			// different sides of the road
-			cars.add(new Car(350 + (i * 45 * 5f) + (float) (i * Math.random()), -560, 85, 45, true, 350, 200));
-			cars.add(new Car(350 + (i * 45 * 5f) + (float) (i * Math.random()), -560, 15, 45, false, 350, 200));
+			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 85, 45, true, 350, 200));
+			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 15, 45, false, 350, 200));
 		}
+		
+		//below is fewer cars
+//		for(int i = -numCars; i <= numCars; i++) {
+//			// different sides of the road
+//			cars.add(new Car(350 + (i * 45 * 5f) + (float) (i * Math.random()), -560, 85, 45, true, 350, 200));
+//			cars.add(new Car(350 + (i * 45 * 5f) + (float) (i * Math.random()), -560, 15, 45, false, 350, 200));
+//		}
 		
 		SoundPlayer.playSeaSound();
 	}
