@@ -1,8 +1,8 @@
 package drawingPackage;
 
 
+import photography.Viewfinder;
 import processing.core.PApplet;
-import worldSetting.Viewfinder;
 
 /**
  * Creates the skeleton of the screens

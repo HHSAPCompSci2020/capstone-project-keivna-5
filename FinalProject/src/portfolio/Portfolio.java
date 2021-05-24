@@ -5,10 +5,11 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import drawingPackage.DrawingSurface;
+import photography.LongExpoPhoto;
+import photography.Shutter;
+import photography.Viewfinder;
 import processing.core.PApplet;
 import processing.core.PImage;
-import worldSetting.Shutter;
-import worldSetting.Viewfinder;
 
 /**
  * Represents the portfolio itself

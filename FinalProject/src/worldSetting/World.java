@@ -149,7 +149,7 @@ public class World {
 	 * @author Elise and Katia
 	 *
 	 */
-	enum BackgroundColor{
+	public enum BackgroundColor{
 		CLEAR_DAY,
 		CLOUDY_DAY,
 		CLOUDY_NIGHT,

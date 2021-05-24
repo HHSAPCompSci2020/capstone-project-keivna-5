@@ -1,4 +1,4 @@
-package worldSetting;
+package photography;
 
 import java.awt.AWTException;
 import java.awt.Color;
@@ -6,7 +6,6 @@ import java.awt.Rectangle;
 import java.awt.Robot;
 import java.util.ArrayList;
 
-import portfolio.LongExpoPhoto;
 import processing.core.PApplet;
 import processing.core.PImage;
 

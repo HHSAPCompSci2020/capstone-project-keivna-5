@@ -68,11 +68,20 @@ public class DrawingSurface extends PApplet{
 		ratioX = (float) width/activeScreen.DRAWING_WIDTH;
 		ratioY = (float) height/activeScreen.DRAWING_HEIGHT;
 
+
+		
 		pushMatrix();
 		scale(ratioX, ratioY);
+		
+
+		
 		if (activeScreen.equals(worldScreen) || activeScreen.equals(glossaryScreen)) {
+			background(255);
+			text("Loading...", width/2, height/2);
 			activeScreen.draw(this);
 		} else {
+			background(255);
+			text("Loading...", width/2, height/2);
 			activeScreen.draw(this, worldScreen.getViewfinder());
 		}
 

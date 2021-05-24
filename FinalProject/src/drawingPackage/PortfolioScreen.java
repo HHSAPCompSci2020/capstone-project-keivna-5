@@ -1,9 +1,9 @@
 package drawingPackage;
 
 
+import photography.Viewfinder;
 import portfolio.Portfolio;
 import processing.core.PApplet;
-import worldSetting.Viewfinder;
 
 /**
  * The Screen that draws the Portfolio

@@ -1,4 +1,4 @@
-package worldSetting;
+package photography;
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -8,9 +8,10 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import drawingPackage.DrawingSurface;
-import portfolio.LongExpoPhoto;
 import processing.core.PApplet;
 import processing.core.PImage;
+import worldSetting.SoundPlayer;
+import worldSetting.World;
 import worldSetting.World.BackgroundColor;
 
 /**
@@ -34,7 +35,7 @@ public class Viewfinder {
 	
 	private double lightSourceX, lightSourceY; //from 0-1, to be multiplied by marker.width or height in world draw
 
-	private BackgroundColor backgroundColor;
+	private World.BackgroundColor backgroundColor;
 	private Rectangle[] backgroundSquares;
 	private PImage[] backgroundImages;
 

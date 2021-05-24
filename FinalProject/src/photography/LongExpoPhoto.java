@@ -1,4 +1,4 @@
-package portfolio;
+package photography;
 
 import java.util.ArrayList;
 

@@ -4,10 +4,11 @@ import processing.core.*;
 
 import worldSetting.CameraNoMouse;
 import worldSetting.SoundPlayer;
-import worldSetting.Viewfinder;
 import worldSetting.World;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
+import photography.Viewfinder;
 
 /**
  * Creates all the elements that pertain with using the world
@@ -56,8 +57,7 @@ public class WorldScreen extends Screen {
 		//3D aspects
 		marker.pushMatrix();
 		cameraNoMouse.draw(marker);
-		world.draw(marker, viewfinder.getISOvalue(), viewfinder.getLightSourceY(), 
-				viewfinder.getLightSourceX(), viewfinder.getBackgroundEnum());
+		world.draw(marker, viewfinder.getISOvalue(), viewfinder.getLightSourceY(), viewfinder.getLightSourceX(), viewfinder.getBackgroundEnum());
 		marker.popMatrix(); //get out of 3D world
 		
 		viewfinder.draw(marker);
