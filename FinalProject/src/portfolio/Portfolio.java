@@ -19,7 +19,9 @@ public class Portfolio {
 	private ArrayList<PImage> images;
 	private ArrayList<Rectangle> imageRects;
 	
-	private ArrayList<ArrayList<PImage>> longExposureImages;
+//	private ArrayList<ArrayList<PImage>> longExposureImages;
+	private ArrayList<LongExpoPhoto> longExposureImages;
+
 	private ArrayList<Rectangle> longExpoImageRects;
 
 	private boolean hasClickedOnImage;
@@ -41,7 +43,9 @@ public class Portfolio {
 		hasClickedOnImage = false;
 		isLongExpo = false;
 		
-		longExposureImages = new ArrayList<ArrayList<PImage>>();
+//		longExposureImages = new ArrayList<ArrayList<PImage>>();
+		longExposureImages = new ArrayList<LongExpoPhoto>();
+
 		longExpoImageRects = new ArrayList<Rectangle>();
 		photoIndex = 0;
 		
@@ -73,38 +77,39 @@ public class Portfolio {
 //		imagesInsideDraw = viewfinder.getAllSingleShotPhotos();
 //		longExposureImages = viewfinder.getallLongExpoImages();
 		images = viewfinder.getAllSingleShotPhotos();
-
+		longExposureImages = viewfinder.getAllLongExpoImages();
+		
 		marker.background(255);
 		marker.text("Click on a photo to expand it!", 20, 55);
 		marker.text("Long Exposure Shots: ", 20, 75);
 
 		int longExpoYMultiple = 0;
 		
-//		int photosPerRow = 4;
-//		//for some reason i need to call this method bc longExposureImages.size doesn't work
-//		for (int a = 0; a < Shutter.longExpoSize(); a++) { //goes thru each arraylist in arrayList<arraylist<pimage>>
-//			//find out how many rows down images needs to be at
-//			int d = a % photosPerRow; //remainder when divided by photosPerRow
-//			int e = a-d;
-//			int b = a % 4; //remainder when divided by 4
-//
-//			int c = a-b; //c is divisible by 4
-//
-//			longExpoYMultiple = (e/photosPerRow);
-//			int yMultiple = (c/4);
-//
-////			int x = 20 + (marker.width/photosPerRow*((a%photosPerRow)));
-//			int x =  20 + (marker.width/4*((a%4)));
-//
-////			int y = ((marker.height/photosPerRow)*longExpoYMultiple) + 100;
-//			int y = (150*yMultiple) + 100;
-//
-//			int width = marker.width/5;
-//			int height = marker.height/5;
-//			
-//			drawSingleLongExpo(marker, a, x, y, width, height);
-//			longExpoImageRects.add(new Rectangle(x, y, width, height));			
-//		}
+		int photosPerRow = 4;
+		//for some reason i need to call this method bc longExposureImages.size doesn't work
+		for (int a = 0; a < longExposureImages.size(); a++) { //goes thru each arraylist in arrayList<arraylist<pimage>>
+			//find out how many rows down images needs to be at
+			int d = a % photosPerRow; //remainder when divided by photosPerRow
+			int e = a-d;
+			int b = a % 4; //remainder when divided by 4
+
+			int c = a-b; //c is divisible by 4
+
+			longExpoYMultiple = (e/photosPerRow);
+			int yMultiple = (c/4);
+
+//			int x = 20 + (marker.width/photosPerRow*((a%photosPerRow)));
+			int x =  20 + (marker.width/4*((a%4)));
+
+//			int y = ((marker.height/photosPerRow)*longExpoYMultiple) + 100;
+			int y = (150*yMultiple) + 100;
+
+			int width = marker.width/5;
+			int height = marker.height/5;
+			
+			drawSingleLongExpo(marker, a, x, y, width, height);
+			longExpoImageRects.add(new Rectangle(x, y, width, height));			
+		}
 
 		marker.tint(255); //undo from long expo
 		marker.text("Simple Shots: ", 20 , (longExpoYMultiple + 2) * marker.width/5);
@@ -130,7 +135,7 @@ public class Portfolio {
 	private void drawSingleFullScreenImg(PApplet marker, int index, boolean isLongExpo) {
 		marker.background(255);
 		if (isLongExpo) {
-//			drawSingleLongExpo(marker, index, 0, 0, marker.width, marker.height);
+			drawSingleLongExpo(marker, index, 0, 0, marker.width, marker.height);
 		} else {
 			drawSingleShot(marker, index, 0, 0, marker.width, marker.height);
 		}
@@ -148,24 +153,28 @@ public class Portfolio {
 		marker.image(img, x, y, width, height); //image takes up entire screen
 	}
 	
-//	private void drawSingleLongExpo(PApplet marker, int index, int x, int y, int width, int height) {
-//		System.out.println("make 20 added a variable of 3, 5, 10 etc!");
-//		//60 photos needs 10, divide by 6
+	private void drawSingleLongExpo(PApplet marker, int index, int x, int y, int width, int height) {
+		System.out.println("make 20 added a variable of 3, 5, 10 etc!");
+		//60 photos needs 10, divide by 6
 //		double tint = 255.0/((double)Viewfinder.getNumPhotosPerLongExpo()) + (Viewfinder.getNumPhotosPerLongExpo()/2);
-//		marker.tint(255, (int)tint); //opacity for layering for long expo
-//		
-//		
-//		//marker.ambientLight(255, 255, 255);
-//
-//		for (int b = 0; b < Viewfinder.getNumPhotosPerLongExpo(); b++) { //goes thru each pimage in the arrayList<pimage>
-//			PImage longExpoImg = longExposureImages.get(index).get(b);
-//			longExpoImg = marker.loadImage(index + "." + b + ".png");
-//			longExpoImg.copy(viewfinderIndent, viewfinderIndent, marker.width-(2*viewfinderIndent), marker.height-(2*viewfinderIndent), 0, 0,  marker.width, marker.height); //crop image
-//			longExpoImg.filter(marker.ERODE);
-//			marker.image(longExpoImg, x, y, width, height);
-//		}
-//		marker.tint(255);
-//	}
+		LongExpoPhoto longExpo = longExposureImages.get(index);
+		
+		double tint = 255.0/((double)longExpo.numPhotos());
+
+		marker.tint(255, (int)tint); //opacity for layering for long expo
+		
+		
+		//marker.ambientLight(255, 255, 255);
+
+		for (int b = 0; b < longExpo.numPhotos(); b++) { //goes thru each pimage in the arrayList<pimage>
+			PImage longExpoImg = longExpo.getPhoto(b);
+			longExpoImg = marker.loadImage(index + "." + b + ".png");
+			longExpoImg.copy(viewfinderIndent, viewfinderIndent, marker.width-(2*viewfinderIndent), marker.height-(2*viewfinderIndent), 0, 0,  marker.width, marker.height); //crop image
+			longExpoImg.filter(marker.ERODE);
+			marker.image(longExpoImg, x, y, width, height);
+		}
+		marker.tint(255);
+	}
 	
 	/**
 	 * mouse pressed method for portfolio to detect if an image needs to be enlargened or go back to the grid view

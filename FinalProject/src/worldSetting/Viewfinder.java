@@ -229,21 +229,24 @@ public class Viewfinder {
 			SoundPlayer.playShutterSound();
 		}
 
-//		else if (longExpoShutterButton.contains(p)) {
-////			SoundPlayer.playShutterSound();
-//
-//			int outerArrIndex = shutter.longExpoSize(); //for shutter to see if it needs to make a new long expo arraylist or not
-//			//represents the number of screenshots
-////			for (int i = 0; i < getNumPhotosPerLongExpo(); i++) {
-//			for (int i = 0; i < (shutterSpeedValues[shutterSpeedIndex] * longExpoSpeedFactor); i++) {
-//
-//				//draw in between screenshots to get long exposure effect
-//				marker.draw(); //replacing line below
-////				drawABunchOfTimes(marker); 
-//				SoundPlayer.playShutterSound();
-//				shutter.longExposureScreenshot(marker, outerArrIndex, i);
-//			}
-//		}
+		else if (longExpoShutterButton.contains(p)) {
+//			SoundPlayer.playShutterSound();
+			LongExpoPhoto longExpoPhotos = new LongExpoPhoto(shutterSpeedValues[shutterSpeedIndex]);
+			
+			int outerArrIndex = longExposureImages.size(); //for shutter to see if it needs to make a new long expo arraylist or not
+			//represents the number of screenshots
+//			for (int i = 0; i < getNumPhotosPerLongExpo(); i++) {
+			for (int i = 0; i < (shutterSpeedValues[shutterSpeedIndex] * longExpoSpeedFactor); i++) {
+				SoundPlayer.playShutterSound();
+
+				//draw in between screenshots to get long exposure effect
+				marker.draw();
+				PImage photo = shutter.longExposureScreenshot(marker, outerArrIndex, i);
+				longExpoPhotos.addPhoto(photo);
+			}
+			
+			longExposureImages.add(longExpoPhotos);
+		}
 
 		else if (ISOup.contains(p)) {
 			if (ISOindex < ISOvalues.length - 1) {
@@ -357,5 +360,9 @@ public class Viewfinder {
 	
 	public ArrayList<PImage> getAllSingleShotPhotos(){
 		return images;
+	}
+	
+	public ArrayList<LongExpoPhoto> getAllLongExpoImages(){
+		return longExposureImages;
 	}
 }
