@@ -44,6 +44,8 @@ public class DrawingSurface extends PApplet{
 //		activeScreen = screens.get(0); //set activeScreen to world screen
 		activeScreen = worldScreen; //set activeScreen to world screen
 
+		//TODO: CHANGE THIS BACK TO WORLD SCREEN! ^
+		
 		//initialize buttons
 		viewfinderButton = new Rectangle (0, 0, buttonWidth, buttonHeight);
 		portfolioButton = new Rectangle (buttonWidth, 0, buttonWidth, buttonHeight);
