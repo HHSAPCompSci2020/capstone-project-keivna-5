@@ -18,7 +18,8 @@ import worldSetting.World.BackgroundColor;
  */
 public class Viewfinder {
 
-	private Rectangle toggle, shutterButton, longExpoShutterButton;
+//	private Rectangle toggle;
+	private Rectangle shutterButton, longExpoShutterButton;
 	private Shutter shutter;
 	private Rectangle ISOup, ISOdown, shutterSpeedUp, shutterSpeedDown, lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight;
 	private Rectangle[] backgroundSquares;
@@ -59,23 +60,23 @@ public class Viewfinder {
 	/**
 	 * Initializes fields
 	 */
-	public Viewfinder(PApplet marker) {
-		toggle = new Rectangle(toggleX,toggleY, toggleWidth, toggleHeight);
+	public Viewfinder(PApplet marker, int screenWidth) {
+//		toggle = new Rectangle(toggleX,toggleY, toggleWidth, toggleHeight);
 		shutterButton = new Rectangle(620, 30, 120, 30);
 		longExpoShutterButton = new Rectangle(420, 30, 120, 30);
 
 		shutter = new Shutter(marker);	
-		ISOup = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*2, 30, 30);
-		ISOdown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*3 + 15, 30, 30);
+		ISOup = new Rectangle (screenWidth - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*1, 30, 30);
+		ISOdown = new Rectangle (screenWidth - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*2 + 15, 30, 30);
 
-		shutterSpeedUp = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*4, 30, 30);
-		shutterSpeedDown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*5.25) + 15, 30, 30);
+		shutterSpeedUp = new Rectangle (screenWidth - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*3.5), 30, 30);
+		shutterSpeedDown = new Rectangle (screenWidth - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*4.75) + 15, 30, 30);
 
-		lightSourceUp = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*7, 30, 30);
-		lightSourceDown = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*7.5) + 10, 30, 30);
+		lightSourceUp = new Rectangle (screenWidth - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*7, 30, 30);
+		lightSourceDown = new Rectangle (screenWidth - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*7.5) + 10, 30, 30);
 
-		lightSourceLeft = new Rectangle (800 - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*8.5), 30, 30);
-		lightSourceRight = new Rectangle (800 - (int)(viewfinderIndent/4) - 10, (int)(viewfinderIndent*8.5), 30, 30);
+		lightSourceLeft = new Rectangle (screenWidth - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*8.5), 30, 30);
+		lightSourceRight = new Rectangle (screenWidth - (int)(viewfinderIndent/4) - 10, (int)(viewfinderIndent*8.5), 30, 30);
 
 		lightSourceX = 0.5;
 		lightSourceY = 0.5;
@@ -141,16 +142,16 @@ public class Viewfinder {
 		marker.rect(marker.width - viewfinderIndent, 0,viewfinderIndent, marker.height); //right
 		marker.rect(0, marker.height - viewfinderIndent, marker.width, viewfinderIndent); //bottom
 
-		//toggle
-		marker.fill(225, 120, 120);
-		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, toggleRadius);
-
-		//toggle text
-		marker.fill(0);
-		marker.textSize(12);
-		String str = "Switch to Portfolio";
-		float w = marker.textWidth(str);
-		marker.text(str, toggle.x+toggle.width/2-w/2 - 5, toggle.y+toggle.height/2);
+//		//toggle
+//		marker.fill(225, 120, 120);
+//		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, toggleRadius);
+//
+//		//toggle text
+//		marker.fill(0);
+//		marker.textSize(12);
+//		String str = "Switch to Portfolio";
+//		float w = marker.textWidth(str);
+//		marker.text(str, toggle.x+toggle.width/2-w/2 - 5, toggle.y+toggle.height/2);
 
 		//shutter 
 		marker.fill(120);
@@ -158,6 +159,7 @@ public class Viewfinder {
 
 		//shutter text
 		marker.fill(0);
+		marker.textSize(12);
 		String shutterStr = "Shutter";
 		//float w = marker.textWidth(str);
 		marker.text(shutterStr, shutterButton.x + 5, shutterButton.y + 15);
@@ -176,7 +178,7 @@ public class Viewfinder {
 		marker.fill(255);
 		marker.textSize(15);
 		String keyDefinitions = "Up/Down/Left/Right: WASD, Spin: UP/DOWN/LEFT/RIGHT";
-		marker.text(keyDefinitions, toggle.x, marker.height - 30);
+		marker.text(keyDefinitions, viewfinderIndent, marker.height - 30);
 
 		//ISO up triangle
 		marker.triangle(ISOup.x, ISOup.y + ISOup.height, ISOup.x + ISOup.width, ISOup.y + ISOup.height, ISOup.x + (ISOup.width/2), ISOup.y);
@@ -249,11 +251,11 @@ public class Viewfinder {
 	 */
 	public void mousePressed(DrawingSurface marker) {		
 		Point p = new Point(marker.mouseX,marker.mouseY);
-		if (toggle.contains(p)) {
-			marker.switchScreen(1);
-		} 
+//		if (toggle.contains(p)) {
+//			marker.switchScreen(1);
+//		} 
 
-		else if (shutterButton.contains(p)) {
+		if (shutterButton.contains(p)) {
 			shutter.screenshot(marker);
 			SoundPlayer.playShutterSound();
 		}

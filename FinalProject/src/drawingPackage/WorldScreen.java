@@ -49,7 +49,7 @@ public class WorldScreen extends Screen {
 
 		world = new World(marker);
 		cameraNoMouse = new CameraNoMouse(1, .75f, PConstants.PI / 3f, 60f);
-		viewfinder = new Viewfinder(marker);
+		viewfinder = new Viewfinder(marker, screenWidth);
 		keys = new ArrayList<Integer>();
 	}
 

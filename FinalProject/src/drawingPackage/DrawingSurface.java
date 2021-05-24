@@ -1,5 +1,7 @@
 package drawingPackage;
 
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import processing.core.*;
@@ -15,7 +17,12 @@ public class DrawingSurface extends PApplet{
 	private Screen activeScreen;
 	private WorldScreen worldScreen;
 	private PortfolioScreen portfolioScreen;
+	private GlossaryScreen glossaryScreen;
 	private ArrayList<Screen> screens;
+	private Rectangle viewfinderButton, portfolioButton, glossaryButton;
+
+	private final int buttonWidth = 100, buttonHeight = 30;
+
 
 	/**
 	 * Creates the different screens for different parts of the program
@@ -31,7 +38,15 @@ public class DrawingSurface extends PApplet{
 		portfolioScreen = new PortfolioScreen(); //1
 		screens.add(portfolioScreen);
 
+		glossaryScreen = new GlossaryScreen(); //2
+		screens.add(glossaryScreen);
+
 		activeScreen = screens.get(0); //set activeScreen to world screen
+
+		//initialize buttons
+		viewfinderButton = new Rectangle (0, 0, buttonWidth, buttonHeight);
+		portfolioButton = new Rectangle (buttonWidth, 0, buttonWidth, buttonHeight);
+		glossaryButton = new Rectangle (buttonWidth*2, 0, buttonWidth, buttonHeight);
 	}
 
 	/**
@@ -39,7 +54,7 @@ public class DrawingSurface extends PApplet{
 	 */
 	public void settings() {
 		size(activeScreen.DRAWING_WIDTH, activeScreen.DRAWING_HEIGHT, processing.core.PConstants.P3D);
-		
+
 	}
 
 	/**
@@ -47,11 +62,11 @@ public class DrawingSurface extends PApplet{
 	 * then it sets the position of the camera by calling setCameraAtStart()
 	 */
 	public void setup() {
-//		frameRate(480); //speed up because all the 3D elements make everything a lot slower
+		//		frameRate(480); //speed up because all the 3D elements make everything a lot slower
 		surface.setResizable(true);
 		for (Screen s : screens)
 			s.setup();
-		
+
 		if(activeScreen instanceof WorldScreen)
 			((WorldScreen) activeScreen).setCameraAtStart(this);
 	}
@@ -66,6 +81,34 @@ public class DrawingSurface extends PApplet{
 		pushMatrix();
 		scale(ratioX, ratioY);
 		activeScreen.draw(this);
+
+		//tabs
+		textSize(14);
+
+		//viewfinder button
+		fill(200);
+		rect(viewfinderButton.x, viewfinderButton.y, viewfinderButton.width, viewfinderButton.height);
+
+		//viewfinder text
+		fill(0);
+		text("Viewfinder", viewfinderButton.x + 10, viewfinderButton.y+viewfinderButton.height/2);
+
+		//portfolio button
+		fill(200);
+		rect(portfolioButton.x, portfolioButton.y, portfolioButton.width, portfolioButton.height);
+
+		//portfolio text
+		fill(0);
+		text("Portfolio", portfolioButton.x + 10, portfolioButton.y+portfolioButton.height/2);
+
+		//glossary button
+		fill(200);
+		rect(glossaryButton.x, glossaryButton.y, glossaryButton.width, glossaryButton.height);
+
+		//glossary text
+		fill(0);
+		text("Glossary", glossaryButton.x + 10, glossaryButton.y+glossaryButton.height/2);
+
 		popMatrix();
 	}
 
@@ -82,11 +125,20 @@ public class DrawingSurface extends PApplet{
 	public void keyReleased() {
 		activeScreen.keyReleased(this);
 	}
-	
+
 	/**
 	 * Calls the activeScreen's mousePressed()
 	 */
 	public void mousePressed() {
+		Point p = new Point(mouseX, mouseY);
+
+		if (viewfinderButton.contains(p)) {
+			activeScreen = worldScreen;
+		} else if (portfolioButton.contains(p)) {
+			activeScreen = portfolioScreen;
+		} else if (glossaryButton.contains(p)) {
+			activeScreen = glossaryScreen;
+		}
 		activeScreen.mousePressed(this);
 	}
 
@@ -97,7 +149,7 @@ public class DrawingSurface extends PApplet{
 	public void switchScreen(int i) {
 		activeScreen = screens.get(i);
 	}
-	
+
 	/**
 	 * Calls the activeScreen's mouseWheel()
 	 * @param event The mouse action that was done
