@@ -18,7 +18,6 @@ import worldSetting.World.BackgroundColor;
  */
 public class Viewfinder {
 
-//	private Rectangle toggle;
 	private Rectangle shutterButton, longExpoShutterButton;
 	private Shutter shutter;
 	private Rectangle ISOup, ISOdown, shutterSpeedUp, shutterSpeedDown, lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight;
@@ -35,33 +34,18 @@ public class Viewfinder {
 
 	private static double longExpoSpeedFactor;
 
-	private double lightSourceX, lightSourceY, lightSourceZ; //from 0-1, to be multiplied by marker.width or height in world draw
-	//private static int shutterSpeed;
-	/**
-	 * Represents the ratios for the size of the screen
-	 */
-	public float ratioX, ratioY;
+	private double lightSourceX, lightSourceY; //from 0-1, to be multiplied by marker.width or height in world draw
 
-	/**
-	 * Constant for the spacing for the ViewFinder
-	 */
-	public static final float viewfinderIndent = 60;
+	private static final float viewfinderIndent = 60;
 
-	/**
-	 * Constants for the size of the toggle button
-	 */
-	public static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20, toggleRadius = 10;
+//	private static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20, toggleRadius = 10;
 
-	/**
-	 * Constants for the size of the screen
-	 */
-	public static final int screenWidth = 800, screenHeight = 600;
+	private static final int screenWidth = 800, screenHeight = 600;
 
 	/**
 	 * Initializes fields
 	 */
 	public Viewfinder(PApplet marker, int screenWidth) {
-//		toggle = new Rectangle(toggleX,toggleY, toggleWidth, toggleHeight);
 		shutterButton = new Rectangle(620, 30, 120, 30);
 		longExpoShutterButton = new Rectangle(420, 30, 120, 30);
 
@@ -80,7 +64,6 @@ public class Viewfinder {
 
 		lightSourceX = 0.5;
 		lightSourceY = 0.5;
-		lightSourceZ = 0.5;
 
 		shutterSpeedIndex = 1;
 		ISOindex = 3;
@@ -209,8 +192,7 @@ public class Viewfinder {
 		//light source right triangle
 		marker.triangle(lightSourceRight.x, lightSourceRight.y, lightSourceRight.x, lightSourceRight.y + lightSourceRight.height, lightSourceRight.x + (3*lightSourceRight.width/4), lightSourceRight.y + (lightSourceRight.height/2));
 
-		//squares to change background
-		
+		//squares to change background		
 		for (int i = 0; i < backgroundSquares.length; i++) {
 			PImage backgroundImg = backgroundImages[i];
 			
@@ -331,26 +313,37 @@ public class Viewfinder {
 		}
 	}
 
+	/**
+	 * @return the number of photos in each long exposure shots
+	 */
 	public static int getNumPhotosPerLongExpo() {
 		return (int) (shutterSpeedValues[shutterSpeedIndex]*longExpoSpeedFactor);
 	}
 
+	/**
+	 * @return current ISO value
+	 */
 	public int getISOvalue() {
 		return ISOvalues[ISOindex];
 	}
 
+	/**
+	 * @return y-value of the light source
+	 */
 	public double getLightSourceY() {
 		return lightSourceY;
 	}
-
+	
+	/**
+	 * @return x-value of the light source
+	 */
 	public double getLightSourceX() {
 		return lightSourceX;
 	}
-//
-//	public double getLightSourceZ() {
-//		return lightSourceZ;
-//	}
-
+	
+	/**
+	 * @return enum value of the current background color
+	 */
 	public BackgroundColor getBackgroundEnum() {
 		return backgroundColor;
 	}

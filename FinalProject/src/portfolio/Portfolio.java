@@ -155,6 +155,11 @@ public class Portfolio {
 		}
 	}
 	
+	/**
+	 * mouse pressed method for portfolio to detect if an image needs to be enlargened or go back to the grid view
+	 * @param marker
+	 * @pre marker is not null
+	 */
 	public void mousePressed(DrawingSurface marker) {		
 		Point p = new Point(marker.mouseX, marker.mouseY);
 				

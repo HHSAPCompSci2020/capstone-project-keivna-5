@@ -1,14 +1,11 @@
 package drawingPackage;
 
-import java.awt.Point;
-
-import java.awt.Rectangle;
 
 import portfolio.Portfolio;
 import processing.core.PApplet;
 
 /**
- * The Screen that draws the Portfolio and implements all other user interactions
+ * The Screen that draws the Portfolio
  * @author Elise
  */
 public class PortfolioScreen extends Screen {
@@ -26,7 +23,7 @@ public class PortfolioScreen extends Screen {
 	}
 	
 	/**
-	 * Draws a portfolio of photos as well as interaction keys
+	 * Draws a portfolio of photos
 	 * @param marker
 	 * @pre PApplet marker cannot be null
 	 * @post the PApplet parameter is changed
@@ -38,7 +35,7 @@ public class PortfolioScreen extends Screen {
 	}
 	
 	/**
-	 * Checks if the toggle has been pressed and switches screen through the DrawingSurface
+	 * calls portfolio's mouse pressed for image viewing
 	 * @pre DrawingSurface marker cannot be null
 	 */
 	public void mousePressed(DrawingSurface marker) {

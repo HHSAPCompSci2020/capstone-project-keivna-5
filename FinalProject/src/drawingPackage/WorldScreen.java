@@ -20,23 +20,10 @@ public class WorldScreen extends Screen {
 	private CameraNoMouse cameraNoMouse;
 	private World world;
 	private Viewfinder viewfinder;
-	
 	private boolean playingCarSound = false;
-	
-	/**
-	 * Ratio of the screen
-	 */
-	public float ratioX, ratioY;
-	
-	/**
-	 * The constant for the speed at which movement should occur
-	 */
-	public static final int keyMoveFactor = 16;
-	
-	/**
-	 * The constants for the size of the screen
-	 */
-	public static final int screenWidth = 800, screenHeight = 600;
+	private float ratioX, ratioY;
+	private static final int keyMoveFactor = 16;
+	private static final int screenWidth = 800, screenHeight = 600;
 
 	/**
 	 * Sets up the world, camera, viewfinder, and keys arraylist

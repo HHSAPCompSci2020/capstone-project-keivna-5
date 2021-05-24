@@ -19,15 +19,7 @@ public class World {
 	private Mountain mountain1;
 	private Mountain mountain2;
 	private ArrayList<Car> cars;
-	PImage background;
-
-	int savedTime;
-	int totalTime = 60000;
-
-	/**
-	 * Length of the seaSound
-	 */
-	public static final int seaSoundDurationMillis = 259000; //4:19 minutes
+	private PImage background;
 
 	/**
 	 * Creates the world elements:
@@ -48,7 +40,6 @@ public class World {
 			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 15, 45, false, 350, 200));
 		}
 		
-		savedTime = marker.millis();
 		SoundPlayer.playSeaSound();
 	}
 
@@ -132,6 +123,11 @@ public class World {
 		return isColor;
 	}
 
+	/**
+	 * represents the type of background images
+	 * @author Elise and Katia
+	 *
+	 */
 	enum BackgroundColor{
 		CLEAR_DAY,
 		CLOUDY_DAY,

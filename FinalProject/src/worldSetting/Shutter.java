@@ -16,8 +16,7 @@ import processing.core.PImage;
  */
 public class Shutter {
 
-	static int prevSavedTime = 0;
-
+//	private static int prevSavedTime = 0;
 	private static ArrayList<PImage> images;
 
 	//each ArrayList<PImage> is 1 long exposure image
@@ -81,10 +80,6 @@ public class Shutter {
 		} catch (AWTException e) { }
 	}
 
-//	public int getOuterArrIndex() {
-//		return longExposureImages.size();		
-//	}
-
 	/**
 	 * @return ArrayList<PImage> all non-long exposure images captured while the window is opened
 	 */
@@ -99,6 +94,9 @@ public class Shutter {
 		return longExposureImages;
 	}
 	
+	/**
+	 * @return the number of long exposure images
+	 */
 	public static int longExpoSize() {
 		return longExpoSize;
 	}

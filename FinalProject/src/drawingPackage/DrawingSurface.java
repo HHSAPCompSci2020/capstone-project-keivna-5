@@ -8,20 +8,18 @@ import processing.core.*;
 
 /**
  * Creates the screens for the main parts of the application
- * @author Katia and Elise
+ * @author Elise and Katia
  *
  */
 public class DrawingSurface extends PApplet{
 
-	public float ratioX, ratioY;
+	private float ratioX, ratioY;
 	private Screen activeScreen;
 	private WorldScreen worldScreen;
 	private PortfolioScreen portfolioScreen;
 	private GlossaryScreen glossaryScreen;
 	private Rectangle viewfinderButton, portfolioButton, glossaryButton;
-
 	private final int buttonWidth = 100, buttonHeight = 30;
-
 
 	/**
 	 * Creates the different screens for different parts of the program
@@ -53,7 +51,7 @@ public class DrawingSurface extends PApplet{
 	 * then it sets the position of the camera by calling setCameraAtStart()
 	 */
 	public void setup() {
-		//		frameRate(480); //speed up because all the 3D elements make everything a lot slower
+//		frameRate(480); //speed up because all the 3D elements make everything a lot slower
 		surface.setResizable(true);
 		worldScreen.setup();
 		portfolioScreen.setup();
