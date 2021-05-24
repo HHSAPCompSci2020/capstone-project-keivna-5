@@ -38,10 +38,6 @@ public class Viewfinder {
 
 	private static final float viewfinderIndent = 60;
 
-//	private static final int toggleX = 25, toggleY = 25, toggleWidth = 120, toggleHeight = 20, toggleRadius = 10;
-
-	private static final int screenWidth = 800, screenHeight = 600;
-
 	/**
 	 * Initializes fields
 	 */
@@ -149,7 +145,7 @@ public class Viewfinder {
 		//key instruction text
 		marker.fill(255);
 		marker.textSize(15);
-		String keyDefinitions = "Up/Down/Left/Right: WASD, Spin: UP/DOWN/LEFT/RIGHT";
+		String keyDefinitions = "Up/Down/Left/Right: WASD, Forward/Backward: Q/E, Pan: UP/DOWN/LEFT/RIGHT";
 		marker.text(keyDefinitions, viewfinderIndent, marker.height - 30);
 
 		//ISO up triangle
@@ -308,13 +304,13 @@ public class Viewfinder {
 	//get 3d world to redraw in between calls to screenshot to get long exposure effect
 	//draws 60x which is equal to 1 second in between draws
 	private void drawABunchOfTimes(DrawingSurface marker) {
-		for (int i = 0; i < 60.0/(longExpoSpeedFactor*5); i ++) {
+		for (int i = 0; i < 60.0/(longExpoSpeedFactor); i ++) {
 			marker.draw();
 		}
 	}
 
 	/**
-	 * @return the number of photos in each long exposure shots
+	 * @return the number of photos in each long exposure shot
 	 */
 	public static int getNumPhotosPerLongExpo() {
 		return (int) (shutterSpeedValues[shutterSpeedIndex]*longExpoSpeedFactor);

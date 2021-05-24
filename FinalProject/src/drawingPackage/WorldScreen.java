@@ -22,7 +22,7 @@ public class WorldScreen extends Screen {
 	private Viewfinder viewfinder;
 	private boolean playingCarSound = false;
 	private float ratioX, ratioY;
-	private static final int keyMoveFactor = 16;
+	private static final int keyMoveFactor = 8;
 	private static final int screenWidth = 800, screenHeight = 600;
 
 	/**

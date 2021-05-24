@@ -74,7 +74,7 @@ public class World {
 		g.directionalLight(128, 128, 128, (float) pointLightX, (float) pointLightY, 400);
 
 		backWater.display(g);
-		water.display(g);
+		//water.display(g);
 		bridge.display(g);
 		mountain1.display(g);
 		mountain2.display(g);
