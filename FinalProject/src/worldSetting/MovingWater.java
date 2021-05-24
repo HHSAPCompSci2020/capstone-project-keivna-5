@@ -25,7 +25,7 @@ public class MovingWater extends Element{
 		super(xPos, yPos, zPos, size);
 		
 		funberOfPArticles = (int) size;
-		zoom = 10;
+		zoom = 15;
 		waveOrNot = -5;
 		
 		particle = new float[funberOfPArticles][funberOfPArticles];
@@ -48,14 +48,18 @@ public class MovingWater extends Element{
 		g.fill(WATER_COLOR[0], WATER_COLOR[1], WATER_COLOR[2]);
 		g.noStroke();
 		g.rotateX(g.PI/2);
-		updateMesh();
+		//randomizes location of the ripple
+		
+		int rippleX = (int) (500 + Math.random() * 200);
+		int rippleY = (int) (300 + Math.random() * 200);
+		updateMesh(rippleX, rippleY);
 		g.translate(getX(), getY(), getZ());
 		drawMesh(g);
 		g.translate(getX(), getY(), getZ());
 		g.popMatrix();
 	}
 
-	private void updateMesh() {
+	private void updateMesh(int rippleX, int rippleY) {
 		for (int x = 1; x<funberOfPArticles-2; x++) {
 			for (int y = 1; y<funberOfPArticles-2; y++) {
 				//under 
@@ -84,10 +88,8 @@ public class MovingWater extends Element{
 			}
 		}
 		if (waveOrNot != 0) {
-			int mouseX = 350;
-			int mouseY = 350;
-			int MouseXIndex = 2 + (funberOfPArticles-4) * mouseX / 1000; //width
-			int MouseYIndex = 2 + (funberOfPArticles-4) * mouseY / 1000; //height
+			int MouseXIndex = 2 + (funberOfPArticles-4) * rippleX / 1000; //width
+			int MouseYIndex = 2 + (funberOfPArticles-4) * rippleY / 1000; //height
 			particlesSpeedNew[MouseXIndex][MouseYIndex] = waveOrNot;
 			particlesSpeedNew[MouseXIndex+1][MouseYIndex+1] = waveOrNot;
 			particlesSpeedNew[MouseXIndex+1][MouseYIndex] = waveOrNot;

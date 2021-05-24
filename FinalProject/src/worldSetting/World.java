@@ -20,6 +20,17 @@ public class World {
 	private Mountain mountain2;
 	private ArrayList<Car> cars;
 	private PImage background;
+	private Element origin;
+	
+	private int numCars;
+
+	int savedTime;
+	int totalTime = 60000;
+
+	/**
+	 * Length of the seaSound
+	 */
+	public static final int seaSoundDurationMillis = 259000; //4:19 minutes
 
 	/**
 	 * Creates the world elements:
@@ -27,17 +38,18 @@ public class World {
 	 * @param marker can't be null
 	 */
 	public World(PApplet marker) {
+		numCars = 4;
 		sky = new int[] {185, 230, 255};
-		backWater = new Water(350, 330, 50, 100000);
-		water = new MovingWater(1350, 350, 50, 500);
+//		backWater = new Water(350, 330, 50, 100000);
+//		water = new MovingWater(1350, 350, 50, 500);
 		bridge = new Bridge(350, -500, 50, 200, 5);
-		mountain1 = new Mountain(-350, -200, 200, 800);
-		mountain2 = new Mountain(700, -200, 200, 800);
+		mountain1 = new Mountain(-450, 0, 150, 900);
+		mountain2 = new Mountain(800, 0, 150, 900);
 		cars = new ArrayList<Car>();
-		for(int i = -8; i <= 8; i++) {
+		for(int i = -numCars; i <= numCars; i++) {
 			// different sides of the road
-			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 85, 45, true, 350, 200));
-			cars.add(new Car(350 + (i * 45 * 2.5f) + (float) (i * Math.random()), -560, 15, 45, false, 350, 200));
+			cars.add(new Car(350 + (i * 45 * 5f) + (float) (i * Math.random()), -560, 85, 45, true, 350, 200));
+			cars.add(new Car(350 + (i * 45 * 5f) + (float) (i * Math.random()), -560, 15, 45, false, 350, 200));
 		}
 		
 		SoundPlayer.playSeaSound();
@@ -74,7 +86,7 @@ public class World {
 		g.directionalLight(128, 128, 128, (float) pointLightX, (float) pointLightY, 400);
 
 		backWater.display(g);
-		//water.display(g);
+//		water.display(g);
 		bridge.display(g);
 		mountain1.display(g);
 		mountain2.display(g);
