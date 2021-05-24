@@ -3,6 +3,7 @@ package drawingPackage;
 
 import portfolio.Portfolio;
 import processing.core.PApplet;
+import worldSetting.Viewfinder;
 
 /**
  * The Screen that draws the Portfolio
@@ -28,9 +29,9 @@ public class PortfolioScreen extends Screen {
 	 * @pre PApplet marker cannot be null
 	 * @post the PApplet parameter is changed
 	 */
-	public void draw(PApplet marker) {	
+	public void draw(PApplet marker, Viewfinder viewfinder) {	
 		marker.pushStyle();
-		portfolio.draw(marker);
+		portfolio.draw(marker, viewfinder);
 		marker.popStyle();			
 	}
 	

@@ -163,5 +163,9 @@ public class WorldScreen extends Screen {
 	public void mousePressed(DrawingSurface marker) {
 		viewfinder.mousePressed(marker);
 	}
+	
+	public Viewfinder getViewfinder() {
+		return viewfinder;
+	}
 }
 

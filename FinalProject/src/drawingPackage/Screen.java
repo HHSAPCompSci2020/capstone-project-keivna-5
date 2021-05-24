@@ -2,6 +2,7 @@ package drawingPackage;
 
 
 import processing.core.PApplet;
+import worldSetting.Viewfinder;
 
 /**
  * Creates the skeleton of the screens
@@ -34,6 +35,15 @@ public abstract class Screen {
 	 * @post changes the PApplet drawer
 	 */
 	public void draw(PApplet drawer) {}
+	
+	/**
+	 * Implement with whatever the screen needs to draw
+	 * @param drawer PApplet that is shared
+	 * @param viewfinder for accessing photos to display
+	 * @pre drawer must not be null
+	 * @post changes the PApplet drawer
+	 */
+	public void draw(PApplet drawer, Viewfinder viewfinder) {}
 	
 	/**
 	 * Sees what to do if the mouse is pressed

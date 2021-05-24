@@ -70,7 +70,11 @@ public class DrawingSurface extends PApplet{
 
 		pushMatrix();
 		scale(ratioX, ratioY);
-		activeScreen.draw(this);
+		if (activeScreen.equals(worldScreen) || activeScreen.equals(glossaryScreen)) {
+			activeScreen.draw(this);
+		} else {
+			activeScreen.draw(this, worldScreen.getViewfinder());
+		}
 
 		//tabs
 		textSize(14);
