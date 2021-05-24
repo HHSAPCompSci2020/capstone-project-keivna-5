@@ -18,7 +18,7 @@ public class DrawingSurface extends PApplet{
 	private WorldScreen worldScreen;
 	private PortfolioScreen portfolioScreen;
 	private GlossaryScreen glossaryScreen;
-	private ArrayList<Screen> screens;
+//	private ArrayList<Screen> screens;
 	private Rectangle viewfinderButton, portfolioButton, glossaryButton;
 
 	private final int buttonWidth = 100, buttonHeight = 30;
@@ -30,18 +30,19 @@ public class DrawingSurface extends PApplet{
 	 * when opening should be, in this case being the worldScreen
 	 */
 	public DrawingSurface() {
-		screens = new ArrayList<Screen>();
+//		screens = new ArrayList<Screen>();
 
 		worldScreen = new WorldScreen(this); //0
-		screens.add(worldScreen);
+//		screens.add(worldScreen);
 
 		portfolioScreen = new PortfolioScreen(); //1
-		screens.add(portfolioScreen);
+//		screens.add(portfolioScreen);
 
 		glossaryScreen = new GlossaryScreen(); //2
-		screens.add(glossaryScreen);
+//		screens.add(glossaryScreen);
 
-		activeScreen = screens.get(0); //set activeScreen to world screen
+//		activeScreen = screens.get(0); //set activeScreen to world screen
+		activeScreen = worldScreen; //set activeScreen to world screen
 
 		//initialize buttons
 		viewfinderButton = new Rectangle (0, 0, buttonWidth, buttonHeight);
@@ -63,8 +64,11 @@ public class DrawingSurface extends PApplet{
 	public void setup() {
 		//		frameRate(480); //speed up because all the 3D elements make everything a lot slower
 		surface.setResizable(true);
-		for (Screen s : screens)
-			s.setup();
+		worldScreen.setup();
+		portfolioScreen.setup();
+		glossaryScreen.setup();
+//		for (Screen s : screens)
+//			s.setup();
 
 		if(activeScreen instanceof WorldScreen)
 			((WorldScreen) activeScreen).setCameraAtStart(this);
@@ -86,27 +90,36 @@ public class DrawingSurface extends PApplet{
 
 		//viewfinder button
 		fill(200);
+		if (activeScreen.equals(worldScreen)) { //darker button to show selection
+			fill(150);
+		}
 		rect(viewfinderButton.x, viewfinderButton.y, viewfinderButton.width, viewfinderButton.height);
 
 		//viewfinder text
 		fill(0);
-		text("Viewfinder", viewfinderButton.x + 10, viewfinderButton.y+viewfinderButton.height/2);
+		text("Viewfinder", viewfinderButton.x + 10, viewfinderButton.y + (3*viewfinderButton.height/4));
 
 		//portfolio button
 		fill(200);
+		if (activeScreen.equals(portfolioScreen)) { //darker button to show selection
+			fill(150);
+		}
 		rect(portfolioButton.x, portfolioButton.y, portfolioButton.width, portfolioButton.height);
 
 		//portfolio text
 		fill(0);
-		text("Portfolio", portfolioButton.x + 10, portfolioButton.y+portfolioButton.height/2);
+		text("Portfolio", portfolioButton.x + 10, portfolioButton.y + (3*viewfinderButton.height/4));
 
 		//glossary button
 		fill(200);
+		if (activeScreen.equals(glossaryScreen)) { //darker button to show selection
+			fill(150);
+		}
 		rect(glossaryButton.x, glossaryButton.y, glossaryButton.width, glossaryButton.height);
 
 		//glossary text
 		fill(0);
-		text("Glossary", glossaryButton.x + 10, glossaryButton.y+glossaryButton.height/2);
+		text("Glossary", glossaryButton.x + 10, glossaryButton.y + (3*viewfinderButton.height/4));
 
 		popMatrix();
 	}
