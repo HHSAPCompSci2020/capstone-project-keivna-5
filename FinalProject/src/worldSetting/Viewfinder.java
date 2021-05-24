@@ -142,17 +142,6 @@ public class Viewfinder {
 		marker.rect(marker.width - viewfinderIndent, 0,viewfinderIndent, marker.height); //right
 		marker.rect(0, marker.height - viewfinderIndent, marker.width, viewfinderIndent); //bottom
 
-//		//toggle
-//		marker.fill(225, 120, 120);
-//		marker.rect(toggle.x - 5, toggle.y - 5, toggle.width, toggle.height, toggleRadius);
-//
-//		//toggle text
-//		marker.fill(0);
-//		marker.textSize(12);
-//		String str = "Switch to Portfolio";
-//		float w = marker.textWidth(str);
-//		marker.text(str, toggle.x+toggle.width/2-w/2 - 5, toggle.y+toggle.height/2);
-
 		//shutter 
 		marker.fill(120);
 		marker.rect(shutterButton.x, shutterButton.y, shutterButton.width, shutterButton.height);
@@ -203,7 +192,6 @@ public class Viewfinder {
 		//Shutter speed down triangle
 		marker.triangle(shutterSpeedDown.x, shutterSpeedDown.y, shutterSpeedDown.x + shutterSpeedDown.width, shutterSpeedDown.y, shutterSpeedDown.x + (shutterSpeedDown.width/2), shutterSpeedDown.y + shutterSpeedDown.height);
 
-
 		//lighting text
 		marker.text("light", lightSourceUp.x - (lightSourceUp.width/4), lightSourceUp.y - lightSourceUp.height);
 		marker.text("source", lightSourceUp.x - (lightSourceUp.width/4), lightSourceUp.y - (lightSourceUp.height/2));		
@@ -251,9 +239,6 @@ public class Viewfinder {
 	 */
 	public void mousePressed(DrawingSurface marker) {		
 		Point p = new Point(marker.mouseX,marker.mouseY);
-//		if (toggle.contains(p)) {
-//			marker.switchScreen(1);
-//		} 
 
 		if (shutterButton.contains(p)) {
 			shutter.screenshot(marker);
@@ -267,9 +252,7 @@ public class Viewfinder {
 			//represents the number of screenshots
 			for (int i = 0; i < getNumPhotosPerLongExpo(); i++) {
 				drawABunchOfTimes(marker); //draw in between screenshots to get long exposure effect
-
 				SoundPlayer.playShutterSound();
-
 				shutter.longExposureScreenshot(marker, outerArrIndex, i);
 			}
 		}
@@ -363,10 +346,10 @@ public class Viewfinder {
 	public double getLightSourceX() {
 		return lightSourceX;
 	}
-
-	public double getLightSourceZ() {
-		return lightSourceZ;
-	}
+//
+//	public double getLightSourceZ() {
+//		return lightSourceZ;
+//	}
 
 	public BackgroundColor getBackgroundEnum() {
 		return backgroundColor;

@@ -1,10 +1,5 @@
 package drawingPackage;
 
-import java.awt.Point;
-
-import java.awt.Rectangle;
-
-import portfolio.Portfolio;
 import processing.core.PApplet;
 
 /**
@@ -36,12 +31,9 @@ public class GlossaryScreen extends Screen {
 		marker.fill(0);
 		int textSize = 12;
 		marker.textSize(textSize);
-		int numLines = 5;
 		
 		//ISO text
-//		marker.text("ISO: ", (int)(screenWidth/20), (int)(screenHeight/10));
 		marker.text("ISO: ", (int)(screenWidth/20), textSize*5);
-
 		String ISOabout = "- brighten or darken photos\n"
 				+ "- high ISO results in high noise (grain)\n"
 				+ "- always try to use the lowest setting possible (native ISO, usually around 100 or 200) \n"
@@ -63,7 +55,6 @@ public class GlossaryScreen extends Screen {
 		
 		//light source text
 		marker.text("Light Source: use the arrows to change the position of the \"sun\"", (int)(screenWidth/20), textSize*35);
-
 		
 		marker.popStyle();			
 	}

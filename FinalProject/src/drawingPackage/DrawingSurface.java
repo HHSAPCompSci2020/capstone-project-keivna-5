@@ -18,7 +18,6 @@ public class DrawingSurface extends PApplet{
 	private WorldScreen worldScreen;
 	private PortfolioScreen portfolioScreen;
 	private GlossaryScreen glossaryScreen;
-//	private ArrayList<Screen> screens;
 	private Rectangle viewfinderButton, portfolioButton, glossaryButton;
 
 	private final int buttonWidth = 100, buttonHeight = 30;
@@ -30,21 +29,11 @@ public class DrawingSurface extends PApplet{
 	 * when opening should be, in this case being the worldScreen
 	 */
 	public DrawingSurface() {
-//		screens = new ArrayList<Screen>();
-
-		worldScreen = new WorldScreen(this); //0
-//		screens.add(worldScreen);
-
-		portfolioScreen = new PortfolioScreen(); //1
-//		screens.add(portfolioScreen);
-
-		glossaryScreen = new GlossaryScreen(); //2
-//		screens.add(glossaryScreen);
-
-//		activeScreen = screens.get(0); //set activeScreen to world screen
+		worldScreen = new WorldScreen(this);
+		portfolioScreen = new PortfolioScreen();
+		glossaryScreen = new GlossaryScreen();
+		
 		activeScreen = worldScreen; //set activeScreen to world screen
-
-		//TODO: CHANGE THIS BACK TO WORLD SCREEN! ^
 		
 		//initialize buttons
 		viewfinderButton = new Rectangle (0, 0, buttonWidth, buttonHeight);
@@ -69,8 +58,6 @@ public class DrawingSurface extends PApplet{
 		worldScreen.setup();
 		portfolioScreen.setup();
 		glossaryScreen.setup();
-//		for (Screen s : screens)
-//			s.setup();
 
 		if(activeScreen instanceof WorldScreen)
 			((WorldScreen) activeScreen).setCameraAtStart(this);
@@ -155,20 +142,4 @@ public class DrawingSurface extends PApplet{
 		}
 		activeScreen.mousePressed(this);
 	}
-
-//	/**
-//	 * Switches the active screen to what is passed in
-//	 * @param i The index of the screen
-//	 */
-//	public void switchScreen(int i) {
-//		activeScreen = screens.get(i);
-//	}
-
-//	/**
-//	 * Calls the activeScreen's mouseWheel()
-//	 * @param event The mouse action that was done
-//	 */
-//	public void mouseWheel(MouseEvent event) {
-//		activeScreen.mouseWheel(event);
-//	}
 }

@@ -73,9 +73,6 @@ public class Portfolio {
 		marker.background(255);
 		marker.text("Long Exposure Shots: ", 20, 75);
 
-//		double tint = 255.0/((double)Viewfinder.getNumPhotosPerLongExpo());
-//		marker.tint(255, (int)tint); //opacity for layering for long expo
-
 		int longExpoYMultiple = 0;
 		
 		int photosPerRow = 2;

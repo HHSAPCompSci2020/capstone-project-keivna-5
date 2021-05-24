@@ -1,6 +1,5 @@
 package drawingPackage;
 
-import java.awt.event.MouseEvent;
 
 import processing.core.PApplet;
 
@@ -42,22 +41,7 @@ public abstract class Screen {
 	 * @pre surface can't be null
 	 */
 	public void mousePressed(DrawingSurface surface) {}
-	
-	/**
-	 * Sees what to do if the mouse is moved
-	 */
-	public void mouseMoved() {}
-	
-	/**
-	 * Sees what to do if the mouse is dragged
-	 */
-	public void mouseDragged() {}
-	
-	/**
-	 * Sees what to do if the mouse is released
-	 */
-	public void mouseReleased() {}
-	
+
 	/**
 	 * Sees what to do if the key is pressed
 	 * @param marker The shared PApplet
@@ -71,11 +55,4 @@ public abstract class Screen {
 	 * @pre marker can't be null
 	 */
 	public void keyReleased(PApplet marker) {}
-
-	/**
-	 * Sees what to do if the mouse wheel does something
-	 * @param event The movement that happened to the mouseWheel
-	 * @pre event can't be null
-	 */
-	public void mouseWheel(MouseEvent event) {}
 }
