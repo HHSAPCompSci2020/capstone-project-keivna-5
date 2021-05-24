@@ -1,6 +1,7 @@
-	package portfolio;
+package portfolio;
 
 import java.awt.Point;
+
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
