@@ -1,7 +1,7 @@
 package worldSetting;
 
 import java.awt.AWTException;
-
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.util.ArrayList;

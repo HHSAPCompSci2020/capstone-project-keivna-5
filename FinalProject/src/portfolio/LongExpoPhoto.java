@@ -8,7 +8,6 @@ public class LongExpoPhoto {
 	private int shutterSpeed;
 	private ArrayList<PImage> photos;
 	
-	
 	public LongExpoPhoto(int shutterSpeed) {
 		this.shutterSpeed = shutterSpeed;
 		photos = new ArrayList<PImage>();

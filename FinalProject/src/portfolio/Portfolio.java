@@ -71,7 +71,7 @@ public class Portfolio {
 		longExposureImages = viewfinder.getAllLongExpoImages();
 		
 		marker.background(255);
-		marker.text("Click on a photo to expand it!", 20, 55);
+		marker.text("Click on a photo to expand it!  (will take more time for larger shutter speeds)", 20, 55);
 		
 		int currY = 75;
 
@@ -145,17 +145,30 @@ public class Portfolio {
 	
 	private void drawSingleLongExpo(PApplet marker, int index, int x, int y, int width, int height) {
 		//60 photos needs 10, divide by 6
-//		double tint = 255.0/((double)Viewfinder.getNumPhotosPerLongExpo()) + (Viewfinder.getNumPhotosPerLongExpo()/2);
 		LongExpoPhoto longExpo = longExposureImages.get(index);
 		
-		double tint = 255.0/((double)longExpo.numPhotos());
+		double numPhotos = longExpo.numPhotos();
+		double tintExtra = 20;
+
+		if (longExpo.getShutterSpeed() == 5) {
+			tintExtra = 18;
+		} else if (longExpo.getShutterSpeed() == 10) {
+			tintExtra = 15;
+		} else if (longExpo.getShutterSpeed() == 20) {
+			tintExtra = 10;
+		} else if (longExpo.getShutterSpeed() == 60) {
+			tintExtra = 0;
+		}
+		
+		double tint = (255.0/numPhotos) + tintExtra;
 
 		marker.tint(255, (int)tint); //opacity for layering for long expo
+		
 		for (int b = 0; b < longExpo.numPhotos(); b++) { //goes thru each pimage in the arrayList<pimage>
+			
 			PImage longExpoImg = longExpo.getPhoto(b);
 			longExpoImg = marker.loadImage(index + "." + b + ".png");
 			longExpoImg.copy(viewfinderIndent, viewfinderIndent, marker.width-(2*viewfinderIndent), marker.height-(2*viewfinderIndent), 0, 0,  marker.width, marker.height); //crop image
-			longExpoImg.filter(marker.ERODE);
 			marker.image(longExpoImg, x, y, width, height);
 		}
 		marker.tint(255);
@@ -192,5 +205,4 @@ public class Portfolio {
 			hasClickedOnImage = false;
 		}
 	}
-	
 }
