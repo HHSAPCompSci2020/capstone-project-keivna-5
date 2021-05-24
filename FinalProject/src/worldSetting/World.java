@@ -40,7 +40,7 @@ public class World {
 	public World(PApplet marker) {
 		numCars = 4;
 		sky = new int[] {185, 230, 255};
-//		backWater = new Water(350, 330, 50, 100000);
+		backWater = new Water(350, 330, 50, 100000);
 //		water = new MovingWater(1350, 350, 50, 500);
 		bridge = new Bridge(350, -500, 50, 200, 5);
 		mountain1 = new Mountain(-450, 0, 150, 900);
