@@ -21,28 +21,24 @@ public class Viewfinder {
 
 	private Rectangle shutterButton, longExpoShutterButton;
 	private Shutter shutter;
-	private Rectangle ISOup, ISOdown, shutterSpeedUp, shutterSpeedDown, lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight;
-	private Rectangle[] backgroundSquares;
-	private PImage[] backgroundImages;
 	
 	private static ArrayList<LongExpoPhoto> longExposureImages;
 	private static ArrayList<PImage> images;
 
-
+	private Rectangle ISOup, ISOdown, shutterSpeedUp, shutterSpeedDown, lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight;
 	private final int[] ISOvalues = {100, 200, 400, 800, 1600, 3200, 6400};
 	private int ISOindex;
 
-	private BackgroundColor backgroundColor;
-
 	private final static int[] shutterSpeedValues = {3, 5, 10, 20};
-
 	private int shutterSpeedIndex;
-
-//	private static final double longExpoSpeedFactor = 30;
-	private static final double longExpoSpeedFactor = 4;
-
+	
 	private double lightSourceX, lightSourceY; //from 0-1, to be multiplied by marker.width or height in world draw
 
+	private BackgroundColor backgroundColor;
+	private Rectangle[] backgroundSquares;
+	private PImage[] backgroundImages;
+
+	private static final double longExpoSpeedFactor = 4;
 	private static final float viewfinderIndent = 60;
 
 	/**
@@ -52,7 +48,7 @@ public class Viewfinder {
 		shutterButton = new Rectangle(620, 30, 120, 30);
 		longExpoShutterButton = new Rectangle(420, 30, 120, 30);
 
-		shutter = new Shutter(marker);	
+		shutter = new Shutter();	
 		ISOup = new Rectangle (screenWidth - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*1, 30, 30);
 		ISOdown = new Rectangle (screenWidth - (int)(3*viewfinderIndent/4), (int)viewfinderIndent*2 + 15, 30, 30);
 
@@ -235,7 +231,6 @@ public class Viewfinder {
 			
 			int outerArrIndex = longExposureImages.size(); //for shutter to see if it needs to make a new long expo arraylist or not
 			//represents the number of screenshots
-//			for (int i = 0; i < getNumPhotosPerLongExpo(); i++) {
 			for (int i = 0; i < (shutterSpeedValues[shutterSpeedIndex] * longExpoSpeedFactor); i++) {
 				SoundPlayer.playShutterSound();
 
@@ -313,22 +308,6 @@ public class Viewfinder {
 			}
 		}
 	}
-
-//	//get 3d world to redraw in between calls to screenshot to get long exposure effect
-//	//draws 60x which is equal to 1 second in between draws
-//	private void drawABunchOfTimes(DrawingSurface marker) {
-////		for (int i = 0; i < 60.0/(longExpoSpeedFactor*5.0); i ++) {
-//			marker.draw();
-////		}
-//	}
-
-//	/**
-//	 * @return the number of photos in each long exposure shot
-//	 */
-//	public static int getNumPhotosPerLongExpo() {
-////		return (int) (3*longExpoSpeedFactor);
-//		return (int) (shutterSpeedValues[shutterSpeedIndex]*longExpoSpeedFactor);
-//	}
 
 	/**
 	 * @return current ISO value
