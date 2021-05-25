@@ -69,13 +69,20 @@ public class Portfolio {
 	
 	private void drawPortfolioGrid(PApplet marker, Viewfinder viewfinder) {
 //		marker.background(255);
-		marker.text("Loading...", marker.width/2, marker.height/2);
+//		marker.fill(0);
+//		marker.text("Loading...", marker.width/2, marker.height/2);
 		
 		imageRects = new ArrayList<Rectangle>();
 		longExpoImageRects = new ArrayList<Rectangle>();
 
 		images = viewfinder.getAllSingleShotPhotos();
 		longExposureImages = viewfinder.getAllLongExpoImages();
+		
+		if (longExposureImages.size() > 0 && longExposureImages.get(0).getPhoto(0).width == 0 ) {
+			marker.background(255);
+			marker.fill(0);
+			marker.text("Loading...", marker.width/2, marker.height/2);
+		}
 		
 		marker.background(255);
 		marker.text("Click on a photo to expand it!  (will take more time for larger shutter speeds)", 20, 55);
