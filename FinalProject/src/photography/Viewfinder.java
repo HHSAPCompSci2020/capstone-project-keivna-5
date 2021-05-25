@@ -83,7 +83,7 @@ public class Viewfinder {
 	}
 
 	/**
-	 * Draws the 2D border ViewFinder surrounding the world
+	 * Draws the 2D border ViewFinder surrounding the world as well as all buttons that make it up
 	 * @param PApplet marker
 	 * @pre marker can't be null
 	 * @post the PApplet marker will change
@@ -214,7 +214,7 @@ public class Viewfinder {
 	}
 
 	/**
-	 * Checks for user interactions for toggling between screens and capturing a photo
+	 * Checks for user interactions for capturing single shot, long exposure, and changing camera settings
 	 * @param marker
 	 * @pre DrawingSurface marker is not null
 	 */
@@ -338,10 +338,16 @@ public class Viewfinder {
 		return backgroundColor;
 	}
 	
+	/**
+	 * @return an array list of all single shot images that have been taken
+	 */
 	public ArrayList<PImage> getAllSingleShotPhotos(){
 		return images;
 	}
 	
+	/**
+	 * @return an array list of all the long expoure images that have been taken
+	 */
 	public ArrayList<LongExpoPhoto> getAllLongExpoImages(){
 		return longExposureImages;
 	}
