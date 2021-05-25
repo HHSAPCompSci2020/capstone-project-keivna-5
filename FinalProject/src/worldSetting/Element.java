@@ -130,7 +130,7 @@ public class Element {
 	
 	/**
 	 * Moves y-coordinate of the Element
-	 * @param add Move y by this amount
+	 * @param newY add Move y by this amount
 	 */
 	public void moveY(float newY) { y = newY; } 
 

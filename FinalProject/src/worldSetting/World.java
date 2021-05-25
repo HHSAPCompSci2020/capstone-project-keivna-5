@@ -68,6 +68,10 @@ public class World {
 	 * Displays water and bridge and paints the sky
 	 * Starts playing ocean sounds
 	 * @param g can't be null
+	 * @param ISOval
+	 * @param lightSourceY
+	 * @param lightSourceX
+	 * @param backgroundColor
 	 */
 	public void draw(PApplet g, double ISOval, double lightSourceY, double lightSourceX, BackgroundColor backgroundColor) {
 		if (setSky(g, backgroundColor)) {
@@ -106,7 +110,11 @@ public class World {
 
 	/**
 	 * Sets the color of the sky
-	 * @param color array of rgb colors
+	 * @param g
+	 * @param newBackground of what should be displayed
+	 * @pre g is not null
+	 * @post g may be changed
+	 * @return boolean, true if the background is a color versus an image
 	 */
 	public boolean setSky(PApplet g, BackgroundColor newBackground) {
 		boolean isColor = false;
@@ -147,7 +155,6 @@ public class World {
 	/**
 	 * represents the type of background images
 	 * @author Elise and Katia
-	 *
 	 */
 	public enum BackgroundColor{
 		CLEAR_DAY,

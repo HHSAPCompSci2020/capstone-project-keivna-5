@@ -37,7 +37,7 @@ public class LongExpoPhoto {
 	}
 	
 	/**
-	 * @return ArrayList<PImage> of all photos that make up the single long exposure photo
+	 * @return an arraylist of pimages of photos that make up the single long exposure photo
 	 */
 	public ArrayList<PImage> getAllPhotos(){
 		return photos;

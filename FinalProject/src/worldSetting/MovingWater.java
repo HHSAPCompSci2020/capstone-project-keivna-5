@@ -23,10 +23,10 @@ public class MovingWater extends Element{
 
 	/**
 	 * initializes all values for moving water
-	 * @param xPos
-	 * @param yPos
-	 * @param zPos
-	 * @param size
+	 * @param xPos of water
+	 * @param yPos of water
+	 * @param zPos of water
+	 * @param size of water
 	 */
 	public MovingWater (float xPos, float yPos, float zPos, float size) {
 		super(xPos, yPos, zPos, size);

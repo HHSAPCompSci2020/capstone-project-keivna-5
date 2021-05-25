@@ -84,7 +84,7 @@ public class Viewfinder {
 
 	/**
 	 * Draws the 2D border ViewFinder surrounding the world as well as all buttons that make it up
-	 * @param PApplet marker
+	 * @param marker
 	 * @pre marker can't be null
 	 * @post the PApplet marker will change
 	 */
