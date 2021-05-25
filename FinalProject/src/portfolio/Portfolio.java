@@ -8,14 +8,9 @@ import java.util.ArrayList;
 
 import drawingPackage.DrawingSurface;
 import photography.LongExpoPhoto;
-import photography.Shutter;
 import photography.Viewfinder;
-import processing.core.PApplet;
-import processing.core.PGraphics;
-import processing.core.PImage;
-import processing.core.PVector;
-import worldSetting.Shutter;
-import worldSetting.Viewfinder;
+import processing.core.*;
+
 
 /**
  * Represents the portfolio itself
