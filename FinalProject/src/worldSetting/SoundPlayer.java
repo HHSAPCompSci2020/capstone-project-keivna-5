@@ -12,20 +12,20 @@ public class SoundPlayer{
 	 * Plays a shutter click sound
 	 */
 	public static void playShutterSound() {
-//		String[] soundEffects = new String[]{"shutter-click.mp3"};
-//		JayLayer soundTest = new JayLayer("media/","media/",false);
-//		soundTest.addSoundEffects(soundEffects);
-//		soundTest.playSoundEffect(0);
+		String[] soundEffects = new String[]{"shutter-click.mp3"};
+		JayLayer soundTest = new JayLayer("media/","media/",false);
+		soundTest.addSoundEffects(soundEffects);
+		soundTest.playSoundEffect(0);
 	}
 
 	/**
 	 * Plays a background sea sound with waves crashing
 	 */
 	public static void playSeaSound() {
-//		String[] soundEffects = new String[]{"sea-sound.mp3"};
-//		JayLayer soundTest = new JayLayer("media/","media/",false);
-//		soundTest.addSoundEffects(soundEffects); //length is 4:19
-//		soundTest.playSoundEffect(0);
+		String[] soundEffects = new String[]{"sea-sound.mp3"};
+		JayLayer soundTest = new JayLayer("media/","media/",false);
+		soundTest.addSoundEffects(soundEffects); //length is 4:19
+		soundTest.playSoundEffect(0);
 	}
 	
 	/**
