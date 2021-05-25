@@ -1,6 +1,8 @@
 package drawingPackage;
 
 
+import java.awt.event.MouseEvent;
+
 import photography.Viewfinder;
 import processing.core.PApplet;
 
@@ -54,6 +56,13 @@ public abstract class Screen {
 	 * @pre surface can't be null
 	 */
 	public void mousePressed(DrawingSurface surface) {}
+	
+	/**
+	 * calls portfolio's mouse wheel for scrolling
+	 * @pre DrawingSurface marker cannot be null
+	 */
+	public void mouseWheel(MouseEvent event) {
+	}
 
 	/**
 	 * Sees what to do if the key is pressed
