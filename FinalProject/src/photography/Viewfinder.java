@@ -26,7 +26,11 @@ public class Viewfinder {
 	private static ArrayList<LongExpoPhoto> longExposureImages;
 	private static ArrayList<PImage> images;
 
-	private Rectangle ISOup, ISOdown, shutterSpeedUp, shutterSpeedDown, lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight;
+	private Rectangle ISOup, ISOdown, 
+		shutterSpeedUp, shutterSpeedDown, 
+		lightSourceUp, lightSourceDown, lightSourceLeft, lightSourceRight, 
+		testMovingWater;
+	
 	private final int[] ISOvalues = {100, 200, 400, 800, 1600, 3200, 6400};
 	private int ISOindex;
 
@@ -62,6 +66,8 @@ public class Viewfinder {
 		lightSourceLeft = new Rectangle (screenWidth - (int)(3*viewfinderIndent/4), (int)(viewfinderIndent*8.5), 30, 30);
 		lightSourceRight = new Rectangle (screenWidth - (int)(viewfinderIndent/4) - 10, (int)(viewfinderIndent*8.5), 30, 30);
 
+		testMovingWater = new Rectangle (screenWidth - (int)(2 * viewfinderIndent) - 10, (int)(viewfinderIndent*9.25), 110, 30);
+		
 		images = new ArrayList<PImage>();
 		longExposureImages = new ArrayList<LongExpoPhoto>();
 
@@ -193,6 +199,12 @@ public class Viewfinder {
 		//light source right triangle
 		marker.triangle(lightSourceRight.x, lightSourceRight.y, lightSourceRight.x, lightSourceRight.y + lightSourceRight.height, lightSourceRight.x + (3*lightSourceRight.width/4), lightSourceRight.y + (lightSourceRight.height/2));
 
+		//testing moving water button
+//		marker.fill(120);
+//		marker.rect(testMovingWater.x, testMovingWater.y, testMovingWater.width, testMovingWater.height);
+//		marker.fill(0);
+//		marker.text("Moving Water", testMovingWater.x + 5, testMovingWater.y + 20);
+		
 		//squares to change background		
 		for (int i = 0; i < backgroundSquares.length; i++) {
 			PImage backgroundImg = backgroundImages[i];
@@ -303,6 +315,11 @@ public class Viewfinder {
 				lightSourceX = 0;
 			}
 		}
+		
+//		else if (testMovingWater.contains(p)) {
+//			
+//		}
+		
 		for (int i = 0; i < backgroundSquares.length; i++) {
 			if (backgroundSquares[i].contains(p)) {
 				backgroundColor = BackgroundColor.values()[i];

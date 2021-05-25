@@ -14,8 +14,8 @@ public class World {
 
 	private int[] sky;
 	
-	private Water backWater;
-	private MovingWater water;
+	private Water stillWater;
+	private MovingWater movingWater;
 	
 	private Bridge bridge;
 	
@@ -44,8 +44,8 @@ public class World {
 	public World(PApplet marker) {
 		sky = new int[] {185, 230, 255};
 		
-		backWater = new Water(350, 330, 50, 100000);
-//		water = new MovingWater(1350, 350, 50, 500);
+		stillWater = new Water(350, 330, 50, 100000);
+//		movingWater = new MovingWater(1350, 350, 50, 500);
 		
 		bridge = new Bridge(350, -500, 50, 200, 5);
 		
@@ -98,8 +98,8 @@ public class World {
 
 		g.directionalLight(128, 128, 128, (float) pointLightX, (float) pointLightY, 400);
 
-		backWater.display(g);
-//		water.display(g);
+		stillWater.display(g);
+//		movingWater.display(g);
 		bridge.display(g);
 		mountain1.display(g);
 		mountain2.display(g);
