@@ -1,18 +1,17 @@
 ﻿Keivna
 Authors: Katia Bravo and Elise Vambenepe
-Revision: 5/14/2021
+Revision: 5/24/2021
 
 
 Introduction: 
-[In a few paragraphs totaling about ½ page, introduce the high-level concept of your program. What this looks like depends a lot on what type of thing you are making. An introduction for an application will look different than one for a game. In general, your introduction should address questions like these:
 
 
 What does your program do?
-* The user navigates a 3D life-like world to find the perfect photography shot. For now, the user gets to explore the Golden Gate Bridge from any angle and take photos they could never do in person. The program opens up a 3D world boarded by a viewfinder, as if the user was looking directly into the camera. As they navigate this 3D world with their mouse and keyboard through the viewfinder, once they find the perfect location, they can take a photo with the shutter button displayed on the viewfinder. In later versions, they can advance their photography skills by changing aperture, ISO, shutter speed, and taking long-exposure photos. The physical 3D environment itself can be changed by adding cars and pedestrians, changing the time of day, sky and mountains, and adding nature elements to the overall setting in predefined locations. Future versions will have a continuous mode where cars and pedestrians will continuously pass by and the sun will set to create a sunset. Overall, the user will be able to escape the real world and practice getting that perfect shot all from the comfort of their home.
+* The user navigates a 3D life-like world to find the perfect photography shot. The user gets to explore the Golden Gate Bridge from any angle and take photos they could never do in person. The program opens up a 3D world boarded by a viewfinder, as if the user was looking directly into the camera. Once the user finds the perfect location by navigating through the 3D world, they can take a photo with the shutter button displayed on the viewfinder. They can advance their photography skills by changing ISO, shutter speed (for long-exposure photos), and the direction of the light source. The physical 3D environment will be in a continuous mode where cars will continuously pass by on the bridge, and various backgrounds can be selected. All shots will be visible in the portfolio and a glossary window is available to learn how to use various features. Overall, the user will be able to escape the real world and practice getting that perfect shot all from the comfort of their home.
 
 
 What problem does it solve? Why did you write it?
-* The purpose of this application is to create a place where people can explore and practice their photography skills without having to go anywhere. It offers a free alternative to buying nice equipment as the 3D world focuses on learning and developing photography skills that can be later implemented in real life. This also includes teaching people about different photography techniques as well as helping people create their own virtual portfolios of the photos they took. 
+* The purpose of this application is to create a place where people can explore and practice their photography skills without having to go anywhere. It offers a free alternative to buying expensive equipment as the 3D world focuses on learning and developing photography skills that can be later implemented in real life. This also includes teaching people about different photography techniques as well as helping people create their own virtual portfolios of the photos they took. 
 
 
 What is the story?
@@ -20,7 +19,7 @@ What is the story?
 
 
 What are the rules? What is the goal?
-* There are no rules to the application, as it is an open environment to practice photography. The goal is to be able get a good grasp of using the different camera features and photography concepts, navigating the environment using the world tab. Once a user is comfortable with the different features, they will be able to build up their portfolio, viewing them in the portfolio tab. 
+* There are no rules to the application, as it is an open environment to practice photography. The goal is to get a good grasp of using the different camera features and photography concepts, navigating the environment using the world tab. Once a user is comfortable with the different features, they will be able to build up their portfolio, viewing them in the portfolio tab. 
 
 
 Who would want to use your program?
@@ -28,28 +27,31 @@ Who would want to use your program?
 
 
 What are the primary features of your program?
-* The primary features are moving around the environment, adjusting different camera features, and taking photos that can be viewed in a portfolio. To move around the environment, the user would be positioned in front of the viewfinder and use the control keys to go to different locations in the environment. This method will be similar to the Google Maps Street View application.To adjust the camera features, like zoom, ISO, exposure, timer etc., users would use the buttons on the edges of the frame. Finally, the photos that the user takes would be viewable through the portfolio tab. 
+* The primary features are moving around the environment, adjusting different camera features, and taking photos that can be viewed in a portfolio. To move around the environment, the user would be positioned in front of the viewfinder and use the control keys to go to different locations in the environment. This method will be similar to the Google Maps Street View application.To adjust the camera features, like zoom, ISO, shutter speed etc., users would use the buttons on the edges of the frame. Finally, the photos that the user takes would be viewable through the portfolio tab, and a glossary tab will be available to explain all features.
 
 
 Instructions:
 Which keyboard keys will do what? 
 * WASD keys to navigate the x and y axis in the 3D world
-* Up/down arrow keys for the z-axis
-* Use the mouse to click the shutter and toggle button
+* Q/E keys to navigate the z axis in the 3D world
+* up/down/left/right arrow keys to pan the view in the vertical and horizontal direction
 
 
 Where will you need to click? 
-* To capture a photo, there will be a shutter on the top right hand corner of the viewfinder the user must click to take a photo. The zoom can be changed with a dial on the right hand side of the viewfinder as well.
+* All buttons will be displayed on the viewfinder.
+* Use the mouse to click the shutter, change tabs, take a long exposure photo, change the ISO, shutter speed, light source, and background.
+* Click photos in the portfolio to expand it
 
 
 Will you have menus that need to be navigated? What will they look like? 
-* There will be two main viewing options that will take the form of a single toggle, switches between Viewfinder World and Portfolio
-* Viewfinder World: Toggle to get access to the camera, move around in the environment, and take photos that will be saved in the portfolio
-* Portfolio: Toggle to view all photos captured in a grid list view.
+* There will be three main viewing options that will take the form of a three tabs: Viewfinder World, Portfolio, and Glossary
+* Viewfinder World: Main feature, move around in the 3D environment, change camera settings, and take photos that will be saved in the portfolio
+* Portfolio: View all photos captured in a grid list view. Photos can be clicked on to expand them, and you can go back to the grid by clicking a back button
+* Glossary: describes various camera features
 
 
 Do actions need to be taken in a certain order?
-* The user must position the viewfinder or camera to the desired location before hitting the shutter button to take their photo. They position themselves in the 3D world (specific x/y/z location) with the keyboard keys. 
+* The user must position the viewfinder or camera to the desired location before hitting the shutter button to take their photo. They position themselves in the 3D world (specific x/y/z location) with the keyboard keys. All setting changes (ISO, shutter speed, light source) must be done before capturing a photo (long exposure or a simple shot).
 
 
 
@@ -59,7 +61,7 @@ Must-have Features:
 [These are features that we agree you will definitely have by the project due date. A good final project would have all of these completed. At least 5 are required. Each feature should be fully described (at least a few full sentences for each)]
 * Environment:
    * The environment will be a 3D environment based on the Golden Gate Bridge, similar to the images depicted below.
-   *        * This 3D environment will include a red bridge with suspension lines, a simple water base that is basically a blue rectangle, and a light blue sky background.
+   * This 3D environment will include a red bridge with suspension lines, a simple water base that is basically a blue rectangle, and a light blue sky background.
 
 
    * 3D World Navigation: 
@@ -70,17 +72,17 @@ Must-have Features:
    * Capture a Photo: 
    * The 3D world is bordered by a viewfinder that includes a shutter button to take a photo and a dial for an extra zoom in/out.
    * The photo will then be saved in the user’s portfolio, along with the rest of the photos, with details like the title, time taken and what camera concepts were used in taking the photo.
-   * A sample bridge placement looks like the following[a][b][c][d]:
+   * A sample bridge placement looks like the following:
    *   
 
-      * Sound Effects:
-      * There will be a constant background sound effect of city cars and waves crashing.
-      * A shutter sound will also take place whenever a photo is taken.
+   * Sound Effects:
+   * There will be a constant background sound effect of city cars and waves crashing.
+   * A shutter sound will also take place whenever a photo is taken.
 
 
-      * Portfolio: A separate 2D tab will be available in the window.
-      * This portfolio contains all the images the user has taken (even when the window has been closed and reopened)
-      * They will be displayed in a grid-like series of images
+   * Portfolio: A separate 2D tab will be available in the window.
+   * This portfolio contains all the images the user has taken (even when the window has been closed and reopened)
+   * They will be displayed in a grid-like series of images
 
 
 Want-to-have Features:
@@ -123,7 +125,9 @@ Stretch Features:
       * For example as time passes: the sky gets darker, the sun sets, cars pass on the bridge, clouds shift, birds fly, and people walk and bike on the side of the bridge.
 
 
-      * Expanded camera settings: The Manual Mode I version will be expanded to add a long exposure and portrait option to the camera’s settings.
+      * Expanded camera settings: Add the following to Manual Mode:l
+      * Long exposure
+      * Portrait
 
 
       * Videography: The user can take a video or video capture through the camera viewfinder.
@@ -146,25 +150,39 @@ UML link
 
       * DrawingPackage:
       * Main: implements a drawingSurface
-      * DrawingSurface: switches between both tabs
+      * DrawingSurface: draws the “active” screen and tabs
+      * GlossaryScreen: draws the glossary
       * PortfolioScreen: draws all portfolio components
       * WorldScreen: draws all world components (3D and 2D aspects)
-      * abstract Screen: extended by PortfolioScreen and WorldScreen
+      * abstract Screen: extended by all 3 screens (WorldScreen, PortfolioScreen, GlossaryScreen)
       * WorldSetting package
       * World: drawings 3D aspect of WorldScreen
-      * Camera: the point of view of the person
+      * CameraNoMouse: the point of view of the person, reacts to key presses
+      * 3D elements:
       * Element: superclass for 3D objects (bridge, water)
       * Bridge: creates all parts of the bridge
       * Water: creates all parts of the water
-      * Viewfinder: displays border on world
+      * MovingWater: creates ripples in the water. Unused for now because it makes the program incredibly slow.
+      * Car: draws a series of cars constantly moving on the bridge
+      * Mountain: draws two mountains on either end of the bridge
+      * Viewfinder: displays border on world with all key interactions to change the setting and capture photos
       * SoundPlayer: plays sounds from SoundFiles
-      * Shutter: captures photo, adds to arraylist of images
+      * Shutter: captures a simple or long exposure photo, adds to arraylist of images
       * CodeWeMightNeed: some old code we don’t want to remove
       * Portfolio package
       * Portfolio: displays a grid of all the photos taken, uses photos in Shutter
-      * Audio folder:
+      * Media folder:
+      * Sounds:
       * sea-sound.mp3
       * shutter-click.mp3
+      * car-passing.mp3 //unused for now
+      * Backgrounds (800*600 version and cropped 30*30 version)
+      * sky-day-clear.png
+      * sky-day-cloudy.png
+      * sky-night-cloudy.png
+      * sky-night-stars.png
+      * sky-night-sunset.png
+      * sky-pure-black.png
 
 
 Credits:
@@ -174,42 +192,62 @@ Credits:
       * Setup (created classes and relationships, less actual coding): 
       * Main
       * DrawingSurface
+      * World
       * Screens
       * ScreenSwitcher
       * WorldScreen
       * PortfolioScreen
-      * World
       * Try getting controls working
       * UML diagram
       * ReadMe
       * Javadocs
-      * Elise only:
+  * Elise only:
       * Viewfinder
       * CameraNoMouse
       * Shutter
       * Portfolio
       * PortfolioScreen
-      * Ability to take images and save them
-      * All sound-related code
+      * Ability to take photos (single and long exposure)
+      * SoundPlayer
       * Shutter sound and background screen sound
       * UML diagram for beta build
-      * Katia only:
+      * GlossaryScreen
+      * Update all README for final build
+      * Drawing Surface tabs
+  * Katia only:
       * Bridge
       * Display
-      * Water, sky
+      * Water
+      * Sky
+      * Element
+      * Car
+      * Mountain
+      * Fix the overlapping of the 3D world into the 2D world
       * Javadocs for shared classes (for beta build)
-      * Give credit to all outside resources used. This includes downloaded images or sounds, external java libraries, parent/tutor/student coding help, etc.]
-      * Processing
-      * Mr. Shelby (for now: coming up with a general idea, processing library)
+      * Car Sound
+  * Give credit to all outside resources used. This includes downloaded images or sounds, external java libraries, parent/tutor/student coding help, etc.]
+      * Processing library
+      * Mr. Shelby
       * MazeRunner (Coding Demo by Homestead Programming Club)
       * Use that as a base for a 3D world
       * Using it for control
       * ScreenSwitcher (Coding Demo for having multiple screens)
-      * Link to shutter sound
-      * Link to sea background sound
       * JaysEasierSound
-[a]How does the user get here? Wouldn't this be impossible in real life?
-[b]that's the whole point of the online world
-[c]_Marked as resolved_
-[d]_Re-opened_
-I thought you were trying to replicate a real world situation with the camera so that the user can practice their photography skills and apply it in real life. You should specify that in the prompt if not
+      * Sounds:
+      * Shutter Sound
+      * https://www.soundjay.com/camera-sound-effect.html 
+      * Sea Background sound
+      * https://www.freesoundslibrary.com/sea-sound-effect/ 
+      * Car Passing sound
+      * https://www.soundjay.com/transportation/sounds/car-passing-1.mp3 
+      * Background images:
+      * Sky-day-clear.png
+      * https://unsplash.com/s/photos/ocean-horizon
+      * Sky-day-cloudy.png
+      * https://www.pexels.com/photo/landscape-photography-of-pampas-grass-1054221/ 
+      * Sky-night-cloudy.png
+      * https://www.pexels.com/photo/road-under-cloudy-sky-416920/ 
+      * Sky-night-stars.png
+      * https://www.pexels.com/photo/starry-sky-998641/ 
+      * Sky-night-sunset.png
+      * https://www.pexels.com/photo/landscape-photo-of-sunrise-997494/
