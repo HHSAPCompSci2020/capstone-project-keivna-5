@@ -18,7 +18,7 @@ public class DrawingSurface extends PApplet{
 	private WorldScreen worldScreen;
 	private PortfolioScreen portfolioScreen;
 	private GlossaryScreen glossaryScreen;
-	private LoadingScreen loadingScreen;
+//	private LoadingScreen loadingScreen;
 	private Rectangle viewfinderButton, portfolioButton, glossaryButton;
 	private final int buttonWidth = 100, buttonHeight = 30;
 
@@ -31,7 +31,7 @@ public class DrawingSurface extends PApplet{
 		worldScreen = new WorldScreen(this);
 		portfolioScreen = new PortfolioScreen();
 		glossaryScreen = new GlossaryScreen();
-		loadingScreen = new LoadingScreen();
+//		loadingScreen = new LoadingScreen();
 		
 		activeScreen = loadingScreen; //set activeScreen to world screen
 		
@@ -79,8 +79,7 @@ public class DrawingSurface extends PApplet{
 //			loadingScreen.draw(this);
 			activeScreen.draw(this);
 		} else {
-			loadingScreen.draw(this);
-
+//			loadingScreen.draw(this);
 			activeScreen.draw(this, worldScreen.getViewfinder());
 		}
 
