@@ -30,7 +30,7 @@ public class Viewfinder {
 	private final int[] ISOvalues = {100, 200, 400, 800, 1600, 3200, 6400};
 	private int ISOindex;
 
-	private final static int[] shutterSpeedValues = {3, 5, 10, 20, 60};
+	private final static int[] shutterSpeedValues = {3, 5, 10, 20};
 	private int shutterSpeedIndex;
 	
 	private double lightSourceX, lightSourceY; //from 0-1, to be multiplied by marker.width or height in world draw

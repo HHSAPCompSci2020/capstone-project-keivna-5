@@ -14,7 +14,7 @@ import processing.core.*;
 
 /**
  * Represents the portfolio itself
- * @author elise
+ * @author Elise
  */
 public class Portfolio {
 	
@@ -62,9 +62,7 @@ public class Portfolio {
 	 * @pre PApplet marker cannot be null
 	 * @post the PApplet parameter is changed
 	 */
-	public void draw(PApplet marker, Viewfinder viewfinder) {
-//		marker.background(255);
-//		marker.text("Loading...", marker.width/2, marker.height/2);
+	public void draw(PApplet marker, Viewfinder viewfinder) {		
 		textBox = marker.createGraphics(200, 400, marker.P2D);
 		if (!hasClickedOnImage) {
 			drawPortfolioGrid(marker, viewfinder);
@@ -74,21 +72,11 @@ public class Portfolio {
 	}
 	
 	private void drawPortfolioGrid(PApplet marker, Viewfinder viewfinder) {
-//		marker.background(255);
-//		marker.fill(0);
-//		marker.text("Loading...", marker.width/2, marker.height/2);
-		
 		imageRects = new ArrayList<Rectangle>();
 		longExpoImageRects = new ArrayList<Rectangle>();
 
 		images = viewfinder.getAllSingleShotPhotos();
 		longExposureImages = viewfinder.getAllLongExpoImages();
-		
-		if (longExposureImages.size() > 0 && longExposureImages.get(0).getPhoto(0).width == 0 ) {
-			marker.background(255);
-			marker.fill(0);
-			marker.text("Loading...", marker.width/2, marker.height/2);
-		}
 		
 		marker.background(255);
 		marker.text("Click on a photo to expand it!  (will take more time for larger shutter speeds)", 20, 55);
@@ -226,6 +214,10 @@ public class Portfolio {
 		}
 	}
 	
+	/**
+	 * responds to mouse wheel interactions
+	 * @param event
+	 */
 	public void mouseWheel(MouseEvent event)
 	{
 	  scroll -= event.getClickCount()*10;
