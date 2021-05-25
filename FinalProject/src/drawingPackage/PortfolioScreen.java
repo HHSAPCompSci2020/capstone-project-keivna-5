@@ -2,6 +2,8 @@ package drawingPackage;
 
 
 import photography.Viewfinder;
+import java.awt.event.MouseEvent;
+
 import portfolio.Portfolio;
 import processing.core.PApplet;
 
