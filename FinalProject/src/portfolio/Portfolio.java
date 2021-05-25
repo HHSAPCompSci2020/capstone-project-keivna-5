@@ -128,18 +128,6 @@ public class Portfolio {
 				imageRects.add(new Rectangle(x, currY, width, height));
 			}
 		}
-		
-//		textBox.background(0,0,0,0);  // Transparent background but you could have it coloured.
-//		textBox.stroke(0,0,0);
-//		textBox.fill(0,0,0,0);
-//		textBox.rect(0, 0, textBox.width-1, textBox.height-1);  // Black rectangle around the outside.
-//		textBox.textSize(24);
-//		textBox.fill(0);
-//		textBox.textAlign(marker.LEFT, marker.TOP);
-//		textBox.text("Hello this is a text box and it should have lots of lines hopefully if I keep writing for long enough.  Words words words words words.", 0, scroll, textBox.width, textBox.height);
-//		textBox.endDraw();
-//		 
-//		marker.image(textBox, textBoxPos.x, textBoxPos.y);
 	}
 	
 	private void drawSingleFullScreenImg(PApplet marker, int index, boolean isLongExpo) {
@@ -236,8 +224,6 @@ public class Portfolio {
 		marker.mouseEntered();
 		e = event.getClickCount();
 		System.out.println(e);
-//	  scroll -= event.getClickCount()*10;
-//	  System.out.println("scrolled: " + scroll);
 	}
 	
 }
