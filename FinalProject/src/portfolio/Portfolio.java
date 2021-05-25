@@ -3,6 +3,7 @@ package portfolio;
 import java.awt.Point;
 
 import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import drawingPackage.DrawingSurface;
@@ -10,7 +11,11 @@ import photography.LongExpoPhoto;
 import photography.Shutter;
 import photography.Viewfinder;
 import processing.core.PApplet;
+import processing.core.PGraphics;
 import processing.core.PImage;
+import processing.core.PVector;
+import worldSetting.Shutter;
+import worldSetting.Viewfinder;
 
 /**
  * Represents the portfolio itself
@@ -32,6 +37,10 @@ public class Portfolio {
 	
 	private final int viewfinderIndent = 60;
 	
+	
+	PGraphics textBox = new PGraphics();
+	PVector textBoxPos = new PVector(20,20);
+	float scroll = 0;
 	/**
 	 * initializes all fields in portfolio
 	 * @param width of screen
@@ -60,6 +69,7 @@ public class Portfolio {
 	public void draw(PApplet marker, Viewfinder viewfinder) {
 //		marker.background(255);
 //		marker.text("Loading...", marker.width/2, marker.height/2);
+		textBox = marker.createGraphics(200, 400, marker.P2D);
 		if (!hasClickedOnImage) {
 			drawPortfolioGrid(marker, viewfinder);
 		} else {
@@ -219,4 +229,11 @@ public class Portfolio {
 			hasClickedOnImage = false;
 		}
 	}
+	
+	public void mouseWheel(MouseEvent event)
+	{
+	  scroll -= event.getClickCount()*10;
+	  System.out.println("scrolled: " + scroll);
+	}
+	
 }

@@ -44,4 +44,12 @@ public class PortfolioScreen extends Screen {
 	public void mousePressed(DrawingSurface marker) {
 		portfolio.mousePressed(marker);
 	}
+	
+	/**
+	 * calls portfolio's mouse wheel for scrolling
+	 * @pre DrawingSurface marker cannot be null
+	 */
+	public void mouseWheel(MouseEvent event) {
+		portfolio.mouseWheel(event);
+	}
 }

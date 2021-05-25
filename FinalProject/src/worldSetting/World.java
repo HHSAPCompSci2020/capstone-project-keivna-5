@@ -53,7 +53,7 @@ public class World {
 		mountain2 = new Mountain(800, 0, 150, 900);
 		
 		cars = new ArrayList<Car>();
-		numCars = 8;
+		numCars = 7;
 		
 		for(int i = -numCars; i <= numCars; i++) {
 			// different sides of the road
