@@ -101,8 +101,6 @@ public class WorldScreen extends Screen {
 		} else if (checkKey(KeyEvent.VK_DOWN)) {
 			cameraNoMouse.setTilt(cameraNoMouse.getTilt() + marker.QUARTER_PI / 180 * keyMoveFactor);
 		}
-		
-		
 	}
 
 	/**

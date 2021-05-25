@@ -120,8 +120,19 @@ public class CameraNoMouse {
 
 	}
 	
+	/**
+	 * @return x position of camera
+	 */
 	public float getX() { return position.x; }
+	
+	/**
+	 * @return y position of camera
+	 */
 	public float getY() { return position.y; }
+	
+	/**
+	 * @return z position of camera
+	 */
 	public float getZ() { return position.z; }
 
 	/**
@@ -172,8 +183,14 @@ public class CameraNoMouse {
 	 */
 	public PVector getPosition() { return position; }
 	
+	/**
+	 * @param angle to set the tilt of the camera to
+	 */
 	public void setTilt(double angle) { tilt = (float) angle; }
 	
+	/**
+	 * @return tilt of the camera
+	 */
 	public float getTilt() { return tilt; }
 	
 	/**

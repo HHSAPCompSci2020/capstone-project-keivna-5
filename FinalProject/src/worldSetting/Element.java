@@ -58,7 +58,16 @@ public class Element {
 		g.popMatrix();
 	}
 	
-	//Written by https://vormplus.be/full-articles/drawing-a-cylinder-with-processing
+	/**
+	 * draws a simple cylinder
+	 * Written by https://vormplus.be/full-articles/drawing-a-cylinder-with-processing
+	 * @param g
+	 * @param sides
+	 * @param r
+	 * @param h
+	 * @pre PApplet is not null
+	 * @post PApplet may be modified
+	 */
 	public void drawCylinder(PApplet g, int sides, float r, float h){
 		float angle = 360 / sides;
 		float halfHeight = h / 2;
@@ -97,6 +106,9 @@ public class Element {
 	 */
 	public float getX() { return x; }
 	
+	/**
+	 * @param newX to set the x to
+	 */
 	public void setX(float newX) { x = newX;}
 	
 	/**
@@ -111,6 +123,9 @@ public class Element {
 	 */
 	public float getY() { return y; }
 	
+	/**
+	 * @param newY to set the y to
+	 */
 	public void setY(float newY) { y = newY; }
 	
 	/**

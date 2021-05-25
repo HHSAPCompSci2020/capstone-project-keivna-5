@@ -351,6 +351,4 @@ public class Viewfinder {
 	public ArrayList<LongExpoPhoto> getAllLongExpoImages(){
 		return longExposureImages;
 	}
-	
-   
 }

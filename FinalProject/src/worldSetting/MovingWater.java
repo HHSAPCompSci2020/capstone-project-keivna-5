@@ -21,6 +21,13 @@ public class MovingWater extends Element{
 	private float zoom;
 	private float waveOrNot;
 
+	/**
+	 * initializes all values for moving water
+	 * @param xPos
+	 * @param yPos
+	 * @param zPos
+	 * @param size
+	 */
 	public MovingWater (float xPos, float yPos, float zPos, float size) {
 		super(xPos, yPos, zPos, size);
 		
@@ -43,6 +50,10 @@ public class MovingWater extends Element{
 		}
 	}
 	
+	/**
+	 * displays the moving water
+	 * @param g PApplet of the main 3D world, can't be null
+	 */
 	public void display(PApplet g) {
 		g.pushMatrix();
 		g.fill(WATER_COLOR[0], WATER_COLOR[1], WATER_COLOR[2]);
