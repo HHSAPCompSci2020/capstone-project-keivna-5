@@ -57,7 +57,7 @@ public class Car extends Element{
 	 */
 	public void display(PApplet g) {	
 		g.pushMatrix();
-		drawBase(g);
+		drawCarcass(g);
 		drawWheels(g);
 		drawLights(g);
 		this.moveX((forward ? 1 : -1) * carSpeedFactor);
@@ -72,7 +72,7 @@ public class Car extends Element{
 	/*
 	 * Draws physical elements:
 	 */
-	private void drawBase(PApplet g) {
+	private void drawCarcass(PApplet g) {
 		// top of the car
 		float topHeight = 3 * carHeight / 5;
 		g.pushMatrix();
