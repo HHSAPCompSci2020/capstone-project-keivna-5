@@ -6,6 +6,7 @@ import worldSetting.CameraNoMouse;
 import worldSetting.SoundPlayer;
 import worldSetting.World;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import photography.Viewfinder;

@@ -152,4 +152,13 @@ public class DrawingSurface extends PApplet{
 		}
 		activeScreen.mousePressed(this);
 	}
+	
+	/**
+	 * calls portfolio's mouse wheel for scrolling
+	 * @pre DrawingSurface marker cannot be null
+	 */
+	public void mouseWheel(MouseEvent event) {
+		System.out.println("drawing mouseWheel");
+		activeScreen.mouseWheel(event);
+	}
 }
