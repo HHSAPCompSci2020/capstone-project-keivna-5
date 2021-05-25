@@ -11,6 +11,9 @@ import processing.core.PApplet;
  */
 public abstract class Screen {
 
+	/**
+	 * final size dimensions of the screen, initiliazed in constructor
+	 */
 	public final int DRAWING_WIDTH, DRAWING_HEIGHT;
 	
 	/**

@@ -164,6 +164,9 @@ public class WorldScreen extends Screen {
 		viewfinder.mousePressed(marker);
 	}
 	
+	/**
+	 * @return viewfinder of world screen
+	 */
 	public Viewfinder getViewfinder() {
 		return viewfinder;
 	}

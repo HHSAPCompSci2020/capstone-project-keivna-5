@@ -64,7 +64,7 @@ public class DrawingSurface extends PApplet{
 	}
 
 	/**
-	 * Draws the active screen and sets up the ratio of the screen to draw
+	 * Draws the active screen, tabs for each screen, and sets up the ratio of the screen to draw
 	 */
 	public void draw() {
 		ratioX = (float) width/activeScreen.DRAWING_WIDTH;
@@ -143,6 +143,7 @@ public class DrawingSurface extends PApplet{
 		Point p = new Point(mouseX, mouseY);
 
 		if (viewfinderButton.contains(p)) {
+//			worldScreen = new WorldScreen(this);
 			activeScreen = worldScreen;
 		} else if (portfolioButton.contains(p)) {
 			activeScreen = portfolioScreen;

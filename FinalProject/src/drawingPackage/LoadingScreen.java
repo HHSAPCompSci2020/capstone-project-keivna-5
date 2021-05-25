@@ -11,7 +11,7 @@ public class LoadingScreen extends Screen {
 	private static final double screenWidth = 800, screenHeight = 600;
 	
 	/**
-	 * GlossaryScreen constructor
+	 * LoadingScreen constructor
 	 * Initializes all fields
 	 */
 	public LoadingScreen() {
@@ -19,7 +19,7 @@ public class LoadingScreen extends Screen {
 	}
 	
 	/**
-	 * Draws a glossary describing functions on viewfinder
+	 * Draws a loading screen
 	 * @param marker
 	 * @pre PApplet marker cannot be null
 	 * @post the PApplet parameter is changed

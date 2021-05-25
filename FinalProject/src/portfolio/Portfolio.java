@@ -32,10 +32,10 @@ public class Portfolio {
 	
 	private final int viewfinderIndent = 60;
 	
+	private PGraphics textBox = new PGraphics();
+	private PVector textBoxPos = new PVector(20,20);
+	private float scroll = 0;
 	
-	PGraphics textBox = new PGraphics();
-	PVector textBoxPos = new PVector(20,20);
-	float scroll = 0;
 	/**
 	 * initializes all fields in portfolio
 	 * @param width of screen
@@ -56,7 +56,8 @@ public class Portfolio {
 	}
 
 	/**
-	 * Draws a grid of photos from all of the photos captured in the viewfinder world
+	 * Draws a grid of photos from all of the photos captured in the viewfinder world, 
+	 * or a single photo full screen if the user has clicked a photo
 	 * @param marker
 	 * @pre PApplet marker cannot be null
 	 * @post the PApplet parameter is changed
