@@ -58,6 +58,8 @@ public class Portfolio {
 	 * @post the PApplet parameter is changed
 	 */
 	public void draw(PApplet marker, Viewfinder viewfinder) {
+//		marker.background(255);
+//		marker.text("Loading...", marker.width/2, marker.height/2);
 		if (!hasClickedOnImage) {
 			drawPortfolioGrid(marker, viewfinder);
 		} else {
@@ -66,6 +68,9 @@ public class Portfolio {
 	}
 	
 	private void drawPortfolioGrid(PApplet marker, Viewfinder viewfinder) {
+//		marker.background(255);
+		marker.text("Loading...", marker.width/2, marker.height/2);
+		
 		imageRects = new ArrayList<Rectangle>();
 		longExpoImageRects = new ArrayList<Rectangle>();
 

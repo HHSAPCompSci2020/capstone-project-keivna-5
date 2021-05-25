@@ -31,6 +31,8 @@ public class PortfolioScreen extends Screen {
 	 */
 	public void draw(PApplet marker, Viewfinder viewfinder) {	
 		marker.pushStyle();
+//		marker.background(255);
+//		marker.text("Loading...", marker.width/2, marker.height/2);
 		portfolio.draw(marker, viewfinder);
 		marker.popStyle();			
 	}
