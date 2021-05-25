@@ -36,10 +36,6 @@ public class Portfolio {
 	private PVector textBoxPos = new PVector(20,20);
 	private float scroll = 0;
 	
-	PGraphics textBox = new PGraphics();
-	PVector textBoxPos = new PVector(20,20);
-	float scroll = 0;
-	
 	/**
 	 * initializes all fields in portfolio
 	 * @param width of screen
